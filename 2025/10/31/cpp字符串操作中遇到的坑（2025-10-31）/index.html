@@ -1,0 +1,867 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>cpp字符串操作中遇到的坑（2025.10.31） | Tianxingleo的Blog</title><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="cpp字符串操作中遇到的坑（2025.10.31）"><meta name="application-name" content="cpp字符串操作中遇到的坑（2025.10.31）"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="cpp字符串操作中遇到的坑（2025.10.31）"><meta property="og:url" content="http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="1.nposstd::string::npos 是一个特殊的静态成员常量，用于 std::string 和 std::string_view 类。 它的主要用途和实际值如下： 1. npos 的含义和用途npos 是 “no position”（没有位置）的缩写。  作为返回值： 当 std::st"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=51437096-3ff5-3881-2ab6-acf7574f7622"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=51437096-3ff5-3881-2ab6-acf7574f7622"><meta name="description" content="1.nposstd::string::npos 是一个特殊的静态成员常量，用于 std::string 和 std::string_view 类。 它的主要用途和实际值如下： 1. npos 的含义和用途npos 是 “no position”（没有位置）的缩写。  作为返回值： 当 std::st"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: 'cpp字符串操作中遇到的坑（2025.10.31）',
+  postAI: '',
+  pageFillDescription: '1.npos, 1. npos 的含义和用途, 2. npos 的类型和实际值, 3. 如何正确使用 npos, 2.复制或操作字符串的一部分, 使用 substr() 复制字符串的一部分, 操作字符串的一部分, string片段查找, 方法一：使用 stdstringfind() 的起始位置参数, 方法二：使用 stdstringsubstr() 配合 find(), 总结选择：, 4.大小写转化, 5.函数原型, 基本语法, 示例, 1. 两个整数相加的函数, 2. 计算圆面积的函数, 3. 不接受任何参数不返回任何值的函数, 4. 传递数组或指针的函数, 函数原型的重要性, 一个完整的C++程序示例, 6. oj在输入处理与本地不同：, 🧩 一、你这段关键代码, 🧠 二、核心原理：输入缓冲区行为差异, 1️⃣ cin gtgt 与 getline() 的区别, 2️⃣ 为什么本地没问题但评测机出错？, ✅ 本地输入（人工回车）：, ❌ 评测系统输入（文件重定向）, ⚙️ 三、三种写法对比, 💡 四、最佳实践写法, ✅ 五、结论总结, ✨ 最简可用模板（推荐直接背下来）：, ✅ 一、简单记忆法（原理不变）, 🔹 推荐写法（简短、安全）：, ✅ 二、甚至更短（但稍有风险）, 🧠 三、推荐选择, ✨ 四、示例代码是一个特殊的静态成员常量用于和类它的主要用途和实际值如下的含义和用途是没有位置的缩写作为返回值当的查找函数如等在字符串中找不到指定的字符或子字符串时它们会返回来作为未找到的指示作为长度参数当在的其他成员函数如等中使用时通常表示直到字符串的末尾的类型和实际值的类型是它是一个无符号整数类型通常就是在标准中被定义为由于是一个无符号类型当将带符号整数赋值给一个无符号整数类型时会发生类型转换这个转换结果是该无符号类型能够表示的最大值因此的实际值是或能表示的最大值操作系统架构大小的近似值位字节位字节如何正确使用在代码中您永远不应该直接使用或任何实际的数字值例如来与查找函数的返回值进行比较您应该始终使用或在使用了后使用来确保代码的移植性和可读性示例正确的比较方式未找到字符找到字符另一种正确的写法字符的位置是复制或操作字符串的一部分在中操作或复制字符串的一部分最常用的方法是使用类的成员函数使用复制字符串的一部分函数的定义如下它返回一个新的对象该对象是原字符串的一个子串的副本参数说明可选默认为子串开始的位置索引字符串的第一个字符的索引是可选默认为子串的长度字符数是一个特殊值表示直到字符串的末尾示例复制从索引开始长度为的子串输出复制从索引开始到字符串末尾的子串不指定第二个参数输出复制整个字符串输出操作字符串的一部分如果你想修改字符串的某个部分而不仅仅是复制它你可以使用和赋值操作先用复制所需部分修改后再用或其他方法替换原字符串中的相应部分复制修改副本用修改后的部分替换原字符串中的相应部分输出直接使用成员函数的函数可以直接替换字符串的某一部分从索引开始替换长度为的子串为输出使用迭代器和算法对于更复杂的修改你可以使用字符串的迭代器例如和来指定一个范围并配合库中的函数如等进行操作总结目的常用方法描述复制子串返回一个新的包含子串的对象替换修改子串直接在原字符串中修改指定位置和长度的子串片段查找当您想要在的某个部分即一个范围内查找子串或字符时通常有两种主要方法方法一使用的起始位置参数有一个可选的第二个参数它指定了开始搜索的起始索引这样您可以将搜索限定在字符串的后半部分或从某个特定点开始的部分示例从索引开始搜索如果您只想在字符串中从索引开始向后查找可以这样做从索引即的位置开始搜索查找目标子串在索引之后首次出现在全局索引输出在索引之后首次出现在全局索引注意返回的仍然是相对于原字符串开头的全局索引未找到方法二使用配合如果您想要限定搜索的结束位置并且希望返回的索引是相对于您所搜索的子范围的而不是相对于原字符串开头的可以先创建子串然后在子串上使用步骤使用提取您想要搜索的子字符串对这个新的子字符串调用如果找到将返回的索引加上原始子串的起始位置即可获得相对于原字符串的全局索引示例在索引到索引之间搜索搜索范围到提取子串范围从开始长度子串为输出在子串中查找目标子串计算全局索引在子串中首次出现在子串索引实际输出未找到因为在原始字符串中索引为超出子串范围假设是它在子串中的索引是正确在指定范围内未找到输出在指定范围内未找到总结选择只限制搜索的起始位置使用最简单高效需要严格限制起始和结束位置如果您不介意复制字符串并且希望返回相对于子串的索引使用如果您想避免创建新的字符串副本对于长字符串可能更高效则必须自行编写一个循环不断使用并检查结果是否超出了您的结束界限大小写转化类型中字符与的差值是这是因为在编码以及广泛使用的兼容的字符集如中大写字母的十进制值为小写字母的十进制值为它们的差值是推论要将一个大写字母转换为对应的小写字母要将一个小写字母转换为对应的大写字母在中字符可以直接参与数学运算它们会被隐式转换为它们的整数编码值不过在实际编程中更推荐使用库中的函数将转换为小写如果是字母将转换为大写如果是字母函数原型你问的是中的函数原型怎么写函数原型是告诉编译器函数名称返回类型以及参数的类型和顺序的声明它通常写在函数或其他调用该函数的函数之前或者写在头文件中以下是函数原型的基本语法和示例基本语法返回类型函数名参数类型参数名参数类型参数名或者可以省略参数名但不推荐在复杂的代码中省略返回类型函数名参数类型参数类型示例两个整数相加的函数该函数接受两个类型的参数返回一个类型的结果或计算圆面积的函数该函数接受一个类型的参数半径返回一个类型的结果面积不接受任何参数不返回任何值的函数这种函数通常用于执行某种操作比如打印信息返回类型使用参数列表使用或空或传递数组或指针的函数该函数接受一个指向类型的指针通常代表数组以及数组的长度或使用更现代的数组引用如果知道数组大小函数原型的重要性前向声明它允许你在定义函数之前使用它类型检查编译器使用函数原型来检查你在调用函数时传递的参数类型是否正确一个完整的程序示例函数原型调用函数函数定义在输入处理与本地不同原因在于输入缓冲区和读取方式的差异你在本地跑没问题但提交到评测系统洛谷后就出错是因为的输入行为和你本地终端不同我们来一步步剖析为什么出现这个问题一你这段关键代码看似无害但这几行在不同环境下的行为有细微差异导致你本地没错评测机出错二核心原理输入缓冲区行为差异与的区别函数会读到空格换行吗是否丢弃换行符不会读空格或换行丢弃最后的换行会读空格保留换行符前的所有内容所以问题的关键就在于在后缓冲区里可能还残留一个换行符为什么本地没问题但评测机出错因为不同输入方式下缓冲区的内容不同举个例子本地输入人工回车当你输入第二行时会读到并吃掉那个换行符因为会自动跳过空白所以本地调试时缓冲区干净接下来的可以顺利读到评测系统输入文件重定向实际运行时是这样的程序从文件直接读入此时输入流在读完后换行符并不一定被立即丢弃因为文件输入不像终端输入那样有交互行为于是下一次读到的就是一个空行导致你第一次操作行读到空字符串所以逻辑错乱后续输入全错位三三种写法对比写法是否安全说明有时有时不行只能吃掉一个字符如果输入多余空格会失效有时默认只忽略个字符推荐丢掉整行直到换行符无论末尾多少空格四最佳实践写法请这样写清空行末换行处理五结论总结现象原因解决方案本地错输入流行为差异用用有时有效只吃掉个字符不稳定别依赖出错时第一行空白读到残余换行所以样例错位最简可用模板推荐直接背下来必加安全读取完整一行这串太长太绕确实不好记不过这行的作用只有一个清掉缓冲区里剩下的换行符一简单记忆法原理不变推荐写法简短安全解释是一个足够大的数字用来保证能读掉整行一般输入不会超过这个长度第二个参数表示一直丢弃到换行符为止这样写比简短很多而且在绝大多数洛谷环境下完全没问题二甚至更短但稍有风险缺点只能丢掉一个字符通常是一个换行符如果前一行末尾有额外空格或者回车符号组合如可能还会残留所以不推荐在正式提交时使用三推荐选择写法安全性是否易记适用场景安全好记推荐日常写法可能残留换行非常短本地调试时可以偷懒最安全难记稳健通用推荐正式提交四示例代码简短又安全读到',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-01 00:08:07',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">cpp字符串操作中遇到的坑（2025.10.31）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-31T13:38:41.000Z" title="发表于 2025-10-31 21:38:41">2025-10-31</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-10-31T16:08:07.593Z" title="更新于 2025-11-01 00:08:07">2025-11-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="cpp字符串操作中遇到的坑（2025.10.31）"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=51437096-3ff5-3881-2ab6-acf7574f7622"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/"><header><h1 id="CrawlerTitle" itemprop="name headline">cpp字符串操作中遇到的坑（2025.10.31）</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-10-31T13:38:41.000Z" title="发表于 2025-10-31 21:38:41">2025-10-31</time><time itemprop="dateCreated datePublished" datetime="2025-10-31T16:08:07.593Z" title="更新于 2025-11-01 00:08:07">2025-11-01</time></header><h1 id="1-npos"><a href="#1-npos" class="headerlink" title="1.npos"></a>1.npos</h1><p><code>std::string::npos</code> 是一个特殊的<strong>静态成员常量</strong>，用于 <code>std::string</code> 和 <code>std::string_view</code> 类。</p>
+<p>它的主要用途和实际值如下：</p>
+<h3 id="1-npos-的含义和用途"><a href="#1-npos-的含义和用途" class="headerlink" title="1. npos 的含义和用途"></a>1. <code>npos</code> 的含义和用途</h3><p><code>npos</code> 是 “no position”（没有位置）的缩写。</p>
+<ul>
+<li><strong>作为返回值：</strong> 当 <code>std::string</code> 的查找函数（如 <code>find()</code>, <code>rfind()</code>, <code>find_first_of()</code>, 等）在字符串中<strong>找不到</strong>指定的字符或子字符串时，它们会返回 <code>npos</code> 来作为“未找到”的指示。</li>
+<li><strong>作为长度参数：</strong> 当在 <code>std::string</code> 的其他成员函数（如 <code>substr()</code>, <code>erase()</code>, 等）中使用时，<code>npos</code> 通常表示“直到字符串的末尾”。</li>
+</ul>
+<h3 id="2-npos-的类型和实际值"><a href="#2-npos-的类型和实际值" class="headerlink" title="2. npos 的类型和实际值"></a>2. <code>npos</code> 的类型和实际值</h3><p><code>npos</code> 的类型是 <code>std::string::size_type</code>，它是一个<strong>无符号整数类型</strong>，通常就是 <code>size_t</code>。</p>
+<p>在 C++ 标准中，<code>npos</code> 被定义为：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>static const size_type npos = -1;</mtext></mrow><annotation encoding="application/x-tex">\text{static const size\_type npos = -1;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9779em;vertical-align:-0.31em;"></span><span class="mord text"><span class="mord">static const size_type npos = -1;</span></span></span></span></span></span>
+
+<p>由于 <code>size_type</code> 是一个<strong>无符号类型</strong>：</p>
+<ol>
+<li>当将带符号整数 <code>-1</code> 赋值给一个无符号整数类型时，会发生<strong>类型转换</strong>。</li>
+<li>这个转换结果是该无符号类型能够表示的<strong>最大值</strong>。</li>
+</ol>
+<p>因此，<code>npos</code> 的实际值是 <code>size_t</code>（或 <code>size_type</code>）能表示的最大值。</p>
+<table>
+<thead>
+<tr>
+<th><strong>操作系统&#x2F;架构</strong></th>
+<th><strong>size_t 大小</strong></th>
+<th><strong>npos 的近似值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>32-bit (32位)</td>
+<td>4 字节</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup><mo>−</mo><mn>1</mn><mo>≈</mo><mn>4.29</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">2^{32} - 1 \approx 4.29 \times 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4.29</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td>64-bit (64位)</td>
+<td>8 字节</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>64</mn></msup><mo>−</mo><mn>1</mn><mo>≈</mo><mn>1.84</mn><mo>×</mo><msup><mn>10</mn><mn>19</mn></msup></mrow><annotation encoding="application/x-tex">2^{64} - 1 \approx 1.84 \times 10^{19}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">64</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.84</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">19</span></span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody></table>
+<h3 id="3-如何正确使用-npos"><a href="#3-如何正确使用-npos" class="headerlink" title="3. 如何正确使用 npos"></a>3. 如何正确使用 <code>npos</code></h3><p>在代码中，您<strong>永远不应该</strong>直接使用 <code>-1</code> 或任何实际的数字值（例如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18446744073709551615</mn></mrow><annotation encoding="application/x-tex">18446744073709551615</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18446744073709551615</span></span></span></span>）来与查找函数的返回值进行比较。您应该始终使用 <code>std::string::npos</code>（或在使用了 <code>using namespace std;</code> 后使用 <code>string::npos</code>）来确保代码的移植性和可读性。</p>
+<p><strong>示例：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::string s = <span class="string">&quot;test string&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 正确的比较方式：</span></span><br><span class="line">    <span class="keyword">if</span> (s.<span class="built_in">find</span>(<span class="string">&#x27;z&#x27;</span>) == std::string::npos) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;未找到字符 &#x27;z&#x27;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;找到字符 &#x27;z&#x27;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 另一种正确的写法：</span></span><br><span class="line">    <span class="type">size_t</span> pos = s.<span class="built_in">find</span>(<span class="string">&#x27;s&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos != std::string::npos) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;字符 &#x27;s&#x27; 的位置是: &quot;</span> &lt;&lt; pos &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-复制或操作字符串的一部分"><a href="#2-复制或操作字符串的一部分" class="headerlink" title="2.复制或操作字符串的一部分"></a>2.复制或操作字符串的一部分</h2><p>在 C++ 中，操作或复制字符串的一部分，最常用的方法是使用 <code>std::string</code> 类的 <strong><code>substr()</code></strong> 成员函数。</p>
+<h3 id="使用-substr-复制字符串的一部分"><a href="#使用-substr-复制字符串的一部分" class="headerlink" title="使用 substr() 复制字符串的一部分"></a>使用 <code>substr()</code> 复制字符串的一部分</h3><p><code>substr()</code> 函数的定义如下：</p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::string <span class="title">substr</span> <span class="params">(<span class="type">size_t</span> pos = <span class="number">0</span>, <span class="type">size_t</span> len = npos)</span> <span class="type">const</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>它返回一个新的 <code>std::string</code> 对象，该对象是原字符串的一个子串的副本。</p>
+<p><strong>参数说明：</strong></p>
+<ol>
+<li><strong><code>pos</code></strong> (可选，默认为 0)：子串开始的<strong>位置</strong>（索引）。字符串的第一个字符的索引是 0。</li>
+<li><strong><code>len</code></strong> (可选，默认为 <code>npos</code>)：子串的<strong>长度</strong>（字符数）。<code>npos</code> 是一个特殊值，表示“直到字符串的末尾”。</li>
+</ol>
+<p><strong>示例：</strong></p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    std::string original_str = &quot;Hello C++ World&quot;;</span><br><span class="line"></span><br><span class="line">    // 1. 复制从索引 6 开始，长度为 3 的子串 (&quot;C++&quot;)</span><br><span class="line">    std::string sub1 = original_str.substr(6, 3);</span><br><span class="line">    std::cout &lt;&lt; &quot;Sub 1: &quot; &lt;&lt; sub1 &lt;&lt; std::endl; // 输出: C++</span><br><span class="line"></span><br><span class="line">    // 2. 复制从索引 10 开始到字符串末尾的子串 (&quot;World&quot;)</span><br><span class="line">    //    不指定第二个参数 (len)</span><br><span class="line">    std::string sub2 = original_str.substr(10);</span><br><span class="line">    std::cout &lt;&lt; &quot;Sub 2: &quot; &lt;&lt; sub2 &lt;&lt; std::endl; // 输出: World</span><br><span class="line"></span><br><span class="line">    // 3. 复制整个字符串</span><br><span class="line">    std::string sub3 = original_str.substr(0);</span><br><span class="line">    std::cout &lt;&lt; &quot;Sub 3: &quot; &lt;&lt; sub3 &lt;&lt; std::endl; // 输出: Hello C++ World</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="操作字符串的一部分"><a href="#操作字符串的一部分" class="headerlink" title="操作字符串的一部分"></a>操作字符串的一部分</h3><p>如果你想<strong>修改</strong>字符串的某个部分，而不仅仅是复制它，你可以：</p>
+<ol>
+<li><p><strong>使用 <code>substr()</code> 和赋值操作：</strong> 先用 <code>substr()</code> 复制所需部分，修改后，再用 <strong><code>replace()</code></strong> 或其他方法替换原字符串中的相应部分。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::string s = &quot;abcdefgh&quot;;</span><br><span class="line">std::string part_to_modify = s.substr(2, 4); // 复制 &quot;cdef&quot;</span><br><span class="line">part_to_modify = &quot;XXXX&quot;;                    // 修改副本</span><br><span class="line"></span><br><span class="line">// 用修改后的部分替换原字符串中的相应部分</span><br><span class="line">s.replace(2, 4, part_to_modify);</span><br><span class="line">std::cout &lt;&lt; s &lt;&lt; std::endl; // 输出: abXXXXgh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>直接使用 <code>replace()</code> 成员函数：</strong> <code>std::string</code> 的 <code>replace()</code> 函数可以直接替换字符串的某一部分。</p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::string s = <span class="string">&quot;The quick brown fox&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从索引 4 开始，替换长度为 5 的子串 (&quot;quick&quot;) 为 &quot;slow&quot;</span></span><br><span class="line">s.<span class="built_in">replace</span>(<span class="number">4</span>, <span class="number">5</span>, <span class="string">&quot;slow&quot;</span>);</span><br><span class="line">std::cout &lt;&lt; s &lt;&lt; std::endl; <span class="comment">// 输出: The slow brown fox</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用迭代器和算法：</strong> 对于更复杂的修改，你可以使用字符串的迭代器（例如 <code>s.begin() + pos</code> 和 <code>s.begin() + pos + len</code>）来指定一个范围，并配合 <code>&lt;algorithm&gt;</code> 库中的函数（如 <code>std::transform</code>、<code>std::copy</code> 等）进行操作。</p>
+</li>
+</ol>
+<p><strong>总结：</strong></p>
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>常用方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>复制</strong>子串</td>
+<td><code>string::substr(pos, len)</code></td>
+<td>返回一个新的包含子串的 <code>std::string</code> 对象。</td>
+</tr>
+<tr>
+<td><strong>替换&#x2F;修改</strong>子串</td>
+<td><code>string::replace(pos, len, new_str)</code></td>
+<td>直接在原字符串中修改指定位置和长度的子串。</td>
+</tr>
+</tbody></table>
+<h2 id="string片段查找"><a href="#string片段查找" class="headerlink" title="string片段查找"></a>string片段查找</h2><p>当您想要在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>std::string</mtext></mrow><annotation encoding="application/x-tex">\text{std::string}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">std::string</span></span></span></span></span> 的<strong>某个部分</strong>（即一个范围）内查找子串或字符时，通常有两种主要方法：</p>
+<h3 id="方法一：使用-std-string-find-的起始位置参数"><a href="#方法一：使用-std-string-find-的起始位置参数" class="headerlink" title="方法一：使用 std::string::find() 的起始位置参数"></a>方法一：使用 <code>std::string::find()</code> 的起始位置参数</h3><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>std::string::find()</mtext></mrow><annotation encoding="application/x-tex">\text{std::string::find()}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">std::string::find()</span></span></span></span></span> 有一个可选的第二个参数 `pos`，它指定了开始搜索的**起始索引**。这样，您可以将搜索限定在字符串的后半部分或从某个特定点开始的部分。
+
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// size_t find (const string&amp; str, size_t pos = 0) const;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：从索引 10 开始搜索</strong></p>
+<p>如果您只想在字符串中从索引 10 开始向后查找，可以这样做：</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    std::string text = &quot;apple, orange, apple pie, grape&quot;;</span><br><span class="line">    std::string target = &quot;apple&quot;;</span><br><span class="line">    </span><br><span class="line">    // 从索引 10 (即 &#x27;o&#x27; 的位置) 开始搜索 &quot;apple&quot;</span><br><span class="line">    size_t start_pos = 10; </span><br><span class="line">    </span><br><span class="line">    // 查找目标子串</span><br><span class="line">    size_t found_pos = text.find(target, start_pos);</span><br><span class="line"></span><br><span class="line">    if (found_pos != std::string::npos) &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;在索引 &quot; &lt;&lt; start_pos &lt;&lt; &quot; 之后，\&quot;&quot; &lt;&lt; target &lt;&lt; &quot;\&quot; 首次出现在全局索引: &quot; &lt;&lt; found_pos &lt;&lt; std::endl;</span><br><span class="line">        // 输出: 在索引 10 之后，&quot;apple&quot; 首次出现在全局索引: 13</span><br><span class="line">        </span><br><span class="line">        // 注意：返回的仍然是相对于原字符串开头的全局索引 (13)</span><br><span class="line">        </span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;未找到&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法二：使用-std-string-substr-配合-find"><a href="#方法二：使用-std-string-substr-配合-find" class="headerlink" title="方法二：使用 std::string::substr() 配合 find()"></a>方法二：使用 <code>std::string::substr()</code> 配合 <code>find()</code></h3><p>如果您想要限定搜索的<strong>结束位置</strong>，并且希望返回的索引是相对于您所搜索的<strong>子范围</strong>的（而不是相对于原字符串开头的），可以先创建子串，然后在子串上使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>find()</mtext></mrow><annotation encoding="application/x-tex">\text{find()}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">find()</span></span></span></span></span>。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>使用 <code>substr(pos, len)</code> 提取您想要搜索的子字符串。</li>
+<li>对这个新的子字符串调用 <code>find()</code>。</li>
+<li>如果找到，将返回的索引加上原始子串的起始位置，即可获得相对于原字符串的全局索引。</li>
+</ol>
+<p><strong>示例：在索引 10 到索引 25 之间搜索</strong></p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    std::string text = &quot;apple, orange, apple pie, grape, banana&quot;;</span><br><span class="line">    std::string target = &quot;grape&quot;;</span><br><span class="line">    </span><br><span class="line">    size_t start_pos = 10; </span><br><span class="line">    size_t search_length = 15; // 搜索范围: text[10] 到 text[10+15-1] = text[24]</span><br><span class="line">    </span><br><span class="line">    // 1. 提取子串 (范围：从 10 开始，长度 15)</span><br><span class="line">    std::string sub_text = text.substr(start_pos, search_length);</span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; &quot;子串为: \&quot;&quot; &lt;&lt; sub_text &lt;&lt; &quot;\&quot;&quot; &lt;&lt; std::endl; // 输出: orange, apple pi</span><br><span class="line"></span><br><span class="line">    // 2. 在子串中查找目标子串</span><br><span class="line">    size_t sub_found_pos = sub_text.find(target);</span><br><span class="line"></span><br><span class="line">    if (sub_found_pos != std::string::npos) &#123;</span><br><span class="line">        // 3. 计算全局索引</span><br><span class="line">        size_t global_found_pos = start_pos + sub_found_pos;</span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; &quot;在子串中，\&quot;&quot; &lt;&lt; target &lt;&lt; &quot;\&quot; 首次出现在子串索引: &quot; &lt;&lt; sub_found_pos &lt;&lt; std::endl; </span><br><span class="line">        // 实际输出: 未找到，因为 &quot;grape&quot; 在原始字符串中索引为 25，超出子串范围</span><br><span class="line">        </span><br><span class="line">        // 假设 target 是 &quot;apple&quot;，它在子串中的索引是 11</span><br><span class="line">        // global_found_pos = 10 + 11 = 21 (正确)</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;在指定范围内未找到 \&quot;&quot; &lt;&lt; target &lt;&lt; &quot;\&quot;&quot; &lt;&lt; std::endl;</span><br><span class="line">        // 输出: 在指定范围内未找到 &quot;grape&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总结选择："><a href="#总结选择：" class="headerlink" title="总结选择："></a>总结选择：</h3><ul>
+<li><strong>只限制搜索的</strong> <strong>起始位置</strong>：使用 <code>std::string::find(target, start_pos)</code>，最简单高效。</li>
+<li><strong>需要严格限制</strong> <strong>起始和结束位置</strong>：<ul>
+<li>如果您不介意复制字符串，并且希望返回相对于子串的索引，使用 <strong><code>substr()</code> + <code>find()</code></strong>。</li>
+<li>如果您想避免创建新的字符串副本（对于长字符串可能更高效），则必须自行编写一个循环，不断使用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>find(target, current_pos)</mtext></mrow><annotation encoding="application/x-tex">\text{find(target, current\_pos)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord text"><span class="mord">find(target, current_pos)</span></span></span></span></span>，并检查结果是否超出了您的结束界限。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-大小写转化"><a href="#4-大小写转化" class="headerlink" title="4.大小写转化"></a>4.大小写转化</h2><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>char</mtext></mrow><annotation encoding="application/x-tex">\text{char}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">char</span></span></span></span></span> 类型中，字符 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>’a’</mtext></mrow><annotation encoding="application/x-tex">\text{&#x27;a&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">’a’</span></span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>’A’</mtext></mrow><annotation encoding="application/x-tex">\text{&#x27;A&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">’A’</span></span></span></span></span> 的差值是：
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>’a’</mtext><mo>−</mo><mtext>’A’</mtext><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">\text{&#x27;a&#x27;} - \text{&#x27;A&#x27;} = 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">’a’</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">’A’</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span></span>
+
+<p>这是因为在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ASCII</mtext></mrow><annotation encoding="application/x-tex">\text{ASCII}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">ASCII</span></span></span></span></span> 编码（以及 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>C++</mtext></mrow><annotation encoding="application/x-tex">\text{C++}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">C++</span></span></span></span></span> 广泛使用的兼容 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ASCII</mtext></mrow><annotation encoding="application/x-tex">\text{ASCII}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">ASCII</span></span></span></span></span> 的字符集，如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Unicode</mtext></mrow><annotation encoding="application/x-tex">\text{Unicode}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Unicode</span></span></span></span></span>&#x2F;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>UTF-8</mtext></mrow><annotation encoding="application/x-tex">\text{UTF-8}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">UTF-8</span></span></span></span></span>）中：</p>
+<ul>
+<li>大写字母 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>’A’</mtext></mrow><annotation encoding="application/x-tex">\text{&#x27;A&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">’A’</span></span></span></span></span> 的十进制值为 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>65</mn></mrow><annotation encoding="application/x-tex">65</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65</span></span></span></span></strong>。</li>
+<li>小写字母 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>’a’</mtext></mrow><annotation encoding="application/x-tex">\text{&#x27;a&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">’a’</span></span></span></span></span> 的十进制值为 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>97</mn></mrow><annotation encoding="application/x-tex">97</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">97</span></span></span></span></strong>。</li>
+</ul>
+<p>它们的差值是：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>97</mn><mo>−</mo><mn>65</mn><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">97 - 65 = 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">97</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span>。</p>
+<p><strong>推论：</strong></p>
+<ul>
+<li><p>要将一个大写字母 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 转换为对应的小写字母：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>ch</mtext><mo>+</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">\text{ch} + 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">ch</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span></span>
+</li>
+<li><p>要将一个小写字母 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 转换为对应的大写字母：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>ch</mtext><mo>−</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">\text{ch} - 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">ch</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span></span></li>
+</ul>
+<p>在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>C++</mtext></mrow><annotation encoding="application/x-tex">\text{C++}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">C++</span></span></span></span></span> 中，字符可以直接参与数学运算，它们会被隐式转换为它们的整数编码值。不过，在实际编程中，更推荐使用 <code>&lt;cctype&gt;</code> 库中的函数：</p>
+<ul>
+<li><strong><code>std::tolower(ch)</code></strong>：将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 转换为小写（如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 是字母）。</li>
+<li><strong><code>std::toupper(ch)</code></strong>：将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 转换为大写（如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>ch</mtext></mrow><annotation encoding="application/x-tex">\text{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">ch</span></span></span></span></span> 是字母）。</li>
+</ul>
+<h2 id="5-函数原型"><a href="#5-函数原型" class="headerlink" title="5.函数原型"></a>5.函数原型</h2><p>你问的是C++中的<strong>函数原型 (Function Prototype)</strong> 怎么写。</p>
+<p>函数原型是告诉编译器函数名称、返回类型以及参数的类型和顺序的声明。它通常写在<code>main</code>函数或其他调用该函数的函数之前，或者写在头文件中。</p>
+<p>以下是函数原型的基本语法和示例：</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">返回类型 函数名 (参数类型1 参数名1, 参数类型2 参数名2, ...);</span><br></pre></td></tr></table></figure>
+
+<p>或者（可以省略参数名，但<strong>不推荐</strong>在复杂的代码中省略）：</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">返回类型 函数名 (参数类型1, 参数类型2, ...);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="1-两个整数相加的函数"><a href="#1-两个整数相加的函数" class="headerlink" title="1. 两个整数相加的函数"></a>1. 两个整数相加的函数</h4><p>该函数接受两个 <code>int</code> 类型的参数，返回一个 <code>int</code> 类型的结果。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int add(int a, int b);</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int add(int, int);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-计算圆面积的函数"><a href="#2-计算圆面积的函数" class="headerlink" title="2. 计算圆面积的函数"></a>2. 计算圆面积的函数</h4><p>该函数接受一个 <code>double</code> 类型的参数（半径），返回一个 <code>double</code> 类型的结果（面积）。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double calculateArea(double radius);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-不接受任何参数，不返回任何值的函数"><a href="#3-不接受任何参数，不返回任何值的函数" class="headerlink" title="3. 不接受任何参数，不返回任何值的函数"></a>3. 不接受任何参数，不返回任何值的函数</h4><p>这种函数通常用于执行某种操作，比如打印信息。返回类型使用 <code>void</code>，参数列表使用 <code>void</code> 或空。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void printWelcomeMessage(void);</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void printWelcomeMessage();</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-传递数组或指针的函数"><a href="#4-传递数组或指针的函数" class="headerlink" title="4. 传递数组或指针的函数"></a>4. 传递数组或指针的函数</h4><p>该函数接受一个指向 <code>int</code> 类型的指针（通常代表数组），以及数组的长度。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void processArray(int *arr, int size);</span><br></pre></td></tr></table></figure>
+
+<p>或使用更现代的数组引用（如果知道数组大小）：</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void processArray(int arr[], int size);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="函数原型的重要性"><a href="#函数原型的重要性" class="headerlink" title="函数原型的重要性"></a><strong>函数原型的重要性</strong></h3><ul>
+<li><strong>前向声明 (Forward Declaration):</strong> 它允许你在定义函数之前使用它。</li>
+<li><strong>类型检查:</strong> 编译器使用函数原型来检查你在调用函数时传递的参数类型是否正确。</li>
+</ul>
+<h3 id="一个完整的C-程序示例"><a href="#一个完整的C-程序示例" class="headerlink" title="一个完整的C++程序示例"></a><strong>一个完整的C++程序示例</strong></h3><p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数原型 (Function Prototype)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 调用函数</span></span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">max</span>(a, b); </span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;The larger number is: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数定义 (Function Definition)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-oj在输入处理与本地不同："><a href="#6-oj在输入处理与本地不同：" class="headerlink" title="6. oj在输入处理与本地不同："></a>6. oj在输入处理与本地不同：</h2><p>原因在于<strong>输入缓冲区和读取方式的差异</strong>。你在本地跑没问题，但提交到评测系统（OJ &#x2F; PTA &#x2F; 洛谷）后就出错，是因为<strong>OJ 的输入行为和你本地终端不同</strong>。我们来一步步剖析为什么出现这个问题。</p>
+<hr>
+<h2 id="🧩-一、你这段关键代码"><a href="#🧩-一、你这段关键代码" class="headerlink" title="🧩 一、你这段关键代码"></a>🧩 一、你这段关键代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cin.get();</span></span><br><span class="line">cin &gt;&gt; array_1;</span><br><span class="line"><span class="comment">//cin.get();</span></span><br><span class="line">cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">string line;</span><br></pre></td></tr></table></figure>
+
+<p>看似无害，但这几行在<strong>不同环境</strong>下的行为有细微差异，导致你本地没错，评测机出错。</p>
+<hr>
+<h2 id="🧠-二、核心原理：输入缓冲区行为差异"><a href="#🧠-二、核心原理：输入缓冲区行为差异" class="headerlink" title="🧠 二、核心原理：输入缓冲区行为差异"></a>🧠 二、核心原理：输入缓冲区行为差异</h2><h3 id="1️⃣-cin-与-getline-的区别"><a href="#1️⃣-cin-与-getline-的区别" class="headerlink" title="1️⃣ cin &gt;&gt; 与 getline() 的区别"></a>1️⃣ <code>cin &gt;&gt;</code> 与 <code>getline()</code> 的区别</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>会读到空格&#x2F;换行吗？</th>
+<th>是否丢弃换行符？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cin &gt;&gt; str</code></td>
+<td>❌ 不会读空格或换行</td>
+<td>✅ 丢弃最后的换行</td>
+</tr>
+<tr>
+<td><code>getline(cin, str)</code></td>
+<td>✅ 会读空格</td>
+<td>❌ 保留换行符前的所有内容</td>
+</tr>
+</tbody></table>
+<p><strong>所以问题的关键就在于：</strong><br>在 <code>cin &gt;&gt; array_1</code> 后，缓冲区里可能还残留一个 <code>\n</code>（换行符）。</p>
+<hr>
+<h3 id="2️⃣-为什么本地没问题但评测机出错？"><a href="#2️⃣-为什么本地没问题但评测机出错？" class="headerlink" title="2️⃣ 为什么本地没问题但评测机出错？"></a>2️⃣ 为什么本地没问题但评测机出错？</h3><p>因为不同输入方式下缓冲区的内容不同。<br>举个例子：</p>
+<h4 id="✅-本地输入（人工回车）："><a href="#✅-本地输入（人工回车）：" class="headerlink" title="✅ 本地输入（人工回车）："></a>✅ 本地输入（人工回车）：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">4↵</span><br><span class="line">ILove↵</span><br><span class="line">1 Luogu↵</span><br><span class="line">2 5 5↵</span><br><span class="line">3 3 guGugu↵</span><br><span class="line">4 gu↵</span><br></pre></td></tr></table></figure>
+
+<p>当你输入第二行 <code>&quot;ILove↵&quot;</code> 时，<code>cin &gt;&gt; array_1</code> 会读到 <code>&quot;ILove&quot;</code> 并<strong>吃掉那个换行符</strong>（因为 <code>&gt;&gt;</code> 会自动跳过空白）。</p>
+<p>所以本地调试时，缓冲区干净，接下来的 <code>getline()</code> 可以顺利读到 <code>&quot;1 Luogu&quot;</code>。</p>
+<hr>
+<h4 id="❌-评测系统输入（文件重定向）"><a href="#❌-评测系统输入（文件重定向）" class="headerlink" title="❌ 评测系统输入（文件重定向）"></a>❌ 评测系统输入（文件重定向）</h4><p>OJ 实际运行时是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">程序从文件直接读入：</span><br><span class="line">4\nILove\n1 Luogu\n2 5 5\n3 3 guGugu\n4 gu\n</span><br></pre></td></tr></table></figure>
+
+<p>此时，输入流在读完 <code>&quot;ILove&quot;</code> 后，<strong>换行符 <code>\n</code> 并不一定被立即丢弃</strong>，因为文件输入不像终端输入那样有交互行为。<br>→ 于是下一次 <code>getline()</code> 读到的就是一个空行。</p>
+<p>导致：</p>
+<ul>
+<li>你第一次操作行读到空字符串；</li>
+<li>所以逻辑错乱，后续输入全错位。</li>
+</ul>
+<hr>
+<h2 id="⚙️-三、三种写法对比"><a href="#⚙️-三、三种写法对比" class="headerlink" title="⚙️ 三、三种写法对比"></a>⚙️ 三、三种写法对比</h2><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>是否安全</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cin &gt;&gt; a; cin.get();</code></td>
+<td>⚠️ 有时OK，有时不行</td>
+<td>只能吃掉一个字符，如果输入多余空格会失效</td>
+</tr>
+<tr>
+<td><code>cin &gt;&gt; a; cin.ignore();</code></td>
+<td>⚠️ 有时OK</td>
+<td>默认只忽略1个字符</td>
+</tr>
+<tr>
+<td>✅ <code>cin &gt;&gt; a; cin.ignore(numeric_limits&lt;streamsize&gt;::max(), &#39;\n&#39;);</code></td>
+<td>✅ 推荐</td>
+<td>丢掉整行直到换行符，无论末尾多少空格</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="💡-四、最佳实践写法"><a href="#💡-四、最佳实践写法" class="headerlink" title="💡 四、最佳实践写法"></a>💡 四、最佳实践写法</h2><p>请这样写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">string array_1;</span><br><span class="line">cin &gt;&gt; array_1;</span><br><span class="line">cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 清空行末换行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="built_in">getline</span>(cin, line);</span><br><span class="line">    <span class="comment">// 处理 line</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="✅-五、结论总结"><a href="#✅-五、结论总结" class="headerlink" title="✅ 五、结论总结"></a>✅ 五、结论总结</h2><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本地OK，OJ错</td>
+<td>输入流行为差异</td>
+<td>用 <code>cin.ignore(numeric_limits&lt;streamsize&gt;::max(), &#39;\n&#39;);</code></td>
+</tr>
+<tr>
+<td>用 <code>cin.get()</code> 有时有效</td>
+<td>只吃掉1个字符</td>
+<td>不稳定，别依赖</td>
+</tr>
+<tr>
+<td>OJ出错时第一行空白</td>
+<td><code>getline()</code> 读到残余换行</td>
+<td>所以样例错位</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="✨-最简可用模板（推荐直接背下来）："><a href="#✨-最简可用模板（推荐直接背下来）：" class="headerlink" title="✨ 最简可用模板（推荐直接背下来）："></a>✨ 最简可用模板（推荐直接背下来）：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> q;</span><br><span class="line">cin &gt;&gt; q;</span><br><span class="line"></span><br><span class="line">string doc;</span><br><span class="line">cin &gt;&gt; doc;</span><br><span class="line">cin.<span class="built_in">ignore</span>(numeric_limits&lt;streamsize&gt;::<span class="built_in">max</span>(), <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 必加！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="built_in">getline</span>(cin, line);</span><br><span class="line">    <span class="comment">// 安全读取完整一行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><code>cin.ignore(numeric_limits&lt;streamsize&gt;::max(), &#39;\n&#39;);</code> 这串太长太绕，确实不好记。<br>不过这行的作用只有一个：<strong>清掉缓冲区里剩下的换行符</strong>。</p>
+<hr>
+<h2 id="✅-一、简单记忆法（原理不变）"><a href="#✅-一、简单记忆法（原理不变）" class="headerlink" title="✅ 一、简单记忆法（原理不变）"></a>✅ 一、简单记忆法（原理不变）</h2><h3 id="🔹-推荐写法（简短、安全）："><a href="#🔹-推荐写法（简短、安全）：" class="headerlink" title="🔹 推荐写法（简短、安全）："></a>🔹 推荐写法（简短、安全）：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin.<span class="built_in">ignore</span>(<span class="number">1024</span>, <span class="string">&#x27;\n&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>🔸 解释：</p>
+<ul>
+<li><code>1024</code> 是一个“足够大”的数字，用来保证能读掉整行（一般输入不会超过这个长度）。</li>
+<li>第二个参数 <code>&#39;\n&#39;</code> 表示一直丢弃到换行符为止。</li>
+</ul>
+<p>这样写比 <code>numeric_limits&lt;streamsize&gt;::max()</code> 简短很多，而且在绝大多数OJ、PTA、洛谷环境下完全没问题。</p>
+<hr>
+<h2 id="✅-二、甚至更短（但稍有风险）"><a href="#✅-二、甚至更短（但稍有风险）" class="headerlink" title="✅ 二、甚至更短（但稍有风险）"></a>✅ 二、甚至更短（但稍有风险）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin.<span class="built_in">ignore</span>();</span><br></pre></td></tr></table></figure>
+
+<p>🔸 缺点：<br>只能丢掉<strong>一个字符</strong>（通常是一个换行符 <code>&#39;\n&#39;</code>），<br>如果前一行末尾有额外空格或者回车符号组合（如 <code>\r\n</code>），可能还会残留。<br>所以不推荐在正式提交时使用。</p>
+<hr>
+<h2 id="🧠-三、推荐选择"><a href="#🧠-三、推荐选择" class="headerlink" title="🧠 三、推荐选择"></a>🧠 三、推荐选择</h2><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>安全性</th>
+<th>是否易记</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ <code>cin.ignore(1024, &#39;\n&#39;);</code></td>
+<td>✅安全</td>
+<td>✅好记</td>
+<td>✅推荐日常写法</td>
+</tr>
+<tr>
+<td>⚠️ <code>cin.ignore();</code></td>
+<td>⚠️可能残留换行</td>
+<td>✅非常短</td>
+<td>本地调试时可以偷懒</td>
+</tr>
+<tr>
+<td>✅ <code>cin.ignore(numeric_limits&lt;streamsize&gt;::max(), &#39;\n&#39;);</code></td>
+<td>✅最安全</td>
+<td>❌难记</td>
+<td>OJ稳健通用（推荐正式提交）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="✨-四、示例代码"><a href="#✨-四、示例代码" class="headerlink" title="✨ 四、示例代码"></a>✨ 四、示例代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> q;</span><br><span class="line">cin &gt;&gt; q;</span><br><span class="line"></span><br><span class="line">string s;</span><br><span class="line">cin &gt;&gt; s;</span><br><span class="line">cin.<span class="built_in">ignore</span>(<span class="number">1024</span>, <span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 简短又安全！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="built_in">getline</span>(cin, line);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;读到：&quot;</span> &lt;&lt; line &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/')">cpp字符串操作中遇到的坑（2025.10.31）</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=cpp字符串操作中遇到的坑（2025.10.31）&amp;url=http://tianxingleo.github.io/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=51437096-3ff5-3881-2ab6-acf7574f7622" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.github.io" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.webp?_r_=024c6fa2-488b-2f3c-4191-2787d90d1aad" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.webp?_r_=024c6fa2-488b-2f3c-4191-2787d90d1aad" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">DUT开发区cpc组第二次例会笔记（2025秋）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-npos"><span class="toc-number">1.</span> <span class="toc-text">1.npos</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-npos-%E7%9A%84%E5%90%AB%E4%B9%89%E5%92%8C%E7%94%A8%E9%80%94"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. npos 的含义和用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-npos-%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%AE%9E%E9%99%85%E5%80%BC"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. npos 的类型和实际值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8-npos"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 如何正确使用 npos</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A4%8D%E5%88%B6%E6%88%96%E6%93%8D%E4%BD%9C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86"><span class="toc-number">1.1.</span> <span class="toc-text">2.复制或操作字符串的一部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-substr-%E5%A4%8D%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">使用 substr() 复制字符串的一部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">操作字符串的一部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string%E7%89%87%E6%AE%B5%E6%9F%A5%E6%89%BE"><span class="toc-number">1.2.</span> <span class="toc-text">string片段查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-std-string-find-%E7%9A%84%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">方法一：使用 std::string::find() 的起始位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8-std-string-substr-%E9%85%8D%E5%90%88-find"><span class="toc-number">1.2.2.</span> <span class="toc-text">方法二：使用 std::string::substr() 配合 find()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E9%80%89%E6%8B%A9%EF%BC%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text">总结选择：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">4.大小写转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">5.函数原型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1. 两个整数相加的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E5%9C%86%E9%9D%A2%E7%A7%AF%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2. 计算圆面积的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%8D%E6%8E%A5%E5%8F%97%E4%BB%BB%E4%BD%95%E5%8F%82%E6%95%B0%EF%BC%8C%E4%B8%8D%E8%BF%94%E5%9B%9E%E4%BB%BB%E4%BD%95%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3. 不接受任何参数，不返回任何值的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BC%A0%E9%80%92%E6%95%B0%E7%BB%84%E6%88%96%E6%8C%87%E9%92%88%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">4. 传递数组或指针的函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-number">1.4.3.</span> <span class="toc-text">函数原型的重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84C-%E7%A8%8B%E5%BA%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">一个完整的C++程序示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-oj%E5%9C%A8%E8%BE%93%E5%85%A5%E5%A4%84%E7%90%86%E4%B8%8E%E6%9C%AC%E5%9C%B0%E4%B8%8D%E5%90%8C%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">6. oj在输入处理与本地不同：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E4%B8%80%E3%80%81%E4%BD%A0%E8%BF%99%E6%AE%B5%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81"><span class="toc-number">1.6.</span> <span class="toc-text">🧩 一、你这段关键代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%EF%BC%9A%E8%BE%93%E5%85%A5%E7%BC%93%E5%86%B2%E5%8C%BA%E8%A1%8C%E4%B8%BA%E5%B7%AE%E5%BC%82"><span class="toc-number">1.7.</span> <span class="toc-text">🧠 二、核心原理：输入缓冲区行为差异</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-cin-%E4%B8%8E-getline-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.1.</span> <span class="toc-text">1️⃣ cin &gt;&gt; 与 getline() 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%AC%E5%9C%B0%E6%B2%A1%E9%97%AE%E9%A2%98%E4%BD%86%E8%AF%84%E6%B5%8B%E6%9C%BA%E5%87%BA%E9%94%99%EF%BC%9F"><span class="toc-number">1.7.2.</span> <span class="toc-text">2️⃣ 为什么本地没问题但评测机出错？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9C%85-%E6%9C%AC%E5%9C%B0%E8%BE%93%E5%85%A5%EF%BC%88%E4%BA%BA%E5%B7%A5%E5%9B%9E%E8%BD%A6%EF%BC%89%EF%BC%9A"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">✅ 本地输入（人工回车）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%8C-%E8%AF%84%E6%B5%8B%E7%B3%BB%E7%BB%9F%E8%BE%93%E5%85%A5%EF%BC%88%E6%96%87%E4%BB%B6%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%89"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">❌ 评测系统输入（文件重定向）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E4%B8%89%E3%80%81%E4%B8%89%E7%A7%8D%E5%86%99%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-number">1.8.</span> <span class="toc-text">⚙️ 三、三种写法对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E5%9B%9B%E3%80%81%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E5%86%99%E6%B3%95"><span class="toc-number">1.9.</span> <span class="toc-text">💡 四、最佳实践写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BA%94%E3%80%81%E7%BB%93%E8%AE%BA%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text">✅ 五、结论总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%A8-%E6%9C%80%E7%AE%80%E5%8F%AF%E7%94%A8%E6%A8%A1%E6%9D%BF%EF%BC%88%E6%8E%A8%E8%8D%90%E7%9B%B4%E6%8E%A5%E8%83%8C%E4%B8%8B%E6%9D%A5%EF%BC%89%EF%BC%9A"><span class="toc-number">1.11.</span> <span class="toc-text">✨ 最简可用模板（推荐直接背下来）：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%B8%80%E3%80%81%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BF%86%E6%B3%95%EF%BC%88%E5%8E%9F%E7%90%86%E4%B8%8D%E5%8F%98%EF%BC%89"><span class="toc-number">1.12.</span> <span class="toc-text">✅ 一、简单记忆法（原理不变）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-%E6%8E%A8%E8%8D%90%E5%86%99%E6%B3%95%EF%BC%88%E7%AE%80%E7%9F%AD%E3%80%81%E5%AE%89%E5%85%A8%EF%BC%89%EF%BC%9A"><span class="toc-number">1.12.1.</span> <span class="toc-text">🔹 推荐写法（简短、安全）：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BA%8C%E3%80%81%E7%94%9A%E8%87%B3%E6%9B%B4%E7%9F%AD%EF%BC%88%E4%BD%86%E7%A8%8D%E6%9C%89%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="toc-number">1.13.</span> <span class="toc-text">✅ 二、甚至更短（但稍有风险）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%B8%89%E3%80%81%E6%8E%A8%E8%8D%90%E9%80%89%E6%8B%A9"><span class="toc-number">1.14.</span> <span class="toc-text">🧠 三、推荐选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%A8-%E5%9B%9B%E3%80%81%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.15.</span> <span class="toc-text">✨ 四、示例代码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/" title="cpp字符串操作中遇到的坑（2025.10.31）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=51437096-3ff5-3881-2ab6-acf7574f7622" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cpp字符串操作中遇到的坑（2025.10.31）"/></a><div class="content"><a class="title" href="/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/" title="cpp字符串操作中遇到的坑（2025.10.31）">cpp字符串操作中遇到的坑（2025.10.31）</a><time datetime="2025-10-31T13:38:41.000Z" title="发表于 2025-10-31 21:38:41">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第二次例会笔记（2025秋）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.webp?_r_=024c6fa2-488b-2f3c-4191-2787d90d1aad" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DUT开发区cpc组第二次例会笔记（2025秋）"/></a><div class="content"><a class="title" href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第二次例会笔记（2025秋）">DUT开发区cpc组第二次例会笔记（2025秋）</a><time datetime="2025-10-30T13:21:59.000Z" title="发表于 2025-10-30 21:21:59">2025-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第一次例会笔记（2025秋）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=6b38d404-dd19-1605-b701-3a3675857f41" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DUT开发区cpc组第一次例会笔记（2025秋）"/></a><div class="content"><a class="title" href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第一次例会笔记（2025秋）">DUT开发区cpc组第一次例会笔记（2025秋）</a><time datetime="2025-10-30T13:21:46.000Z" title="发表于 2025-10-30 21:21:46">2025-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/" title="编程命名习惯介绍"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=5e63117a-459c-f93c-00e0-fbb0e3ea183c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程命名习惯介绍"/></a><div class="content"><a class="title" href="/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/" title="编程命名习惯介绍">编程命名习惯介绍</a><time datetime="2025-10-30T11:31:27.000Z" title="发表于 2025-10-30 19:31:27">2025-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/" title="排序算法汇总"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=daf570ab-98fc-2594-907c-295182942d54" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="排序算法汇总"/></a><div class="content"><a class="title" href="/2025/10/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/" title="排序算法汇总">排序算法汇总</a><time datetime="2025-10-29T07:36:02.000Z" title="发表于 2025-10-29 15:36:02">2025-10-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
