@@ -1,0 +1,1198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>2025学年大一上程序设计基础期末上机考试复习提纲 | Tianxingleo的Blog</title><meta name="keywords" content="c,大学"><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="2025学年大一上程序设计基础期末上机考试复习提纲"><meta name="application-name" content="2025学年大一上程序设计基础期末上机考试复习提纲"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="2025学年大一上程序设计基础期末上机考试复习提纲"><meta property="og:url" content="http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="printf与scanf  1. 核心格式控制符 (常用对照表) 这是最基础的对应关系，适用于大多数标准数据类型。    数据类型 格式符 printf (输出) 说明 scanf (输入) 说明     整型 (int) %d 有符号十进制整数 输入十进制整数    %i 同 %d 区别： 能自"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=3f7499a4-c1f1-8ba7-da8b-c632c643f1b4"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=3f7499a4-c1f1-8ba7-da8b-c632c643f1b4"><meta name="description" content="printf与scanf  1. 核心格式控制符 (常用对照表) 这是最基础的对应关系，适用于大多数标准数据类型。    数据类型 格式符 printf (输出) 说明 scanf (输入) 说明     整型 (int) %d 有符号十进制整数 输入十进制整数    %i 同 %d 区别： 能自"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: '2025学年大一上程序设计基础期末上机考试复习提纲',
+  postAI: '',
+  pageFillDescription: ' printf与scanf,  1. 核心格式控制符 (常用对照表),  2. 长度修饰符 (Long/Short 处理),  1. 核心格式控制符 (常用对照表),  2. 长度修饰符 (Long/Short 处理),  3. printf 特有的格式化输出 (美化),  头文件,  1. ltstdio.hgt —— 只要写代码就得用,  2. ltstdlib.hgt —— 万能工具箱,  3. ltstring.hgt —— 字符串处理专家,  4. ltmath.hgt —— 数学计算器,  5. ltctype.hgt —— 字符类型的安检员,  6. ltstdbool.hgt —— 布尔类型 (C99 标准),  进阶一点点 (常用于大作业),  随机数,  C中的四舍五入,  1. 什么时候是自动四舍五入？,  2. 什么时候是自动截断（也就是不四舍五入）？,  3. 怎么手动四舍五入？,  方法一：经典算法 +0.5 （最常用、最高效）,  方法二：使用库函数 round() （最标准）,  冒泡排序与选择排序,  1. 冒泡排序 (Bubble Sort),  算法步骤：,  代码实现：,  2. 选择排序 (Selection Sort),  算法步骤：,  代码实现：,  线性搜索与二分查找,  1. 线性搜索 (Linear Search) —— 简单粗暴,  代码实现,  2. 二分查找 (Binary Search) —— 极速折半,  算法步骤,  代码实现,  switch,  基本语法结构,  函数与二维数组,  方法一：固定列宽（最传统、最通用）,  方法二：变长数组 VLA（C99 标准最推荐）,  利用指针交换数,  第一步：用指针交换两个变量,  3. 第二步：用指针交换数组中的两个元素,  字符串,  第一部分：ltstring.hgt 中的核心函数,  1. strlen - 测量长度,  2. strcpy - 字符串复制,  3. strcat - 字符串拼接,  4. strcmp - 字符串比较,  第二部分：C 语言中字符串如何传给函数,  场景一：只读模式（不修改字符串内容）,  场景二：读写模式（需要修改字符串内容）,  ⚡️ 一个新手必挂的坑,  结构体初识,  1. 结构体的核心特点 (Features),  2. 声明结构体的方式,  方式 A：标准声明 (最常用),  方式 B：配合 typedef (老手推荐),  3. 变量与数组的定义、初始化与使用,  定义与初始化,  如何使用（读写数据）,  4. 结构体指针 (Structure Pointer),  5. 向函数传递结构体,  方式 A：值传递 (Pass by Value) —— 复制一份,  方式 B：地址传递 (Pass by Pointer) —— 传递钥匙 (推荐),  结构体再识,  第一部分：结构体的专有名词辨析,  第二部分：定义时的两个疑问,  Q1 能不能在声明结构体的时候就定义变量？,  Q2 能不能不写 struct 只写 Student？,  第三部分：多级结构体 (Nested Structure),  第四部分：多级指针与箭头 -gt 的终极逻辑,  情况 1：最外层是指针里面是实体,  情况 2：里面也是指针 (链表常用),  情况 3：里外全是指针 (多级指针)与核心格式控制符常用对照表这是最基础的对应关系适用于大多数标准数据类型数据类型格式符输出说明输入说明整型有符号十进制整数输入十进制整数同区别能自动识别输入格式如开头按进制读无符号整型无符号十进制整数仅接受无符号数八进制无前缀的八进制输入八进制数十六进制输出小写大写如输入十六进制数大小写均可字符输出单个字符输入单个字符注意会读取空格或回车字符串输出字符串输入字符串注意遇空格回车即停止浮点型默认保留位小数仅用于科学计数法指数形式输出输入科学计数法指针地址输出地址十六进制输入地址长度修饰符处理这是初学者最容易搞混的地方尤其是类型目标类型格式符组合关键注意点输入输出通用输入输出通用标准输出时通常可用但在中必须用以防内存越界这是重点必须用用或都可以语言在输出时会自动将提升为输入输出通用这是一个非常经典且重要的语言基础问题输出和输入虽然使用相似的格式控制符但在细节处理上有几个致命的区别以下是基于常用场景的分类总结核心格式控制符常用对照表这是最基础的对应关系适用于大多数标准数据类型数据类型格式符输出说明输入说明整型有符号十进制整数输入十进制整数同区别能自动识别输入格式如开头按进制读无符号整型无符号十进制整数仅接受无符号数八进制无前缀的八进制输入八进制数十六进制输出小写大写如输入十六进制数大小写均可字符输出单个字符输入单个字符注意会读取空格或回车字符串输出字符串输入字符串注意遇空格回车即停止浮点型默认保留位小数仅用于科学计数法指数形式输出输入科学计数法指针地址输出地址十六进制输入地址长度修饰符处理这是初学者最容易搞混的地方尤其是类型目标类型格式符组合关键注意点输入输出通用输入输出通用标准输出时通常可用但在中必须用以防内存越界这是重点必须用用或都可以语言在输出时会自动将提升为输入输出通用特有的格式化输出美化很少使用这些修饰符它们主要用于控制的输出样式指定宽度至少占用个字符宽度右对齐左补空格至少占用个字符宽度左对齐右补空格至少占用个字符宽度不足的前面补常用于日期时间如指定精度保留小数点后位四舍五入动态指定精度需要两个参数如输出显示正负号强制显示正数的号头文件只要写代码就得用全称标准输入输出地位语言的氧气几乎所有程序都需要核心功能负责屏幕输出键盘输入文件读写常用函数格式化输出格式化输入读写单个字符打开关闭文件进阶万能工具箱全称标准库地位杂项大管家包含内存管理类型转换随机数等核心功能动态内存分配字符串转数字随机数生成程序控制常用函数非常重要动态分配和释放内存把字符串转成整数浮点数生成随机数暂停窗口常见直接结束程序字符串处理专家地位语言中字符串不是一种原生类型而是字符数组处理起来很麻烦必须依赖这个库核心功能复制拼接比较测量字符串常用函数计算字符串长度不包含结束符复制字符串注意目标数组要够大拼接字符串比较两个字符串的内容相等返回直接对内存块进行设置或拷贝高效常用于数组清零数学计算器地位进行复杂数学运算时使用核心功能幂运算开方三角函数取整常用函数计算的次幂计算开平方计算浮点数的绝对值整数绝对值用在中向上向下取整注意在环境下编译时可能需要加参数链接数学库字符类型的安检员地位用来判断一个字符是字母数字还是空格或者进行大小写转换核心功能字符分类测试大小写转换常用函数判断是不是数字字符判断是不是字母判断大小写将字符转换为大写小写布尔类型标准地位让语言像一样支持和背景早期语言没有类型通常用的和代替功能引入类型以及宏用法如果不引头文件必须写进阶一点点常用于大作业处理时间最常用的是配合来生成真正的随机数查看数据类型的极限值比如能存的最大值随机数代码示例包含和包含初始化种子只需在开头写一次千万别放在循环里生成随机数如果需要到之间的数随机数之间中的四舍五入什么时候是自动四舍五入严格来说语言在数值计算逻辑中永远不会自动四舍五入唯一看起来像自动四舍五入的情况发生在格式化输出时场景当你只想看结果而不改变变量本身的值时原理的格式符在显示时会对第位小数进行四舍五入然后显示前位示例代码仅仅是显示变了内存里的依然是输出自动进位了输出什么时候是自动截断也就是不四舍五入这是新手最容易踩的坑在以下两种情况中语言会直接丢弃小数部分强制类型转换转的值是而不是整数除法结果是而不是或怎么手动四舍五入如果你需要计算出一个整数结果存起来并且要求四舍五入必须自己写代码实现这里有两种主流方法方法一经典算法最常用最高效这是语言程序员必须掌握的土办法原理如果小数部分例如加上后整数部分不变截断后还是原数如果小数部分例如加上后整数部分会加截断后就实现了进位公式代码示例手动四舍五入注意如果是负数这个公式需要微调为方法二使用库函数最标准如果不喜欢写数学公式可以使用里的标准函数代码示例必须引入这个头文件返回的还是类型通常需要强转回输出冒泡排序与选择排序冒泡排序核心思想像水里的气泡一样轻的往上浮重的往下沉操作方式两两比较位置不对就交换每一轮循环结束后最大的那个数会被顶到数组的最右边算法步骤从第一个元素开始和它的邻居下一个元素比较如果左边比右边大就交换它们继续比较下一对邻居直到比到数组末尾此时最大的数已经到了最后重复以上步骤但下一轮不用再比最后一个数了因为它已经是最大的了代码实现外层循环控制比较的轮数一共需要轮内层循环负责具体的比较和交换注意因为每过一轮最后个元素就已经排好了不用再比如果前一个比后一个大就交换升序选择排序核心思想全局扫描只找最小的或最大的找到了再换操作方式每一轮都在剩下的乱序堆里找到最小值的索引然后把它和乱序堆的第一个位置交换算法步骤假设当前乱序部分的第一个元素是最小的记录它的下标用它去跟后面所有的数比如果发现更小的就更新最小下标扫描完一整轮后将真正的最小值与乱序部分的第一个元素交换乱序部分的起点向后移一位重复代码实现外层循环决定当前要填坑的位置先假设当前位置就是最小值的下标内层循环去后面找有没有比更小的只要记录下标不要急着交换找到真正的最小值后才做一次交换如果没变说明本来就是最小的不用换线性搜索与二分查找线性搜索简单粗暴核心思想从头到尾一个一个看就像你在家里找钥匙把每个抽屉都拉开看一遍直到找到或者全找完了也没找到前提条件无数组可以是乱序的也可以是有序的效率慢时间复杂度为如果数组有万个数最坏情况要找万次代码实现返回找到的下标没找到返回找到了直接返回位置循环结束还没找到找到了下标是没找到二分查找极速折半核心思想每次都砍掉一半就像查英文字典查单词你不会从第一页开始翻你会直接翻到中间发现是因为在后面所以前面的半本字典直接扔掉不看只在后半本里找前提条件数组必须已经排好序升序或降序这是硬性要求效率极快时间复杂度为找万个数线性搜索要找万次二分查找最多只需找次万万万算法步骤定义左边界和右边界计算中间位置如果就是要找的数结束如果比目标小说明目标在右边把移到如果比目标大说明目标在左边把移到只要就重复上述步骤代码实现前提必须是排好序的注意这里要有等号防止漏掉最后一个元素找到了目标在右半区抛弃左边目标在左半区抛弃右边没找到数组必须是有序的找到了下标是没找到基本语法结构表达式常量如果表达式的值等于常量执行这里的代码重要跳出不然会继续往下执行常量如果表达式的值等于常量执行这里可以有任意多个如果上面所有的都不匹配就执行这里相当于函数与二维数组方法一固定列宽最传统最通用这是语言教科书里最常见的写法规则函数声明时第一维行数可以省略但第二维列数必须写死语法列数行数优点简单所有编译器都支持缺点不够灵活函数只能处理特定列宽的数组比如只能处理列的不能处理列的代码示例定义固定的列数接收函数注意不能省可以省开始打印操作方法直接像在里一样用修改数组会直接影响原数组传递时只需要传数组名方法二变长数组标准最推荐如果你使用的是现代编译器可以使用标准引入的变长数组规则把行数和列数作为参数传进去用它们来定义数组维度注意参数顺序很重要维度的变量必须在数组参数之前声明语法优点非常灵活一个函数可以处理任意大小的二维数组代码示例这里的和必须写在前面将所有元素翻倍同一个函数既能处理也能处理输出利用指针交换数第一步用指针交换两个变量我们需要定义一个接收地址的函数表示这是一个指针变量用来存地址在函数内部解引用表示拿到这个地址里的值这里的参数必须是指针类型用来接收地址先把指向的那个数家里的电视存到临时变量里把指向的数家里的冰箱搬到指向的位置把临时变量里的数电视搬到指向的位置交换前关键调用时必须加取地址符把钥匙交给函数交换后真的变了第二步用指针交换数组中的两个元素其实交换数组元素和交换普通变量没有任何区别因为本质上就是一个类型的变量它也有地址地址就是我们直接复用上面的函数即可还是刚才那个函数完全不用改交换前输出我们要交换第个和第个只需要把它们的地址传进去交换后输出字符串第一部分中的核心函数记住一点所有这些函数的工作原理都是从头开始往后数直到遇到结束符为止测量长度全称功能计算字符串的有效长度不包含最后的注意算的是内存占用的总大小算的是里面装了多少字结果是结果是整个数组的大小字符串复制全称原型目标源功能把后面的字符串赋值给前面的相当于但数组不能直接用赋值所以必须用这个致命陷阱目标数组必须足够大否则会发生缓冲区溢出导致程序崩溃把也就是拷贝过去字符串拼接全称原型目标源功能把拼接到的屁股后面注意必须要有足够的剩余空间来容纳拼进来的新内容变成了字符串比较全称原型字符串字符串功能比较两个字符串的内容千万不要用来比较字符串比的是地址返回值两个字符串相等负数字符串在字典序上排在字符串前面如正数字符串在字典序上排在字符串后面密码正确第二部分语言中字符串如何传给函数在语言中字符串就是字符数组当你把数组传给函数时它会退化成指针所以函数接收字符串的参数类型通常是场景一只读模式不修改字符串内容如果你只是想把字符串传进去打印计算长度或者查找强烈建议加上这是一种良好的编程习惯告诉调用者放心传进来我只看不改写法这是一个只读函数报错不能修改指针指向的内容内容长度场景二读写模式需要修改字符串内容如果你需要在函数里把字符串变大写替换字符或者拼接内容就不能加写法或者两者等价用到了这是一个修改函数把字符串变成大写这里就是一个指针指向外部传进来的数组或者用必须定义成数组内容存在栈上可修改输出一个新手必挂的坑在传参修改时实参必须是字符数组不能是字符串字面量指针请看这个经典错误写法字符数组正确在栈内存可以改写法字符串指针指向常量区崩溃原因存储在常量区只读区域你试图在函数里修改它程序会直接被操作系统杀掉结构体初识结构体的核心特点你可以把结构体想象成一张简历表或档案卡一个学生的信息包含姓名字符串年龄整数成绩浮点数如果用数组存你需要三个不同的数组管理起来很乱结构体允许你定义一个叫的新类型把这些都装进去自定义类型它赋予了你创造新数据类型的能力聚合不同类型内部成员可以是甚至是指针或另一个结构体声明结构体的方式通常放在函数外面全局位置相当于画了一张图纸方式标准声明最常用姓名年龄分数千万别忘了这个分号方式配合老手推荐为了偷懒不用每次都写关键字可以起个别名这里的是类型别名不是变量名变量与数组的定义初始化与使用有了图纸我们就可以盖房子定义变量了定义与初始化定义单个变量并初始化就像一样简单用包裹数据定义结构体数组一个班级的学生如何使用读写数据核心符号是点号读作的读取姓名分数修改写入整数直接赋值浮点数直接赋值重点坑字符串数组不能直接用赋值错误正确必须用结构体指针这是数据结构链表树的基础当有一个指针指向结构体时访问成员的方式变了普通变量用点指针变量用箭头指向的地址方式解引用后用点太啰嗦很少用方式使用箭头运算符标准写法必须掌握读作指向的那个结构体的修改记忆口诀是本体就用点是指针就用箭头向函数传递结构体有两种方式其中的区别决定了程序的效率和功能方式值传递复制一份把整个结构体的内容拷贝一份给函数优点安全函数里乱改也不会影响外面的原变量缺点效率极低如果结构体很大比如包含大数组拷贝非常耗时且占内存功能只能读取无法修改原数据是的复制品调用方式地址传递传递钥匙推荐只传递结构体的地址指针优点极快只传字节的地址不占内存缺点不安全函数能修改原数据通常配合保护功能既可以读取也可以修改原数据场景只读加防止误改是指针必须用报错禁止修改场景需要修改直接修改了外面的数据调用记得加取地址结构体再识第一部分结构体的专有名词辨析在讨论复杂问题前必须先统一口径否则容易晕结构体标签成员变量实例结构体标签它只是个名字代表这种图纸叫什么成员图纸里的具体属性变量根据图纸造出来的真正的人类型在语言中完整的类型名是两个词合在一起才是类型第二部分定义时的两个疑问能不能在声明结构体的时候就定义变量答案可以这是顺便造人的写法声明完图纸顺便造了和一个数组评价这种写法在小程序里很常见但为了代码清晰通常建议把定义变量和声明类型分开写能不能不写只写答案默认不行除非使用在中可以直接写但在语言中必须写全称如果你想偷懒只写必须给类型起个别名写法分步写最清晰声明类型给起个别名叫现在可以了写法一步到位最常用这里的是标签这里的是别名用法可以用了别名可以用了原名写法匿名结构体比较懒省略了标签用法可以报错因为根本没有这个标签第三部分多级结构体多级结构体就是套娃一个结构体里面包含另一个结构体变量场景一个学生有一个生日生日本身也是个结构体它是类型的变量不是指针如何访问像剥洋葱一样一层一层用点号剥开访问里面的结构体成员第四部分多级指针与箭头的终极逻辑这是最容易晕的地方什么时候用点什么时候用箭头核心法则请背诵看符号左边的东西是什么如果是实体变量对象用点如果是指针地址用箭头情况最外层是指针里面是实体是指向的指针是指针用箭头是实体类型变量用点情况里面也是指针链表常用假设学生手里拿着一本书书是通过指针记录的注意这是个指针让的指针指向是实体用点是指针用箭头情况里外全是指针多级指针是指向的指针是指针用箭头变成实体是指针用箭头变成实体是数组实体直接访问',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-10 22:02:42',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 1.05rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 1.05rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 1.05rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 1.05rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 1.05rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 1.05rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 1.05rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 1.05rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 1.05rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 1.05rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 1.05rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 1.05rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 1.05rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 1.05rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 1.05rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.05rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 1.05rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.05rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 1.05rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 1.05rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 1.05rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 1.05rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 1.05rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 1.05rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/c/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>c</span></a><a class="article-meta__tags" href="/tags/%E5%A4%A7%E5%AD%A6/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>大学</span></a></span></div></div><h1 class="post-title" itemprop="name headline">2025学年大一上程序设计基础期末上机考试复习提纲</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-23T06:34:01.000Z" title="发表于 2025-11-23 14:34:01">2025-11-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-10T14:02:42.055Z" title="更新于 2025-12-10 22:02:42">2025-12-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="2025学年大一上程序设计基础期末上机考试复习提纲"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=3f7499a4-c1f1-8ba7-da8b-c632c643f1b4"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/"><header><a href="/tags/c/" tabindex="-1" itemprop="url">c</a><a href="/tags/%E5%A4%A7%E5%AD%A6/" tabindex="-1" itemprop="url">大学</a><h1 id="CrawlerTitle" itemprop="name headline">2025学年大一上程序设计基础期末上机考试复习提纲</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-11-23T06:34:01.000Z" title="发表于 2025-11-23 14:34:01">2025-11-23</time><time itemprop="dateCreated datePublished" datetime="2025-12-10T14:02:42.055Z" title="更新于 2025-12-10 22:02:42">2025-12-10</time></header><h1 id="printf与scanf"><a class="markdownIt-Anchor" href="#printf与scanf"></a> printf与scanf</h1>
+<h3 id="1-核心格式控制符-常用对照表"><a class="markdownIt-Anchor" href="#1-核心格式控制符-常用对照表"></a> 1. 核心格式控制符 (常用对照表)</h3>
+<p>这是最基础的对应关系，适用于大多数标准数据类型。</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th><strong>格式符</strong></th>
+<th><strong>printf (输出) 说明</strong></th>
+<th><strong>scanf (输入) 说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>整型 (int)</strong></td>
+<td><code>%d</code></td>
+<td>有符号十进制整数</td>
+<td>输入十进制整数</td>
+</tr>
+<tr>
+<td></td>
+<td><code>%i</code></td>
+<td>同 <code>%d</code></td>
+<td><strong>区别：</strong> 能自动识别输入格式(如 <code>0x</code> 开头按16进制读)</td>
+</tr>
+<tr>
+<td><strong>无符号整型</strong></td>
+<td><code>%u</code></td>
+<td>无符号十进制整数</td>
+<td>仅接受无符号数</td>
+</tr>
+<tr>
+<td><strong>八进制</strong></td>
+<td><code>%o</code></td>
+<td>无前缀的八进制</td>
+<td>输入八进制数</td>
+</tr>
+<tr>
+<td><strong>十六进制</strong></td>
+<td><code>%x</code> / <code>%X</code></td>
+<td>输出小写/大写 (如 <code>a</code> / <code>A</code>)</td>
+<td>输入十六进制数 (大小写均可)</td>
+</tr>
+<tr>
+<td><strong>字符 (char)</strong></td>
+<td><code>%c</code></td>
+<td>输出单个字符</td>
+<td>输入单个字符 (<strong>注意：</strong> 会读取空格或回车)</td>
+</tr>
+<tr>
+<td><strong>字符串</strong></td>
+<td><code>%s</code></td>
+<td>输出字符串</td>
+<td>输入字符串 (<strong>注意：</strong> 遇空格、回车即停止)</td>
+</tr>
+<tr>
+<td><strong>浮点型</strong></td>
+<td><code>%f</code></td>
+<td>默认保留6位小数</td>
+<td><strong>仅用于 <code>float</code></strong></td>
+</tr>
+<tr>
+<td><strong>科学计数法</strong></td>
+<td><code>%e</code> / <code>%E</code></td>
+<td>指数形式输出</td>
+<td>输入科学计数法</td>
+</tr>
+<tr>
+<td><strong>指针 (地址)</strong></td>
+<td><code>%p</code></td>
+<td>输出地址 (十六进制)</td>
+<td>输入地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-长度修饰符-longshort-处理"><a class="markdownIt-Anchor" href="#2-长度修饰符-longshort-处理"></a> 2. 长度修饰符 (Long/Short 处理)</h3>
+<p>这是初学者最容易搞混的地方，尤其是 <code>double</code> 类型。</p>
+<table>
+<thead>
+<tr>
+<th><strong>目标类型</strong></th>
+<th><strong>格式符组合</strong></th>
+<th><strong>关键注意点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>long int</strong></td>
+<td><code>%ld</code></td>
+<td>输入输出通用</td>
+</tr>
+<tr>
+<td><strong>long long int</strong></td>
+<td><code>%lld</code></td>
+<td>输入输出通用 (C99 标准)</td>
+</tr>
+<tr>
+<td><strong>short int</strong></td>
+<td><code>%hd</code></td>
+<td>输出时通常可用 <code>%d</code>，但在 <code>scanf</code> 中必须用 <code>%hd</code> 以防内存越界</td>
+</tr>
+<tr>
+<td><strong>double</strong></td>
+<td><strong><code>%lf</code></strong></td>
+<td><strong>这是重点！</strong>   <code>scanf</code> 必须用 <code>%lf</code>。  <code>printf</code> 用 <code>%f</code> 或 <code>%lf</code> 都可以 (C语言在输出时会自动将 float 提升为 double)。</td>
+</tr>
+<tr>
+<td><strong>long double</strong></td>
+<td><code>%Lf</code></td>
+<td>输入输出通用</td>
+</tr>
+</tbody>
+</table>
+<p>这是一个非常经典且重要的 C 语言基础问题。<code>printf</code>（输出）和 <code>scanf</code>（输入）虽然使用相似的格式控制符（<code>%</code>），但在细节处理上有几个<strong>致命的区别</strong>。</p>
+<p>以下是基于常用场景的分类总结：</p>
+<hr />
+<h3 id="1-核心格式控制符-常用对照表-2"><a class="markdownIt-Anchor" href="#1-核心格式控制符-常用对照表-2"></a> 1. 核心格式控制符 (常用对照表)</h3>
+<p>这是最基础的对应关系，适用于大多数标准数据类型。</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th><strong>格式符</strong></th>
+<th><strong>printf (输出) 说明</strong></th>
+<th><strong>scanf (输入) 说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>整型 (int)</strong></td>
+<td><code>%d</code></td>
+<td>有符号十进制整数</td>
+<td>输入十进制整数</td>
+</tr>
+<tr>
+<td></td>
+<td><code>%i</code></td>
+<td>同 <code>%d</code></td>
+<td><strong>区别：</strong> 能自动识别输入格式(如 <code>0x</code> 开头按16进制读)</td>
+</tr>
+<tr>
+<td><strong>无符号整型</strong></td>
+<td><code>%u</code></td>
+<td>无符号十进制整数</td>
+<td>仅接受无符号数</td>
+</tr>
+<tr>
+<td><strong>八进制</strong></td>
+<td><code>%o</code></td>
+<td>无前缀的八进制</td>
+<td>输入八进制数</td>
+</tr>
+<tr>
+<td><strong>十六进制</strong></td>
+<td><code>%x</code> / <code>%X</code></td>
+<td>输出小写/大写 (如 <code>a</code> / <code>A</code>)</td>
+<td>输入十六进制数 (大小写均可)</td>
+</tr>
+<tr>
+<td><strong>字符 (char)</strong></td>
+<td><code>%c</code></td>
+<td>输出单个字符</td>
+<td>输入单个字符 (<strong>注意：</strong> 会读取空格或回车)</td>
+</tr>
+<tr>
+<td><strong>字符串</strong></td>
+<td><code>%s</code></td>
+<td>输出字符串</td>
+<td>输入字符串 (<strong>注意：</strong> 遇空格、回车即停止)</td>
+</tr>
+<tr>
+<td><strong>浮点型</strong></td>
+<td><code>%f</code></td>
+<td>默认保留6位小数</td>
+<td><strong>仅用于 <code>float</code></strong></td>
+</tr>
+<tr>
+<td><strong>科学计数法</strong></td>
+<td><code>%e</code> / <code>%E</code></td>
+<td>指数形式输出</td>
+<td>输入科学计数法</td>
+</tr>
+<tr>
+<td><strong>指针 (地址)</strong></td>
+<td><code>%p</code></td>
+<td>输出地址 (十六进制)</td>
+<td>输入地址</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-长度修饰符-longshort-处理-2"><a class="markdownIt-Anchor" href="#2-长度修饰符-longshort-处理-2"></a> 2. 长度修饰符 (Long/Short 处理)</h3>
+<p>这是初学者最容易搞混的地方，尤其是 <code>double</code> 类型。</p>
+<table>
+<thead>
+<tr>
+<th><strong>目标类型</strong></th>
+<th><strong>格式符组合</strong></th>
+<th><strong>关键注意点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>long int</strong></td>
+<td><code>%ld</code></td>
+<td>输入输出通用</td>
+</tr>
+<tr>
+<td><strong>long long int</strong></td>
+<td><code>%lld</code></td>
+<td>输入输出通用 (C99 标准)</td>
+</tr>
+<tr>
+<td><strong>short int</strong></td>
+<td><code>%hd</code></td>
+<td>输出时通常可用 <code>%d</code>，但在 <code>scanf</code> 中必须用 <code>%hd</code> 以防内存越界</td>
+</tr>
+<tr>
+<td><strong>double</strong></td>
+<td><strong><code>%lf</code></strong></td>
+<td><strong>这是重点！</strong>   <code>scanf</code> 必须用 <code>%lf</code>。  <code>printf</code> 用 <code>%f</code> 或 <code>%lf</code> 都可以 (C语言在输出时会自动将 float 提升为 double)。</td>
+</tr>
+<tr>
+<td><strong>long double</strong></td>
+<td><code>%Lf</code></td>
+<td>输入输出通用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-printf-特有的格式化输出-美化"><a class="markdownIt-Anchor" href="#3-printf-特有的格式化输出-美化"></a> 3. <code>printf</code> 特有的格式化输出 (美化)</h3>
+<p><code>scanf</code> 很少使用这些修饰符，它们主要用于控制 <code>printf</code> 的输出样式。</p>
+<ul>
+<li><strong>指定宽度 (<code>%md</code>)</strong>：
+<ul>
+<li><code>%5d</code>: 至少占用5个字符宽度，<strong>右对齐</strong>（左补空格）。</li>
+<li><code>%-5d</code>: 至少占用5个字符宽度，<strong>左对齐</strong>（右补空格）。</li>
+<li><code>%05d</code>: 至少占用5个字符宽度，不足的前面<strong>补0</strong> (常用于日期/时间，如 <code>2025-01-05</code>)。</li>
+</ul>
+</li>
+<li><strong>指定精度 (<code>%.nf</code>)</strong>：
+<ul>
+<li><code>%.2f</code>: 保留小数点后 2 位（四舍五入）。</li>
+<li><code>%.*f</code>: 动态指定精度（需要两个参数，如 <code>printf(&quot;%.*f&quot;, 2, 3.14159)</code> 输出 <code>3.14</code>）。</li>
+</ul>
+</li>
+<li><strong>显示正负号 (<code>%+d</code>)</strong>：
+<ul>
+<li>强制显示正数的 <code>+</code> 号。</li>
+</ul>
+</li>
+</ul>
+<h1 id="头文件"><a class="markdownIt-Anchor" href="#头文件"></a> 头文件</h1>
+<h3 id="1-stdioh-只要写代码就得用"><a class="markdownIt-Anchor" href="#1-stdioh-只要写代码就得用"></a> 1. <code>&lt;stdio.h&gt;</code> —— 只要写代码就得用</h3>
+<p><strong>全称：</strong> Standard Input Output (标准输入输出) <strong>地位：</strong> C 语言的“氧气”，几乎所有程序都需要。</p>
+<ul>
+<li><strong>核心功能：</strong> 负责屏幕输出、键盘输入、文件读写。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>printf()</code>：格式化输出。</li>
+<li><code>scanf()</code>：格式化输入。</li>
+<li><code>getchar()</code> / <code>putchar()</code>：读/写单个字符。</li>
+<li><code>fopen()</code> / <code>fclose()</code>：打开/关闭文件（进阶）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-stdlibh-万能工具箱"><a class="markdownIt-Anchor" href="#2-stdlibh-万能工具箱"></a> 2. <code>&lt;stdlib.h&gt;</code> —— 万能工具箱</h3>
+<p><strong>全称：</strong> Standard Library (标准库) <strong>地位：</strong> 杂项大管家，包含内存管理、类型转换、随机数等。</p>
+<ul>
+<li><strong>核心功能：</strong> 动态内存分配、字符串转数字、随机数生成、程序控制。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>malloc()</code> / <code>free()</code>：<strong>非常重要</strong>，动态分配和释放内存。</li>
+<li><code>atoi()</code> / <code>atof()</code>：把字符串转成整数/浮点数 (ASCII to Integer/Float)。</li>
+<li><code>rand()</code> / <code>srand()</code>：生成随机数。</li>
+<li><code>system(&quot;pause&quot;)</code>：暂停窗口（Windows常见）。</li>
+<li><code>exit()</code>：直接结束程序。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-stringh-字符串处理专家"><a class="markdownIt-Anchor" href="#3-stringh-字符串处理专家"></a> 3. <code>&lt;string.h&gt;</code> —— 字符串处理专家</h3>
+<p><strong>地位：</strong> C 语言中字符串不是一种原生类型（而是字符数组），处理起来很麻烦，必须依赖这个库。</p>
+<ul>
+<li><strong>核心功能：</strong> 复制、拼接、比较、测量字符串。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>strlen()</code>：计算字符串长度（不包含结束符 <code>\0</code>）。</li>
+<li><code>strcpy()</code>：复制字符串（注意目标数组要够大）。</li>
+<li><code>strcat()</code>：拼接字符串。</li>
+<li><code>strcmp()</code>：比较两个字符串的内容（相等返回0）。</li>
+<li><code>memset()</code> / <code>memcpy()</code>：直接对内存块进行设置或拷贝（高效，常用于数组清零）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-mathh-数学计算器"><a class="markdownIt-Anchor" href="#4-mathh-数学计算器"></a> 4. <code>&lt;math.h&gt;</code> —— 数学计算器</h3>
+<p><strong>地位：</strong> 进行复杂数学运算时使用。</p>
+<ul>
+<li><strong>核心功能：</strong> 幂运算、开方、三角函数、取整。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>pow(x, y)</code>：计算 x 的 y 次幂。</li>
+<li><code>sqrt(x)</code>：计算开平方。</li>
+<li><code>fabs(x)</code>：计算浮点数的绝对值（整数绝对值用 <code>abs</code>，在 <code>&lt;stdlib.h&gt;</code> 中）。</li>
+<li><code>ceil()</code> / <code>floor()</code>：向上/向下取整。</li>
+<li><strong>注意：</strong> 在 Linux (gcc) 环境下编译时，可能需要加 <code>-lm</code> 参数链接数学库。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-ctypeh-字符类型的安检员"><a class="markdownIt-Anchor" href="#5-ctypeh-字符类型的安检员"></a> 5. <code>&lt;ctype.h&gt;</code> —— 字符类型的“安检员”</h3>
+<p><strong>地位：</strong> 用来判断一个字符是字母、数字还是空格，或者进行大小写转换。</p>
+<ul>
+<li><strong>核心功能：</strong> 字符分类测试、大小写转换。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>isdigit(c)</code>：判断是不是数字字符 (‘0’-‘9’)。</li>
+<li><code>isalpha(c)</code>：判断是不是字母。</li>
+<li><code>islower()</code> / <code>isupper()</code>：判断大小写。</li>
+<li><code>toupper()</code> / <code>tolower()</code>：将字符转换为大写/小写。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-stdboolh-布尔类型-c99-标准"><a class="markdownIt-Anchor" href="#6-stdboolh-布尔类型-c99-标准"></a> 6. <code>&lt;stdbool.h&gt;</code> —— 布尔类型 (C99 标准)</h3>
+<p><strong>地位：</strong> 让 C 语言像 C++/Java 一样支持 <code>true</code> 和 <code>false</code>。</p>
+<ul>
+<li>
+<p><strong>背景：</strong> 早期 C 语言没有 <code>bool</code> 类型，通常用 <code>int</code> 的 0 和 1 代替。</p>
+</li>
+<li>
+<p><strong>功能：</strong> 引入 <code>bool</code> 类型以及 <code>true</code> / <code>false</code> 宏。</p>
+</li>
+<li>
+<p><strong>用法：</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdbool.h&gt;</span><br><span class="line">bool is_pass = true; // 如果不引头文件，必须写 int is_pass = 1;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr />
+<h3 id="进阶一点点-常用于大作业"><a class="markdownIt-Anchor" href="#进阶一点点-常用于大作业"></a> 进阶一点点 (常用于大作业)</h3>
+<ul>
+<li><strong><code>&lt;time.h&gt;</code></strong>：处理时间，最常用的是 <code>time(NULL)</code> 配合 <code>srand()</code> 来生成<strong>真正的随机数</strong>。</li>
+<li><strong><code>&lt;limits.h&gt;</code></strong>：查看数据类型的极限值，比如 <code>INT_MAX</code> (int 能存的最大值)。</li>
+</ul>
+<h1 id="随机数"><a class="markdownIt-Anchor" href="#随机数"></a> 随机数</h1>
+<p><strong>代码示例：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> <span class="comment">// 包含 rand() 和 srand()</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span>   <span class="comment">// 包含 time()</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 1. 初始化种子 (只需在 main 开头写一次，千万别放在循环里！)</span></span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 生成随机数</span></span><br><span class="line">    <span class="type">int</span> r = rand(); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果需要 0 到 99 之间的数：</span></span><br><span class="line">    <span class="type">int</span> r_range = rand() % <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;随机数: %d\n&quot;</span>, r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;0-99之间: %d\n&quot;</span>, r_range);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="c中的四舍五入"><a class="markdownIt-Anchor" href="#c中的四舍五入"></a> C中的四舍五入</h1>
+<h3 id="1-什么时候是自动四舍五入"><a class="markdownIt-Anchor" href="#1-什么时候是自动四舍五入"></a> 1. 什么时候是“自动”四舍五入？</h3>
+<p>严格来说，C 语言在<strong>数值计算</strong>逻辑中，<strong>永远不会</strong>自动四舍五入。</p>
+<p>唯一看起来像“自动四舍五入”的情况，发生在 <strong><code>printf</code> 格式化输出</strong> 时。</p>
+<ul>
+<li><strong>场景</strong>：当你只想<strong>看</strong>结果，而不改变变量本身的值时。</li>
+<li><strong>原理</strong>：<code>printf</code> 的 <code>%.nf</code> 格式符在显示时，会对第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 位小数进行四舍五入，然后显示前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位。</li>
+</ul>
+<p><strong>示例代码：</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    double money = 3.568;</span><br><span class="line">    </span><br><span class="line">    // 仅仅是显示变了，内存里的 money 依然是 3.568</span><br><span class="line">    printf(&quot;%.2f&quot;, money); // 输出 3.57 (自动进位了)</span><br><span class="line">    printf(&quot;%.1f&quot;, money); // 输出 3.6</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="2-什么时候是自动截断也就是不四舍五入"><a class="markdownIt-Anchor" href="#2-什么时候是自动截断也就是不四舍五入"></a> 2. 什么时候是“自动截断”（也就是不四舍五入）？</h3>
+<p>这是新手最容易踩的坑。在以下两种情况中，C 语言会<strong>直接丢弃小数部分</strong>：</p>
+<ol>
+<li>
+<p><strong>强制类型转换（Float 转 Int）</strong>：</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double a = 3.99;</span><br><span class="line">int b = (int)a; // b 的值是 3，而不是 4！</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>整数除法</strong>：</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int result = 5 / 2; // 结果是 2，而不是 2.5 或 3</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr />
+<h3 id="3-怎么手动四舍五入"><a class="markdownIt-Anchor" href="#3-怎么手动四舍五入"></a> 3. 怎么“手动”四舍五入？</h3>
+<p>如果你需要计算出一个整数结果存起来，并且要求四舍五入，必须自己写代码实现。这里有两种主流方法：</p>
+<h4 id="方法一经典算法-05-最常用-最高效"><a class="markdownIt-Anchor" href="#方法一经典算法-05-最常用-最高效"></a> 方法一：经典算法 <code>+0.5</code> （最常用、最高效）</h4>
+<p>这是 C 语言程序员必须掌握的“土办法”。</p>
+<p>原理：</p>
+<ul>
+<li>如果小数部分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">&lt; 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span>（例如 0.4），加上 0.5 后整数部分不变（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.4</mn><mo>+</mo><mn>0.5</mn><mo>=</mo><mn>0.9</mn></mrow><annotation encoding="application/x-tex">0.4+0.5=0.9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.9</span></span></span></span>），截断后还是原数。</li>
+<li>如果小数部分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\ge 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span>（例如 0.6），加上 0.5 后整数部分会加 1（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.6</mn><mo>+</mo><mn>0.5</mn><mo>=</mo><mn>1.1</mn></mrow><annotation encoding="application/x-tex">0.6+0.5=1.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.1</span></span></span></span>），截断后就实现了进位。</li>
+</ul>
+<p>公式：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mi>u</mi><mi>l</mi><mi>t</mi><mo>=</mo><mo stretchy="false">(</mo><mi>i</mi><mi>n</mi><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>0.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">result = (int)(x + 0.5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">res</span><span class="mord mathnormal">u</span><span class="mord mathnormal">lt</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">in</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.5</span><span class="mclose">)</span></span></span></span></span>
+<p><strong>代码示例</strong>：</p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">double</span> a = <span class="number">3.1</span>;</span><br><span class="line">    <span class="type">double</span> b = <span class="number">3.6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 手动四舍五入</span></span><br><span class="line">    <span class="type">int</span> round_a = (<span class="type">int</span>)(a + <span class="number">0.5</span>); <span class="comment">// (int)(3.6) -&gt; 3</span></span><br><span class="line">    <span class="type">int</span> round_b = (<span class="type">int</span>)(b + <span class="number">0.5</span>); <span class="comment">// (int)(4.1) -&gt; 4</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;3.1 -&gt; %d\n&quot;</span>, round_a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;3.6 -&gt; %d\n&quot;</span>, round_b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意：如果是负数，这个公式需要微调为 <code>(int)(x - 0.5)</code>。</em></p>
+<h4 id="方法二使用库函数-round-最标准"><a class="markdownIt-Anchor" href="#方法二使用库函数-round-最标准"></a> 方法二：使用库函数 <code>round()</code> （最标准）</h4>
+<p>如果不喜欢写数学公式，可以使用 <code>&lt;math.h&gt;</code> 里的标准函数。</p>
+<p><strong>代码示例</strong>：</p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span> <span class="comment">// 必须引入这个头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">double</span> x = <span class="number">3.6</span>;</span><br><span class="line">    <span class="type">double</span> y = <span class="number">3.4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// round() 返回的还是 double 类型，通常需要强转回 int</span></span><br><span class="line">    <span class="type">int</span> r1 = (<span class="type">int</span>)round(x); </span><br><span class="line">    <span class="type">int</span> r2 = (<span class="type">int</span>)round(y);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d, %d&quot;</span>, r1, r2); <span class="comment">// 输出 4, 3</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="冒泡排序与选择排序"><a class="markdownIt-Anchor" href="#冒泡排序与选择排序"></a> 冒泡排序与选择排序</h1>
+<h3 id="1-冒泡排序-bubble-sort"><a class="markdownIt-Anchor" href="#1-冒泡排序-bubble-sort"></a> 1. 冒泡排序 (Bubble Sort)</h3>
+<p><strong>核心思想：</strong> 像水里的气泡一样，轻的往上浮，重的往下沉。 <strong>操作方式：</strong> <strong>两两比较，位置不对就交换。</strong> 每一轮循环结束后，最大的那个数会被“顶”到数组的最右边。</p>
+<h4 id="算法步骤"><a class="markdownIt-Anchor" href="#算法步骤"></a> 算法步骤：</h4>
+<ol>
+<li>从第一个元素开始，和它的邻居（下一个元素）比较。</li>
+<li>如果左边比右边大，就<strong>交换</strong>它们。</li>
+<li>继续比较下一对邻居，直到比到数组末尾。此时，最大的数已经到了最后。</li>
+<li>重复以上步骤，但下一轮不用再比最后一个数了（因为它已经是最大的了）。</li>
+</ol>
+<h4 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h4>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// 外层循环：控制比较的轮数，一共需要 n-1 轮</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 内层循环：负责具体的比较和交换</span></span><br><span class="line">        <span class="comment">// 注意：j &lt; n - 1 - i，因为每过一轮，最后 i 个元素就已经排好了，不用再比</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 如果前一个比后一个大，就交换（升序）</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123;<span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span>&#125;;</span><br><span class="line">    <span class="type">int</span> n = <span class="number">7</span>;</span><br><span class="line">    bubble_sort(arr, n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="2-选择排序-selection-sort"><a class="markdownIt-Anchor" href="#2-选择排序-selection-sort"></a> 2. 选择排序 (Selection Sort)</h3>
+<p><strong>核心思想：</strong> 全局扫描，<strong>只找最小的</strong>（或最大的），找到了再换。 <strong>操作方式：</strong> 每一轮都在剩下的乱序堆里找到<strong>最小值</strong>的索引，然后把它和乱序堆的第一个位置<strong>交换</strong>。</p>
+<h4 id="算法步骤-2"><a class="markdownIt-Anchor" href="#算法步骤-2"></a> 算法步骤：</h4>
+<ol>
+<li>假设当前乱序部分的第一个元素是“最小的”（记录它的下标）。</li>
+<li>用它去跟后面所有的数比，如果发现更小的，就更新“最小下标”。</li>
+<li>扫描完一整轮后，将真正的最小值与乱序部分的第一个元素交换。</li>
+<li>乱序部分的起点向后移一位，重复。</li>
+</ol>
+<h4 id="代码实现-2"><a class="markdownIt-Anchor" href="#代码实现-2"></a> 代码实现：</h4>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">selection_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// 外层循环：决定当前要填坑的位置 (i)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1. 先假设当前位置 i 就是最小值的下标</span></span><br><span class="line">        <span class="type">int</span> min_idx = i;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2. 内层循环：去后面找有没有比 arr[min_idx] 更小的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[min_idx]) &#123;</span><br><span class="line">                min_idx = j; <span class="comment">// 只要记录下标，不要急着交换！</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 3. 找到真正的最小值后，才做一次交换</span></span><br><span class="line">        <span class="comment">// (如果 min_idx 没变，说明 i 本来就是最小的，不用换)</span></span><br><span class="line">        <span class="keyword">if</span> (min_idx != i) &#123;</span><br><span class="line">            <span class="type">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[min_idx];</span><br><span class="line">            arr[min_idx] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="线性搜索与二分查找"><a class="markdownIt-Anchor" href="#线性搜索与二分查找"></a> 线性搜索与二分查找</h1>
+<h3 id="1-线性搜索-linear-search-简单粗暴"><a class="markdownIt-Anchor" href="#1-线性搜索-linear-search-简单粗暴"></a> 1. 线性搜索 (Linear Search) —— 简单粗暴</h3>
+<p>核心思想： 从头到尾一个一个看。</p>
+<p>就像你在家里找钥匙，把每个抽屉都拉开看一遍，直到找到或者全找完了也没找到。</p>
+<ul>
+<li><strong>前提条件：</strong> 无（数组可以是乱序的，也可以是有序的）。</li>
+<li><strong>效率：</strong> 慢。时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。如果数组有 100 万个数，最坏情况要找 100 万次。</li>
+</ul>
+<h4 id="代码实现-3"><a class="markdownIt-Anchor" href="#代码实现-3"></a> 代码实现</h4>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">// 返回找到的下标，没找到返回 -1</span><br><span class="line">int linear_search(int arr[], int n, int target) &#123;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (arr[i] == target) &#123;</span><br><span class="line">            return i; // 找到了，直接返回位置</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1; // 循环结束还没找到</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int arr[] = &#123;10, 50, 30, 70, 80, 20&#125;;</span><br><span class="line">    int idx = linear_search(arr, 6, 30);</span><br><span class="line">    if (idx != -1) printf(&quot;找到了，下标是: %d\n&quot;, idx);</span><br><span class="line">    else printf(&quot;没找到\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="2-二分查找-binary-search-极速折半"><a class="markdownIt-Anchor" href="#2-二分查找-binary-search-极速折半"></a> 2. 二分查找 (Binary Search) —— 极速折半</h3>
+<p>核心思想： 每次都砍掉一半。</p>
+<p>就像查英文字典查单词 “Math”，你不会从第一页开始翻。你会直接翻到中间，发现是 “L”，因为 M 在 L 后面，所以前面的半本字典直接扔掉不看，只在后半本里找。</p>
+<ul>
+<li><strong>前提条件：</strong> <strong>数组必须已经排好序（升序或降序）</strong>。这是硬性要求！</li>
+<li><strong>效率：</strong> 极快。时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。
+<ul>
+<li>找 100 万个数，线性搜索要找 100 万次，二分查找最多只需找 <strong>20次</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>20</mn></msup><mo>≈</mo><mn>100</mn><mtext>万</mtext></mrow><annotation encoding="application/x-tex">2^{20} \approx 100\text{万}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">20</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">100</span><span class="mord text"><span class="mord cjk_fallback">万</span></span></span></span></span>)。</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法步骤-3"><a class="markdownIt-Anchor" href="#算法步骤-3"></a> 算法步骤</h4>
+<ol>
+<li>定义左边界 <code>left</code> 和右边界 <code>right</code>。</li>
+<li>计算中间位置 <code>mid</code>。</li>
+<li>如果 <code>arr[mid]</code> 就是要找的数 -&gt; 结束。</li>
+<li>如果 <code>arr[mid]</code> 比目标小 -&gt; 说明目标在右边，把 <code>left</code> 移到 <code>mid + 1</code>。</li>
+<li>如果 <code>arr[mid]</code> 比目标大 -&gt; 说明目标在左边，把 <code>right</code> 移到 <code>mid - 1</code>。</li>
+<li>只要 <code>left &lt;= right</code> 就重复上述步骤。</li>
+</ol>
+<h4 id="代码实现-4"><a class="markdownIt-Anchor" href="#代码实现-4"></a> 代码实现</h4>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 前提：arr 必须是排好序的</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">binary_search</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> right = n - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123; <span class="comment">// 注意：这里要有等号，防止漏掉最后一个元素</span></span><br><span class="line">        <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == target) &#123;</span><br><span class="line">            <span class="keyword">return</span> mid; <span class="comment">// 找到了</span></span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; target) &#123;</span><br><span class="line">            left = mid + <span class="number">1</span>; <span class="comment">// 目标在右半区，抛弃左边</span></span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            right = mid - <span class="number">1</span>; <span class="comment">// 目标在左半区，抛弃右边</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 没找到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 数组必须是有序的！</span></span><br><span class="line">    <span class="type">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>, <span class="number">60</span>, <span class="number">70</span>, <span class="number">80</span>, <span class="number">90</span>&#125;; </span><br><span class="line">    <span class="type">int</span> idx = binary_search(arr, <span class="number">9</span>, <span class="number">30</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (idx != <span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;找到了，下标是: %d\n&quot;</span>, idx);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;没找到\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="switch"><a class="markdownIt-Anchor" href="#switch"></a> switch</h1>
+<h3 id="基本语法结构"><a class="markdownIt-Anchor" href="#基本语法结构"></a> 基本语法结构</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 如果表达式的值等于常量1，执行这里的代码</span></span><br><span class="line">        <span class="keyword">break</span>; <span class="comment">// ❗重要：跳出 switch，不然会继续往下执行！</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> 常量<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 如果表达式的值等于常量2，执行这里</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以有任意多个 case ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 如果上面所有的 case 都不匹配，就执行这里（相当于 else）</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="函数与二维数组"><a class="markdownIt-Anchor" href="#函数与二维数组"></a> 函数与二维数组</h1>
+<h3 id="方法一固定列宽最传统-最通用"><a class="markdownIt-Anchor" href="#方法一固定列宽最传统-最通用"></a> 方法一：固定列宽（最传统、最通用）</h3>
+<p>这是 C 语言教科书里最常见的写法。 <strong>规则</strong>：函数声明时，第一维（行数）可以省略，但<strong>第二维（列数）必须写死</strong>。</p>
+<ul>
+<li><strong>语法</strong>：<code>void func(int arr[][列数], int 行数)</code></li>
+<li><strong>优点</strong>：简单，所有编译器都支持。</li>
+<li><strong>缺点</strong>：不够灵活，函数只能处理特定列宽的数组（比如只能处理 5 列的，不能处理 6 列的）。</li>
+</ul>
+<p><strong>代码示例：</strong></p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COLS 4 <span class="comment">// 定义固定的列数</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收函数：注意 [4] 不能省，[] 可以省</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printArray</span><span class="params">(<span class="type">int</span> arr[][COLS], <span class="type">int</span> rows)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;--- 开始打印 ---\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; COLS; j++) &#123;</span><br><span class="line">            <span class="comment">// 操作方法：直接像在 main 里一样用 arr[i][j]</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i][j]);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 修改数组：会直接影响原数组</span></span><br><span class="line">            arr[i][j] += <span class="number">1</span>; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> matrix[<span class="number">3</span>][COLS] = &#123;</span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;,</span><br><span class="line">        &#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 传递时：只需要传数组名</span></span><br><span class="line">    printArray(matrix, <span class="number">3</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="方法二变长数组-vlac99-标准最推荐"><a class="markdownIt-Anchor" href="#方法二变长数组-vlac99-标准最推荐"></a> 方法二：变长数组 VLA（C99 标准，最推荐）</h3>
+<p>如果你使用的是现代编译器（GCC, Clang, VS2019+），可以使用 C99 标准引入的<strong>变长数组（Variable Length Arrays）</strong>。</p>
+<p><strong>规则</strong>：把行数和列数作为参数传进去，用它们来定义数组维度。 <strong>注意</strong>：参数顺序很重要！<strong>维度的变量必须在数组参数之前声明</strong>。</p>
+<ul>
+<li><strong>语法</strong>：<code>void func(int rows, int cols, int arr[rows][cols])</code></li>
+<li><strong>优点</strong>：非常灵活，一个函数可以处理任意大小的二维数组。</li>
+</ul>
+<p><strong>代码示例：</strong></p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里的 rows 和 cols 必须写在 arr 前面！</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">processMatrix</span><span class="params">(<span class="type">int</span> rows, <span class="type">int</span> cols, <span class="type">int</span> arr[rows][cols])</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; cols; j++) &#123;</span><br><span class="line">            arr[i][j] *= <span class="number">2</span>; <span class="comment">// 将所有元素翻倍</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> small[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">2</span>, <span class="number">2</span>&#125;&#125;;</span><br><span class="line">    <span class="type">int</span> big[<span class="number">3</span>][<span class="number">4</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;, &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;, &#123;<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 同一个函数，既能处理 2x2，也能处理 3x4</span></span><br><span class="line">    processMatrix(<span class="number">2</span>, <span class="number">2</span>, small);</span><br><span class="line">    processMatrix(<span class="number">3</span>, <span class="number">4</span>, big);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Small[0][0] now is: %d\n&quot;</span>, small[<span class="number">0</span>][<span class="number">0</span>]); <span class="comment">// 输出 2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="利用指针交换数"><a class="markdownIt-Anchor" href="#利用指针交换数"></a> 利用指针交换数</h1>
+<h3 id="第一步用指针交换两个变量"><a class="markdownIt-Anchor" href="#第一步用指针交换两个变量"></a> 第一步：用指针交换两个变量</h3>
+<p>我们需要定义一个接收<strong>地址</strong>的函数。</p>
+<ul>
+<li><strong><code>int \*p</code></strong>：表示这是一个指针变量，用来存地址。</li>
+<li><strong><code>\*p</code></strong>（在函数内部）：<strong>解引用</strong>，表示“拿到这个地址里的值”。</li>
+</ul>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">// 这里的参数必须是指针类型，用来接收地址</span><br><span class="line">void swap(int *p1, int *p2) &#123;</span><br><span class="line">    // 1. 先把 p1 指向的那个数（家里的电视）存到临时变量里</span><br><span class="line">    int temp = *p1;</span><br><span class="line">    </span><br><span class="line">    // 2. 把 p2 指向的数（家里的冰箱）搬到 p1 指向的位置</span><br><span class="line">    *p1 = *p2;</span><br><span class="line">    </span><br><span class="line">    // 3. 把临时变量里的数（电视）搬到 p2 指向的位置</span><br><span class="line">    *p2 = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int a = 10;</span><br><span class="line">    int b = 20;</span><br><span class="line"></span><br><span class="line">    printf(&quot;交换前: a=%d, b=%d\n&quot;, a, b);</span><br><span class="line"></span><br><span class="line">    // 关键：调用时必须加 &amp; (取地址符)，把钥匙交给函数</span><br><span class="line">    swap(&amp;a, &amp;b);</span><br><span class="line"></span><br><span class="line">    printf(&quot;交换后: a=%d, b=%d\n&quot;, a, b); // 真的变了！</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="3-第二步用指针交换数组中的两个元素"><a class="markdownIt-Anchor" href="#3-第二步用指针交换数组中的两个元素"></a> 3. 第二步：用指针交换数组中的两个元素</h3>
+<p>其实，交换数组元素和交换普通变量<strong>没有任何区别</strong>。 因为 <code>arr[i]</code> 本质上就是一个 <code>int</code> 类型的变量，它也有地址，地址就是 <code>&amp;arr[i]</code>。</p>
+<p>我们直接复用上面的 <code>swap</code> 函数即可。</p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 还是刚才那个函数，完全不用改</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *p1, <span class="type">int</span> *p2)</span> &#123;</span><br><span class="line">    <span class="type">int</span> temp = *p1;</span><br><span class="line">    *p1 = *p2;</span><br><span class="line">    *p2 = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;交换前: %d %d\n&quot;</span>, arr[<span class="number">0</span>], arr[<span class="number">4</span>]); <span class="comment">// 输出 1 5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我们要交换第1个(arr[0]) 和 第5个(arr[4])</span></span><br><span class="line">    <span class="comment">// 只需要把它们的地址传进去</span></span><br><span class="line">    swap(&amp;arr[<span class="number">0</span>], &amp;arr[<span class="number">4</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;交换后: %d %d\n&quot;</span>, arr[<span class="number">0</span>], arr[<span class="number">4</span>]); <span class="comment">// 输出 5 1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h1>
+<h3 id="第一部分stringh-中的核心函数"><a class="markdownIt-Anchor" href="#第一部分stringh-中的核心函数"></a> 第一部分：<code>&lt;string.h&gt;</code> 中的核心函数</h3>
+<p>记住一点：所有这些函数的工作原理都是**“从头开始往后数，直到遇到 <code>\0</code> (结束符) 为止”**。</p>
+<h4 id="1-strlen-测量长度"><a class="markdownIt-Anchor" href="#1-strlen-测量长度"></a> 1. <code>strlen</code> - 测量长度</h4>
+<ul>
+<li><strong>全称</strong>：String Length</li>
+<li><strong>功能</strong>：计算字符串的有效长度（<strong>不包含</strong>最后的 <code>\0</code>）。</li>
+<li><strong>注意</strong>：<code>sizeof</code> 算的是内存占用的总大小，<code>strlen</code> 算的是里面装了多少字。</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str[<span class="number">100</span>] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">int</span> len = <span class="built_in">strlen</span>(str); <span class="comment">// 结果是 5</span></span><br><span class="line"><span class="type">int</span> size = <span class="keyword">sizeof</span>(str); <span class="comment">// 结果是 100 (整个数组的大小)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-strcpy-字符串复制"><a class="markdownIt-Anchor" href="#2-strcpy-字符串复制"></a> 2. <code>strcpy</code> - 字符串复制</h4>
+<ul>
+<li><strong>全称</strong>：String Copy</li>
+<li><strong>原型</strong>：<code>strcpy(目标, 源)</code></li>
+<li><strong>功能</strong>：把后面的字符串赋值给前面的。相当于 <code>dest = src</code>（但数组不能直接用 <code>=</code> 赋值，所以必须用这个）。</li>
+<li><strong>致命陷阱</strong>：<strong>目标数组必须足够大</strong>！否则会发生“缓冲区溢出”，导致程序崩溃。</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> src[] = <span class="string">&quot;Apple&quot;</span>;</span><br><span class="line"><span class="type">char</span> dest[<span class="number">10</span>]; </span><br><span class="line"><span class="built_in">strcpy</span>(dest, src); <span class="comment">// 把 Apple 也就是 &#x27;A&#x27;,&#x27;p&#x27;,&#x27;p&#x27;,&#x27;l&#x27;,&#x27;e&#x27;,&#x27;\0&#x27; 拷贝过去</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-strcat-字符串拼接"><a class="markdownIt-Anchor" href="#3-strcat-字符串拼接"></a> 3. <code>strcat</code> - 字符串拼接</h4>
+<ul>
+<li><strong>全称</strong>：String Concatenate</li>
+<li><strong>原型</strong>：<code>strcat(目标, 源)</code></li>
+<li><strong>功能</strong>：把 <code>src</code> 拼接到 <code>dest</code> 的屁股后面。</li>
+<li><strong>注意</strong>：<code>dest</code> 必须要有足够的剩余空间来容纳拼进来的新内容。</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> dest[<span class="number">20</span>] = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">char</span> src[] = <span class="string">&quot; World&quot;</span>;</span><br><span class="line"><span class="built_in">strcat</span>(dest, src); <span class="comment">// dest 变成了 &quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-strcmp-字符串比较"><a class="markdownIt-Anchor" href="#4-strcmp-字符串比较"></a> 4. <code>strcmp</code> - 字符串比较</h4>
+<ul>
+<li><strong>全称</strong>：String Compare</li>
+<li><strong>原型</strong>：<code>strcmp(字符串1, 字符串2)</code></li>
+<li><strong>功能</strong>：比较两个字符串的内容。<strong>千万不要用 <code>==</code> 来比较字符串！</strong>（<code>==</code> 比的是地址）。</li>
+<li><strong>返回值</strong>：
+<ul>
+<li><strong>0</strong>：两个字符串<strong>相等</strong>。</li>
+<li><strong>负数</strong> (<code>&lt; 0</code>)：字符串1 在字典序上排在 字符串2 <strong>前面</strong> (如 “Apple” vs “Banana”)。</li>
+<li><strong>正数</strong> (<code>&gt; 0</code>)：字符串1 在字典序上排在 字符串2 <strong>后面</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">strcmp</span>(password, <span class="string">&quot;123456&quot;</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;密码正确&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="第二部分c-语言中字符串如何传给函数"><a class="markdownIt-Anchor" href="#第二部分c-语言中字符串如何传给函数"></a> 第二部分：C 语言中字符串如何传给函数</h3>
+<p>在 C 语言中，字符串就是字符数组。当你把数组传给函数时，<strong>它会退化成指针</strong>。</p>
+<p>所以，函数接收字符串的参数类型通常是：<strong><code>char \*</code></strong>。</p>
+<h4 id="场景一只读模式不修改字符串内容"><a class="markdownIt-Anchor" href="#场景一只读模式不修改字符串内容"></a> 场景一：只读模式（不修改字符串内容）</h4>
+<p>如果你只是想把字符串传进去打印、计算长度或者查找，<strong>强烈建议加上 <code>const</code></strong>。这是一种良好的编程习惯，告诉调用者：“放心传进来，我只看，不改。”</p>
+<ul>
+<li><strong>写法</strong>：<code>void func(const char *str)</code></li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是一个只读函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_info</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str)</span> &#123;</span><br><span class="line">    <span class="comment">// str[0] = &#x27;A&#x27;; // ❌ 报错！不能修改 const 指针指向的内容</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;内容: %s, 长度: %d\n&quot;</span>, str, <span class="built_in">strlen</span>(str));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="场景二读写模式需要修改字符串内容"><a class="markdownIt-Anchor" href="#场景二读写模式需要修改字符串内容"></a> 场景二：读写模式（需要修改字符串内容）</h4>
+<p>如果你需要在函数里把字符串变大写、替换字符或者拼接内容，就不能加 <code>const</code>。</p>
+<ul>
+<li><strong>写法</strong>：<code>void func(char *str)</code> 或者 <code>void func(char str[])</code> (两者等价)。</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span> <span class="comment">// 用到了 toupper</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是一个修改函数：把字符串变成大写</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">to_upper_case</span><span class="params">(<span class="type">char</span> *str)</span> &#123;</span><br><span class="line">    <span class="comment">// 这里 str 就是一个指针，指向外部传进来的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; str[i] != <span class="string">&#x27;\0&#x27;</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str[i] &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; str[i] &lt;= <span class="string">&#x27;z&#x27;</span>) &#123;</span><br><span class="line">            str[i] = str[i] - <span class="number">32</span>; <span class="comment">// 或者用 toupper(str[i])</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> my_text[] = <span class="string">&quot;hello&quot;</span>; <span class="comment">// ✅ 必须定义成数组，内容存在栈上，可修改</span></span><br><span class="line">    </span><br><span class="line">    to_upper_case(my_text);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, my_text); <span class="comment">// 输出 HELLO</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="️-一个新手必挂的坑"><a class="markdownIt-Anchor" href="#️-一个新手必挂的坑"></a> ⚡️ 一个新手必挂的“坑”</h3>
+<p>在传参修改时，<strong>实参必须是字符数组，不能是字符串字面量（指针）</strong>。</p>
+<p>请看这个经典错误：</p>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 写法 A：字符数组</span></span><br><span class="line">    <span class="type">char</span> str1[] = <span class="string">&quot;hello&quot;</span>; </span><br><span class="line">    to_upper_case(str1); <span class="comment">// ✅ 正确。str1 在栈内存，可以改。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写法 B：字符串指针（指向常量区）</span></span><br><span class="line">    <span class="type">char</span> *str2 = <span class="string">&quot;hello&quot;</span>; </span><br><span class="line">    to_upper_case(str2); <span class="comment">// ❌ 崩溃！(Segmentation Fault)</span></span><br><span class="line">    <span class="comment">// 原因：&quot;hello&quot; 存储在常量区（只读区域），你试图在函数里修改它，程序会直接被操作系统杀掉。</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="结构体初识"><a class="markdownIt-Anchor" href="#结构体初识"></a> 结构体初识</h1>
+<h3 id="1-结构体的核心特点-features"><a class="markdownIt-Anchor" href="#1-结构体的核心特点-features"></a> 1. 结构体的核心特点 (Features)</h3>
+<p>你可以把结构体想象成一张**“简历表”<strong>或</strong>“档案卡”**。 一个学生的信息包含：姓名（字符串）、年龄（整数）、成绩（浮点数）。如果用数组存，你需要三个不同的数组，管理起来很乱。结构体允许你定义一个叫 <code>Student</code> 的新类型，把这些都装进去。</p>
+<ul>
+<li><strong>自定义类型</strong>：它赋予了你创造新数据类型的能力。</li>
+<li><strong>聚合不同类型</strong>：内部成员（Member）可以是 <code>int</code>, <code>char</code>, <code>double</code>，甚至是指针或另一个结构体。</li>
+</ul>
+<hr />
+<h3 id="2-声明结构体的方式"><a class="markdownIt-Anchor" href="#2-声明结构体的方式"></a> 2. 声明结构体的方式</h3>
+<p>通常放在 <code>main</code> 函数外面（全局位置），相当于画了一张“图纸”。</p>
+<h4 id="方式-a标准声明-最常用"><a class="markdownIt-Anchor" href="#方式-a标准声明-最常用"></a> 方式 A：标准声明 (最常用)</h4>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct Student &#123;</span><br><span class="line">    char name[20];  // 姓名</span><br><span class="line">    int age;        // 年龄</span><br><span class="line">    double score;   // 分数</span><br><span class="line">&#125;; // ⚠️ 千万别忘了这个分号！</span><br></pre></td></tr></table></figure>
+<h4 id="方式-b配合-typedef-老手推荐"><a class="markdownIt-Anchor" href="#方式-b配合-typedef-老手推荐"></a> 方式 B：配合 typedef (老手推荐)</h4>
+<p>为了偷懒，不用每次都写 <code>struct</code> 关键字，可以起个别名。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    char name[20];</span><br><span class="line">    int age;</span><br><span class="line">    double score;</span><br><span class="line">&#125; Student; // 这里的 Student 是类型别名，不是变量名</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="3-变量与数组的定义-初始化与使用"><a class="markdownIt-Anchor" href="#3-变量与数组的定义-初始化与使用"></a> 3. 变量与数组的定义、初始化与使用</h3>
+<p>有了图纸，我们就可以盖房子（定义变量）了。</p>
+<h4 id="定义与初始化"><a class="markdownIt-Anchor" href="#定义与初始化"></a> 定义与初始化</h4>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">struct Student &#123;</span><br><span class="line">    char name[20];</span><br><span class="line">    int age;</span><br><span class="line">    double score;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    // 1. 定义单个变量并初始化</span><br><span class="line">    // 就像 int a = 10; 一样简单，用 &#123;&#125; 包裹数据</span><br><span class="line">    struct Student s1 = &#123;&quot;ZhangSan&quot;, 19, 95.5&#125;;</span><br><span class="line"></span><br><span class="line">    // 2. 定义结构体数组 (一个班级的学生)</span><br><span class="line">    struct Student class_A[3] = &#123;</span><br><span class="line">        &#123;&quot;LiSi&quot;, 18, 88.0&#125;,</span><br><span class="line">        &#123;&quot;WangWu&quot;, 20, 92.5&#125;,</span><br><span class="line">        &#123;&quot;ZhaoLiu&quot;, 19, 85.0&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="如何使用读写数据"><a class="markdownIt-Anchor" href="#如何使用读写数据"></a> 如何使用（读写数据）</h4>
+<p>核心符号是 <strong>点号 <code>.</code></strong> 。读作“的”。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 读取</span><br><span class="line">printf(&quot;姓名: %s, 分数: %.1f\n&quot;, s1.name, s1.score);</span><br><span class="line"></span><br><span class="line">// 修改 (写入)</span><br><span class="line">s1.age = 20;         // 整数直接赋值</span><br><span class="line">s1.score = 98.0;     // 浮点数直接赋值</span><br><span class="line"></span><br><span class="line">// ⚠️ 重点坑：字符串数组不能直接用 = 赋值！</span><br><span class="line">// s1.name = &quot;NewName&quot;; // ❌ 错误！</span><br><span class="line">strcpy(s1.name, &quot;NewName&quot;); // ✅ 正确，必须用 strcpy</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="4-结构体指针-structure-pointer"><a class="markdownIt-Anchor" href="#4-结构体指针-structure-pointer"></a> 4. 结构体指针 (Structure Pointer)</h3>
+<p>这是数据结构（链表、树）的基础。 当有一个指针指向结构体时，访问成员的方式变了。</p>
+<ul>
+<li>普通变量用 <strong><code>.</code></strong> (点)</li>
+<li>指针变量用 <strong><code>-&gt;</code></strong> (箭头)</li>
+</ul>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct Student s1 = &#123;&quot;Tom&quot;, 18, 90.0&#125;;</span><br><span class="line">struct Student *p = &amp;s1; // p 指向 s1 的地址</span><br><span class="line"></span><br><span class="line">// 方式 1：解引用后用点 (太啰嗦，很少用)</span><br><span class="line">printf(&quot;%s&quot;, (*p).name); </span><br><span class="line"></span><br><span class="line">// 方式 2：使用箭头运算符 (标准写法，必须掌握)</span><br><span class="line">printf(&quot;%s&quot;, p-&gt;name);   // 读作：p 指向的那个结构体的 name</span><br><span class="line">p-&gt;age = 21;             // 修改</span><br></pre></td></tr></table></figure>
+<p><strong>记忆口诀：</strong> 是本体就用点 <code>.</code>，是指针就用箭头 <code>-&gt;</code>。</p>
+<hr />
+<h3 id="5-向函数传递结构体"><a class="markdownIt-Anchor" href="#5-向函数传递结构体"></a> 5. 向函数传递结构体</h3>
+<p>有两种方式，其中的区别决定了程序的效率和功能。</p>
+<h4 id="方式-a值传递-pass-by-value-复制一份"><a class="markdownIt-Anchor" href="#方式-a值传递-pass-by-value-复制一份"></a> 方式 A：值传递 (Pass by Value) —— 复制一份</h4>
+<p>把整个结构体的内容拷贝一份给函数。</p>
+<ul>
+<li><strong>优点</strong>：安全，函数里乱改也不会影响外面的原变量。</li>
+<li><strong>缺点</strong>：<strong>效率极低</strong>！如果结构体很大（比如包含大数组），拷贝非常耗时且占内存。</li>
+<li><strong>功能</strong>：只能读取，无法修改原数据。</li>
+</ul>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void print_student(struct Student s) &#123;</span><br><span class="line">    // s 是 s1 的复制品</span><br><span class="line">    printf(&quot;%s\n&quot;, s.name);</span><br><span class="line">&#125;</span><br><span class="line">// 调用：print_student(s1);</span><br></pre></td></tr></table></figure>
+<h4 id="方式-b地址传递-pass-by-pointer-传递钥匙-推荐"><a class="markdownIt-Anchor" href="#方式-b地址传递-pass-by-pointer-传递钥匙-推荐"></a> 方式 B：地址传递 (Pass by Pointer) —— 传递钥匙 (推荐)</h4>
+<p>只传递结构体的地址（指针）。</p>
+<ul>
+<li><strong>优点</strong>：<strong>极快</strong>（只传 8 字节的地址），不占内存。</li>
+<li><strong>缺点</strong>：不安全（函数能修改原数据），通常配合 <code>const</code> 保护。</li>
+<li><strong>功能</strong>：既可以读取，也可以修改原数据。</li>
+</ul>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 场景 1：只读 (加 const 防止误改)</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">print_student_fast</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> Student *s)</span> &#123;</span><br><span class="line">    <span class="comment">// s 是指针，必须用 -&gt;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Name: %s\n&quot;</span>, s-&gt;name); </span><br><span class="line">    <span class="comment">// s-&gt;age = 20; // ❌ 报错，const 禁止修改</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 场景 2：需要修改</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">modify_score</span><span class="params">(<span class="keyword">struct</span> Student *s, <span class="type">double</span> new_score)</span> &#123;</span><br><span class="line">    s-&gt;score = new_score; <span class="comment">// 直接修改了外面的数据</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用：modify_score(&amp;s1, 100.0); // 记得加 &amp; 取地址</span></span><br></pre></td></tr></table></figure>
+<h1 id="结构体再识"><a class="markdownIt-Anchor" href="#结构体再识"></a> 结构体再识</h1>
+<h3 id="第一部分结构体的专有名词辨析"><a class="markdownIt-Anchor" href="#第一部分结构体的专有名词辨析"></a> 第一部分：结构体的专有名词辨析</h3>
+<p>在讨论复杂问题前，必须先统一“口径”，否则容易晕。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 1. 结构体标签 (Tag)</span><br><span class="line">struct Student &#123;</span><br><span class="line">    // 2. 成员 (Member)</span><br><span class="line">    char name[20];</span><br><span class="line">    int age;</span><br><span class="line">&#125; s1, s2; // 3. 变量 (Variable) / 实例 (Instance)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>结构体标签 (Tag)</strong>：<code>Student</code>。它只是个名字，代表这种“图纸”叫什么。</li>
+<li><strong>成员 (Member)</strong>：<code>name</code>, <code>age</code>。图纸里的具体属性。</li>
+<li><strong>变量 (Variable)</strong>：<code>s1</code>, <code>s2</code>。根据图纸造出来的真正的“人”。</li>
+<li><strong>类型 (Type)</strong>：在 C 语言中，完整的类型名是 <code>struct Student</code>（两个词合在一起才是类型）。</li>
+</ol>
+<hr />
+<h3 id="第二部分定义时的两个疑问"><a class="markdownIt-Anchor" href="#第二部分定义时的两个疑问"></a> 第二部分：定义时的两个疑问</h3>
+<h4 id="q1-能不能在声明结构体的时候就定义变量"><a class="markdownIt-Anchor" href="#q1-能不能在声明结构体的时候就定义变量"></a> Q1: 能不能在声明结构体的时候就定义变量？</h4>
+<p><strong>答案：可以。</strong> 这是“顺便造人”的写法。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">&#125; p1, p2, arr[10]; // 声明完图纸，顺便造了 p1, p2 和一个数组</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>评价</strong>：这种写法在小程序里很常见，但为了代码清晰，通常建议把定义变量和声明类型分开写。</li>
+</ul>
+<h4 id="q2-能不能不写-struct-只写-student"><a class="markdownIt-Anchor" href="#q2-能不能不写-struct-只写-student"></a> Q2: 能不能不写 <code>struct</code> 只写 <code>Student</code>？</h4>
+<p><strong>答案：默认不行，除非使用 <code>typedef</code>。</strong></p>
+<p>在 C++ 中可以直接写 <code>Student s1;</code>，但在 <strong>C 语言</strong> 中，必须写全称 <code>struct Student s1;</code>。 如果你想偷懒（只写 <code>Student</code>），必须给类型起个<strong>别名</strong>。</p>
+<p><strong>写法 A：分步写 (最清晰)</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct Student &#123; int age; &#125;;  // 声明类型</span><br><span class="line">typedef struct Student Student; // 给 &quot;struct Student&quot; 起个别名叫 &quot;Student&quot;</span><br><span class="line"></span><br><span class="line">// 现在可以了：</span><br><span class="line">Student s1; </span><br></pre></td></tr></table></figure>
+<p><strong>写法 B：一步到位 (最常用)</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct Student &#123;  // 这里的 Student 是标签</span><br><span class="line">    int age;</span><br><span class="line">&#125; Student; // 这里的 Student 是别名</span><br><span class="line"></span><br><span class="line">// 用法：</span><br><span class="line">Student s1;         // ✅ 可以 (用了别名)</span><br><span class="line">struct Student s2;  // ✅ 可以 (用了原名)</span><br></pre></td></tr></table></figure>
+<p><strong>写法 C：匿名结构体 (比较懒)</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;  // 省略了标签</span><br><span class="line">    int age;</span><br><span class="line">&#125; Student; </span><br><span class="line"></span><br><span class="line">// 用法：</span><br><span class="line">Student s1;         // ✅ 可以</span><br><span class="line">// struct Student s2; // ❌ 报错！因为根本没有 Student 这个标签</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="第三部分多级结构体-nested-structure"><a class="markdownIt-Anchor" href="#第三部分多级结构体-nested-structure"></a> 第三部分：多级结构体 (Nested Structure)</h3>
+<p><strong>多级结构体</strong>就是“套娃”：一个结构体里面包含另一个结构体变量。</p>
+<p><strong>场景</strong>：一个学生 (<code>Student</code>) 有一个生日，生日本身也是个结构体 (<code>Date</code>)。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    int year;</span><br><span class="line">    int month;</span><br><span class="line">    int day;</span><br><span class="line">&#125; Date;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">    char name[20];</span><br><span class="line">    Date birthday; // ❌ 它是 Date 类型的变量 (不是指针)</span><br><span class="line">    int id;</span><br><span class="line">&#125; Student;</span><br></pre></td></tr></table></figure>
+<p><strong>如何访问？</strong> 像剥洋葱一样，一层一层用 <strong>点号 <code>.</code></strong> 剥开。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student s1;</span><br><span class="line">s1.id = 1001;</span><br><span class="line">// 访问里面的结构体成员</span><br><span class="line">s1.birthday.year = 2005; </span><br><span class="line">s1.birthday.month = 11;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="第四部分多级指针与箭头-的终极逻辑"><a class="markdownIt-Anchor" href="#第四部分多级指针与箭头-的终极逻辑"></a> 第四部分：多级指针与箭头 <code>-&gt;</code> 的终极逻辑</h3>
+<p>这是最容易晕的地方：什么时候用点 <code>.</code>，什么时候用箭头 <code>-&gt;</code>？</p>
+<p><strong>核心法则（请背诵）：</strong></p>
+<blockquote>
+<p><strong>看符号左边的东西是什么？</strong></p>
+<ul>
+<li>如果是 <strong>实体 (变量/对象)</strong> -&gt; 用 <strong>点 <code>.</code></strong></li>
+<li>如果是 <strong>指针 (地址)</strong> -&gt; 用 <strong>箭头 <code>-&gt;</code></strong></li>
+</ul>
+</blockquote>
+<h4 id="情况-1最外层是指针里面是实体"><a class="markdownIt-Anchor" href="#情况-1最外层是指针里面是实体"></a> 情况 1：最外层是指针，里面是实体</h4>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Student s1;</span><br><span class="line">Student *p = &amp;s1; // p 是指向 Student 的指针</span><br><span class="line"></span><br><span class="line">// p 是指针 -&gt; 用箭头</span><br><span class="line">// p-&gt;birthday 是实体 (Date 类型变量) -&gt; 用点</span><br><span class="line">p-&gt;birthday.year = 2005; </span><br></pre></td></tr></table></figure>
+<h4 id="情况-2里面也是指针-链表常用"><a class="markdownIt-Anchor" href="#情况-2里面也是指针-链表常用"></a> 情况 2：里面也是指针 (链表常用)</h4>
+<p>假设学生手里拿着一本书，书是通过指针记录的。</p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    char title[50];</span><br><span class="line">&#125; Book;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">    char name[20];</span><br><span class="line">    Book *myBook; // ⚠️ 注意：这是个指针！</span><br><span class="line">&#125; Student;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    Book b1 = &#123;&quot;C Language&quot;&#125;;</span><br><span class="line">    Student s1;</span><br><span class="line">    </span><br><span class="line">    s1.myBook = &amp;b1; // 让 s1 的指针指向 b1</span><br><span class="line">    </span><br><span class="line">    // 1. s1 是实体 -&gt; 用点</span><br><span class="line">    // 2. s1.myBook 是指针 -&gt; 用箭头</span><br><span class="line">    printf(&quot;%s&quot;, s1.myBook-&gt;title); </span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="情况-3里外全是指针-多级指针"><a class="markdownIt-Anchor" href="#情况-3里外全是指针-多级指针"></a> 情况 3：里外全是指针 (多级指针)</h4>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Student s1;</span><br><span class="line">Book b1 = &#123;<span class="string">&quot;C Language&quot;</span>&#125;;</span><br><span class="line">s1.myBook = &amp;b1;</span><br><span class="line"></span><br><span class="line">Student *ptr = &amp;s1; <span class="comment">// ptr 是指向 Student 的指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. ptr 是指针 -&gt; 用箭头 (变成 s1 实体)</span></span><br><span class="line"><span class="comment">// 2. ptr-&gt;myBook 是指针 -&gt; 用箭头 (变成 b1 实体)</span></span><br><span class="line"><span class="comment">// 3. title 是数组(实体) -&gt; 直接访问</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, ptr-&gt;myBook-&gt;title);</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/')">2025学年大一上程序设计基础期末上机考试复习提纲</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=2025学年大一上程序设计基础期末上机考试复习提纲&amp;url=http://tianxingleo.top/2025/11/23/2025%E5%AD%A6%E5%B9%B4%E5%A4%A7%E4%B8%80%E4%B8%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=3f7499a4-c1f1-8ba7-da8b-c632c643f1b4" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.top" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/c/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>c<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/%E5%A4%A7%E5%AD%A6/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>大学<span class="tagsPageCount">7</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/20/%E3%80%90%E6%96%B0%E7%93%B6%E6%97%A7%E9%85%92%E3%80%91%E6%B5%85%E6%9E%90%E3%80%8A%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3%E3%80%8B%EF%BC%88%E4%B8%89%E5%8D%83%E5%AD%97%E9%95%BF%E8%AF%84%EF%BC%89/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.webp?_r_=52746a80-0406-440b-b1cf-127cafefa9f9" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【新瓶旧酒】浅析《天使的心跳》（三千字长评）</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/24/2025%E5%AD%A6%E5%B9%B4%E9%AB%98%E6%95%B0%E4%B8%8A%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=18c5d5fa-27d0-ef64-efd6-239a7a9b7cb9" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2025学年高数上期末考试复习提纲</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/09/c-cpp%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8C%87%E9%92%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="c&#x2F;cpp函数与指针学习笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=33c46f39-4366-4752-67f4-3ac055dc296c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-09</div><div class="title">c&#x2F;cpp函数与指针学习笔记</div></div></a></div><div><a href="/2025/11/24/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0/" title="C语言中常见的输入函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=0dfdc01d-2994-88ad-533f-cc2e23eb8234" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-24</div><div class="title">C语言中常见的输入函数</div></div></a></div><div><a href="/2025/11/19/c-cpp%E6%98%93%E9%94%99%E7%82%B9%EF%BC%9A-%E3%80%81-%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/" title="C&#x2F;C++ 易错点深度解析：指针、结构体与运算符优先级"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=1ca4f058-c556-11e8-8767-c83671ac5cb1" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">C&#x2F;C++ 易错点深度解析：指针、结构体与运算符优先级</div></div></a></div><div><a href="/2025/11/24/2025%E5%AD%A6%E5%B9%B4%E9%AB%98%E6%95%B0%E4%B8%8A%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/" title="2025学年高数上期末考试复习提纲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=18c5d5fa-27d0-ef64-efd6-239a7a9b7cb9" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-24</div><div class="title">2025学年高数上期末考试复习提纲</div></div></a></div><div><a href="/2025/11/29/2025%E5%AD%A6%E5%B9%B4%E9%AB%98%E6%95%B0%E4%B8%8A%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/" title="2025学年高数上期中期末考试复习提纲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=fe21493f-6945-c827-af67-0719a81a6f70" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-29</div><div class="title">2025学年高数上期中期末考试复习提纲</div></div></a></div><div><a href="/2025/11/07/%E6%97%A5%E8%AF%AD%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E6%8F%8F%E8%BF%B0/" title="日语中的方位描述"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=6d0276eb-54a1-6268-bab8-7044848b7bd7" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-07</div><div class="title">日语中的方位描述</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#printf%E4%B8%8Escanf"><span class="toc-number">1.</span> <span class="toc-text"> printf与scanf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%AC%A6-%E5%B8%B8%E7%94%A8%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 1. 核心格式控制符 (常用对照表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%95%BF%E5%BA%A6%E4%BF%AE%E9%A5%B0%E7%AC%A6-longshort-%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 2. 长度修饰符 (Long&#x2F;Short 处理)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E7%AC%A6-%E5%B8%B8%E7%94%A8%E5%AF%B9%E7%85%A7%E8%A1%A8-2"><span class="toc-number">1.3.</span> <span class="toc-text"> 1. 核心格式控制符 (常用对照表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%95%BF%E5%BA%A6%E4%BF%AE%E9%A5%B0%E7%AC%A6-longshort-%E5%A4%84%E7%90%86-2"><span class="toc-number">1.4.</span> <span class="toc-text"> 2. 长度修饰符 (Long&#x2F;Short 处理)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-printf-%E7%89%B9%E6%9C%89%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA-%E7%BE%8E%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text"> 3. printf 特有的格式化输出 (美化)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text"> 头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-stdioh-%E5%8F%AA%E8%A6%81%E5%86%99%E4%BB%A3%E7%A0%81%E5%B0%B1%E5%BE%97%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. &lt;stdio.h&gt; —— 只要写代码就得用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-stdlibh-%E4%B8%87%E8%83%BD%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. &lt;stdlib.h&gt; —— 万能工具箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-stringh-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E4%B8%93%E5%AE%B6"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. &lt;string.h&gt; —— 字符串处理专家</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-mathh-%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. &lt;math.h&gt; —— 数学计算器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-ctypeh-%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%89%E6%A3%80%E5%91%98"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. &lt;ctype.h&gt; —— 字符类型的“安检员”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-stdboolh-%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B-c99-%E6%A0%87%E5%87%86"><span class="toc-number">2.6.</span> <span class="toc-text"> 6. &lt;stdbool.h&gt; —— 布尔类型 (C99 标准)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E4%B8%80%E7%82%B9%E7%82%B9-%E5%B8%B8%E7%94%A8%E4%BA%8E%E5%A4%A7%E4%BD%9C%E4%B8%9A"><span class="toc-number">2.7.</span> <span class="toc-text"> 进阶一点点 (常用于大作业)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 随机数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E4%B8%AD%E7%9A%84%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text"> C中的四舍五入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%98%AF%E8%87%AA%E5%8A%A8%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> 1. 什么时候是“自动”四舍五入？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%98%AF%E8%87%AA%E5%8A%A8%E6%88%AA%E6%96%AD%E4%B9%9F%E5%B0%B1%E6%98%AF%E4%B8%8D%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">4.2.</span> <span class="toc-text"> 2. 什么时候是“自动截断”（也就是不四舍五入）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%80%8E%E4%B9%88%E6%89%8B%E5%8A%A8%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">4.3.</span> <span class="toc-text"> 3. 怎么“手动”四舍五入？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95-05-%E6%9C%80%E5%B8%B8%E7%94%A8-%E6%9C%80%E9%AB%98%E6%95%88"><span class="toc-number">4.3.1.</span> <span class="toc-text"> 方法一：经典算法 +0.5 （最常用、最高效）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E4%BD%BF%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0-round-%E6%9C%80%E6%A0%87%E5%87%86"><span class="toc-number">4.3.2.</span> <span class="toc-text"> 方法二：使用库函数 round() （最标准）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E4%B8%8E%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text"> 冒泡排序与选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-bubble-sort"><span class="toc-number">5.1.</span> <span class="toc-text"> 1. 冒泡排序 (Bubble Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.1.1.</span> <span class="toc-text"> 算法步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.1.2.</span> <span class="toc-text"> 代码实现：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F-selection-sort"><span class="toc-number">5.2.</span> <span class="toc-text"> 2. 选择排序 (Selection Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4-2"><span class="toc-number">5.2.1.</span> <span class="toc-text"> 算法步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">5.2.2.</span> <span class="toc-text"> 代码实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%90%9C%E7%B4%A2%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">6.</span> <span class="toc-text"> 线性搜索与二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E6%90%9C%E7%B4%A2-linear-search-%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4"><span class="toc-number">6.1.</span> <span class="toc-text"> 1. 线性搜索 (Linear Search) —— 简单粗暴</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="toc-number">6.1.1.</span> <span class="toc-text"> 代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-binary-search-%E6%9E%81%E9%80%9F%E6%8A%98%E5%8D%8A"><span class="toc-number">6.2.</span> <span class="toc-text"> 2. 二分查找 (Binary Search) —— 极速折半</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4-3"><span class="toc-number">6.2.1.</span> <span class="toc-text"> 算法步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-4"><span class="toc-number">6.2.2.</span> <span class="toc-text"> 代码实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#switch"><span class="toc-number">7.</span> <span class="toc-text"> switch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-number">7.1.</span> <span class="toc-text"> 基本语法结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">8.</span> <span class="toc-text"> 函数与二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%9B%BA%E5%AE%9A%E5%88%97%E5%AE%BD%E6%9C%80%E4%BC%A0%E7%BB%9F-%E6%9C%80%E9%80%9A%E7%94%A8"><span class="toc-number">8.1.</span> <span class="toc-text"> 方法一：固定列宽（最传统、最通用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8F%98%E9%95%BF%E6%95%B0%E7%BB%84-vlac99-%E6%A0%87%E5%87%86%E6%9C%80%E6%8E%A8%E8%8D%90"><span class="toc-number">8.2.</span> <span class="toc-text"> 方法二：变长数组 VLA（C99 标准，最推荐）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%8C%87%E9%92%88%E4%BA%A4%E6%8D%A2%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> 利用指针交换数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E7%94%A8%E6%8C%87%E9%92%88%E4%BA%A4%E6%8D%A2%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="toc-number">9.1.</span> <span class="toc-text"> 第一步：用指针交换两个变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%BA%8C%E6%AD%A5%E7%94%A8%E6%8C%87%E9%92%88%E4%BA%A4%E6%8D%A2%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">9.2.</span> <span class="toc-text"> 3. 第二步：用指针交换数组中的两个元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">10.</span> <span class="toc-text"> 字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86stringh-%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0"><span class="toc-number">10.1.</span> <span class="toc-text"> 第一部分：&lt;string.h&gt; 中的核心函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-strlen-%E6%B5%8B%E9%87%8F%E9%95%BF%E5%BA%A6"><span class="toc-number">10.1.1.</span> <span class="toc-text"> 1. strlen - 测量长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-strcpy-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%8D%E5%88%B6"><span class="toc-number">10.1.2.</span> <span class="toc-text"> 2. strcpy - 字符串复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-strcat-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">10.1.3.</span> <span class="toc-text"> 3. strcat - 字符串拼接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-strcmp-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="toc-number">10.1.4.</span> <span class="toc-text"> 4. strcmp - 字符串比较</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86c-%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A6%82%E4%BD%95%E4%BC%A0%E7%BB%99%E5%87%BD%E6%95%B0"><span class="toc-number">10.2.</span> <span class="toc-text"> 第二部分：C 语言中字符串如何传给函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80%E5%8F%AA%E8%AF%BB%E6%A8%A1%E5%BC%8F%E4%B8%8D%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E5%AE%B9"><span class="toc-number">10.2.1.</span> <span class="toc-text"> 场景一：只读模式（不修改字符串内容）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C%E8%AF%BB%E5%86%99%E6%A8%A1%E5%BC%8F%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E5%AE%B9"><span class="toc-number">10.2.2.</span> <span class="toc-text"> 场景二：读写模式（需要修改字符串内容）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%B8%8F-%E4%B8%80%E4%B8%AA%E6%96%B0%E6%89%8B%E5%BF%85%E6%8C%82%E7%9A%84%E5%9D%91"><span class="toc-number">10.3.</span> <span class="toc-text"> ⚡️ 一个新手必挂的“坑”</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%9D%E8%AF%86"><span class="toc-number">11.</span> <span class="toc-text"> 结构体初识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9-features"><span class="toc-number">11.1.</span> <span class="toc-text"> 1. 结构体的核心特点 (Features)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A3%B0%E6%98%8E%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">11.2.</span> <span class="toc-text"> 2. 声明结构体的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F-a%E6%A0%87%E5%87%86%E5%A3%B0%E6%98%8E-%E6%9C%80%E5%B8%B8%E7%94%A8"><span class="toc-number">11.2.1.</span> <span class="toc-text"> 方式 A：标准声明 (最常用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F-b%E9%85%8D%E5%90%88-typedef-%E8%80%81%E6%89%8B%E6%8E%A8%E8%8D%90"><span class="toc-number">11.2.2.</span> <span class="toc-text"> 方式 B：配合 typedef (老手推荐)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">11.3.</span> <span class="toc-text"> 3. 变量与数组的定义、初始化与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">11.3.1.</span> <span class="toc-text"> 定义与初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE"><span class="toc-number">11.3.2.</span> <span class="toc-text"> 如何使用（读写数据）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88-structure-pointer"><span class="toc-number">11.4.</span> <span class="toc-text"> 4. 结构体指针 (Structure Pointer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%90%91%E5%87%BD%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">11.5.</span> <span class="toc-text"> 5. 向函数传递结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F-a%E5%80%BC%E4%BC%A0%E9%80%92-pass-by-value-%E5%A4%8D%E5%88%B6%E4%B8%80%E4%BB%BD"><span class="toc-number">11.5.1.</span> <span class="toc-text"> 方式 A：值传递 (Pass by Value) —— 复制一份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F-b%E5%9C%B0%E5%9D%80%E4%BC%A0%E9%80%92-pass-by-pointer-%E4%BC%A0%E9%80%92%E9%92%A5%E5%8C%99-%E6%8E%A8%E8%8D%90"><span class="toc-number">11.5.2.</span> <span class="toc-text"> 方式 B：地址传递 (Pass by Pointer) —— 传递钥匙 (推荐)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%8D%E8%AF%86"><span class="toc-number">12.</span> <span class="toc-text"> 结构体再识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D%E8%BE%A8%E6%9E%90"><span class="toc-number">12.1.</span> <span class="toc-text"> 第一部分：结构体的专有名词辨析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%AE%9A%E4%B9%89%E6%97%B6%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%96%91%E9%97%AE"><span class="toc-number">12.2.</span> <span class="toc-text"> 第二部分：定义时的两个疑问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#q1-%E8%83%BD%E4%B8%8D%E8%83%BD%E5%9C%A8%E5%A3%B0%E6%98%8E%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E6%97%B6%E5%80%99%E5%B0%B1%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">12.2.1.</span> <span class="toc-text"> Q1: 能不能在声明结构体的时候就定义变量？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#q2-%E8%83%BD%E4%B8%8D%E8%83%BD%E4%B8%8D%E5%86%99-struct-%E5%8F%AA%E5%86%99-student"><span class="toc-number">12.2.2.</span> <span class="toc-text"> Q2: 能不能不写 struct 只写 Student？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%A4%9A%E7%BA%A7%E7%BB%93%E6%9E%84%E4%BD%93-nested-structure"><span class="toc-number">12.3.</span> <span class="toc-text"> 第三部分：多级结构体 (Nested Structure)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88%E4%B8%8E%E7%AE%AD%E5%A4%B4-%E7%9A%84%E7%BB%88%E6%9E%81%E9%80%BB%E8%BE%91"><span class="toc-number">12.4.</span> <span class="toc-text"> 第四部分：多级指针与箭头 -&gt; 的终极逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%83%85%E5%86%B5-1%E6%9C%80%E5%A4%96%E5%B1%82%E6%98%AF%E6%8C%87%E9%92%88%E9%87%8C%E9%9D%A2%E6%98%AF%E5%AE%9E%E4%BD%93"><span class="toc-number">12.4.1.</span> <span class="toc-text"> 情况 1：最外层是指针，里面是实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%83%85%E5%86%B5-2%E9%87%8C%E9%9D%A2%E4%B9%9F%E6%98%AF%E6%8C%87%E9%92%88-%E9%93%BE%E8%A1%A8%E5%B8%B8%E7%94%A8"><span class="toc-number">12.4.2.</span> <span class="toc-text"> 情况 2：里面也是指针 (链表常用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%83%85%E5%86%B5-3%E9%87%8C%E5%A4%96%E5%85%A8%E6%98%AF%E6%8C%87%E9%92%88-%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88"><span class="toc-number">12.4.3.</span> <span class="toc-text"> 情况 3：里外全是指针 (多级指针)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"/></a><div class="content"><a class="title" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练">在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练</a><time datetime="2025-12-10T13:53:53.000Z" title="发表于 2025-12-10 21:53:53">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=cd395191-65a9-097a-bd04-8ff199d09fb5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"/></a><div class="content"><a class="title" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案">【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案</a><time datetime="2025-12-08T06:29:13.000Z" title="发表于 2025-12-08 14:29:13">2025-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=f504beb3-7f30-1846-33a7-c3b6ed246975" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"/></a><div class="content"><a class="title" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</a><time datetime="2025-12-06T16:48:20.000Z" title="发表于 2025-12-07 00:48:20">2025-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"/></a><div class="content"><a class="title" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</a><time datetime="2025-12-05T03:02:33.000Z" title="发表于 2025-12-05 11:02:33">2025-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=32c0ed69-1a08-500e-b2f0-5e7cdcaba02b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"/></a><div class="content"><a class="title" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）">关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）</a><time datetime="2025-12-05T02:22:33.000Z" title="发表于 2025-12-05 10:22:33">2025-12-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 0.88rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 0.88rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 0.88rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 0.88rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 0.88rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 0.88rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 0.88rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 0.88rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 0.88rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 0.88rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 0.88rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 0.88rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 0.88rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 0.88rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 0.88rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 0.88rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 0.88rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 0.88rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 0.88rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 0.88rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 0.88rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 0.88rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 0.88rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 0.88rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 0.88rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

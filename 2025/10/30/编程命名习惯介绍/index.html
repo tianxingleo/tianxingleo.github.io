@@ -1,0 +1,1965 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>编程命名习惯介绍 | Tianxingleo的Blog</title><meta name="keywords" content="cpp"><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="编程命名习惯介绍"><meta name="application-name" content="编程命名习惯介绍"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="编程命名习惯介绍"><meta property="og:url" content="http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="🧭 一、命名的总体原则  ✅ 1. “见名知意”原则（Meaningful Names） 变量名、函数名、类名应该直接表达其用途、功能或类型。 ❌ 不好示例： 12int a;     &amp;#x2F;&amp;#x2F; 完全看不出意义int tmp;   &amp;#x2F;&amp;#x2F; 含糊的“临时” ✅ 好示例： 12int studentCou"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=82362b90-1c1f-18b6-ff24-572fa4afb3ec"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=82362b90-1c1f-18b6-ff24-572fa4afb3ec"><meta name="description" content="🧭 一、命名的总体原则  ✅ 1. “见名知意”原则（Meaningful Names） 变量名、函数名、类名应该直接表达其用途、功能或类型。 ❌ 不好示例： 12int a;     &amp;#x2F;&amp;#x2F; 完全看不出意义int tmp;   &amp;#x2F;&amp;#x2F; 含糊的“临时” ✅ 好示例： 12int studentCou"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: '编程命名习惯介绍',
+  postAI: '',
+  pageFillDescription: ' 🧭 一、命名的总体原则,  ✅ 1. 见名知意原则（Meaningful Names）,  ✅ 2. 一致性（Consistency）,  ✅ 3. 尽量避免歧义（Avoid Ambiguity）,  ✅ 4. 长短适中（Short but Clear）,  ✅ 5. 使用专业词汇和常用动词,  🧩 二、不同对象的命名规范,  1️⃣ 变量命名（Variables）,  2️⃣ 函数命名（Functions）,  3️⃣ 类、结构体、模块命名（Classes / Structs / Modules）,  4️⃣ 常量命名（Constants / Macros）,  5️⃣ 枚举命名（Enums）,  🧱 三、命名的结构与模式,  ✅ 动词 + 名词（函数常用）,  ✅ 名词 + 修饰词（变量常用）,  ✅ 动词 + 状态（布尔变量）,  💡 四、常用英文命名词库,  🧠 五、一些实用建议,  🌟 六、总结表,  🧩 编程命名词汇大全（含中英文与情境说明）,  🧱 一、常见对象（Object / Data）,  🔢 二、数量与集合（Collection / Count）,  💬 三、状态与标志（State / Flag）,  🧠 四、动作与操作（Action / Verb）,  🟩 常见通用动词,  🔐 五、逻辑与布尔命名（Boolean）,  🧰 六、文件 / 系统 / 网络命名,  🧮 七、算法 / 数学 / 数据处理相关,  🎨 八、界面 / 前端 / 交互（UI / UX）,  🧩 九、错误 / 异常 / 校验（Error / Exception）,  🧭 十、时间 / 日期相关（Time / Date）,  🧭 十一、常见抽象概念（General Concepts）,  📘 十二、建议用法总结一命名的总体原则见名知意原则变量名函数名类名应该直接表达其用途功能或类型不好示例完全看不出意义含糊的临时好示例表示学生数量表示用户输入一致性一个项目内使用统一的命名风格项目类型推荐命名风格示例变量函数小驼峰类名大驼峰常量文件名尽量避免歧义例如太笼统最好具体些长短适中名字要刚好够表达含义不多不少在局部作用域如函数内可短在全局或类成员中要清晰使用专业词汇和常用动词代码是技术交流的语言使用行业约定俗成的单词更利于团队理解下面会有常用单词表二不同对象的命名规范变量命名规则名词或名词短语体现数据的类型或用途避免单字母除循环变量外示例布尔变量命名最好用肯定式动词函数命名规则动词或动词短语表示执行的动作注意返回值是否带等示例动词建议用途常用动词获取设置判断修改计算显示保存删除转换生成初始化类结构体模块命名规则名词或名词短语使用大驼峰示例常用结尾词体现角色类型常用后缀实体类工具类控制器类数据类异常类常量命名规则全大写下划线语义清晰枚举命名规则枚举名枚举值全大写三命名的结构与模式动词名词函数常用名词修饰词变量常用动词状态布尔变量四常用英文命名词库中文英文数量列表集合索引名称值状态结果输入时间文件用户网络错误日志配置系统五一些实用建议避免缩写除非行业通用如避免魔法数字用常量命名替代避免重复词汇如命名随语境简化如类内函数不必写即可命名与功能同步更新代码重构时要改名否则误导六总结表元素格式示例说明变量名词函数动词名词类名词常量全大写枚举大写项语义清晰文件名平台通用编程命名词汇大全含中英文与情境说明一常见对象英文单词中文释义典型用法情境数据泛指原始或结构化数据信息偏向概要描述值函数返回或变量的实际数值条目列表中的单个元素记录数据库或日志条目条目项目键值对或表格项字段数据表表单内字段元素数组或元素属性对象的特征属性面向对象中类属性对象通常不单独使用用于类实例的命名实体数据库或业务层对象模型中的数据层模型参数实参在函数调用时传入的参数通常代码内较少命名二数量与集合英文单词中文释义情境示例计数总数数量总额常用于金额或体积尺寸数量长度容量总和列表数组向量中常用如集合映射表键值表字典集合用于抽象数据结构的总称队列栈池组三状态与标志英文单词中文释义典型用法说明状态状态进度模式标志等级类型类别阶段阶段步骤进度状态码网络请求返回值四动作与操作常见通用动词动词中文典型用法获取设置添加删除更新创建初始化加载保存拉取获取常用于网络或数据库操作清空重置显示控制台或输出隐藏检查验证计算转换发送网络请求或消息推送接收打开关闭启动停止运行暂停恢复多线程或播放控制读写文件或流操作复制移动传输文件或指针移动排序过滤映射归约算法常用比较合并分割连接合并五逻辑与布尔命名前缀意义示例是否是否拥有能否是否应该是否需要是否允许是否存在六文件系统网络命名英文单词中文释义示例说明文件路径目录缓冲区流套接字网络通信服务器客户端主机端口请求响应统一资源定位符请求头通信令牌权限验证会话用户登录状态缓存配置日志线程进程命令七算法数学数据处理相关英文单词中文释义示例情境总和平均值最大最小范围索引位置偏移变化量比率因子系数数学模型常用向量矩阵节点树图结构边图算法权重度高度深度树结构根叶节点树形结构键值字典或映射哈希随机排序次序查找合并八界面前端交互英文单词中文释义示例按钮标签输入框表单对话框弹窗窗口面板选项卡菜单图标视图框架页面布局样式主题颜色九错误异常校验英文单词中文释义示例错误异常失败成功有效无效空为空缺失超时重试警告提示十时间日期相关英文单词中文释义示例时间日期时间戳时间间隔持续时间延迟周期截止时间计划时钟计时器十一常见抽象概念英文单词中文释义示例情境标识符键名称标题描述消息备注内容摘要详情选项配置规则策略权限优先级目标十二建议用法总结类型推荐形式示例变量名词函数动词名词布尔变量开头类名名词大驼峰常量全大写下划线临时变量可简短',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-07 16:46:05',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 1.05rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 1.05rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 1.05rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 1.05rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 1.05rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 1.05rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 1.05rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 1.05rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 1.05rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 1.05rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 1.05rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 1.05rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 1.05rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 1.05rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 1.05rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.05rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 1.05rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.05rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 1.05rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 1.05rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 1.05rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 1.05rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 1.05rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 1.05rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/cpp/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>cpp</span></a></span></div></div><h1 class="post-title" itemprop="name headline">编程命名习惯介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-30T11:31:27.000Z" title="发表于 2025-10-30 19:31:27">2025-10-30</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-07T08:46:05.526Z" title="更新于 2025-11-07 16:46:05">2025-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="编程命名习惯介绍"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=82362b90-1c1f-18b6-ff24-572fa4afb3ec"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/"><header><a href="/tags/cpp/" tabindex="-1" itemprop="url">cpp</a><h1 id="CrawlerTitle" itemprop="name headline">编程命名习惯介绍</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-10-30T11:31:27.000Z" title="发表于 2025-10-30 19:31:27">2025-10-30</time><time itemprop="dateCreated datePublished" datetime="2025-11-07T08:46:05.526Z" title="更新于 2025-11-07 16:46:05">2025-11-07</time></header><h2 id="一-命名的总体原则"><a class="markdownIt-Anchor" href="#一-命名的总体原则"></a> 🧭 一、命名的总体原则</h2>
+<h3 id="1-见名知意原则meaningful-names"><a class="markdownIt-Anchor" href="#1-见名知意原则meaningful-names"></a> ✅ 1. “见名知意”原则（Meaningful Names）</h3>
+<p>变量名、函数名、类名应该<strong>直接表达其用途、功能或类型</strong>。</p>
+<p>❌ 不好示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;     <span class="comment">// 完全看不出意义</span></span><br><span class="line"><span class="type">int</span> tmp;   <span class="comment">// 含糊的“临时”</span></span><br></pre></td></tr></table></figure>
+<p>✅ 好示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> studentCount;    <span class="comment">// 表示学生数量</span></span><br><span class="line">string userInput;    <span class="comment">// 表示用户输入</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="2-一致性consistency"><a class="markdownIt-Anchor" href="#2-一致性consistency"></a> ✅ 2. 一致性（Consistency）</h3>
+<p>一个项目内使用<strong>统一的命名风格</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>项目类型</th>
+<th>推荐命名风格</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量/函数（C++/Java/Python）</td>
+<td><code>camelCase</code>（小驼峰）</td>
+<td><code>getUserName()</code></td>
+</tr>
+<tr>
+<td>类名</td>
+<td><code>PascalCase</code>（大驼峰）</td>
+<td><code>UserProfile</code></td>
+</tr>
+<tr>
+<td>常量</td>
+<td><code>UPPER_SNAKE_CASE</code></td>
+<td><code>MAX_SPEED</code></td>
+</tr>
+<tr>
+<td>文件名</td>
+<td><code>snake_case</code></td>
+<td><code>user_data.cpp</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-尽量避免歧义avoid-ambiguity"><a class="markdownIt-Anchor" href="#3-尽量避免歧义avoid-ambiguity"></a> ✅ 3. 尽量避免歧义（Avoid Ambiguity）</h3>
+<p>例如 <code>data</code>, <code>info</code>, <code>value</code> 太笼统，最好具体些：</p>
+<ul>
+<li>❌ <code>info</code> → ✅ <code>userInfo</code></li>
+<li>❌ <code>data</code> → ✅ <code>sensorData</code></li>
+<li>❌ <code>temp</code> → ✅ <code>temperatureCelsius</code></li>
+</ul>
+<hr />
+<h3 id="4-长短适中short-but-clear"><a class="markdownIt-Anchor" href="#4-长短适中short-but-clear"></a> ✅ 4. 长短适中（Short but Clear）</h3>
+<blockquote>
+<p>名字要刚好够表达含义，不多不少。</p>
+</blockquote>
+<ul>
+<li>在<strong>局部作用域</strong>（如函数内）可短：<code>sum</code>, <code>i</code>, <code>n</code></li>
+<li>在<strong>全局或类成员</strong>中要清晰：<code>userLoginStatus</code>, <code>httpRequestHandler</code></li>
+</ul>
+<hr />
+<h3 id="5-使用专业词汇和常用动词"><a class="markdownIt-Anchor" href="#5-使用专业词汇和常用动词"></a> ✅ 5. 使用专业词汇和常用动词</h3>
+<p>代码是技术交流的语言，使用<strong>行业约定俗成的单词</strong>更利于团队理解（下面会有常用单词表）。</p>
+<hr />
+<h2 id="二-不同对象的命名规范"><a class="markdownIt-Anchor" href="#二-不同对象的命名规范"></a> 🧩 二、不同对象的命名规范</h2>
+<h3 id="1️⃣-变量命名variables"><a class="markdownIt-Anchor" href="#1️⃣-变量命名variables"></a> 1️⃣ 变量命名（Variables）</h3>
+<p><strong>规则：</strong></p>
+<ul>
+<li>名词或名词短语</li>
+<li>体现数据的类型或用途</li>
+<li>避免单字母（除循环变量 i, j, k 外）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> userAge;</span><br><span class="line"><span class="type">float</span> averageScore;</span><br><span class="line"><span class="type">bool</span> isLoggedIn;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; primeNumbers;</span><br></pre></td></tr></table></figure>
+<p><strong>布尔变量命名</strong>最好用肯定式+动词：</p>
+<ul>
+<li><code>isRunning</code></li>
+<li><code>hasError</code></li>
+<li><code>canRead</code></li>
+<li><code>shouldUpdate</code></li>
+</ul>
+<hr />
+<h3 id="2️⃣-函数命名functions"><a class="markdownIt-Anchor" href="#2️⃣-函数命名functions"></a> 2️⃣ 函数命名（Functions）</h3>
+<p><strong>规则：</strong></p>
+<ul>
+<li>动词或动词短语</li>
+<li>表示执行的动作</li>
+<li>注意返回值（是否带“get”、“set”等）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">getUserAge</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setUserAge</span><span class="params">(<span class="type">int</span> age)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">checkPermission</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">updateProfile</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printReport</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>动词建议：</strong></p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>常用动词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取</td>
+<td>get, fetch, load, retrieve</td>
+</tr>
+<tr>
+<td>设置</td>
+<td>set, assign, apply</td>
+</tr>
+<tr>
+<td>判断</td>
+<td>is, has, can, should, check</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>update, change, edit, modify</td>
+</tr>
+<tr>
+<td>计算</td>
+<td>calc, compute, count, sum</td>
+</tr>
+<tr>
+<td>显示</td>
+<td>show, print, render, display</td>
+</tr>
+<tr>
+<td>保存</td>
+<td>save, store, persist</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>delete, remove, clear</td>
+</tr>
+<tr>
+<td>转换</td>
+<td>convert, parse, format</td>
+</tr>
+<tr>
+<td>生成</td>
+<td>generate, create, build, make</td>
+</tr>
+<tr>
+<td>初始化</td>
+<td>init, initialize, reset</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3️⃣-类-结构体-模块命名classes-structs-modules"><a class="markdownIt-Anchor" href="#3️⃣-类-结构体-模块命名classes-structs-modules"></a> 3️⃣ 类、结构体、模块命名（Classes / Structs / Modules）</h3>
+<p><strong>规则：</strong></p>
+<ul>
+<li>名词或名词短语</li>
+<li>使用大驼峰（PascalCase）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserProfile</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point3D</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HttpRequest</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FileManager</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>常用结尾词（体现角色）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>常用后缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体类</td>
+<td><code>User</code>, <code>Order</code>, <code>Product</code>, <code>Article</code></td>
+</tr>
+<tr>
+<td>工具类</td>
+<td><code>Helper</code>, <code>Util</code>, <code>Tool</code>, <code>Manager</code></td>
+</tr>
+<tr>
+<td>控制器类</td>
+<td><code>Controller</code>, <code>Handler</code>, <code>Manager</code></td>
+</tr>
+<tr>
+<td>数据类</td>
+<td><code>Data</code>, <code>Record</code>, <code>Entry</code>, <code>Info</code></td>
+</tr>
+<tr>
+<td>异常类</td>
+<td><code>Exception</code>, <code>Error</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4️⃣-常量命名constants-macros"><a class="markdownIt-Anchor" href="#4️⃣-常量命名constants-macros"></a> 4️⃣ 常量命名（Constants / Macros）</h3>
+<p><strong>规则：</strong></p>
+<ul>
+<li>全大写+下划线 <code>_</code></li>
+<li>语义清晰</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MAX_CONNECTIONS = <span class="number">100</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.1415926</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUFFER_SIZE 256</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="5️⃣-枚举命名enums"><a class="markdownIt-Anchor" href="#5️⃣-枚举命名enums"></a> 5️⃣ 枚举命名（Enums）</h3>
+<p><strong>规则：</strong></p>
+<ul>
+<li>枚举名：PascalCase</li>
+<li>枚举值：全大写</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    RED,</span><br><span class="line">    GREEN,</span><br><span class="line">    BLUE</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="三-命名的结构与模式"><a class="markdownIt-Anchor" href="#三-命名的结构与模式"></a> 🧱 三、命名的结构与模式</h2>
+<h3 id="动词-名词函数常用"><a class="markdownIt-Anchor" href="#动词-名词函数常用"></a> ✅ 动词 + 名词（函数常用）</h3>
+<p><code>getUserName()</code>, <code>updateDatabase()</code>, <code>printResult()</code></p>
+<h3 id="名词-修饰词变量常用"><a class="markdownIt-Anchor" href="#名词-修饰词变量常用"></a> ✅ 名词 + 修饰词（变量常用）</h3>
+<p><code>userList</code>, <code>filePath</code>, <code>studentCount</code>, <code>errorCode</code></p>
+<h3 id="动词-状态布尔变量"><a class="markdownIt-Anchor" href="#动词-状态布尔变量"></a> ✅ 动词 + 状态（布尔变量）</h3>
+<p><code>isOpen</code>, <code>hasNext</code>, <code>shouldExit</code>, <code>canRead</code></p>
+<hr />
+<h2 id="四-常用英文命名词库"><a class="markdownIt-Anchor" href="#四-常用英文命名词库"></a> 💡 四、常用英文命名词库</h2>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数量</td>
+<td>count, number, total, quantity</td>
+</tr>
+<tr>
+<td>列表</td>
+<td>list, array, vector, collection</td>
+</tr>
+<tr>
+<td>集合</td>
+<td>set, group, pool, cluster</td>
+</tr>
+<tr>
+<td>索引</td>
+<td>index, key, id</td>
+</tr>
+<tr>
+<td>名称</td>
+<td>name, title, label</td>
+</tr>
+<tr>
+<td>值</td>
+<td>value, data, info, content</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>state, status, mode, flag</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>result, output, response</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>input, entry</td>
+</tr>
+<tr>
+<td>时间</td>
+<td>time, date, timestamp</td>
+</tr>
+<tr>
+<td>文件</td>
+<td>file, path, dir, folder</td>
+</tr>
+<tr>
+<td>用户</td>
+<td>user, client, customer, member</td>
+</tr>
+<tr>
+<td>网络</td>
+<td>request, response, server, host</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>error, exception, failure</td>
+</tr>
+<tr>
+<td>日志</td>
+<td>log, record, trace</td>
+</tr>
+<tr>
+<td>配置</td>
+<td>config, setting, option</td>
+</tr>
+<tr>
+<td>系统</td>
+<td>system, platform, engine</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="五-一些实用建议"><a class="markdownIt-Anchor" href="#五-一些实用建议"></a> 🧠 五、一些实用建议</h2>
+<ul>
+<li><strong>避免缩写</strong>（除非行业通用如 <code>id</code>, <code>url</code>, <code>api</code>）。</li>
+<li><strong>避免魔法数字（magic number）</strong>：用常量命名替代。</li>
+<li><strong>避免重复词汇</strong>：如 <code>userUserInfo</code>。</li>
+<li><strong>命名随语境简化</strong>：如类 <code>UserManager</code> 内函数不必 <code>manageUserLogin()</code>，写 <code>login()</code> 即可。</li>
+<li><strong>命名与功能同步更新</strong>：代码重构时要改名，否则误导。</li>
+</ul>
+<hr />
+<h2 id="六-总结表"><a class="markdownIt-Anchor" href="#六-总结表"></a> 🌟 六、总结表</h2>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>格式</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量</td>
+<td>camelCase</td>
+<td><code>studentCount</code></td>
+<td>名词</td>
+</tr>
+<tr>
+<td>函数</td>
+<td>camelCase</td>
+<td><code>getAverageScore()</code></td>
+<td>动词+名词</td>
+</tr>
+<tr>
+<td>类</td>
+<td>PascalCase</td>
+<td><code>UserProfile</code></td>
+<td>名词</td>
+</tr>
+<tr>
+<td>常量</td>
+<td>UPPER_SNAKE_CASE</td>
+<td><code>MAX_SPEED</code></td>
+<td>全大写</td>
+</tr>
+<tr>
+<td>枚举</td>
+<td>PascalCase + 大写项</td>
+<td><code>Color::RED</code></td>
+<td>语义清晰</td>
+</tr>
+<tr>
+<td>文件名</td>
+<td>snake_case</td>
+<td><code>user_manager.cpp</code></td>
+<td>平台通用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="编程命名词汇大全含中英文与情境说明"><a class="markdownIt-Anchor" href="#编程命名词汇大全含中英文与情境说明"></a> 🧩 编程命名词汇大全（含中英文与情境说明）</h1>
+<hr />
+<h2 id="一-常见对象object-data"><a class="markdownIt-Anchor" href="#一-常见对象object-data"></a> 🧱 一、常见对象（Object / Data）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>典型用法 / 情境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>数据</td>
+<td><code>userData</code>, <code>sensorData</code>，泛指原始或结构化数据</td>
+</tr>
+<tr>
+<td>info / information</td>
+<td>信息</td>
+<td><code>userInfo</code>, <code>contactInfo</code>，偏向概要描述</td>
+</tr>
+<tr>
+<td>value</td>
+<td>值</td>
+<td><code>returnValue</code>, <code>maxValue</code>，函数返回或变量的实际数值</td>
+</tr>
+<tr>
+<td>item</td>
+<td>条目</td>
+<td><code>listItem</code>, <code>menuItem</code>，列表中的单个元素</td>
+</tr>
+<tr>
+<td>record</td>
+<td>记录</td>
+<td><code>dataRecord</code>, <code>logRecord</code>，数据库或日志条目</td>
+</tr>
+<tr>
+<td>entry</td>
+<td>条目 / 项目</td>
+<td><code>tableEntry</code>, <code>mapEntry</code>，键值对或表格项</td>
+</tr>
+<tr>
+<td>field</td>
+<td>字段</td>
+<td><code>nameField</code>, <code>emailField</code>，数据表/表单内字段</td>
+</tr>
+<tr>
+<td>element</td>
+<td>元素</td>
+<td><code>arrayElement</code>，数组或 XML 元素</td>
+</tr>
+<tr>
+<td>attribute</td>
+<td>属性</td>
+<td><code>colorAttribute</code>, <code>fontAttribute</code>，对象的特征</td>
+</tr>
+<tr>
+<td>property</td>
+<td>属性</td>
+<td><code>widthProperty</code>, <code>userProperty</code>，面向对象中类属性</td>
+</tr>
+<tr>
+<td>object</td>
+<td>对象</td>
+<td>通常不单独使用，用于类实例的命名</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>实体</td>
+<td><code>userEntity</code>, <code>orderEntity</code>，数据库或业务层对象</td>
+</tr>
+<tr>
+<td>model</td>
+<td>模型</td>
+<td><code>userModel</code>, <code>dataModel</code>，MVC 中的数据层模型</td>
+</tr>
+<tr>
+<td>parameter / param</td>
+<td>参数</td>
+<td><code>inputParam</code>, <code>urlParams</code></td>
+</tr>
+<tr>
+<td>argument</td>
+<td>实参</td>
+<td>在函数调用时传入的参数（通常代码内较少命名）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="二-数量与集合collection-count"><a class="markdownIt-Anchor" href="#二-数量与集合collection-count"></a> 🔢 二、数量与集合（Collection / Count）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>情境示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>计数</td>
+<td><code>studentCount</code>, <code>wordCount</code></td>
+</tr>
+<tr>
+<td>total</td>
+<td>总数</td>
+<td><code>totalScore</code>, <code>totalUsers</code></td>
+</tr>
+<tr>
+<td>number / num</td>
+<td>数量</td>
+<td><code>pageNumber</code>, <code>numOfFiles</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>总额（常用于金额或体积）</td>
+<td><code>amountDue</code>, <code>waterAmount</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>尺寸 / 数量</td>
+<td><code>arraySize</code>, <code>fileSize</code></td>
+</tr>
+<tr>
+<td>length</td>
+<td>长度</td>
+<td><code>stringLength</code></td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>容量</td>
+<td><code>bufferCapacity</code>, <code>maxCapacity</code></td>
+</tr>
+<tr>
+<td>sum</td>
+<td>总和</td>
+<td><code>sumValue</code>, <code>sumOfSquares</code></td>
+</tr>
+<tr>
+<td>list</td>
+<td>列表</td>
+<td><code>userList</code>, <code>taskList</code></td>
+</tr>
+<tr>
+<td>array</td>
+<td>数组</td>
+<td><code>intArray</code></td>
+</tr>
+<tr>
+<td>vector</td>
+<td>向量</td>
+<td>C++中常用，如<code>primeVector</code></td>
+</tr>
+<tr>
+<td>set</td>
+<td>集合</td>
+<td><code>idSet</code>, <code>uniqueSet</code></td>
+</tr>
+<tr>
+<td>map</td>
+<td>映射表 / 键值表</td>
+<td><code>userMap</code>, <code>configMap</code></td>
+</tr>
+<tr>
+<td>dict / dictionary</td>
+<td>字典（Python）</td>
+<td><code>userDict</code></td>
+</tr>
+<tr>
+<td>collection</td>
+<td>集合</td>
+<td>用于抽象数据结构的总称</td>
+</tr>
+<tr>
+<td>queue</td>
+<td>队列</td>
+<td><code>taskQueue</code></td>
+</tr>
+<tr>
+<td>stack</td>
+<td>栈</td>
+<td><code>undoStack</code></td>
+</tr>
+<tr>
+<td>pool</td>
+<td>池</td>
+<td><code>threadPool</code>, <code>connectionPool</code></td>
+</tr>
+<tr>
+<td>group</td>
+<td>组</td>
+<td><code>userGroup</code>, <code>buttonGroup</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="三-状态与标志state-flag"><a class="markdownIt-Anchor" href="#三-状态与标志state-flag"></a> 💬 三、状态与标志（State / Flag）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>典型用法 / 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state</td>
+<td>状态</td>
+<td><code>systemState</code>, <code>loginState</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>状态 / 进度</td>
+<td><code>uploadStatus</code>, <code>orderStatus</code></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>模式</td>
+<td><code>editMode</code>, <code>darkMode</code></td>
+</tr>
+<tr>
+<td>flag</td>
+<td>标志</td>
+<td><code>errorFlag</code>, <code>updateFlag</code></td>
+</tr>
+<tr>
+<td>level</td>
+<td>等级</td>
+<td><code>batteryLevel</code>, <code>userLevel</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>类型</td>
+<td><code>fileType</code>, <code>userType</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>类别</td>
+<td><code>productCategory</code></td>
+</tr>
+<tr>
+<td>phase</td>
+<td>阶段</td>
+<td><code>initPhase</code>, <code>testPhase</code></td>
+</tr>
+<tr>
+<td>stage</td>
+<td>阶段</td>
+<td><code>buildStage</code></td>
+</tr>
+<tr>
+<td>step</td>
+<td>步骤</td>
+<td><code>nextStep</code>, <code>currentStep</code></td>
+</tr>
+<tr>
+<td>progress</td>
+<td>进度</td>
+<td><code>progressRate</code>, <code>loadingProgress</code></td>
+</tr>
+<tr>
+<td>statusCode</td>
+<td>状态码</td>
+<td>网络请求返回值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="四-动作与操作action-verb"><a class="markdownIt-Anchor" href="#四-动作与操作action-verb"></a> 🧠 四、动作与操作（Action / Verb）</h2>
+<h3 id="常见通用动词"><a class="markdownIt-Anchor" href="#常见通用动词"></a> 🟩 常见通用动词</h3>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>中文</th>
+<th>典型用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get</td>
+<td>获取</td>
+<td><code>getUserName()</code></td>
+</tr>
+<tr>
+<td>set</td>
+<td>设置</td>
+<td><code>setAge()</code></td>
+</tr>
+<tr>
+<td>add</td>
+<td>添加</td>
+<td><code>addItem()</code>, <code>addUser()</code></td>
+</tr>
+<tr>
+<td>remove / delete</td>
+<td>删除</td>
+<td><code>removeItem()</code>, <code>deleteFile()</code></td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新</td>
+<td><code>updateProfile()</code></td>
+</tr>
+<tr>
+<td>create / make / build / generate</td>
+<td>创建</td>
+<td><code>createFile()</code>, <code>buildModel()</code>, <code>generateReport()</code></td>
+</tr>
+<tr>
+<td>init / initialize</td>
+<td>初始化</td>
+<td><code>initBuffer()</code></td>
+</tr>
+<tr>
+<td>load</td>
+<td>加载</td>
+<td><code>loadConfig()</code>, <code>loadData()</code></td>
+</tr>
+<tr>
+<td>save</td>
+<td>保存</td>
+<td><code>saveFile()</code></td>
+</tr>
+<tr>
+<td>fetch / retrieve</td>
+<td>拉取 / 获取</td>
+<td>常用于网络或数据库操作</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清空</td>
+<td><code>clearCache()</code>, <code>clearList()</code></td>
+</tr>
+<tr>
+<td>reset</td>
+<td>重置</td>
+<td><code>resetSettings()</code></td>
+</tr>
+<tr>
+<td>print / show / display / render</td>
+<td>显示</td>
+<td>控制台或UI输出</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>隐藏</td>
+<td><code>hideDialog()</code></td>
+</tr>
+<tr>
+<td>check / verify / validate</td>
+<td>检查 / 验证</td>
+<td><code>checkLogin()</code>, <code>validateInput()</code></td>
+</tr>
+<tr>
+<td>calculate / compute / count</td>
+<td>计算</td>
+<td><code>calculateSum()</code>, <code>computeResult()</code></td>
+</tr>
+<tr>
+<td>convert / parse / format</td>
+<td>转换</td>
+<td><code>convertToJson()</code>, <code>parseXML()</code></td>
+</tr>
+<tr>
+<td>send / post / push</td>
+<td>发送</td>
+<td>网络请求或消息推送</td>
+</tr>
+<tr>
+<td>receive / getResponse</td>
+<td>接收</td>
+<td><code>receiveMessage()</code></td>
+</tr>
+<tr>
+<td>open / close</td>
+<td>打开 / 关闭</td>
+<td><code>openFile()</code>, <code>closeConnection()</code></td>
+</tr>
+<tr>
+<td>start / stop / run / execute</td>
+<td>启动 / 停止 / 运行</td>
+<td><code>startThread()</code>, <code>runTask()</code></td>
+</tr>
+<tr>
+<td>pause / resume</td>
+<td>暂停 / 恢复</td>
+<td>多线程或播放控制</td>
+</tr>
+<tr>
+<td>read / write</td>
+<td>读 / 写</td>
+<td>文件或流操作</td>
+</tr>
+<tr>
+<td>copy / clone / duplicate</td>
+<td>复制</td>
+<td><code>copyArray()</code>, <code>cloneObject()</code></td>
+</tr>
+<tr>
+<td>move / transfer</td>
+<td>移动 / 传输</td>
+<td>文件或指针移动</td>
+</tr>
+<tr>
+<td>sort / filter / map / reduce</td>
+<td>排序 / 过滤 / 映射 / 归约</td>
+<td>算法常用</td>
+</tr>
+<tr>
+<td>compare</td>
+<td>比较</td>
+<td><code>compareVersion()</code></td>
+</tr>
+<tr>
+<td>merge</td>
+<td>合并</td>
+<td><code>mergeList()</code>, <code>mergeData()</code></td>
+</tr>
+<tr>
+<td>split / divide / separate</td>
+<td>分割</td>
+<td><code>splitString()</code></td>
+</tr>
+<tr>
+<td>join / combine</td>
+<td>连接 / 合并</td>
+<td><code>joinPath()</code>, <code>combineResults()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="五-逻辑与布尔命名boolean"><a class="markdownIt-Anchor" href="#五-逻辑与布尔命名boolean"></a> 🔐 五、逻辑与布尔命名（Boolean）</h2>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is</td>
+<td>是否…</td>
+<td><code>isRunning</code>, <code>isAdmin</code></td>
+</tr>
+<tr>
+<td>has</td>
+<td>是否拥有</td>
+<td><code>hasPermission</code>, <code>hasError</code></td>
+</tr>
+<tr>
+<td>can</td>
+<td>能否</td>
+<td><code>canRead</code>, <code>canExecute</code></td>
+</tr>
+<tr>
+<td>should</td>
+<td>是否应该</td>
+<td><code>shouldExit</code>, <code>shouldUpdate</code></td>
+</tr>
+<tr>
+<td>need / needs</td>
+<td>是否需要</td>
+<td><code>needsRefresh</code></td>
+</tr>
+<tr>
+<td>allow / enable</td>
+<td>是否允许</td>
+<td><code>allowUpload</code>, <code>enableFeature</code></td>
+</tr>
+<tr>
+<td>exists</td>
+<td>是否存在</td>
+<td><code>fileExists</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="六-文件-系统-网络命名"><a class="markdownIt-Anchor" href="#六-文件-系统-网络命名"></a> 🧰 六、文件 / 系统 / 网络命名</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例 / 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>文件</td>
+<td><code>inputFile</code>, <code>filePath</code></td>
+</tr>
+<tr>
+<td>path</td>
+<td>路径</td>
+<td><code>configPath</code>, <code>rootPath</code></td>
+</tr>
+<tr>
+<td>dir / folder</td>
+<td>目录</td>
+<td><code>outputDir</code>, <code>userFolder</code></td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>缓冲区</td>
+<td><code>inputBuffer</code></td>
+</tr>
+<tr>
+<td>stream</td>
+<td>流</td>
+<td><code>dataStream</code>, <code>outputStream</code></td>
+</tr>
+<tr>
+<td>socket</td>
+<td>套接字</td>
+<td>网络通信</td>
+</tr>
+<tr>
+<td>server / client</td>
+<td>服务器 / 客户端</td>
+<td><code>serverPort</code>, <code>clientIP</code></td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机</td>
+<td><code>hostName</code>, <code>remoteHost</code></td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口</td>
+<td><code>portNumber</code></td>
+</tr>
+<tr>
+<td>request / response</td>
+<td>请求 / 响应</td>
+<td><code>httpRequest</code>, <code>apiResponse</code></td>
+</tr>
+<tr>
+<td>url / uri</td>
+<td>统一资源定位符</td>
+<td><code>apiUrl</code>, <code>redirectUri</code></td>
+</tr>
+<tr>
+<td>header</td>
+<td>请求头</td>
+<td>HTTP通信</td>
+</tr>
+<tr>
+<td>token</td>
+<td>令牌</td>
+<td>权限验证</td>
+</tr>
+<tr>
+<td>session</td>
+<td>会话</td>
+<td>用户登录状态</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>缓存</td>
+<td><code>imageCache</code>, <code>cacheSize</code></td>
+</tr>
+<tr>
+<td>config / setting</td>
+<td>配置</td>
+<td><code>appConfig</code>, <code>settingFile</code></td>
+</tr>
+<tr>
+<td>log</td>
+<td>日志</td>
+<td><code>errorLog</code>, <code>accessLog</code></td>
+</tr>
+<tr>
+<td>thread</td>
+<td>线程</td>
+<td><code>workerThread</code></td>
+</tr>
+<tr>
+<td>process</td>
+<td>进程</td>
+<td><code>mainProcess</code></td>
+</tr>
+<tr>
+<td>command</td>
+<td>命令</td>
+<td><code>executeCommand</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="七-算法-数学-数据处理相关"><a class="markdownIt-Anchor" href="#七-算法-数学-数据处理相关"></a> 🧮 七、算法 / 数学 / 数据处理相关</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例 / 情境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sum</td>
+<td>总和</td>
+<td><code>sumValue</code></td>
+</tr>
+<tr>
+<td>average / mean</td>
+<td>平均值</td>
+<td><code>averageScore</code></td>
+</tr>
+<tr>
+<td>max / min</td>
+<td>最大 / 最小</td>
+<td><code>maxValue</code>, <code>minScore</code></td>
+</tr>
+<tr>
+<td>range</td>
+<td>范围</td>
+<td><code>rangeStart</code>, <code>rangeEnd</code></td>
+</tr>
+<tr>
+<td>index</td>
+<td>索引</td>
+<td><code>arrayIndex</code></td>
+</tr>
+<tr>
+<td>position / pos</td>
+<td>位置</td>
+<td><code>cursorPos</code>, <code>currentPosition</code></td>
+</tr>
+<tr>
+<td>offset</td>
+<td>偏移</td>
+<td><code>byteOffset</code></td>
+</tr>
+<tr>
+<td>delta</td>
+<td>变化量</td>
+<td><code>deltaTime</code></td>
+</tr>
+<tr>
+<td>ratio</td>
+<td>比率</td>
+<td><code>successRatio</code></td>
+</tr>
+<tr>
+<td>factor</td>
+<td>因子</td>
+<td><code>scalingFactor</code></td>
+</tr>
+<tr>
+<td>coefficient</td>
+<td>系数</td>
+<td>数学模型常用</td>
+</tr>
+<tr>
+<td>vector / matrix</td>
+<td>向量 / 矩阵</td>
+<td><code>matrixA</code>, <code>velocityVector</code></td>
+</tr>
+<tr>
+<td>node</td>
+<td>节点</td>
+<td>树 / 图结构</td>
+</tr>
+<tr>
+<td>edge</td>
+<td>边</td>
+<td>图算法</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>权重</td>
+<td><code>edgeWeight</code></td>
+</tr>
+<tr>
+<td>degree</td>
+<td>度</td>
+<td><code>nodeDegree</code></td>
+</tr>
+<tr>
+<td>height / depth</td>
+<td>高度 / 深度</td>
+<td>树结构</td>
+</tr>
+<tr>
+<td>root / leaf</td>
+<td>根 / 叶节点</td>
+<td>树形结构</td>
+</tr>
+<tr>
+<td>key / value</td>
+<td>键 / 值</td>
+<td>字典或映射</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>哈希</td>
+<td><code>hashValue</code>, <code>hashMap</code></td>
+</tr>
+<tr>
+<td>random</td>
+<td>随机</td>
+<td><code>randomNumber</code>, <code>randomSeed</code></td>
+</tr>
+<tr>
+<td>sort / order / rank</td>
+<td>排序 / 次序</td>
+<td><code>sortList</code>, <code>rankScore</code></td>
+</tr>
+<tr>
+<td>search / find / lookup</td>
+<td>查找</td>
+<td><code>findUser()</code>, <code>lookupTable()</code></td>
+</tr>
+<tr>
+<td>merge / combine</td>
+<td>合并</td>
+<td><code>mergeSort()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="八-界面-前端-交互ui-ux"><a class="markdownIt-Anchor" href="#八-界面-前端-交互ui-ux"></a> 🎨 八、界面 / 前端 / 交互（UI / UX）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>button</td>
+<td>按钮</td>
+<td><code>submitButton</code>, <code>cancelBtn</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>标签</td>
+<td><code>nameLabel</code></td>
+</tr>
+<tr>
+<td>input</td>
+<td>输入框</td>
+<td><code>emailInput</code></td>
+</tr>
+<tr>
+<td>form</td>
+<td>表单</td>
+<td><code>loginForm</code></td>
+</tr>
+<tr>
+<td>dialog / popup</td>
+<td>对话框 / 弹窗</td>
+<td><code>confirmDialog</code></td>
+</tr>
+<tr>
+<td>window</td>
+<td>窗口</td>
+<td><code>mainWindow</code></td>
+</tr>
+<tr>
+<td>panel</td>
+<td>面板</td>
+<td><code>controlPanel</code></td>
+</tr>
+<tr>
+<td>tab</td>
+<td>选项卡</td>
+<td><code>settingTab</code></td>
+</tr>
+<tr>
+<td>menu</td>
+<td>菜单</td>
+<td><code>fileMenu</code>, <code>contextMenu</code></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标</td>
+<td><code>appIcon</code></td>
+</tr>
+<tr>
+<td>view</td>
+<td>视图</td>
+<td><code>listView</code>, <code>detailView</code></td>
+</tr>
+<tr>
+<td>frame</td>
+<td>框架</td>
+<td><code>mainFrame</code></td>
+</tr>
+<tr>
+<td>page</td>
+<td>页面</td>
+<td><code>homePage</code>, <code>errorPage</code></td>
+</tr>
+<tr>
+<td>layout</td>
+<td>布局</td>
+<td><code>gridLayout</code>, <code>flexLayout</code></td>
+</tr>
+<tr>
+<td>style / theme</td>
+<td>样式 / 主题</td>
+<td><code>darkTheme</code>, <code>buttonStyle</code></td>
+</tr>
+<tr>
+<td>color</td>
+<td>颜色</td>
+<td><code>backgroundColor</code>, <code>fontColor</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="九-错误-异常-校验error-exception"><a class="markdownIt-Anchor" href="#九-错误-异常-校验error-exception"></a> 🧩 九、错误 / 异常 / 校验（Error / Exception）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>error</td>
+<td>错误</td>
+<td><code>fileError</code>, <code>errorCode</code></td>
+</tr>
+<tr>
+<td>exception</td>
+<td>异常</td>
+<td><code>IOException</code>, <code>NullPointerException</code></td>
+</tr>
+<tr>
+<td>fail / failure</td>
+<td>失败</td>
+<td><code>loginFail</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>成功</td>
+<td><code>isSuccess</code>, <code>successCount</code></td>
+</tr>
+<tr>
+<td>valid / invalid</td>
+<td>有效 / 无效</td>
+<td><code>isValid</code>, <code>invalidInput</code></td>
+</tr>
+<tr>
+<td>empty / null</td>
+<td>空 / 为空</td>
+<td><code>isEmpty</code>, <code>isNull</code></td>
+</tr>
+<tr>
+<td>missing</td>
+<td>缺失</td>
+<td><code>missingField</code></td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>超时</td>
+<td><code>requestTimeout</code></td>
+</tr>
+<tr>
+<td>retry</td>
+<td>重试</td>
+<td><code>retryCount</code></td>
+</tr>
+<tr>
+<td>warning</td>
+<td>警告</td>
+<td><code>warningMsg</code></td>
+</tr>
+<tr>
+<td>alert</td>
+<td>提示</td>
+<td><code>showAlert()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="十-时间-日期相关time-date"><a class="markdownIt-Anchor" href="#十-时间-日期相关time-date"></a> 🧭 十、时间 / 日期相关（Time / Date）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>时间</td>
+<td><code>currentTime</code>, <code>elapsedTime</code></td>
+</tr>
+<tr>
+<td>date</td>
+<td>日期</td>
+<td><code>birthDate</code>, <code>startDate</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td><code>createdTimestamp</code></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>时间间隔</td>
+<td><code>refreshInterval</code></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>持续时间</td>
+<td><code>playDuration</code></td>
+</tr>
+<tr>
+<td>delay</td>
+<td>延迟</td>
+<td><code>delayTime</code></td>
+</tr>
+<tr>
+<td>period</td>
+<td>周期</td>
+<td><code>updatePeriod</code></td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>截止时间</td>
+<td><code>submissionDeadline</code></td>
+</tr>
+<tr>
+<td>schedule</td>
+<td>计划</td>
+<td><code>taskSchedule</code></td>
+</tr>
+<tr>
+<td>clock</td>
+<td>时钟</td>
+<td><code>systemClock</code></td>
+</tr>
+<tr>
+<td>timer</td>
+<td>计时器</td>
+<td><code>autoTimer</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="十一-常见抽象概念general-concepts"><a class="markdownIt-Anchor" href="#十一-常见抽象概念general-concepts"></a> 🧭 十一、常见抽象概念（General Concepts）</h2>
+<table>
+<thead>
+<tr>
+<th>英文单词</th>
+<th>中文释义</th>
+<th>示例 / 情境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>标识符</td>
+<td><code>userId</code>, <code>orderId</code></td>
+</tr>
+<tr>
+<td>key</td>
+<td>键</td>
+<td><code>apiKey</code>, <code>mapKey</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td><code>userName</code>, <code>fileName</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>pageTitle</code></td>
+</tr>
+<tr>
+<td>description / desc</td>
+<td>描述</td>
+<td><code>errorDesc</code></td>
+</tr>
+<tr>
+<td>message / msg</td>
+<td>消息</td>
+<td><code>errorMsg</code>, <code>sendMessage()</code></td>
+</tr>
+<tr>
+<td>note</td>
+<td>备注</td>
+<td><code>noteText</code></td>
+</tr>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>fileContent</code></td>
+</tr>
+<tr>
+<td>summary</td>
+<td>摘要</td>
+<td><code>summaryText</code></td>
+</tr>
+<tr>
+<td>detail</td>
+<td>详情</td>
+<td><code>detailInfo</code></td>
+</tr>
+<tr>
+<td>option</td>
+<td>选项</td>
+<td><code>menuOption</code></td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置</td>
+<td><code>configFile</code>, <code>configMap</code></td>
+</tr>
+<tr>
+<td>rule</td>
+<td>规则</td>
+<td><code>validationRule</code></td>
+</tr>
+<tr>
+<td>policy</td>
+<td>策略</td>
+<td><code>cachePolicy</code></td>
+</tr>
+<tr>
+<td>permission</td>
+<td>权限</td>
+<td><code>userPermission</code></td>
+</tr>
+<tr>
+<td>priority</td>
+<td>优先级</td>
+<td><code>taskPriority</code></td>
+</tr>
+<tr>
+<td>target</td>
+<td>目标</td>
+<td><code>targetFile</code>, <code>targetUser</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="十二-建议用法总结"><a class="markdownIt-Anchor" href="#十二-建议用法总结"></a> 📘 十二、建议用法总结</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>推荐形式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>变量</strong></td>
+<td>名词</td>
+<td><code>userList</code>, <code>maxScore</code></td>
+</tr>
+<tr>
+<td><strong>函数</strong></td>
+<td>动词+名词</td>
+<td><code>getUser()</code>, <code>saveFile()</code></td>
+</tr>
+<tr>
+<td><strong>布尔变量</strong></td>
+<td>is/has/can/should 开头</td>
+<td><code>isActive</code>, <code>hasError</code></td>
+</tr>
+<tr>
+<td><strong>类名</strong></td>
+<td>名词（大驼峰）</td>
+<td><code>UserManager</code>, <code>FileReader</code></td>
+</tr>
+<tr>
+<td><strong>常量</strong></td>
+<td>全大写+下划线</td>
+<td><code>MAX_SPEED</code>, <code>PI</code></td>
+</tr>
+<tr>
+<td><strong>临时变量</strong></td>
+<td>可简短</td>
+<td><code>tmp</code>, <code>idx</code>, <code>val</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/')">编程命名习惯介绍</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=编程命名习惯介绍&amp;url=http://tianxingleo.top/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=82362b90-1c1f-18b6-ff24-572fa4afb3ec" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.top" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/cpp/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>cpp<span class="tagsPageCount">14</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2ff0eb69-735f-4952-4cff-d5448dad0ff3" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">排序算法汇总</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=d59e6863-77ec-8c48-61b8-3dad3b9979ea" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DUT开发区cpc组第一次例会笔记（2025秋）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第一次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=d59e6863-77ec-8c48-61b8-3dad3b9979ea" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-30</div><div class="title">DUT开发区cpc组第一次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第二次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=588112ff-d908-afac-c70c-53ee8fdad105" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-30</div><div class="title">DUT开发区cpc组第二次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/11/07/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第三次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=4fad1471-657f-1449-c4f5-4537869fe6fb" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-07</div><div class="title">DUT开发区cpc组第三次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/11/09/c-cpp%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8C%87%E9%92%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="c&#x2F;cpp函数与指针学习笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=33c46f39-4366-4752-67f4-3ac055dc296c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-09</div><div class="title">c&#x2F;cpp函数与指针学习笔记</div></div></a></div><div><a href="/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/" title="cpp字符串操作中遇到的坑（2025.10.31）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=a1f131e3-7a11-fad1-80a8-c7f029942049" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-31</div><div class="title">cpp字符串操作中遇到的坑（2025.10.31）</div></div></a></div><div><a href="/2025/11/24/%E3%80%90DP%E3%80%91DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%94%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="【DP】DUT开发区cpc组第五次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=0d5d03c6-75e7-3f39-87d0-c9d8bdc1a505" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-24</div><div class="title">【DP】DUT开发区cpc组第五次例会笔记（2025秋）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%91%BD%E5%90%8D%E7%9A%84%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text"> 🧭 一、命名的总体原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%81%E5%90%8D%E7%9F%A5%E6%84%8F%E5%8E%9F%E5%88%99meaningful-names"><span class="toc-number">1.1.</span> <span class="toc-text"> ✅ 1. “见名知意”原则（Meaningful Names）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%80%E8%87%B4%E6%80%A7consistency"><span class="toc-number">1.2.</span> <span class="toc-text"> ✅ 2. 一致性（Consistency）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B0%BD%E9%87%8F%E9%81%BF%E5%85%8D%E6%AD%A7%E4%B9%89avoid-ambiguity"><span class="toc-number">1.3.</span> <span class="toc-text"> ✅ 3. 尽量避免歧义（Avoid Ambiguity）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%95%BF%E7%9F%AD%E9%80%82%E4%B8%ADshort-but-clear"><span class="toc-number">1.4.</span> <span class="toc-text"> ✅ 4. 长短适中（Short but Clear）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87%E5%92%8C%E5%B8%B8%E7%94%A8%E5%8A%A8%E8%AF%8D"><span class="toc-number">1.5.</span> <span class="toc-text"> ✅ 5. 使用专业词汇和常用动词</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8D%E5%90%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">2.</span> <span class="toc-text"> 🧩 二、不同对象的命名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8Dvariables"><span class="toc-number">2.1.</span> <span class="toc-text"> 1️⃣ 变量命名（Variables）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E5%87%BD%E6%95%B0%E5%91%BD%E5%90%8Dfunctions"><span class="toc-number">2.2.</span> <span class="toc-text"> 2️⃣ 函数命名（Functions）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E7%B1%BB-%E7%BB%93%E6%9E%84%E4%BD%93-%E6%A8%A1%E5%9D%97%E5%91%BD%E5%90%8Dclasses-structs-modules"><span class="toc-number">2.3.</span> <span class="toc-text"> 3️⃣ 类、结构体、模块命名（Classes &#x2F; Structs &#x2F; Modules）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%EF%B8%8F%E2%83%A3-%E5%B8%B8%E9%87%8F%E5%91%BD%E5%90%8Dconstants-macros"><span class="toc-number">2.4.</span> <span class="toc-text"> 4️⃣ 常量命名（Constants &#x2F; Macros）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%EF%B8%8F%E2%83%A3-%E6%9E%9A%E4%B8%BE%E5%91%BD%E5%90%8Denums"><span class="toc-number">2.5.</span> <span class="toc-text"> 5️⃣ 枚举命名（Enums）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%91%BD%E5%90%8D%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> 🧱 三、命名的结构与模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E8%AF%8D-%E5%90%8D%E8%AF%8D%E5%87%BD%E6%95%B0%E5%B8%B8%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text"> ✅ 动词 + 名词（函数常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D-%E4%BF%AE%E9%A5%B0%E8%AF%8D%E5%8F%98%E9%87%8F%E5%B8%B8%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text"> ✅ 名词 + 修饰词（变量常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E8%AF%8D-%E7%8A%B6%E6%80%81%E5%B8%83%E5%B0%94%E5%8F%98%E9%87%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> ✅ 动词 + 状态（布尔变量）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%B8%B8%E7%94%A8%E8%8B%B1%E6%96%87%E5%91%BD%E5%90%8D%E8%AF%8D%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text"> 💡 四、常用英文命名词库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E4%B8%80%E4%BA%9B%E5%AE%9E%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text"> 🧠 五、一些实用建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%80%BB%E7%BB%93%E8%A1%A8"><span class="toc-number">6.</span> <span class="toc-text"> 🌟 六、总结表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E8%AF%8D%E6%B1%87%E5%A4%A7%E5%85%A8%E5%90%AB%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B8%8E%E6%83%85%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text"> 🧩 编程命名词汇大全（含中英文与情境说明）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%B8%B8%E8%A7%81%E5%AF%B9%E8%B1%A1object-data"><span class="toc-number">7.1.</span> <span class="toc-text"> 🧱 一、常见对象（Object &#x2F; Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%95%B0%E9%87%8F%E4%B8%8E%E9%9B%86%E5%90%88collection-count"><span class="toc-number">7.2.</span> <span class="toc-text"> 🔢 二、数量与集合（Collection &#x2F; Count）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%8A%B6%E6%80%81%E4%B8%8E%E6%A0%87%E5%BF%97state-flag"><span class="toc-number">7.3.</span> <span class="toc-text"> 💬 三、状态与标志（State &#x2F; Flag）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8A%A8%E4%BD%9C%E4%B8%8E%E6%93%8D%E4%BD%9Caction-verb"><span class="toc-number">7.4.</span> <span class="toc-text"> 🧠 四、动作与操作（Action &#x2F; Verb）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%80%9A%E7%94%A8%E5%8A%A8%E8%AF%8D"><span class="toc-number">7.4.1.</span> <span class="toc-text"> 🟩 常见通用动词</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E9%80%BB%E8%BE%91%E4%B8%8E%E5%B8%83%E5%B0%94%E5%91%BD%E5%90%8Dboolean"><span class="toc-number">7.5.</span> <span class="toc-text"> 🔐 五、逻辑与布尔命名（Boolean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%96%87%E4%BB%B6-%E7%B3%BB%E7%BB%9F-%E7%BD%91%E7%BB%9C%E5%91%BD%E5%90%8D"><span class="toc-number">7.6.</span> <span class="toc-text"> 🧰 六、文件 &#x2F; 系统 &#x2F; 网络命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%AE%97%E6%B3%95-%E6%95%B0%E5%AD%A6-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3"><span class="toc-number">7.7.</span> <span class="toc-text"> 🧮 七、算法 &#x2F; 数学 &#x2F; 数据处理相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%95%8C%E9%9D%A2-%E5%89%8D%E7%AB%AF-%E4%BA%A4%E4%BA%92ui-ux"><span class="toc-number">7.8.</span> <span class="toc-text"> 🎨 八、界面 &#x2F; 前端 &#x2F; 交互（UI &#x2F; UX）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E9%94%99%E8%AF%AF-%E5%BC%82%E5%B8%B8-%E6%A0%A1%E9%AA%8Cerror-exception"><span class="toc-number">7.9.</span> <span class="toc-text"> 🧩 九、错误 &#x2F; 异常 &#x2F; 校验（Error &#x2F; Exception）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E6%97%B6%E9%97%B4-%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%85%B3time-date"><span class="toc-number">7.10.</span> <span class="toc-text"> 🧭 十、时间 &#x2F; 日期相关（Time &#x2F; Date）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%B8%B8%E8%A7%81%E6%8A%BD%E8%B1%A1%E6%A6%82%E5%BF%B5general-concepts"><span class="toc-number">7.11.</span> <span class="toc-text"> 🧭 十一、常见抽象概念（General Concepts）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E5%BB%BA%E8%AE%AE%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-number">7.12.</span> <span class="toc-text"> 📘 十二、建议用法总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"/></a><div class="content"><a class="title" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练">在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练</a><time datetime="2025-12-10T13:53:53.000Z" title="发表于 2025-12-10 21:53:53">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=cd395191-65a9-097a-bd04-8ff199d09fb5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"/></a><div class="content"><a class="title" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案">【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案</a><time datetime="2025-12-08T06:29:13.000Z" title="发表于 2025-12-08 14:29:13">2025-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=f504beb3-7f30-1846-33a7-c3b6ed246975" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"/></a><div class="content"><a class="title" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</a><time datetime="2025-12-06T16:48:20.000Z" title="发表于 2025-12-07 00:48:20">2025-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"/></a><div class="content"><a class="title" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</a><time datetime="2025-12-05T03:02:33.000Z" title="发表于 2025-12-05 11:02:33">2025-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=32c0ed69-1a08-500e-b2f0-5e7cdcaba02b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"/></a><div class="content"><a class="title" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）">关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）</a><time datetime="2025-12-05T02:22:33.000Z" title="发表于 2025-12-05 10:22:33">2025-12-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 0.88rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 0.88rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 0.88rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 0.88rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 0.88rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 0.88rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 0.88rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 0.88rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 0.88rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 0.88rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 0.88rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 0.88rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 0.88rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 0.88rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 0.88rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 0.88rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 0.88rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 0.88rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 0.88rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 0.88rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 0.88rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 0.88rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 0.88rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 0.88rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 0.88rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

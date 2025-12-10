@@ -1,0 +1,674 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程 | Tianxingleo的Blog</title><meta name="keywords" content="3dgs,pytorch,wsl,linux,Nerfstudio"><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><meta name="application-name" content="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><meta property="og:url" content="http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程  适用硬件规格：NVIDIA GeForce RTX 5070 &amp;#x2F; 5080 &amp;#x2F; 5090 操作系统要求：Windows 10 &amp;#x2F; 11 核心架构方案：WSL2 (U"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6"><meta name="description" content="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程  适用硬件规格：NVIDIA GeForce RTX 5070 &amp;#x2F; 5080 &amp;#x2F; 5090 操作系统要求：Windows 10 &amp;#x2F; 11 核心架构方案：WSL2 (U"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: '【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程',
+  postAI: '',
+  pageFillDescription: ' 【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程,  🛠️ 第一阶段：Windows Subsystem for Linux (WSL2) 子系统的启用与配置,  📦 第二阶段：Linux 基础运行环境的配置,  1. 系统级依赖库的安装,  2. Miniconda 环境管理系统的部署,  ⚡ 第三阶段：构建适配 RTX 50 系列架构的 AI 引擎,  1. 隔离环境的创建,  2. PyTorch  的安装 (适配 Blackwell 架构),  （这里需要注意！！！12.6版本在2025.12月会存在兼容性问题例如识别不到gpu型号13.0版本能识别但是后续版本也跑不通只能使用12.8版本不要按照下面的命令直接复制黏贴应该直接在PyTorch官网找到12.8版本Linux x64的安装命令安装）,  3. gsplat 的编译 (3DGS 渲染核心组件),  4. Nerfstudio 框架的安装,  5. 💉 安全补丁注入 (修正 PyTorch 2.6+ 兼容性问题),  🤖 第四阶段：自动化流水线脚本的部署,  🚀 第五阶段：执行程序,  🩸 RTX 5070 + Windows + Nerfstudio：一场从入门到放弃再到重生的踩坑实录,  第一阶段：Windows 原生环境的死胡同,  坑位 1：COLMAP 的找不到指定文件与 GPU 缺失,  坑位 2：RTX 5070 的架构兼容性 (SM_120),  坑位 3：Windows MSVC 与 PyTorch Nightly 的世纪大战,  第二阶段：转战 WSL2 (Windows Subsystem for Linux),  坑位 4：COLMAP 在无头模式下的自杀,  坑位 5：Opengl 上下文创建失败,  第三阶段：Nerfstudio 版本的混乱之治,  坑位 6：CLI 参数的捉迷藏,  坑位 7：模型变成了黑色海胆,  第四阶段：导出的最后一公里,  坑位 8：PyTorch 2.6+ 的安全拦截,  坑位 9：CLI 导出模式不存在,  坑位 10：文件回传的权限拒绝,  🏁 总结首发针对环境下系列图形处理单元的部署流程适用硬件规格操作系统要求核心架构方案本地编译加速鉴于搭载最新架构即系列的图形处理单元在原生环境下的配置存在显著的复杂性及较高的编译失败率本方案确立了利用的标准化部署流程此架构旨在实现图形处理单元性能的无损调用并利用编译生态系统的稳定性本文档详述了构建全自动生产级训练管线的规范程序第一阶段子系统的启用与配置作为集成于的内核环境提供了直接访问底层图形硬件的能力子系统的安装须在以管理员权限运行中执行以下指令系统安装程序执行完毕后必须重启计算机以完成配置重启后终端将自动启动须按照提示完成用户凭证用户名及密码的设定数据迁移策略建议执行尽管具备直接访问宿主机盘的能力但为优化读写速率预计可提升训练效率一个数量级建议将源代码及执行脚本部署于内部文件系统即目录仅将最终产物同步回传至文件系统第二阶段基础运行环境的配置在终端环境中须依次执行以下指令以配置基础依赖系统级依赖库的安装的数据预处理模块依赖于及因此必须部署支持的底层库文件环境管理系统的部署此步骤旨在建立运行环境的管理机制第三阶段构建适配系列架构的引擎此阶段为部署流程的核心鉴于系列硬件需要的支持必须部署预览版并执行渲染器的源码编译隔离环境的创建的安装适配架构这里需要注意版本在月会存在兼容性问题例如识别不到型号版本能识别但是后续版本也跑不通只能使用版本不要按照下面的命令直接复制黏贴应该直接在官网找到版本的安装命令安装强制指定版本以确保兼容性的编译渲染核心组件由于硬件架构的更新预编译包无法直接运行必须执行现场编译以生成适配的指令集参数强制执行本地编译以适配当前的显卡架构框架的安装从获取最新开发版本以确保最佳兼容性安全补丁注入修正兼容性问题新版本增强了安全验证机制可能导致模型导出功能异常须运行以下指令自动修改源代码以解除相关限制自动定位并修改文件补丁已应用允许加载自定义模型权重第四阶段自动化流水线脚本的部署为规避手动操作可能引发的参数错误及路径混淆建议部署脚本以接管以下全流程视频输入帧提取位姿解算模型训练模型导出结果回传在终端中执行若未安装可使用须将以下代码写入并保存该脚本针对进行了特定优化模式解决无显示设备导致的进程崩溃问题自动数据迁移自动将视频源文件从存储介质复制至高速存储区域进行训练参数优化采用采样率配合分辨率以在处理速度与模型质量之间取得最佳平衡配置区域下的临时高速工作区路径定义启动加速任务路径解析与环境准备环境变量配置强制使用离屏模式以防止初始化失败智能断点续传逻辑检测到现有数据跳过预处理阶段初始化高速工作区将视频复制到本地旨在解决跨系统瓶颈数据预处理鲁棒模式视频抽帧与位姿解算手动执行分辨率平衡精度与速度调用包装器以执行捕获输出流以进行质量监控数据质量过低建议重新采集视频素材增加纹理减少反光模型训练检查是否存在已完成的训练结果检测到已完成的训练跳过开始训练强制使用点云进行初始化优化模型体积参数迭代次数足以收敛训练完成后自动退出进程指定数据解析器类型导出与回传导出结果重新获取最新的配置文件回传结果至目录同步结果至新版本默认文件名自动获取脚本所在的目录路径使用命令绕过权限检查机制同时回传姿态文件以供使用成功模型已保存至清理缓存释放存储空间导出失败未找到文件自动定位当前目录下的文件请将视频放入此脚本同级目录第五阶段执行程序操作者仅需在资源管理器中将视频源文件重命名为并置于同级目录下随后在终端中执行以下指令您的用户名您的项目路径一场从入门到放弃再到重生的踩坑实录硬件环境软件目标跑通训练流视频训练导出模型第一阶段原生环境的死胡同既然是电脑第一反应当然是直接在里跑坑位的找不到指定文件与缺失起初我想直接用然后运行报错系统找不到指定的文件原因下的调用外部命令如时如果没有把路径加到或者没有开启它根本找不到命令尝试修复手动下载二进制包配置环境变量新报错原因上很多预编译的版本包括安装的默认是不带支持的或者参数版本过旧结论在上配置一个能被正确调用的带的极其痛苦坑位的架构兼容性搞定后尝试开始训练报错原因太新了目前主流的对应的或的二进制包里根本没有编译针对架构的内核这就好比拿着的光盘塞进里尝试修复必须安装预览版配合坑位与的世纪大战升级到后依赖的库需要重新编译报错不明确的符号原因这是在上的一个严重它的头文件代码写得不严谨与的编译器的标准库发生了命名空间冲突尝试修复试图手动修改源码把改成改了一个文件后面还有十个文件报错试图升级降级版本无效试图强制升级到最新版依然编译失败阶段一结论在官方修复编译问题之前系显卡无法在原生环境下运行需要编译扩展的库如此路不通第二阶段转战既然编译器不行那就用的于是我开启了坑位在无头模式下的自杀在里配置好环境运行报错原因默认是无头模式没有连接物理显示器但即便是命令行版在初始化特征提取时居然试图通过库去初始化图形界面或上下文找不到显示器就直接崩了尝试修复既然是的锅那就禁用解决方案设置环境变量告诉它我在后台跑别找显示器坑位上下文创建失败解决了报错后依然报错报错原因即使不显示界面默认使用进行特征提取这需要上下文虽然支持但对的支持有时候很玄学解决方案放弃特征提取强制使用修改调用命令加入和虽然慢点但稳第三阶段版本的混乱之治环境终于稳了开始运行的脚本坑位参数的捉迷藏我想修改图片分辨率防止显存溢出于是加了报错我又试了报错原因的开发版更新极快命令行参数的位置和名字改来改去有的参数从一级目录移到了下有的又移回了下最终解决方案不信任的预处理命令直接用调用手动抽帧并缩放图片比如缩放到然后只让做它最擅长的解算不让它处理图片缩放坑位模型变成了黑色海胆终于跑通了训练但结果出来一看模型是一团乱糟糟的黑色尖刺只有依稀一点点轮廓原因数据极差日志显示因为耳机是黑色的反光的且我为了追求画质用了分辨率高帧率特征点太多且全是噪点导致匹配彻底失败自动缩放默认会自动缩放场景并重新定中心对于稀疏的点云这直接把模型拉爆了修复方案重拍视频增加纹理点贴纸降低反光降低参数分辨率降到帧率降到保证重叠率但减少无效帧禁用自动魔法在训练命令中加入和虽然这又引发了新一轮的参数位置报错最终只能通过清理数据强制重跑来解决第四阶段导出的最后一公里训练完成了步最后一步是导出模型文件坑位的安全拦截导出时直接报错原因为了适配我们安装了最新的新版默认开启了的安全检查禁止加载包含旧版格式的模型权重文件还没适配这个改动尝试修复设置环境变量无效似乎没传进去最终解决方案外科手术式修改直接找到环境里的源码把强行改成坑位导出模式不存在尝试用导出报错原因版本差异解决回归最原始的坑位文件回传的权限拒绝最后一步想把里生成的复制回的报错原因的试图在复制文件内容的同时复制的文件权限但的文件系统不支持这些操作导致报错最终解决方案放弃的直接调用命令的命令在处理跨文件系统复制时更懂事只拷数据不拷权限总结要在上用跑通你必须放弃原生环境拥抱放弃稳定版拥抱放弃必须从源码编译放弃的自动数据处理自己写脚本调用手动修改源码以绕过的安全检查在无头模式下给戴上眼罩并放弃特征提取',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-05 11:17:51',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 1.05rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 1.05rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 1.05rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 1.05rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 1.05rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 1.05rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 1.05rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 1.05rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 1.05rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 1.05rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 1.05rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 1.05rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 1.05rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 1.05rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 1.05rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.05rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 1.05rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.05rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 1.05rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 1.05rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 1.05rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 1.05rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 1.05rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 1.05rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/3dgs/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>3dgs</span></a><a class="article-meta__tags" href="/tags/pytorch/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pytorch</span></a><a class="article-meta__tags" href="/tags/wsl/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>wsl</span></a><a class="article-meta__tags" href="/tags/linux/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>linux</span></a><a class="article-meta__tags" href="/tags/Nerfstudio/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Nerfstudio</span></a></span></div></div><h1 class="post-title" itemprop="name headline">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-05T03:02:33.000Z" title="发表于 2025-12-05 11:02:33">2025-12-05</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-05T03:17:51.445Z" title="更新于 2025-12-05 11:17:51">2025-12-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/"><header><a href="/tags/3dgs/" tabindex="-1" itemprop="url">3dgs</a><a href="/tags/pytorch/" tabindex="-1" itemprop="url">pytorch</a><a href="/tags/wsl/" tabindex="-1" itemprop="url">wsl</a><a href="/tags/linux/" tabindex="-1" itemprop="url">linux</a><a href="/tags/Nerfstudio/" tabindex="-1" itemprop="url">Nerfstudio</a><h1 id="CrawlerTitle" itemprop="name headline">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-12-05T03:02:33.000Z" title="发表于 2025-12-05 11:02:33">2025-12-05</time><time itemprop="dateCreated datePublished" datetime="2025-12-05T03:17:51.445Z" title="更新于 2025-12-05 11:17:51">2025-12-05</time></header><h1 id="首发针对-windows-环境下-nvidia-rtx-50-系列图形处理单元的-nerfstudio-3dgs-部署流程"><a class="markdownIt-Anchor" href="#首发针对-windows-环境下-nvidia-rtx-50-系列图形处理单元的-nerfstudio-3dgs-部署流程"></a> 【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</h1>
+<blockquote>
+<p><strong>适用硬件规格</strong>：NVIDIA GeForce RTX 5070 / 5080 / 5090 <strong>操作系统要求</strong>：Windows 10 / 11 <strong>核心架构方案</strong>：WSL2 (Ubuntu) + PyTorch Nightly + 本地编译加速 (Local Compilation Acceleration)</p>
+</blockquote>
+<p>鉴于搭载最新 Blackwell 架构（即 RTX 50 系列）的图形处理单元在 Windows 原生环境下的配置存在显著的复杂性及较高的编译失败率，本方案确立了利用 <strong>Windows Subsystem for Linux (WSL2)</strong> 的标准化部署流程。此架构旨在实现图形处理单元性能的无损调用，并利用 Linux 编译生态系统的稳定性。本文档详述了构建全自动、生产级 3D Gaussian Splatting (3DGS) 训练管线的规范程序。</p>
+<h2 id="️-第一阶段windows-subsystem-for-linux-wsl2-子系统的启用与配置"><a class="markdownIt-Anchor" href="#️-第一阶段windows-subsystem-for-linux-wsl2-子系统的启用与配置"></a> 🛠️ 第一阶段：Windows Subsystem for Linux (WSL2) 子系统的启用与配置</h2>
+<p>WSL2 作为集成于 Windows 的 Linux 内核环境，提供了直接访问底层图形硬件的能力。</p>
+<ol>
+<li>
+<p><strong>WSL2 子系统的安装</strong>： 须在 Windows <strong>PowerShell (以管理员权限运行)</strong> 中执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --install</span><br></pre></td></tr></table></figure>
+<p><em>系统安装程序执行完毕后，<strong>必须重启计算机</strong>以完成配置。重启后，Ubuntu 终端将自动启动，须按照提示完成用户凭证（用户名及密码）的设定。</em></p>
+</li>
+<li>
+<p><strong>数据迁移策略（建议执行）</strong>： 尽管 WSL 具备直接访问宿主机 C 盘 (<code>/mnt/c</code>) 的能力，但为优化 I/O 读写速率（预计可提升训练效率一个数量级），建议将<strong>源代码及执行脚本</strong>部署于 Linux 内部文件系统（即 <code>~</code> 目录），仅将<strong>最终产物</strong>同步回传至 Windows 文件系统。</p>
+</li>
+</ol>
+<h2 id="第二阶段linux-基础运行环境的配置"><a class="markdownIt-Anchor" href="#第二阶段linux-基础运行环境的配置"></a> 📦 第二阶段：Linux 基础运行环境的配置</h2>
+<p>在 <strong>Ubuntu 终端</strong>环境中，须依次执行以下指令以配置基础依赖。</p>
+<h3 id="1-系统级依赖库的安装"><a class="markdownIt-Anchor" href="#1-系统级依赖库的安装"></a> 1. 系统级依赖库的安装</h3>
+<p>Nerfstudio 的数据预处理模块依赖于 FFmpeg 及 COLMAP，因此必须部署支持 CUDA 的底层库文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get install -y \</span><br><span class="line">    ffmpeg \</span><br><span class="line">    colmap \</span><br><span class="line">    git \</span><br><span class="line">    build-essential \</span><br><span class="line">    cmake \</span><br><span class="line">    libgl1-mesa-glx</span><br></pre></td></tr></table></figure>
+<h3 id="2-miniconda-环境管理系统的部署"><a class="markdownIt-Anchor" href="#2-miniconda-环境管理系统的部署"></a> 2. Miniconda 环境管理系统的部署</h3>
+<p>此步骤旨在建立 Python 运行环境的管理机制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/miniconda3</span><br><span class="line">wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) -O ~/miniconda3/miniconda.sh</span><br><span class="line">bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3</span><br><span class="line">rm -rf ~/miniconda3/miniconda.sh</span><br><span class="line">~/miniconda3/bin/conda init bash</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h2 id="第三阶段构建适配-rtx-50-系列架构的-ai-引擎"><a class="markdownIt-Anchor" href="#第三阶段构建适配-rtx-50-系列架构的-ai-引擎"></a> ⚡ 第三阶段：构建适配 RTX 50 系列架构的 AI 引擎</h2>
+<p>此阶段为部署流程的核心。鉴于 RTX 50 系列硬件需要 <strong>CUDA 12.6+</strong> 的支持，必须部署 PyTorch 预览版（Nightly Build）并执行渲染器的<strong>源码编译</strong>。</p>
+<h3 id="1-隔离环境的创建"><a class="markdownIt-Anchor" href="#1-隔离环境的创建"></a> 1. 隔离环境的创建</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n gs_linux python=3.10 -y</span><br><span class="line">conda activate gs_linux</span><br></pre></td></tr></table></figure>
+<h3 id="2-pytorch-的安装-适配-blackwell-架构"><a class="markdownIt-Anchor" href="#2-pytorch-的安装-适配-blackwell-架构"></a> 2. PyTorch  的安装 (适配 Blackwell 架构)</h3>
+<h3 id="这里需要注意126版本在202512月会存在兼容性问题例如识别不到gpu型号130版本能识别但是后续版本也跑不通只能使用128版本不要按照下面的命令直接复制黏贴应该直接在pytorch官网找到128版本linux-x64的安装命令安装"><a class="markdownIt-Anchor" href="#这里需要注意126版本在202512月会存在兼容性问题例如识别不到gpu型号130版本能识别但是后续版本也跑不通只能使用128版本不要按照下面的命令直接复制黏贴应该直接在pytorch官网找到128版本linux-x64的安装命令安装"></a> （这里需要注意！！！12.6版本在2025.12月会存在兼容性问题例如识别不到gpu型号，13.0版本能识别但是后续版本也跑不通，只能使用12.8版本，不要按照下面的命令直接复制黏贴，应该直接在PyTorch官网找到12.8版本Linux x64的安装命令安装）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br><span class="line"># 强制指定 CUDA 12.6 版本以确保兼容性</span><br><span class="line">pip install --pre torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/nightly/cu126](https://download.pytorch.org/whl/nightly/cu126)</span><br></pre></td></tr></table></figure>
+<h3 id="3-gsplat-的编译-3dgs-渲染核心组件"><a class="markdownIt-Anchor" href="#3-gsplat-的编译-3dgs-渲染核心组件"></a> 3. gsplat 的编译 (3DGS 渲染核心组件)</h3>
+<p>由于硬件架构的更新，预编译包无法直接运行，必须执行现场编译以生成适配的指令集。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># --no-binary 参数强制执行本地编译，以适配当前的显卡架构</span><br><span class="line">pip install gsplat --no-binary=gsplat --no-cache-dir --no-build-isolation</span><br></pre></td></tr></table></figure>
+<h3 id="4-nerfstudio-框架的安装"><a class="markdownIt-Anchor" href="#4-nerfstudio-框架的安装"></a> 4. Nerfstudio 框架的安装</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 从 GitHub 获取最新开发版本，以确保最佳兼容性</span><br><span class="line">pip install git+[https://github.com/nerfstudio-project/nerfstudio.git](https://github.com/nerfstudio-project/nerfstudio.git)</span><br></pre></td></tr></table></figure>
+<h3 id="5-安全补丁注入-修正-pytorch-26-兼容性问题"><a class="markdownIt-Anchor" href="#5-安全补丁注入-修正-pytorch-26-兼容性问题"></a> 5. 💉 安全补丁注入 (修正 PyTorch 2.6+ 兼容性问题)</h3>
+<p>PyTorch 新版本增强了安全验证机制，可能导致模型导出功能异常。须运行以下指令自动修改源代码，以解除相关限制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 自动定位并修改 eval_utils.py 文件</span><br><span class="line">SITE_PACKAGES=$(python -c &quot;import site; print(site.getsitepackages()[0])&quot;)</span><br><span class="line">sed -i &#x27;s/map_location=&quot;cpu&quot;)/map_location=&quot;cpu&quot;, weights_only=False)/g&#x27; $SITE_PACKAGES/nerfstudio/utils/eval_utils.py</span><br><span class="line">echo &quot;✅ 补丁已应用：允许加载自定义模型权重&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="第四阶段自动化流水线脚本的部署"><a class="markdownIt-Anchor" href="#第四阶段自动化流水线脚本的部署"></a> 🤖 第四阶段：自动化流水线脚本的部署</h2>
+<p>为规避手动操作可能引发的参数错误及路径混淆，建议部署 Python 脚本以接管以下全流程：<strong>视频输入 -&gt; 帧提取 -&gt; COLMAP 位姿解算 -&gt; 模型训练 -&gt; 模型导出 -&gt; 结果回传 Windows</strong>。</p>
+<p>在 WSL 终端中执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/braindance</span><br><span class="line">cd ~/braindance</span><br><span class="line">code process_3dgs.py  # 若未安装 VS Code，可使用 nano process_3dgs.py</span><br></pre></td></tr></table></figure>
+<p>须将以下代码写入并保存。该脚本针对 <strong>RTX 5070</strong> 进行了特定优化：</p>
+<ol>
+<li><strong>Offscreen 模式</strong>：解决 WSL 无显示设备导致的 COLMAP 进程崩溃问题。</li>
+<li><strong>自动数据迁移</strong>：自动将视频源文件从 Windows 存储介质复制至 Linux 高速存储区域进行训练。</li>
+<li><strong>参数优化</strong>：采用 <code>3.0 FPS</code> 采样率配合 <code>2K</code> 分辨率，以在处理速度与模型质量之间取得最佳平衡。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line">import sys</span><br><span class="line">import shutil</span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">from pathlib import Path</span><br><span class="line"></span><br><span class="line"># ================= 配置区域 =================</span><br><span class="line"># Linux 下的临时高速工作区路径定义</span><br><span class="line">LINUX_WORK_ROOT = Path.home() / &quot;braindance_workspace&quot;</span><br><span class="line"></span><br><span class="line">def run_pipeline(video_path, project_name):</span><br><span class="line">    print(f&quot;\n🚀 [BrainDance Engine] 启动 RTX 5070 加速任务: &#123;project_name&#125;&quot;)</span><br><span class="line">    </span><br><span class="line">    # 1. 路径解析与环境准备</span><br><span class="line">    video_src = Path(video_path).resolve()</span><br><span class="line">    work_dir = LINUX_WORK_ROOT / project_name</span><br><span class="line">    data_dir = work_dir / &quot;data&quot;</span><br><span class="line">    output_dir = work_dir / &quot;outputs&quot;</span><br><span class="line">    </span><br><span class="line">    # 环境变量配置：强制 Qt 使用离屏模式，以防止 GUI 初始化失败</span><br><span class="line">    env = os.environ.copy()</span><br><span class="line">    env[&quot;QT_QPA_PLATFORM&quot;] = &quot;offscreen&quot;</span><br><span class="line"></span><br><span class="line">    # ================= 智能断点续传逻辑 =================</span><br><span class="line">    transforms_file = data_dir / &quot;transforms.json&quot;</span><br><span class="line">    if transforms_file.exists():</span><br><span class="line">        print(f&quot;\n⏩ 检测到现有数据，跳过预处理阶段...&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(f&quot;🆕 初始化高速工作区...&quot;)</span><br><span class="line">        if work_dir.exists(): shutil.rmtree(work_dir)</span><br><span class="line">        work_dir.mkdir(parents=True)</span><br><span class="line">        data_dir.mkdir(parents=True)</span><br><span class="line">        </span><br><span class="line">        # 将视频复制到 Linux 本地 (旨在解决 Windows 跨系统 I/O 瓶颈)</span><br><span class="line">        video_dst = work_dir / video_src.name</span><br><span class="line">        shutil.copy(str(video_src), str(video_dst))</span><br><span class="line"></span><br><span class="line">        # ================= [Step 1] 数据预处理 (鲁棒模式) =================</span><br><span class="line">        print(f&quot;\n🎥 [1/3] 视频抽帧与位姿解算&quot;)</span><br><span class="line">        </span><br><span class="line">        # 1.1 手动执行 FFmpeg: 2K 分辨率 + 3.0 FPS (平衡精度与速度)</span><br><span class="line">        extracted_images_dir = data_dir / &quot;images&quot;</span><br><span class="line">        extracted_images_dir.mkdir(parents=True, exist_ok=True)</span><br><span class="line">        </span><br><span class="line">        ffmpeg_cmd = [</span><br><span class="line">            &quot;ffmpeg&quot;, &quot;-y&quot;, &quot;-i&quot;, str(video_dst), </span><br><span class="line">            &quot;-vf&quot;, &quot;scale=2560:-1,fps=3.0&quot;, </span><br><span class="line">            &quot;-q:v&quot;, &quot;2&quot;, </span><br><span class="line">            str(extracted_images_dir / &quot;frame_%05d.jpg&quot;)</span><br><span class="line">        ]</span><br><span class="line">        subprocess.run(ffmpeg_cmd, check=True) </span><br><span class="line">        </span><br><span class="line">        # 1.2 调用 Nerfstudio 包装器以执行 COLMAP</span><br><span class="line">        cmd_colmap = [</span><br><span class="line">            &quot;ns-process-data&quot;, &quot;images&quot;,</span><br><span class="line">            &quot;--data&quot;, str(extracted_images_dir),</span><br><span class="line">            &quot;--output-dir&quot;, str(data_dir),</span><br><span class="line">            &quot;--verbose&quot;,</span><br><span class="line">        ]</span><br><span class="line">        </span><br><span class="line">        # 捕获输出流以进行质量监控</span><br><span class="line">        result = subprocess.run(cmd_colmap, check=True, env=env, capture_output=True, text=True)</span><br><span class="line">        print(result.stdout)</span><br><span class="line">        </span><br><span class="line">        if &quot;COLMAP only found poses&quot; in result.stdout:</span><br><span class="line">            raise RuntimeError(&quot;🚨 COLMAP 数据质量过低，建议重新采集视频素材（增加纹理/减少反光）。&quot;)</span><br><span class="line"></span><br><span class="line">    # ================= [Step 2] 模型训练 =================</span><br><span class="line">    # 检查是否存在已完成的训练结果</span><br><span class="line">    search_path = output_dir / project_name / &quot;splatfacto&quot;</span><br><span class="line">    run_dirs = sorted(list(search_path.glob(&quot;*&quot;))) if search_path.exists() else []</span><br><span class="line"></span><br><span class="line">    if run_dirs:</span><br><span class="line">        print(f&quot;\n⏩ 检测到已完成的训练，跳过...&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(f&quot;\n🧠 [2/3] 开始训练 (Splatfacto)&quot;)</span><br><span class="line">        cmd_train = [</span><br><span class="line">            &quot;ns-train&quot;, &quot;splatfacto&quot;,</span><br><span class="line">            &quot;--data&quot;, str(data_dir),</span><br><span class="line">            &quot;--output-dir&quot;, str(output_dir),</span><br><span class="line">            &quot;--experiment-name&quot;, project_name,</span><br><span class="line">            &quot;--pipeline.model.random-init&quot;, &quot;False&quot;,       # 强制使用 COLMAP 点云进行初始化</span><br><span class="line">            &quot;--pipeline.model.cull-alpha-thresh&quot;, &quot;0.005&quot;, # 优化模型体积参数</span><br><span class="line">            &quot;--max-num-iterations&quot;, &quot;15000&quot;,               # 15k 迭代次数足以收敛</span><br><span class="line">            &quot;--vis&quot;, &quot;viewer+tensorboard&quot;, </span><br><span class="line">            &quot;--viewer.quit-on-train-completion&quot;, &quot;True&quot;,   # 训练完成后自动退出进程</span><br><span class="line">            &quot;colmap&quot;,                                      # 指定数据解析器类型</span><br><span class="line">        ]</span><br><span class="line">        subprocess.run(cmd_train, check=True, env=env)</span><br><span class="line"></span><br><span class="line">    # ================= [Step 3] 导出与回传 =================</span><br><span class="line">    print(f&quot;\n💾 [3/3] 导出结果&quot;)</span><br><span class="line">    </span><br><span class="line">    # 重新获取最新的配置文件</span><br><span class="line">    run_dirs = sorted(list(search_path.glob(&quot;*&quot;)))</span><br><span class="line">    latest_run = run_dirs[-1]</span><br><span class="line">    config_path = latest_run / &quot;config.yml&quot;</span><br><span class="line">    </span><br><span class="line">    cmd_export = [</span><br><span class="line">        &quot;ns-export&quot;, &quot;gaussian-splat&quot;,</span><br><span class="line">        &quot;--load-config&quot;, str(config_path),</span><br><span class="line">        &quot;--output-dir&quot;, str(work_dir)</span><br><span class="line">    ]</span><br><span class="line">    subprocess.run(cmd_export, check=True, env=env)</span><br><span class="line">    </span><br><span class="line">    # 回传结果至 Windows 目录</span><br><span class="line">    print(f&quot;\n📦 同步结果至 Windows...&quot;)</span><br><span class="line">    temp_ply = work_dir / &quot;splat.ply&quot; # 新版本默认文件名</span><br><span class="line">    if not temp_ply.exists(): temp_ply = work_dir / &quot;point_cloud.ply&quot;</span><br><span class="line"></span><br><span class="line">    # 自动获取脚本所在的 Windows 目录路径</span><br><span class="line">    target_dir = Path(__file__).parent / &quot;results&quot;</span><br><span class="line">    target_dir.mkdir(exist_ok=True)</span><br><span class="line">    final_ply = target_dir / f&quot;&#123;project_name&#125;.ply&quot;</span><br><span class="line">    final_transforms = target_dir / &quot;transforms.json&quot;</span><br><span class="line">    </span><br><span class="line">    if temp_ply.exists():</span><br><span class="line">        # 使用 cp 命令绕过 Python 权限检查机制</span><br><span class="line">        subprocess.run(f&quot;cp &#123;str(temp_ply)&#125; &#123;str(final_ply)&#125;&quot;, check=True, shell=True)</span><br><span class="line">        # 同时回传姿态文件以供 WebGL 使用</span><br><span class="line">        if (data_dir / &quot;transforms.json&quot;).exists():</span><br><span class="line">            subprocess.run(f&quot;cp &#123;str(data_dir / &#x27;transforms.json&#x27;)&#125; &#123;str(final_transforms)&#125;&quot;, check=True, shell=True)</span><br><span class="line">            </span><br><span class="line">        print(f&quot;✅ 成功！模型已保存至: &#123;final_ply&#125;&quot;)</span><br><span class="line">        # 清理 Linux 缓存，释放存储空间</span><br><span class="line">        shutil.rmtree(work_dir)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;❌ 导出失败，未找到 PLY 文件&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    # 自动定位当前目录下的 test.mp4 文件</span><br><span class="line">    script_dir = Path(__file__).resolve().parent</span><br><span class="line">    video_file = script_dir / &quot;test.mp4&quot; </span><br><span class="line">    </span><br><span class="line">    if video_file.exists():</span><br><span class="line">        run_pipeline(video_file, &quot;scene_rtx50&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(f&quot;❌ 请将视频 test.mp4 放入此脚本同级目录: &#123;script_dir&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="第五阶段执行程序"><a class="markdownIt-Anchor" href="#第五阶段执行程序"></a> 🚀 第五阶段：执行程序</h2>
+<p>操作者仅需在 Windows 资源管理器中，将视频源文件重命名为 <code>test.mp4</code>，并置于 <code>process_3dgs.py</code> 同级目录下。</p>
+<p>随后在 WSL 终端中执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/c/Users/您的用户名/Documents/您的项目路径/demo</span><br><span class="line">python process_3dgs.py</span><br></pre></td></tr></table></figure>
+<h1 id="rtx-5070-windows-nerfstudio一场从入门到放弃再到重生的踩坑实录"><a class="markdownIt-Anchor" href="#rtx-5070-windows-nerfstudio一场从入门到放弃再到重生的踩坑实录"></a> 🩸 RTX 5070 + Windows + Nerfstudio：一场从入门到放弃再到重生的踩坑实录</h1>
+<p><strong>硬件环境</strong>：Intel i5-14600KF + 64GB RAM + <strong>NVIDIA RTX 5070</strong> <strong>软件目标</strong>：跑通 3D Gaussian Splatting (Splatfacto) 训练流：视频 -&gt; 训练 -&gt; 导出模型。</p>
+<hr />
+<h2 id="第一阶段windows-原生环境的死胡同"><a class="markdownIt-Anchor" href="#第一阶段windows-原生环境的死胡同"></a> 第一阶段：Windows 原生环境的“死胡同”</h2>
+<p>既然是 Windows 电脑，第一反应当然是直接在 PowerShell 里跑。</p>
+<h3 id="坑位-1colmap-的找不到指定文件与-gpu-缺失"><a class="markdownIt-Anchor" href="#坑位-1colmap-的找不到指定文件与-gpu-缺失"></a> 坑位 1：COLMAP 的“找不到指定文件”与 GPU 缺失</h3>
+<p>起初，我想直接用 <code>pip install nerfstudio</code> 然后运行 <code>ns-process-data</code>。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[WinError 2] 系统找不到指定的文件</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：Windows 下的 Python <code>subprocess</code> 调用外部命令（如 <code>colmap</code>）时，如果没有把路径加到 System PATH，或者没有开启 <code>shell=True</code>，它根本找不到命令。 <strong>尝试修复</strong>：</p>
+<ol>
+<li>手动下载 COLMAP Windows 二进制包。</li>
+<li>配置环境变量。</li>
+<li><strong>新报错</strong>：<code>Failed to parse options - unrecognised option '--SiftExtraction.use_gpu'</code>。 <strong>原因</strong>：Windows 上很多预编译的 COLMAP 版本（包括 pip 安装的）默认是不带 CUDA 支持的，或者参数版本过旧。 <strong>结论</strong>：在 Windows 上配置一个能被 Python 正确调用的、带 CUDA 的 COLMAP 极其痛苦。</li>
+</ol>
+<h3 id="坑位-2rtx-5070-的架构兼容性-sm_120"><a class="markdownIt-Anchor" href="#坑位-2rtx-5070-的架构兼容性-sm_120"></a> 坑位 2：RTX 5070 的架构兼容性 (SM_120)</h3>
+<p>搞定 COLMAP 后，尝试开始训练。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UserWarning: NVIDIA GeForce RTX 5070 with CUDA capability sm_120 is not compatible with the current PyTorch installation.</span><br><span class="line">The current PyTorch install supports CUDA capabilities sm_50 ... sm_90.</span><br><span class="line">RuntimeError: CUDA error: no kernel image is available for execution on the device</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：RTX 5070 太新了！目前主流的 PyTorch Stable (2.4/2.5) 对应的 CUDA 11.8 或 12.1/12.4 的二进制包里，根本没有编译针对 <strong>Blackwell (SM_120)</strong> 架构的内核。这就好比拿着 PS6 的光盘塞进 PS5 里。 <strong>尝试修复</strong>：必须安装 <strong>PyTorch Nightly (预览版)</strong>，配合 CUDA 12.6+。</p>
+<h3 id="坑位-3windows-msvc-与-pytorch-nightly-的世纪大战"><a class="markdownIt-Anchor" href="#坑位-3windows-msvc-与-pytorch-nightly-的世纪大战"></a> 坑位 3：Windows MSVC 与 PyTorch Nightly 的“世纪大战”</h3>
+<p>升级到 PyTorch Nightly 后，Nerfstudio 依赖的 <code>gsplat</code> 库需要重新编译（JIT Compile）。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error C2872: “std”: ambiguous symbol</span><br><span class="line">...</span><br><span class="line">C:/.../torch/include/torch/csrc/dynamo/compiled_autograd.h(1134): error C2872: “std”: 不明确的符号</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：这是 PyTorch Nightly 在 Windows 上的一个严重 Bug。它的 C++ 头文件代码写得不严谨，与 Windows 的 Visual Studio 编译器 (MSVC) 的标准库发生了命名空间冲突。 <strong>尝试修复</strong>：</p>
+<ol>
+<li>试图手动修改 PyTorch 源码，把 <code>std</code> 改成 <code>::std</code>。改了一个文件，后面还有十个文件报错。</li>
+<li>试图升级/降级 Visual Studio 版本，无效。</li>
+<li>试图强制升级 <code>gsplat</code> 到最新版，依然编译失败。</li>
+</ol>
+<p><strong>阶段一结论</strong>：在 PyTorch 官方修复 Windows 编译问题之前，<strong>RTX 50 系显卡无法在 Windows 原生环境下运行需要编译 CUDA 扩展的库（如 gsplat）</strong>。此路不通。</p>
+<hr />
+<h2 id="第二阶段转战-wsl2-windows-subsystem-for-linux"><a class="markdownIt-Anchor" href="#第二阶段转战-wsl2-windows-subsystem-for-linux"></a> 第二阶段：转战 WSL2 (Windows Subsystem for Linux)</h2>
+<p>既然 Windows 编译器不行，那就用 Linux 的 GCC。于是我开启了 WSL2。</p>
+<h3 id="坑位-4colmap-在无头模式下的自杀"><a class="markdownIt-Anchor" href="#坑位-4colmap-在无头模式下的自杀"></a> 坑位 4：COLMAP 在无头模式下的“自杀”</h3>
+<p>在 WSL2 里配置好环境，运行 <code>ns-process-data</code>。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">qt.qpa.xcb: could not connect to display</span><br><span class="line">...</span><br><span class="line">Aborted (core dumped)</span><br><span class="line">ERROR:root:Feature extraction failed with code 34304. Exiting.</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：WSL2 默认是<strong>无头模式 (Headless)</strong>，没有连接物理显示器。但 COLMAP（即便是命令行版）在初始化特征提取时，居然试图通过 Qt 库去初始化图形界面或 OpenGL 上下文，找不到显示器就直接崩了。 <strong>尝试修复</strong>：</p>
+<ol>
+<li>既然是 Qt 的锅，那就禁用 GUI。</li>
+<li><strong>解决方案</strong>：设置环境变量 <code>QT_QPA_PLATFORM=offscreen</code>。告诉它“我在后台跑，别找显示器”。</li>
+</ol>
+<h3 id="坑位-5opengl-上下文创建失败"><a class="markdownIt-Anchor" href="#坑位-5opengl-上下文创建失败"></a> 坑位 5：Opengl 上下文创建失败</h3>
+<p>解决了 Qt 报错后，COLMAP 依然报错： <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opengl_utils.cc:56] Check failed: context_.create()</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：即使不显示界面，COLMAP 默认使用 SiftGPU 进行特征提取，这需要 OpenGL 上下文。WSL2 虽然支持 CUDA，但对 OpenGL 的 headless 支持有时候很玄学。 <strong>解决方案</strong>： 放弃 GPU 特征提取，强制使用 CPU。修改调用命令，加入 <code>--SiftExtraction.use_gpu 0</code> 和 <code>--SiftMatching.use_gpu 0</code>。虽然慢点，但稳。</p>
+<hr />
+<h2 id="第三阶段nerfstudio-版本的混乱之治"><a class="markdownIt-Anchor" href="#第三阶段nerfstudio-版本的混乱之治"></a> 第三阶段：Nerfstudio 版本的混乱之治</h2>
+<p>环境终于稳了，开始运行 Nerfstudio 的 Python 脚本。</p>
+<h3 id="坑位-6cli-参数的捉迷藏"><a class="markdownIt-Anchor" href="#坑位-6cli-参数的捉迷藏"></a> 坑位 6：CLI 参数的“捉迷藏”</h3>
+<p>我想修改图片分辨率防止显存溢出，于是加了 <code>--downscale-factor</code>。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unrecognized options: --downscale-factor</span><br></pre></td></tr></table></figure>
+<p>我又试了 <code>--camera-res-scale-factor</code>。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unrecognized options: --camera-res-scale-factor</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：Nerfstudio 的开发版（Git Version）更新极快，命令行参数的位置和名字改来改去。有的参数从一级目录移到了 <code>pipeline.datamanager</code> 下，有的又移回了 <code>dataparser</code> 下。 <strong>最终解决方案</strong>： <strong>不信任 Nerfstudio 的预处理命令</strong>。直接用 Python 调用 <code>ffmpeg</code> 手动抽帧并缩放图片（比如缩放到 2K），然后只让 Nerfstudio 做它最擅长的解算，不让它处理图片缩放。</p>
+<h3 id="坑位-7模型变成了黑色海胆"><a class="markdownIt-Anchor" href="#坑位-7模型变成了黑色海胆"></a> 坑位 7：模型变成了“黑色海胆”</h3>
+<p>终于跑通了训练，但结果出来一看：模型是一团乱糟糟的黑色尖刺，只有依稀一点点轮廓。 <strong>原因</strong>：</p>
+<ol>
+<li><strong>COLMAP 数据极差</strong>：日志显示 <code>COLMAP only found poses for 1.09% of the images</code>。因为耳机是黑色的、反光的，且我为了追求画质用了 4K 分辨率 + 高帧率。特征点太多且全是噪点，导致匹配彻底失败。</li>
+<li><strong>Nerfstudio 自动缩放</strong>：Nerfstudio 默认会自动缩放场景并重新定中心，对于稀疏的点云，这直接把模型“拉爆”了。</li>
+</ol>
+<p><strong>修复方案</strong>：</p>
+<ol>
+<li><strong>重拍视频</strong>：增加纹理点（贴纸），降低反光。</li>
+<li><strong>降低参数</strong>：分辨率降到 2K，帧率降到 3.0 FPS（保证重叠率但减少无效帧）。</li>
+<li><strong>禁用自动魔法</strong>：在训练命令中加入 <code>--auto-scale-poses False</code> 和 <code>--center-method none</code>（虽然这又引发了新一轮的参数位置报错，最终只能通过清理数据强制重跑 Step 1 来解决）。</li>
+</ol>
+<hr />
+<h2 id="第四阶段导出的最后一公里"><a class="markdownIt-Anchor" href="#第四阶段导出的最后一公里"></a> 第四阶段：导出的“最后一公里”</h2>
+<p>训练完成了 15000 步，最后一步是导出 <code>.ply</code> 模型文件。</p>
+<h3 id="坑位-8pytorch-26-的安全拦截"><a class="markdownIt-Anchor" href="#坑位-8pytorch-26-的安全拦截"></a> 坑位 8：PyTorch 2.6+ 的安全拦截</h3>
+<p>导出时直接 Crash。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_pickle.UnpicklingError: Weights only load failed...</span><br><span class="line">WeightsUnpickler error: Unsupported global: GLOBAL numpy._core.multiarray.scalar was not an allowed global by default.</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：为了适配 RTX 5070，我们安装了最新的 PyTorch Nightly (2.6+)。新版 PyTorch 默认开启了 <code>weights_only=True</code> 的安全检查，禁止加载包含旧版 NumPy 格式的模型权重文件。Nerfstudio 还没适配这个改动。 <strong>尝试修复</strong>：</p>
+<ol>
+<li>设置环境变量 <code>TORCH_ALLOW_UNSAFE_SERIALIZATION=1</code>？<strong>无效</strong>，似乎没传进去。</li>
+<li><strong>最终解决方案</strong>：<strong>外科手术式修改</strong>。直接找到 Conda 环境里的 <code>nerfstudio/utils/eval_utils.py</code> 源码，把 <code>torch.load(..., map_location=&quot;cpu&quot;)</code> 强行改成 <code>torch.load(..., map_location=&quot;cpu&quot;, weights_only=False)</code>。</li>
+</ol>
+<h3 id="坑位-9cli-导出模式不存在"><a class="markdownIt-Anchor" href="#坑位-9cli-导出模式不存在"></a> 坑位 9：CLI 导出模式不存在</h3>
+<p>尝试用 <code>ns-export zip-nerf</code> 导出。 <strong>报错</strong>：<code>invalid choice: 'zip-nerf'</code>。 <strong>原因</strong>：版本差异。 <strong>解决</strong>：回归最原始的 <code>ns-export gaussian-splat</code>。</p>
+<h3 id="坑位-10文件回传的权限拒绝"><a class="markdownIt-Anchor" href="#坑位-10文件回传的权限拒绝"></a> 坑位 10：文件回传的权限拒绝</h3>
+<p>最后一步，想把 WSL2 里生成的 <code>model.ply</code> 复制回 Windows 的 <code>D:\results</code>。 <strong>报错：</strong></p>
+<p>Plaintext</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermissionError: [Errno 1] Operation not permitted</span><br></pre></td></tr></table></figure>
+<p><strong>原因</strong>：Python 的 <code>shutil.copy</code> 试图在复制文件内容的同时复制 Linux 的文件权限（chmod），但 Windows 的 NTFS 文件系统不支持这些操作，导致报错。 <strong>最终解决方案</strong>： 放弃 Python 的 <code>shutil</code>，直接调用 Shell 命令 <code>cp</code>。Linux 的 <code>cp</code> 命令在处理跨文件系统复制时更“懂事”，只拷数据，不拷权限。</p>
+<hr />
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 🏁 总结</h2>
+<p>要在 Windows 上用 RTX 5070 跑通 Nerfstudio，你必须：</p>
+<ol>
+<li><strong>放弃 Windows 原生环境</strong>，拥抱 <strong>WSL2</strong>。</li>
+<li><strong>放弃 PyTorch 稳定版</strong>，拥抱 <strong>Nightly + CUDA 12.6</strong>。</li>
+<li><strong>放弃 <code>pip install gsplat</code></strong>，必须 <strong>从源码编译</strong>。</li>
+<li><strong>放弃 Nerfstudio 的自动数据处理</strong>，自己写 Python 脚本调用 FFmpeg。</li>
+<li><strong>手动修改 Nerfstudio 源码</strong>，以绕过 PyTorch 2.6 的安全检查。</li>
+<li><strong>在无头模式下给 COLMAP 戴上“眼罩” (<code>offscreen</code>)</strong>，并放弃 GPU 特征提取。</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/')">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程&amp;url=http://tianxingleo.top/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.top" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/3dgs/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>3dgs<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/pytorch/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>pytorch<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/wsl/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>wsl<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/linux/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>linux<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/Nerfstudio/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Nerfstudio<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=32c0ed69-1a08-500e-b2f0-5e7cdcaba02b" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）</div></div></a></div><div class="next-post pull-right"><a href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=f504beb3-7f30-1846-33a7-c3b6ed246975" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=cd395191-65a9-097a-bd04-8ff199d09fb5" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-08</div><div class="title">【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案</div></div></a></div><div><a href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-10</div><div class="title">在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练</div></div></a></div><div><a href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=f504beb3-7f30-1846-33a7-c3b6ed246975" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-07</div><div class="title">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</div></div></a></div><div><a href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=32c0ed69-1a08-500e-b2f0-5e7cdcaba02b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-05</div><div class="title">关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E5%8F%91%E9%92%88%E5%AF%B9-windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-nvidia-rtx-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-nerfstudio-3dgs-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text"> 【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%B8%8F-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5windows-subsystem-for-linux-wsl2-%E5%AD%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E7%94%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> 🛠️ 第一阶段：Windows Subsystem for Linux (WSL2) 子系统的启用与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5linux-%E5%9F%BA%E7%A1%80%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> 📦 第二阶段：Linux 基础运行环境的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B3%BB%E7%BB%9F%E7%BA%A7%E4%BE%9D%E8%B5%96%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 系统级依赖库的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-miniconda-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. Miniconda 环境管理系统的部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%E6%9E%84%E5%BB%BA%E9%80%82%E9%85%8D-rtx-50-%E7%B3%BB%E5%88%97%E6%9E%B6%E6%9E%84%E7%9A%84-ai-%E5%BC%95%E6%93%8E"><span class="toc-number">1.3.</span> <span class="toc-text"> ⚡ 第三阶段：构建适配 RTX 50 系列架构的 AI 引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9A%94%E7%A6%BB%E7%8E%AF%E5%A2%83%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 隔离环境的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-pytorch-%E7%9A%84%E5%AE%89%E8%A3%85-%E9%80%82%E9%85%8D-blackwell-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. PyTorch  的安装 (适配 Blackwell 架构)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F126%E7%89%88%E6%9C%AC%E5%9C%A8202512%E6%9C%88%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%E4%BE%8B%E5%A6%82%E8%AF%86%E5%88%AB%E4%B8%8D%E5%88%B0gpu%E5%9E%8B%E5%8F%B7130%E7%89%88%E6%9C%AC%E8%83%BD%E8%AF%86%E5%88%AB%E4%BD%86%E6%98%AF%E5%90%8E%E7%BB%AD%E7%89%88%E6%9C%AC%E4%B9%9F%E8%B7%91%E4%B8%8D%E9%80%9A%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8128%E7%89%88%E6%9C%AC%E4%B8%8D%E8%A6%81%E6%8C%89%E7%85%A7%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E9%BB%8F%E8%B4%B4%E5%BA%94%E8%AF%A5%E7%9B%B4%E6%8E%A5%E5%9C%A8pytorch%E5%AE%98%E7%BD%91%E6%89%BE%E5%88%B0128%E7%89%88%E6%9C%AClinux-x64%E7%9A%84%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.3.</span> <span class="toc-text"> （这里需要注意！！！12.6版本在2025.12月会存在兼容性问题例如识别不到gpu型号，13.0版本能识别但是后续版本也跑不通，只能使用12.8版本，不要按照下面的命令直接复制黏贴，应该直接在PyTorch官网找到12.8版本Linux x64的安装命令安装）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-gsplat-%E7%9A%84%E7%BC%96%E8%AF%91-3dgs-%E6%B8%B2%E6%9F%93%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3. gsplat 的编译 (3DGS 渲染核心组件)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-nerfstudio-%E6%A1%86%E6%9E%B6%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 4. Nerfstudio 框架的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%89%E5%85%A8%E8%A1%A5%E4%B8%81%E6%B3%A8%E5%85%A5-%E4%BF%AE%E6%AD%A3-pytorch-26-%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 5. 💉 安全补丁注入 (修正 PyTorch 2.6+ 兼容性问题)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%84%9A%E6%9C%AC%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">1.4.</span> <span class="toc-text"> 🤖 第四阶段：自动化流水线脚本的部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%98%B6%E6%AE%B5%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text"> 🚀 第五阶段：执行程序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rtx-5070-windows-nerfstudio%E4%B8%80%E5%9C%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%E5%86%8D%E5%88%B0%E9%87%8D%E7%94%9F%E7%9A%84%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95"><span class="toc-number">2.</span> <span class="toc-text"> 🩸 RTX 5070 + Windows + Nerfstudio：一场从入门到放弃再到重生的踩坑实录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5windows-%E5%8E%9F%E7%94%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E6%AD%BB%E8%83%A1%E5%90%8C"><span class="toc-number">2.1.</span> <span class="toc-text"> 第一阶段：Windows 原生环境的“死胡同”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-1colmap-%E7%9A%84%E6%89%BE%E4%B8%8D%E5%88%B0%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E4%B8%8E-gpu-%E7%BC%BA%E5%A4%B1"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 坑位 1：COLMAP 的“找不到指定文件”与 GPU 缺失</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-2rtx-5070-%E7%9A%84%E6%9E%B6%E6%9E%84%E5%85%BC%E5%AE%B9%E6%80%A7-sm_120"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 坑位 2：RTX 5070 的架构兼容性 (SM_120)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-3windows-msvc-%E4%B8%8E-pytorch-nightly-%E7%9A%84%E4%B8%96%E7%BA%AA%E5%A4%A7%E6%88%98"><span class="toc-number">2.1.3.</span> <span class="toc-text"> 坑位 3：Windows MSVC 与 PyTorch Nightly 的“世纪大战”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E8%BD%AC%E6%88%98-wsl2-windows-subsystem-for-linux"><span class="toc-number">2.2.</span> <span class="toc-text"> 第二阶段：转战 WSL2 (Windows Subsystem for Linux)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-4colmap-%E5%9C%A8%E6%97%A0%E5%A4%B4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E8%87%AA%E6%9D%80"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 坑位 4：COLMAP 在无头模式下的“自杀”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-5opengl-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%9B%E5%BB%BA%E5%A4%B1%E8%B4%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 坑位 5：Opengl 上下文创建失败</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5nerfstudio-%E7%89%88%E6%9C%AC%E7%9A%84%E6%B7%B7%E4%B9%B1%E4%B9%8B%E6%B2%BB"><span class="toc-number">2.3.</span> <span class="toc-text"> 第三阶段：Nerfstudio 版本的混乱之治</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-6cli-%E5%8F%82%E6%95%B0%E7%9A%84%E6%8D%89%E8%BF%B7%E8%97%8F"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 坑位 6：CLI 参数的“捉迷藏”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-7%E6%A8%A1%E5%9E%8B%E5%8F%98%E6%88%90%E4%BA%86%E9%BB%91%E8%89%B2%E6%B5%B7%E8%83%86"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 坑位 7：模型变成了“黑色海胆”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%E5%AF%BC%E5%87%BA%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%85%AC%E9%87%8C"><span class="toc-number">2.4.</span> <span class="toc-text"> 第四阶段：导出的“最后一公里”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-8pytorch-26-%E7%9A%84%E5%AE%89%E5%85%A8%E6%8B%A6%E6%88%AA"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 坑位 8：PyTorch 2.6+ 的安全拦截</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-9cli-%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 坑位 9：CLI 导出模式不存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91%E4%BD%8D-10%E6%96%87%E4%BB%B6%E5%9B%9E%E4%BC%A0%E7%9A%84%E6%9D%83%E9%99%90%E6%8B%92%E7%BB%9D"><span class="toc-number">2.4.3.</span> <span class="toc-text"> 坑位 10：文件回传的权限拒绝</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.5.</span> <span class="toc-text"> 🏁 总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=2da69902-27fe-373c-8e24-859e8a7707de" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"/></a><div class="content"><a class="title" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练">在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练</a><time datetime="2025-12-10T13:53:53.000Z" title="发表于 2025-12-10 21:53:53">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=cd395191-65a9-097a-bd04-8ff199d09fb5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"/></a><div class="content"><a class="title" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案">【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案</a><time datetime="2025-12-08T06:29:13.000Z" title="发表于 2025-12-08 14:29:13">2025-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=f504beb3-7f30-1846-33a7-c3b6ed246975" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"/></a><div class="content"><a class="title" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</a><time datetime="2025-12-06T16:48:20.000Z" title="发表于 2025-12-07 00:48:20">2025-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=176c5d17-cfce-3c88-684c-01c011722fb6" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程"/></a><div class="content"><a class="title" href="/2025/12/05/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E9%92%88%E5%AF%B9-Windows-%E7%8E%AF%E5%A2%83%E4%B8%8B-NVIDIA-RTX-50-%E7%B3%BB%E5%88%97%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83%E7%9A%84-Nerfstudio-3DGS-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B/" title="【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程">【首发】针对 Windows 环境下 NVIDIA RTX 50 系列图形处理单元的 Nerfstudio (3DGS) 部署流程</a><time datetime="2025-12-05T03:02:33.000Z" title="发表于 2025-12-05 11:02:33">2025-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/%E3%80%90Pixiv%E7%94%BB%E5%B8%88%E7%B2%BE%E9%80%89%EF%BC%88132%EF%BC%89%E3%80%91%E5%85%AB%E4%B8%89_988777.webp?_r_=32c0ed69-1a08-500e-b2f0-5e7cdcaba02b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）"/></a><div class="content"><a class="title" href="/2025/12/05/%E5%85%B3%E4%BA%8E%E5%9C%A8-Google-Colab-%E5%B9%B3%E5%8F%B0%E5%9F%BA%E4%BA%8E-Tesla-T4-%E5%8A%A0%E9%80%9F%E5%99%A8%E5%85%A8%E6%B5%81%E7%A8%8B%E9%83%A8%E7%BD%B2%E4%B8%89%E7%BB%B4%E9%AB%98%E6%96%AF%E6%B3%BC%E6%BA%85%EF%BC%883DGS%EF%BC%89%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%9E%E6%96%BD%E5%8D%8F%E8%AE%AE%EF%BC%882025-12%EF%BC%89/" title="关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）">关于在 Google Colab 平台基于 Tesla T4 加速器全流程部署三维高斯泼溅（3DGS）技术的实施协议（2025.12）</a><time datetime="2025-12-05T02:22:33.000Z" title="发表于 2025-12-05 10:22:33">2025-12-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 0.88rem;">3dgs<sup>5</sup></a><a href="/tags/5070/" style="font-size: 0.88rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 0.88rem;">Nerfstudio<sup>1</sup></a><a href="/tags/RTX5070/" style="font-size: 0.88rem;">RTX5070<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 0.88rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 0.88rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 0.88rem;">colmap<sup>3</sup></a><a href="/tags/cpc/" style="font-size: 0.88rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 0.88rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 0.88rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 0.88rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 0.88rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/pytorch/" style="font-size: 0.88rem;">pytorch<sup>3</sup></a><a href="/tags/tic/" style="font-size: 0.88rem;">tic<sup>1</sup></a><a href="/tags/vggt/" style="font-size: 0.88rem;">vggt<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 0.88rem;">wsl<sup>4</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 0.88rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 0.88rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 0.88rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 0.88rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 0.88rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>2</sup></a><a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 0.88rem;">日语<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 0.88rem;">结构体<sup>1</sup></a><a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/" style="font-size: 0.88rem;">质数筛<sup>2</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 0.88rem;">高数<sup>4</sup></a><a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">高等数学<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
