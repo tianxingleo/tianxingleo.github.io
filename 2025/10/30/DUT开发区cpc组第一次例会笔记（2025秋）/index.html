@@ -1,0 +1,1163 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>DUT开发区cpc组第一次例会笔记（2025秋） | Tianxingleo的Blog</title><meta name="keywords" content="cpc,cpp"><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="DUT开发区cpc组第一次例会笔记（2025秋）"><meta name="application-name" content="DUT开发区cpc组第一次例会笔记（2025秋）"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="DUT开发区cpc组第一次例会笔记（2025秋）"><meta property="og:url" content="http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="1.向上取整 在 C++ 中，对两个整数做除法并实现向上取整（Ceiling Division）的通用方法是利用一个简单的数学技巧。  通用公式 对于两个正整数 aaa（被除数）和 bbb（除数），向上取整的公式是： ⌈ab⌉&amp;#x3D;a+b−1b\lceil \frac{a}{b} \rceil &amp;#x3D; \"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=7a8810f0-8e4e-7358-78f1-8e07f64adf74"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=7a8810f0-8e4e-7358-78f1-8e07f64adf74"><meta name="description" content="1.向上取整 在 C++ 中，对两个整数做除法并实现向上取整（Ceiling Division）的通用方法是利用一个简单的数学技巧。  通用公式 对于两个正整数 aaa（被除数）和 bbb（除数），向上取整的公式是： ⌈ab⌉&amp;#x3D;a+b−1b\lceil \frac{a}{b} \rceil &amp;#x3D; \"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: 'DUT开发区cpc组第一次例会笔记（2025秋）',
+  postAI: '',
+  pageFillDescription: ' 1.向上取整,  通用公式,  C++ 实现,  公式解释,  另一种方法：浮点数转换 (不推荐),  2. 1ll,  1. 确保常量的类型是 long long,  2. 避免潜在的溢出（Overflow）和类型转换问题,  场景 A 赋值时的溢出（最常见问题）,  场景 B 表达式中的类型提升（Promotion）,  总结,  3. memset(),  1. memset() 的作用和限制,  2. 数组初始化的常见方法和推荐,  A. C++ 推荐方法 (更安全、更现代),  B. C/C++ 通用方法 (针对特定值),  结论和建议,  4. strlen(),  5. 四舍五入,  1. 使用 stdround() (C++11 及更高版本推荐⭐),  2. 使用 floor(x + 0.5) 技巧 (兼容 C/C++但有局限),  3. 实现自定义四舍五入函数 (手动处理正负数),  4. 四舍五入到小数点后 N 位,  6. 三目运算符,  📚 基本语法,  💡 示例对比,  1. 使用 if...else 语句,  2. 使用三目运算符,  🔧 常见用例,  👍 优点与 👎 缺点,  优点,  缺点,  7. 格式化输出,  1.,  2.,  结构,  组成部分详解,  示例,  使用 % - 10 s,  数字的左对齐示例,  3.,  总结区别,  详细解释,  1. %lf (用于 double),  2. %Lf (用于 long double),  ❗ 重点注意事项,  8. sort(),  一、 stdsort() 的基本用法,  二、 针对 C 风格数组的使用,  1. 默认升序排序 (从小到大),  2. 自定义降序排序 (从大到小),  三、 针对 stdvector 的使用,  1. 默认升序排序,  2. 自定义降序排序,  总结,  9.时间复杂度向上取整在中对两个整数做除法并实现向上取整的通用方法是利用一个简单的数学技巧通用公式对于两个正整数被除数和除数向上取整的公式是实现假设和都是正整数使用以防止发生溢出尽管对于类型大部分情况下不会如果和接近的最大值应该使用更大的类型向上取整输出向上取整输出向上取整输出公式解释这个技巧的原理是的整数除法如默认是向下取整对于正数来说就是如果能够被整除例如那么的值会比下一个的倍数小所以例子如果不能被整除存在余数例如余余余那么的值会刚好达到或超过下一个的倍数当它被整除时结果会向上进位例子另一种方法浮点数转换不推荐虽然可以使用浮点数转换但这通常会引入浮点数精度问题并且效率较低假设和都是正整数将其中一个操作数转换为进行浮点除法使用函数向上取整然后转换为注意在竞争性编程或对性能和精度要求高的场景中应该优先使用整数公式在中初始化类型的变量时使用这样的后缀或在任何涉及常量的表达式中使用是一个非常好的习惯甚至可以说是必需的原因如下确保常量的类型是在中当你直接写一个整数常量时例如或编译器默认会将其视为如果值太大超过了的范围则会依次升级为直到能容纳它的最小类型当你使用后缀或时你明确地告诉编译器这个数字是一个类型的常量是一个类型的常量或是一个类型的常量或是一个类型的常量避免潜在的溢出和类型转换问题考虑以下两种情况场景赋值时的溢出最常见问题如果你的常量值超过了位的最大值约亿但你没有加后缀就会导致溢出或非预期的行为假设是位最大值约错误或警告默认被视为在赋值给之前它首先以身份进行计算或存储这会导致溢出然后这个错误的值才被提升提升给结果可能不是亿而是一个负数或一个错误的正数正确直接被视为类型常量不会溢出然后赋值场景表达式中的类型提升即使常量本身的值很小比如如果在涉及大量运算的表达式中使用可以确保整个计算在的精度下进行假设是亿期望结果是亿错误示范尽管很小但已经是保证结果是更危险的例子危险亿结果是亿和都是它们的乘积亿会溢出然后这个溢出的结果才赋值给安全因为有乘法在精度下进行总结无论是初始化还是在表达式中使用只要是类型的变量涉及到整数常量时都应该添加或后缀表达式类型含义普通整数常量整数常量整数常量推荐整数常量整数常量因此在初始化或使用常数时使用是一个规范且必要的做法可以完全避免因隐式类型转换和整数溢出导致的潜在关于数组初始化是否使用答案是不一定它取决于数组的类型目标值以及你使用的是语言还是语言的作用和限制是一个标准库函数它的作用是将指定内存块从起始地址开始的前个字节都设置为同一个字节值关键限制只能安全地将数组初始化为或当你想将整数数组或浮点数数组初始化为时是安全且高效的因为无论是还是指针全的字节序列都对应于它们的值当你想将数组初始化为时对于大多数有符号整数类型如也是安全的因为全的字节序列通常代表的补码表示对于任何其他值例如使用是错误的因为是按字节填充的如果你想将一个数组初始化为会将每个的所有字节都设置为这通常不会得到数字的值数组初始化的常见方法和推荐推荐方法更安全更现代在中推荐使用以下方法它们更安全更具类型感知方法适用场景优点示例花括号初始化任何数组之后的标准简洁安全自动将剩余元素初始化为结果仅花括号将数组初始化为全最简洁最快或结果或将数组初始化为任意值类型安全适用于任何类型可读性好代替原生数组尺寸可变自动管理内存初始化方法多样个元素都初始化为通用方法针对特定值方法适用场景优点示例将数组初始化为或性能最高通常是算法无法比拟的循环初始化为任意值最灵活可以执行复杂逻辑结论和建议如果你使用并且需要将数组初始化为除了或以外的任意值使用或它们是类型安全的并且能正确处理对象的构造如果你需要将风格数组等快速初始化为全在中使用最简洁和推荐在或需要最高性能时使用如果你处理的数组元素是复杂的对象非类型如自定义类绝对不要使用这会导致对象内部状态被破坏必须使用的初始化列表或等方法和函数都是用来获取字符串长度的但它们在使用对象计算方式和适用语言方面有明显的区别特点适用对象主要用于标准库中的容器例如等主要用于风格字符串以空字符结尾的字符数组或计算方式返回容器中实际存储的元素个数对于它返回的是字符串中的字符数量不包括末尾的空字符从字符串的起始地址开始逐个字符计数直到遇到第一个空字符为止返回的长度不包括空字符效率时间复杂度通常是因为它直接访问对象内部存储的长度成员变量因为它必须遍历整个字符串直到找到空字符返回类型通常是类型一个无符号整数类型类型是否安全相对安全因为它操作的是标准库对象不会发生越界访问存在安全风险如果传入的字符数组没有正确的空字符结尾函数会一直读下去直到访问到非法内存导致未定义行为通常是程序崩溃头文件通常不需要额外的头文件对于或者对应容器的头文件例如或总结编程中处理对象时应优先使用或方法这两个对于来说是等价的它更快更安全更符合面向对象的习惯处理风格字符串或时必须使用示例使用或推荐输出风格字符串使用必须输出尽管不推荐但你也可以对的风格表示使用输出四舍五入在中实现四舍五入最简单最标准的方法是使用引入的数学函数如果你使用的是之前的标准或者需要自定义精度则需要使用不同的技巧以下是中实现四舍五入的几种主要方法使用及更高版本推荐是标准库中的函数它实现了标准的四舍五入规则到最近的整数如果刚好在两个整数中间则舍入到远离零的方向即特点最标准最简洁定义在头文件中代码示例输出输出远离零输出输出输出远离零输出使用技巧兼容但有局限这是语言中常用的四舍五入方法利用了向下取整函数原理对于正数之后小数部分的会变成而小数部分的会变成再进行向下取整即可实现四舍五入局限性不适用于负数对于负数它会得到错误的结果例如等于结果是应该四舍五入到代码示例仅适用于正数的四舍五入输出对负数结果错误正确应该是但对于应该结果正确但机制不通用实现自定义四舍五入函数手动处理正负数为了在没有的旧环境中实现完全正确的四舍五入需要结合和或者使用并保留符号代码示例正数加后向下取整负数减后向上取整或者使用技巧或者使用输出输出四舍五入到小数点后位如果你需要保留特定位数的小数例如四舍五入到小数点后两位则需要进行乘法四舍五入然后再除法原理将数字乘以对结果进行四舍五入使用将结果除以代码示例四舍五入到小数点后位计算的次方步骤乘以因子四舍五入步骤除以因子四舍五入到小数点后位输出四舍五入到小数点后位输出三目运算符三目运算符也常被称为条件运算符是许多编程语言中如等唯一一个需要三个操作数的运算符它主要用于简化简单的语句让代码更加简洁基本语法三目运算符的基本结构如下条件表达式表达式工作原理首先计算条件通常是一个布尔表达式即结果为真或假如果条件为真则执行表达式并且整个三目运算的结果就是表达式的值如果条件为假则执行表达式并且整个三目运算的结果就是表达式的值示例对比让我们来看一个使用和使用三目运算符的对比场景假设我们要判断一个人的年龄是否大于等于岁如果是则设置状态为成年否则为未成年使用语句成年未成年输出成年使用三目运算符使用三目运算符可以将上面的逻辑压缩到一行代码中成年未成年输出成年在这个例子中条件是表达式条件为真时执行是成年表达式条件为假时执行是未成年常见用例变量赋值如上例这是最常见的用法根据条件给变量赋不同的值函数返回值可以直接在语句中使用输出处理或空值检查在给变量赋值前检查它是否为空如果存在则使用其属性否则显示优点与缺点优点简洁相比块代码行数更少更紧凑方便非常适合在行内进行简单的逻辑判断尤其是在赋值或函数返回时缺点可读性下降过度使用时如果条件或表达式过于复杂或者进行嵌套在三目运算符中再嵌套一个三目运算符代码的可读性会迅速下降使用建议当逻辑简单且清晰时例如二选一赋值使用三目运算符是很好的选择如果逻辑复杂例如或者表达式非常长强烈建议使用语句以保证代码的可读性和可维护性格式化输出是格式化字符串中的一种格式说明符常见于像语言的函数中用于输出整数它的具体含义是表示这是一个格式说明符的开始表示要输出的是一个十进制带符号整数是一个标志修饰符表示如果输出的数字位数不足指定的宽度将会在前面用数字填充是最小字段宽度表示输出的数字至少会占据个字符的位置总结来说的意思是以十进制整数形式输出最小宽度为位如果数字不足位则在前面用补齐例子输入数字输出结果解释不足位前面补一个刚好位按原样输出超过位按实际位数输出当你希望输出的字符通常是字符串或数字一定占据指定的宽度并且要求内容在指定的宽度内左对齐时你需要使用格式化字符串中的以下结构结构宽度类型组成部分详解格式说明符的开始负号减号这个是对齐标志它的作用就是强制输出内容在指定的字段宽度内左对齐如果没有它默认是右对齐宽度这是一个数字表示输出字段的最小宽度如果输出内容的实际长度小于这个宽度则会在右侧填充空格类型表示要输出的数据类型例如字符串十进制整数浮点数示例假设你希望输出一个字符串它至少占据个字符的宽度并要求左对齐使用代码结果解释数字的左对齐示例对于数字虽然不常用但也可以左对齐代码结果解释请注意这种格式化语法主要应用于的函数以及许多受其影响的语言如等在等现代语言中也有类似的格式化方法但具体语法可能会略有不同和是语言中用于处理浮点数的格式化说明符它们主要区别在于所针对的数据类型大小和使用场景总结区别特性数据类型双精度浮点数长双精度浮点数含义的缩写表示的缩写表示占用内存通常字节通常或字节取决于系统和编译器精度较高标准双精度最高比更高用于输出类型的值用于输出类型的值必须用于读取类型的值必须用于读取类型的值详细解释用于数据类型双精度浮点数用途在中用于输出类型的值在中用于读取输入并存储到类型的变量中这是与旧的标准中使用的一个重要区别示例语言输出读取时必须使用用于数据类型长双精度浮点数用途在中用于输出类型的值在中用于读取输入并存储到类型的变量中特点提供了比更高的精度和更大的数值范围但在不同平台和编译器上的实现可能不同通常是字节或字节示例语言或表示输出读取时必须使用重点注意事项关于函数在语言中当向函数传递或类型的参数时遵循默认参数升级规则类型的值会自动提升为类型这意味着对于输出输出或类型的值使用或都可以它们通常被视为等效关于函数不涉及默认参数升级它需要知道变量的确切大小和类型才能正确地将输入数据写入内存地址读取变量时必须使用读取变量时必须使用读取变量时必须使用总结来说在现代编程中当你处理时你需要使用而处理时使用是最标准和推荐的做法尤其是在中是标准库中一个非常强大且常用的函数用于对容器或风格数组中的元素进行排序它基于一种高效的混合排序算法通常是内省排序结合了快速排序堆排序和插入排序的优点无论是对于还是风格数组的使用方式都是一致的因为它操作的本质是迭代器一的基本用法函数的签名简化版如下它需要两个或三个参数指向要排序序列的起始元素的迭代器或指针指向要排序序列的结束元素的下一个位置的迭代器或指针这是一个半开区间可选一个比较函数或表达式用于定义排序的顺序二针对风格数组的使用对于风格数组可以直接使用数组名作为指针或者使用和辅助函数来获取迭代器默认升序排序从小到大默认情况下使用元素的运算符进行比较实现升序排列必须包含用于方法一使用指针和数组长度最传统方式方法二使用和推荐方式输出结果自定义降序排序从大到小要实现降序需要提供第三个参数一个比较器方法一使用是一个函数对象定义了降序比较方法二使用表达式最灵活如果应该排在的前面则返回输出结果三针对的使用提供了自己的成员函数和来获取迭代器这是最常用的方式默认升序排序使用的成员函数和输出结果自定义降序排序同样通过提供第三个比较器参数实现降序使用表达式进行降序排序定义降序输出结果总结特性风格数组包含头文件起始迭代器或结束迭代器或核心函数的强大之处在于它抽象了底层容器的差异通过迭代器接口实现了统一的排序操作只要容器提供了随机访问迭代器就可以使用时间复杂度',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-07 16:45:46',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 1.05rem;">3dgs<sup>7</sup></a><a href="/tags/5070/" style="font-size: 1.05rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 1.05rem;">Nerfstudio<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 1.05rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 1.05rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 1.05rem;">colmap<sup>4</sup></a><a href="/tags/cpc/" style="font-size: 1.05rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 1.05rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 1.05rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 1.05rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 1.05rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>5</sup></a><a href="/tags/mask/" style="font-size: 1.05rem;">mask<sup>1</sup></a><a href="/tags/nerfstudio/" style="font-size: 1.05rem;">nerfstudio<sup>1</sup></a><a href="/tags/pytorch/" style="font-size: 1.05rem;">pytorch<sup>3</sup></a><a href="/tags/sam/" style="font-size: 1.05rem;">sam<sup>1</sup></a><a href="/tags/sam3/" style="font-size: 1.05rem;">sam3<sup>1</sup></a><a href="/tags/tic/" style="font-size: 1.05rem;">tic<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>5</sup></a><a href="/tags/yolo/" style="font-size: 1.05rem;">yolo<sup>1</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.05rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 1.05rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.05rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 1.05rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 1.05rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.05rem;">数学<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 1.05rem;">结构体<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 1.05rem;">高数<sup>4</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/cpc/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>cpc</span></a><a class="article-meta__tags" href="/tags/cpp/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>cpp</span></a></span></div></div><h1 class="post-title" itemprop="name headline">DUT开发区cpc组第一次例会笔记（2025秋）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-30T13:21:46.000Z" title="发表于 2025-10-30 21:21:46">2025-10-30</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-07T08:45:46.129Z" title="更新于 2025-11-07 16:45:46">2025-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="DUT开发区cpc组第一次例会笔记（2025秋）"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=7a8810f0-8e4e-7358-78f1-8e07f64adf74"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"><header><a href="/tags/cpc/" tabindex="-1" itemprop="url">cpc</a><a href="/tags/cpp/" tabindex="-1" itemprop="url">cpp</a><h1 id="CrawlerTitle" itemprop="name headline">DUT开发区cpc组第一次例会笔记（2025秋）</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-10-30T13:21:46.000Z" title="发表于 2025-10-30 21:21:46">2025-10-30</time><time itemprop="dateCreated datePublished" datetime="2025-11-07T08:45:46.129Z" title="更新于 2025-11-07 16:45:46">2025-11-07</time></header><h2 id="1向上取整"><a class="markdownIt-Anchor" href="#1向上取整"></a> 1.向上取整</h2>
+<p>在 C++ 中，对两个整数做除法并实现<strong>向上取整</strong>（Ceiling Division）的通用方法是利用一个简单的数学技巧。</p>
+<h3 id="通用公式"><a class="markdownIt-Anchor" href="#通用公式"></a> 通用公式</h3>
+<p>对于两个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>（被除数）和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>（除数），向上取整的公式是：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">⌈</mo><mfrac><mi>a</mi><mi>b</mi></mfrac><mo stretchy="false">⌉</mo><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mn>1</mn></mrow><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">\lceil \frac{a}{b} \rceil = \frac{a + b - 1}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7936em;vertical-align:-0.686em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">b</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌉</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">b</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<h3 id="c-实现"><a class="markdownIt-Anchor" href="#c-实现"></a> C++ 实现</h3>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设 a 和 b 都是正整数 (a &gt;= 0, b &gt; 0)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ceiling_division</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用 long long 以防止 a + b - 1 发生溢出，尽管对于 int 类型大部分情况下不会。</span></span><br><span class="line">    <span class="comment">// 如果 a 和 b 接近 int 的最大值，应该使用更大的类型。</span></span><br><span class="line">    <span class="keyword">return</span> (a + b - <span class="number">1</span>) / b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a1 = <span class="number">10</span>, b1 = <span class="number">3</span>;  <span class="comment">// 10 / 3 = 3.33 -&gt; 4</span></span><br><span class="line">    <span class="type">int</span> a2 = <span class="number">9</span>,  b2 = <span class="number">3</span>;  <span class="comment">// 9 / 3 = 3.00 -&gt; 3</span></span><br><span class="line">    <span class="type">int</span> a3 = <span class="number">1</span>,  b3 = <span class="number">5</span>;  <span class="comment">// 1 / 5 = 0.20 -&gt; 1</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;10 / 3 向上取整: &quot;</span> &lt;&lt; <span class="built_in">ceiling_division</span>(a1, b1) &lt;&lt; std::endl; <span class="comment">// 输出 4</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;9 / 3 向上取整: &quot;</span> &lt;&lt; <span class="built_in">ceiling_division</span>(a2, b2) &lt;&lt; std::endl;  <span class="comment">// 输出 3</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;1 / 5 向上取整: &quot;</span> &lt;&lt; <span class="built_in">ceiling_division</span>(a3, b3) &lt;&lt; std::endl;  <span class="comment">// 输出 1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="公式解释"><a class="markdownIt-Anchor" href="#公式解释"></a> 公式解释</h3>
+<p>这个技巧的原理是：</p>
+<ol>
+<li>C++ 的整数除法（如 <code>a / b</code>）默认是<strong>向下取整</strong>（Truncation towards zero，对于正数来说就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mfrac><mi>a</mi><mi>b</mi></mfrac><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor \frac{a}{b} \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.095em;vertical-align:-0.345em;"></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌋</span></span></span></span>）。</li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 能够被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 整除（例如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">9/3 = 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>），那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a + b - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的值会比下一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 的倍数小 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，所以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>b</mi><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mi mathvariant="normal">/</mi><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a + b - 1) / b = (a / b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord">/</span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span>。
+<ul>
+<li>例子：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>9</mn><mo separator="true">,</mo><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a=9, b=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>9</mn><mo>+</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>11</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">(9 + 3 - 1) / 3 = 11 / 3 = 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">11/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>。</li>
+</ul>
+</li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 不能被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 整除，存在余数（例如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>3</mn><mtext>余</mtext><mn>1</mn></mrow><annotation encoding="application/x-tex">10/3 = 3\text{余}1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">3</span><span class="mord text"><span class="mord cjk_fallback">余</span></span><span class="mord">1</span></span></span></span>），那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a + b - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的值会<strong>刚好达到或超过</strong>下一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 的倍数。当它被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 整除时，结果会向上进位 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。
+<ul>
+<li>例子：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>10</mn><mo separator="true">,</mo><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a=10, b=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>10</mn><mo>+</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>12</mn><mi mathvariant="normal">/</mi><mn>3</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">(10 + 3 - 1) / 3 = 12 / 3 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">12/3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>。</li>
+</ul>
+</li>
+</ol>
+<h3 id="另一种方法浮点数转换-不推荐"><a class="markdownIt-Anchor" href="#另一种方法浮点数转换-不推荐"></a> 另一种方法：浮点数转换 (不推荐)</h3>
+<p>虽然可以使用浮点数转换，但这通常会引入浮点数精度问题，并且效率较低。</p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设 a 和 b 都是正整数 (a &gt;= 0, b &gt; 0)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ceiling_division_float</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将其中一个操作数转换为 double，进行浮点除法</span></span><br><span class="line">    <span class="type">double</span> result = (<span class="type">double</span>)a / b;</span><br><span class="line">    <span class="comment">// 使用 std::ceil 函数向上取整，然后转换为 int</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="type">int</span>)std::<span class="built_in">ceil</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 在竞争性编程或对性能和精度要求高的场景中，应该优先使用<strong>整数公式</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>−</mo><mn>1</mn></mrow><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{a + b - 1}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">b</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>。</p>
+<h2 id="2-1ll"><a class="markdownIt-Anchor" href="#2-1ll"></a> 2. 1ll</h2>
+<p>在 C++ 中初始化 <code>long long</code> 类型的变量时，使用 <code>1LL</code> 这样的后缀（或在任何涉及常量的表达式中使用）是一个<strong>非常好的习惯，甚至可以说是必需的</strong>，原因如下：</p>
+<h3 id="1-确保常量的类型是-long-long"><a class="markdownIt-Anchor" href="#1-确保常量的类型是-long-long"></a> 1. 确保常量的类型是 <code>long long</code></h3>
+<p>在 C++ 中，当你直接写一个整数常量时，例如 <code>1</code>、<code>100</code> 或 <code>2000000000</code>，编译器默认会将其视为：</p>
+<ul>
+<li><strong><code>int</code></strong></li>
+<li>如果值太大，超过了 <code>int</code> 的范围，则会依次升级为 <code>unsigned int</code>、<code>long int</code>，直到能容纳它的最小类型。</li>
+</ul>
+<p>当你使用后缀 <code>LL</code> 或 <code>ll</code> 时，你<strong>明确地告诉</strong>编译器，这个数字是一个 <code>long long int</code> 类型的常量。</p>
+<ul>
+<li><code>1</code> 是一个 <code>int</code> 类型的常量。</li>
+<li><code>1L</code> 或 <code>1l</code> 是一个 <code>long int</code> 类型的常量。</li>
+<li><strong><code>1LL</code> 或 <code>1ll</code> 是一个 <code>long long int</code> 类型的常量。</strong></li>
+</ul>
+<h3 id="2-避免潜在的溢出overflow和类型转换问题"><a class="markdownIt-Anchor" href="#2-避免潜在的溢出overflow和类型转换问题"></a> 2. 避免潜在的溢出（Overflow）和类型转换问题</h3>
+<p>考虑以下两种情况：</p>
+<h4 id="场景-a-赋值时的溢出最常见问题"><a class="markdownIt-Anchor" href="#场景-a-赋值时的溢出最常见问题"></a> 场景 A: 赋值时的溢出（最常见问题）</h4>
+<p>如果你的常量值<strong>超过了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span> 位 <code>int</code> 的最大值</strong>（约 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>21</mn></mrow><annotation encoding="application/x-tex">21</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">21</span></span></span></span> 亿），但你没有加 <code>LL</code> 后缀，就会导致溢出或非预期的行为：</p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设 int 是 32 位，最大值约 2.1 * 10^9</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> large_num = <span class="number">3000000000</span>; <span class="comment">// 错误或警告！</span></span><br><span class="line"><span class="comment">// 3000000000 默认被视为 int。</span></span><br><span class="line"><span class="comment">// 在赋值给 long long 之前，它首先以 int 身份进行计算或存储，</span></span><br><span class="line"><span class="comment">// 这会导致 int 溢出。然后，这个错误的值才被提升（提升）给 long long。</span></span><br><span class="line"><span class="comment">// 结果 large_num 可能不是 30 亿，而是一个负数或一个错误的正数。</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> correct_num = <span class="number">3000000000LL</span>; <span class="comment">// 正确</span></span><br><span class="line"><span class="comment">// 3000000000LL 直接被视为 long long 类型常量，不会溢出，然后赋值。</span></span><br></pre></td></tr></table></figure>
+<h4 id="场景-b-表达式中的类型提升promotion"><a class="markdownIt-Anchor" href="#场景-b-表达式中的类型提升promotion"></a> 场景 B: 表达式中的类型提升（Promotion）</h4>
+<p>即使常量本身的值很小（比如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>），如果在涉及大量运算的表达式中，使用 <code>LL</code> 可以确保整个计算在 <code>long long</code> 的精度下进行：</p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">long</span> a = <span class="number">2000000000</span>; <span class="comment">// 假设是 20 亿</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> c = a * b; <span class="comment">// 期望结果是 100 亿</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误示范：</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> result1 = a * <span class="number">1</span>; <span class="comment">// 尽管 1 很小，但 a 已经是 long long</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> result2 = a * <span class="number">1LL</span>; <span class="comment">// 保证结果是 long long</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 更危险的例子：</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> result3 = <span class="number">1000000000</span> * <span class="number">5</span>; <span class="comment">// 危险！10亿 * 5 结果是 50亿</span></span><br><span class="line"><span class="comment">// 1000000000 和 5 都是 int，它们的乘积 50 亿会溢出 int，</span></span><br><span class="line"><span class="comment">// 然后这个溢出的结果才赋值给 long long。</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> result4 = <span class="number">1000000000LL</span> * <span class="number">5</span>; <span class="comment">// 安全</span></span><br><span class="line"><span class="comment">// 因为有 LL，乘法在 long long 精度下进行。</span></span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<p>无论是初始化还是在表达式中使用，只要是 <code>long long</code> 类型的变量涉及到<strong>整数常量</strong>时，都应该添加 <code>LL</code> 或 <code>ll</code> 后缀。</p>
+<table>
+<thead>
+<tr>
+<th><strong>表达式</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td><code>int</code></td>
+<td>普通整数常量</td>
+</tr>
+<tr>
+<td><code>1L</code></td>
+<td><code>long int</code></td>
+<td><code>long</code> 整数常量</td>
+</tr>
+<tr>
+<td><strong><code>1LL</code></strong></td>
+<td><strong><code>long long int</code></strong></td>
+<td><strong><code>long long</code> 整数常量 (推荐)</strong></td>
+</tr>
+<tr>
+<td><code>1U</code></td>
+<td><code>unsigned int</code></td>
+<td><code>unsigned</code> 整数常量</td>
+</tr>
+<tr>
+<td><code>1ULL</code></td>
+<td><code>unsigned long long</code></td>
+<td><code>unsigned long long</code> 整数常量</td>
+</tr>
+</tbody>
+</table>
+<p>因此，<strong>在 <code>long long</code> 初始化或使用常数时使用 <code>1LL</code> 是一个规范且必要的做法，可以完全避免因隐式类型转换和整数溢出导致的潜在 bug。</strong></p>
+<h2 id="3-memset"><a class="markdownIt-Anchor" href="#3-memset"></a> 3. memset()</h2>
+<p>关于数组初始化是否使用 <code>memset()</code>，答案是：<strong>不一定，它取决于数组的类型、目标值，以及你使用的是 C 语言还是 C++ 语言。</strong></p>
+<h3 id="1-memset-的作用和限制"><a class="markdownIt-Anchor" href="#1-memset-的作用和限制"></a> 1. <code>memset()</code> 的作用和限制</h3>
+<p><code>memset()</code> 是一个 C 标准库函数，它的作用是：</p>
+<blockquote>
+<p>将指定内存块（从起始地址开始）的前 <code>N</code> 个字节都设置为同一个<strong>字节值</strong>。</p>
+</blockquote>
+<p><strong>关键限制：</strong></p>
+<ul>
+<li><strong>只能安全地将数组初始化为 0 或 -1：</strong>
+<ul>
+<li>当你想将整数数组或浮点数数组初始化为 <strong>0</strong> 时，<code>memset()</code> 是安全且高效的。因为无论是 <code>int</code>、<code>float</code> 还是指针，全 0 的字节序列都对应于它们的 0 值。</li>
+<li>当你想将数组初始化为 <strong>-1</strong> 时，对于大多数有符号整数类型（如 <code>int</code>），<code>memset()</code> 也是安全的。因为全 1 的字节序列通常代表 -1 的补码表示。</li>
+<li><strong>对于任何其他值（例如 1、100、3.14），使用 <code>memset()</code> 是错误的。</strong> 因为 <code>memset()</code> 是按字节填充的，如果你想将一个 <code>int</code> 数组初始化为 100，<code>memset()</code> 会将每个 <code>int</code> 的所有字节都设置为 <code>100</code>，这通常不会得到数字 100 的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-数组初始化的常见方法和推荐"><a class="markdownIt-Anchor" href="#2-数组初始化的常见方法和推荐"></a> 2. 数组初始化的常见方法和推荐</h3>
+<h4 id="a-c-推荐方法-更安全-更现代"><a class="markdownIt-Anchor" href="#a-c-推荐方法-更安全-更现代"></a> A. C++ 推荐方法 (更安全、更现代)</h4>
+<p>在 C++ 中，推荐使用以下方法，它们更安全，更具类型感知：</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>适用场景</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>花括号初始化</strong></td>
+<td><strong>任何数组</strong>、C++11 之后的标准</td>
+<td>简洁、安全、自动将剩余元素初始化为 0。</td>
+<td><code>int arr[5] = &#123;1, 2&#125;;</code> // 结果: {1, 2, 0, 0, 0}</td>
+</tr>
+<tr>
+<td><strong>仅花括号</strong></td>
+<td><strong>将数组初始化为全 0</strong></td>
+<td>最简洁、最快。</td>
+<td><code>int arr[5] = &#123;&#125;;</code> 或 <code>int arr[5]&#123;&#125;;</code> // 结果: {0, 0, 0, 0, 0}</td>
+</tr>
+<tr>
+<td><strong><code>std::fill</code> 或 <code>std::fill_n</code></strong></td>
+<td><strong>将数组初始化为任意值</strong></td>
+<td>类型安全，适用于任何类型，可读性好。</td>
+<td><code>std::fill(std::begin(arr), std::end(arr), 10);</code></td>
+</tr>
+<tr>
+<td><strong><code>std::vector</code></strong></td>
+<td><strong>代替原生数组</strong></td>
+<td>尺寸可变，自动管理内存，初始化方法多样。</td>
+<td><code>std::vector&lt;int&gt; vec(10, 5);</code> // 10个元素，都初始化为 5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="b-cc-通用方法-针对特定值"><a class="markdownIt-Anchor" href="#b-cc-通用方法-针对特定值"></a> B. C/C++ 通用方法 (针对特定值)</h4>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>适用场景</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>memset()</code></strong></td>
+<td><strong>将 POD 数组初始化为 0 或 -1</strong></td>
+<td><strong>性能最高</strong>（通常是 C++ 算法无法比拟的）。</td>
+<td><code>memset(arr, 0, sizeof(arr));</code></td>
+</tr>
+<tr>
+<td><strong><code>for</code> 循环</strong></td>
+<td><strong>初始化为任意值</strong></td>
+<td>最灵活，可以执行复杂逻辑。</td>
+<td><code>for (int&amp; x : arr) &#123; x = 7; &#125;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="结论和建议"><a class="markdownIt-Anchor" href="#结论和建议"></a> 结论和建议</h3>
+<ol>
+<li><strong>如果你使用 C++ 并且需要将数组初始化为除了 0 或 -1 以外的任意值：</strong>
+<ul>
+<li><strong>使用 <code>std::fill</code> 或 <code>std::for_each</code></strong>。它们是类型安全的，并且能正确处理对象的构造。</li>
+</ul>
+</li>
+<li><strong>如果你需要将 C 风格数组（<code>int[]</code>, <code>char[]</code> 等）快速初始化为全 0：</strong>
+<ul>
+<li><strong>在 C++ 中，使用 <code>int arr[N] = &#123;&#125;;</code></strong> (最简洁和 C++ 推荐)。</li>
+<li><strong>在 C 或需要最高性能时，使用 <code>memset(arr, 0, sizeof(arr))</code></strong>。</li>
+</ul>
+</li>
+<li><strong>如果你处理的数组元素是复杂的对象（非 POD 类型，如 <code>std::string</code>、自定义类）：</strong>
+<ul>
+<li><strong>绝对不要使用 <code>memset()</code>。</strong> 这会导致对象内部状态被破坏，必须使用 C++ 的初始化列表或 <code>std::fill</code> 等方法。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-strlen"><a class="markdownIt-Anchor" href="#4-strlen"></a> 4. strlen()</h2>
+<p><code>.size()</code> 和 <code>strlen()</code> 函数都是用来获取字符串长度的，但它们在使用对象、计算方式和适用语言方面有明显的区别：</p>
+<table>
+<thead>
+<tr>
+<th><strong>特点</strong></th>
+<th><strong>.size()</strong></th>
+<th><strong>strlen()</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>适用对象</strong></td>
+<td>主要用于 C++ 标准库中的容器，例如 <code>std::string</code>, <code>std::vector</code>, <code>std::list</code> 等。</td>
+<td>主要用于 C 风格字符串（以空字符 <code>\0</code> 结尾的字符数组 <code>char[]</code> 或 <code>char*</code>）。</td>
+</tr>
+<tr>
+<td><strong>计算方式</strong></td>
+<td>返回容器中<strong>实际存储的元素个数</strong>。对于 <code>std::string</code>，它返回的是字符串中的字符数量，<strong>不包括</strong>末尾的空字符 <code>\0</code>。</td>
+<td>从字符串的起始地址开始，逐个字符计数，直到遇到<strong>第一个空字符 <code>\0</code> 为止</strong>。返回的长度<strong>不包括</strong>空字符 <code>\0</code>。</td>
+</tr>
+<tr>
+<td><strong>效率/时间复杂度</strong></td>
+<td>通常是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，因为它直接访问对象内部存储的长度成员变量。</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，因为它必须遍历整个字符串直到找到空字符。</td>
+</tr>
+<tr>
+<td><strong>返回类型</strong></td>
+<td>通常是 <code>size_t</code> 类型（一个无符号整数类型）。</td>
+<td><code>size_t</code> 类型。</td>
+</tr>
+<tr>
+<td><strong>是否安全</strong></td>
+<td>相对安全，因为它操作的是标准库对象，不会发生越界访问。</td>
+<td>存在安全风险，如果传入的字符数组没有正确的空字符 <code>\0</code> 结尾，函数会一直读下去直到访问到非法内存，导致未定义行为（通常是程序崩溃）。</td>
+</tr>
+<tr>
+<td><strong>头文件 (C++)</strong></td>
+<td>通常不需要额外的头文件（对于 <code>std::string</code>），或者对应容器的头文件（例如 <code>&lt;vector&gt;</code>）。</td>
+<td><code>&lt;cstring&gt;</code> 或 <code>&lt;string.h&gt;</code>。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结：</strong></p>
+<ol>
+<li><strong>C++ 编程中，处理 <code>std::string</code> 对象时，应优先使用 <code>.size()</code> 或 <code>.length()</code> 方法</strong>（这两个对于 <code>std::string</code> 来说是等价的）。它更快、更安全、更符合 C++ 面向对象的习惯。</li>
+<li><strong>处理 C 风格字符串 (<code>char\*</code> 或 <code>char[]</code>) 时，必须使用 <code>strlen()</code></strong>。</li>
+</ol>
+<p><strong>示例（C++）：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span> <span class="comment">// for strlen</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// C++ std::string</span></span><br><span class="line">    std::string cpp_str = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用 .size() 或 .length() (推荐)</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::string .size(): &quot;</span> &lt;&lt; cpp_str.<span class="built_in">size</span>() &lt;&lt; std::endl; </span><br><span class="line">    <span class="comment">// 输出: 5 </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// C 风格字符串</span></span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* c_str = <span class="string">&quot;World&quot;</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用 strlen() (必须)</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;C-style strlen(): &quot;</span> &lt;&lt; std::<span class="built_in">strlen</span>(c_str) &lt;&lt; std::endl; </span><br><span class="line">    <span class="comment">// 输出: 5</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 尽管不推荐，但你也可以对 std::string 的 C 风格表示使用 strlen</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::string c_str() + strlen(): &quot;</span> &lt;&lt; std::<span class="built_in">strlen</span>(cpp_str.<span class="built_in">c_str</span>()) &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 输出: 5</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-四舍五入"><a class="markdownIt-Anchor" href="#5-四舍五入"></a> 5. 四舍五入</h2>
+<p>在 C++ 中实现四舍五入，最简单、最标准的方法是使用 C++11 引入的数学函数 <strong><code>std::round()</code></strong>。</p>
+<p>如果你使用的是 C++11 之前的标准，或者需要自定义精度，则需要使用不同的技巧。</p>
+<p>以下是 C++ 中实现四舍五入的几种主要方法：</p>
+<hr />
+<h3 id="1-使用-stdround-c11-及更高版本推荐"><a class="markdownIt-Anchor" href="#1-使用-stdround-c11-及更高版本推荐"></a> 1. 使用 <code>std::round()</code> (C++11 及更高版本，<strong>推荐</strong>⭐)</h3>
+<p><code>std::round()</code> 是 C++ 标准库 <code>&lt;cmath&gt;</code> 中的函数，它实现了标准的四舍五入规则：到最近的整数，如果刚好在两个整数中间，则<strong>舍入到远离零的方向</strong>（即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>x</mi><mo>+</mo><mn>0.5</mn><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|x + 0.5|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.5∣</span></span></span></span>）。</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>最标准、最简洁。</strong></li>
+<li>定义在 <code>&lt;cmath&gt;</code> 头文件中。</li>
+</ul>
+<p><strong>代码示例：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> num1 = <span class="number">3.4</span>;</span><br><span class="line">    <span class="type">double</span> num2 = <span class="number">3.5</span>;</span><br><span class="line">    <span class="type">double</span> num3 = <span class="number">3.6</span>;</span><br><span class="line">    <span class="type">double</span> num4 = <span class="number">-3.4</span>;</span><br><span class="line">    <span class="type">double</span> num5 = <span class="number">-3.5</span>;</span><br><span class="line">    <span class="type">double</span> num6 = <span class="number">-3.6</span>;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(3.4) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num1) &lt;&lt; std::endl; <span class="comment">// 输出 3</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(3.5) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num2) &lt;&lt; std::endl; <span class="comment">// 输出 4 (远离零)</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(3.6) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num3) &lt;&lt; std::endl; <span class="comment">// 输出 4</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(-3.4) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num4) &lt;&lt; std::endl; <span class="comment">// 输出 -3</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(-3.5) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num5) &lt;&lt; std::endl; <span class="comment">// 输出 -4 (远离零)</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;std::round(-3.6) = &quot;</span> &lt;&lt; std::<span class="built_in">round</span>(num6) &lt;&lt; std::endl; <span class="comment">// 输出 -4</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="2-使用-floorx-05-技巧-兼容-cc但有局限"><a class="markdownIt-Anchor" href="#2-使用-floorx-05-技巧-兼容-cc但有局限"></a> 2. 使用 <code>floor(x + 0.5)</code> 技巧 (兼容 C/C++，但有局限)</h3>
+<p>这是 C 语言中常用的四舍五入方法，利用了向下取整函数 <code>std::floor()</code>。</p>
+<p>原理：</p>
+<p>对于正数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">x + 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> 之后，小数部分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">&lt; 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> 的会变成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">&lt; 1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.0</span></span></span></span>，而小数部分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\ge 0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span> 的会变成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">\ge 1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.0</span></span></span></span>，再进行向下取整即可实现四舍五入。</p>
+<p><strong>局限性：</strong></p>
+<ul>
+<li><strong>不适用于负数</strong>。对于负数，它会得到错误的结果（例如：<code>floor(-3.5 + 0.5)</code> 等于 <code>floor(-3.0)</code>，结果是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">3</span></span></span></span>，应该四舍五入到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">4</span></span></span></span>）。</li>
+</ul>
+<p><strong>代码示例：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> num1 = <span class="number">3.6</span>;</span><br><span class="line">    <span class="type">double</span> num2 = <span class="number">-3.6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 仅适用于正数的四舍五入</span></span><br><span class="line">    <span class="type">double</span> rounded_positive = std::<span class="built_in">floor</span>(num1 + <span class="number">0.5</span>); <span class="comment">// 4.1 -&gt; floor(4.1) -&gt; 4</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Floor(3.6 + 0.5) = &quot;</span> &lt;&lt; rounded_positive &lt;&lt; std::endl; <span class="comment">// 输出 4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对负数结果错误</span></span><br><span class="line">    <span class="type">double</span> rounded_negative = std::<span class="built_in">floor</span>(num2 + <span class="number">0.5</span>); <span class="comment">// -3.6 + 0.5 = -3.1 -&gt; floor(-3.1) -&gt; -4 (正确应该是-4)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 但对于 -3.4</span></span><br><span class="line">    <span class="type">double</span> num3 = <span class="number">-3.4</span>;</span><br><span class="line">    <span class="type">double</span> rounded_negative_wrong = std::<span class="built_in">floor</span>(num3 + <span class="number">0.5</span>); <span class="comment">// -3.4 + 0.5 = -2.9 -&gt; floor(-2.9) -&gt; -3 (应该-3，结果正确，但机制不通用)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="3-实现自定义四舍五入函数-手动处理正负数"><a class="markdownIt-Anchor" href="#3-实现自定义四舍五入函数-手动处理正负数"></a> 3. 实现自定义四舍五入函数 (手动处理正负数)</h3>
+<p>为了在没有 <code>std::round()</code> 的旧环境中实现完全正确的四舍五入，需要结合 <code>floor()</code> 和 <code>ceil()</code>，或者使用 <code>floor(abs(x) + 0.5)</code> 并保留符号。</p>
+<p><strong>代码示例：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">custom_round</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= <span class="number">0.0</span>) &#123;</span><br><span class="line">        <span class="comment">// 正数：加 0.5 后向下取整</span></span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">floor</span>(x + <span class="number">0.5</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 负数：减 0.5 后向上取整 (或者使用 abs 技巧)</span></span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">ceil</span>(x - <span class="number">0.5</span>);</span><br><span class="line">        <span class="comment">// 或者使用：return -std::floor(std::abs(x) + 0.5);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;custom_round(3.5) = &quot;</span> &lt;&lt; <span class="built_in">custom_round</span>(<span class="number">3.5</span>) &lt;&lt; std::endl;    <span class="comment">// 输出 4</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;custom_round(-3.5) = &quot;</span> &lt;&lt; <span class="built_in">custom_round</span>(<span class="number">-3.5</span>) &lt;&lt; std::endl;  <span class="comment">// 输出 -4</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="4-四舍五入到小数点后-n-位"><a class="markdownIt-Anchor" href="#4-四舍五入到小数点后-n-位"></a> 4. 四舍五入到小数点后 N 位</h3>
+<p>如果你需要保留特定位数的小数（例如四舍五入到小数点后两位），则需要进行乘法、四舍五入，然后再除法。</p>
+<p><strong>原理：</strong></p>
+<ol>
+<li>将数字乘以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">10^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>。</li>
+<li>对结果进行四舍五入（使用 <code>std::round()</code>）。</li>
+<li>将结果除以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">10^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>。</li>
+</ol>
+<p><strong>代码示例：</strong></p>
+<p>C++</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 四舍五入到小数点后 N 位</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">round_to_n_digits</span><span class="params">(<span class="type">double</span> value, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 计算 10 的 N 次方</span></span><br><span class="line">    <span class="type">double</span> factor = std::<span class="built_in">pow</span>(<span class="number">10.0</span>, n); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步骤1 &amp; 2: 乘以因子，四舍五入</span></span><br><span class="line">    <span class="type">double</span> temp_value = std::<span class="built_in">round</span>(value * factor);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 步骤3: 除以因子</span></span><br><span class="line">    <span class="keyword">return</span> temp_value / factor;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> pi = <span class="number">3.14159265</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 四舍五入到小数点后 2 位</span></span><br><span class="line">    <span class="type">double</span> result_2 = <span class="built_in">round_to_n_digits</span>(pi, <span class="number">2</span>); </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Round to 2 digits: &quot;</span> &lt;&lt; result_2 &lt;&lt; std::endl; <span class="comment">// 输出 3.14</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 四舍五入到小数点后 3 位</span></span><br><span class="line">    <span class="type">double</span> result_3 = <span class="built_in">round_to_n_digits</span>(pi, <span class="number">3</span>); </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Round to 3 digits: &quot;</span> &lt;&lt; result_3 &lt;&lt; std::endl; <span class="comment">// 输出 3.142</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-三目运算符"><a class="markdownIt-Anchor" href="#6-三目运算符"></a> 6. 三目运算符</h2>
+<p>三目运算符（Ternary Operator），也常被称为“条件运算符”，是许多编程语言中（如 C, C++, Java, JavaScript, Python 等）唯一一个需要三个操作数的运算符。</p>
+<p>它主要用于<strong>简化简单的 <code>if...else</code> 语句</strong>，让代码更加简洁。</p>
+<hr />
+<h3 id="基本语法"><a class="markdownIt-Anchor" href="#基本语法"></a> 📚 基本语法</h3>
+<p>三目运算符的基本结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">条件 (condition) ? 表达式1 (expression_if_true) : 表达式2 (expression_if_false)</span><br></pre></td></tr></table></figure>
+<p><strong>工作原理：</strong></p>
+<ol>
+<li>首先，计算<code>条件</code>（通常是一个布尔表达式，即结果为“真”或“假”）。</li>
+<li>如果<code>条件</code>为<strong>真 (true)</strong>，则执行<code>表达式1</code>，并且整个三目运算的结果就是<code>表达式1</code>的值。</li>
+<li>如果<code>条件</code>为<strong>假 (false)</strong>，则执行<code>表达式2</code>，并且整个三目运算的结果就是<code>表达式2</code>的值。</li>
+</ol>
+<hr />
+<h3 id="示例对比"><a class="markdownIt-Anchor" href="#示例对比"></a> 💡 示例对比</h3>
+<p>让我们来看一个使用 <code>if...else</code> 和使用三目运算符的对比。</p>
+<p><strong>场景：</strong> 假设我们要判断一个人的年龄 <code>age</code> 是否大于等于 18 岁，如果是，则设置状态为 “成年” (adult)，否则为 “未成年” (minor)。</p>
+<h4 id="1-使用-ifelse-语句"><a class="markdownIt-Anchor" href="#1-使用-ifelse-语句"></a> 1. 使用 <code>if...else</code> 语句</h4>
+<p>JavaScript</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let age = 20;</span><br><span class="line">let status;</span><br><span class="line"></span><br><span class="line">if (age &gt;= 18) &#123;</span><br><span class="line">  status = &quot;成年&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  status = &quot;未成年&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(status); // 输出: &quot;成年&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="2-使用三目运算符"><a class="markdownIt-Anchor" href="#2-使用三目运算符"></a> 2. 使用三目运算符</h4>
+<p>使用三目运算符，可以将上面的逻辑压缩到一行代码中：</p>
+<p>JavaScript</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let age = 20;</span><br><span class="line">let status = (age &gt;= 18) ? &quot;成年&quot; : &quot;未成年&quot;;</span><br><span class="line"></span><br><span class="line">console.log(status); // 输出: &quot;成年&quot;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中：</p>
+<ul>
+<li><code>条件</code> 是 <code>age &gt;= 18</code></li>
+<li><code>表达式1</code> (条件为真时执行) 是 <code>&quot;成年&quot;</code></li>
+<li><code>表达式2</code> (条件为假时执行) 是 <code>&quot;未成年&quot;</code></li>
+</ul>
+<hr />
+<h3 id="常见用例"><a class="markdownIt-Anchor" href="#常见用例"></a> 🔧 常见用例</h3>
+<ol>
+<li>
+<p>变量赋值（如上例）：</p>
+<p>这是最常见的用法，根据条件给变量赋不同的值。</p>
+</li>
+<li>
+<p>函数返回值：</p>
+<p>可以直接在 return 语句中使用。</p>
+<p>JavaScript</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getFee(isMember) &#123;</span><br><span class="line">  return isMember ? &quot;$2.00&quot; : &quot;$10.00&quot;;</span><br><span class="line">&#125;</span><br><span class="line">console.log(getFee(true)); // 输出: &quot;$2.00&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>处理 null 或 undefined（空值检查）：</p>
+<p>在给变量赋值前，检查它是否为空。</p>
+<p>JavaScript</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let username = loggedInUser ? loggedInUser.name : &quot;Guest&quot;;</span><br><span class="line">// 如果 loggedInUser 存在，则使用其 name 属性，否则显示 &quot;Guest&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr />
+<h3 id="优点与-缺点"><a class="markdownIt-Anchor" href="#优点与-缺点"></a> 👍 优点与 👎 缺点</h3>
+<h4 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点</h4>
+<ul>
+<li><strong>简洁：</strong> 相比 <code>if...else</code> 块，代码行数更少，更紧凑。</li>
+<li><strong>方便：</strong> 非常适合在行内进行简单的逻辑判断，尤其是在赋值或函数返回时。</li>
+</ul>
+<h4 id="缺点"><a class="markdownIt-Anchor" href="#缺点"></a> 缺点</h4>
+<ul>
+<li><strong>可读性下降（过度使用时）：</strong> 如果 <code>条件</code> 或 <code>表达式</code> 过于复杂，或者进行 “嵌套”（在三目运算符中再嵌套一个三目运算符），代码的可读性会迅速下降。</li>
+</ul>
+<blockquote>
+<p>⚠️ 使用建议：</p>
+<p>当逻辑简单且清晰时（例如 “二选一” 赋值），使用三目运算符是很好的选择。</p>
+<p>如果逻辑复杂（例如 if…else if…else），或者表达式非常长，强烈建议使用 if…else 语句，以保证代码的可读性和可维护性。</p>
+</blockquote>
+<hr />
+<h2 id="7-格式化输出"><a class="markdownIt-Anchor" href="#7-格式化输出"></a> 7. 格式化输出</h2>
+<h3 id="1"><a class="markdownIt-Anchor" href="#1"></a> 1.</h3>
+<p>“%02d” 是<strong>格式化字符串</strong>中的一种格式说明符，常见于像 C 语言的 <code>printf</code> 函数中，用于输出整数。</p>
+<p>它的具体含义是：</p>
+<ul>
+<li><strong><code>%</code></strong>: 表示这是一个格式说明符的开始。</li>
+<li><strong><code>d</code></strong>: 表示要输出的是一个<strong>十进制带符号整数</strong>（decimal integer）。</li>
+<li><strong><code>0</code></strong>: 是一个<strong>标志/修饰符</strong>，表示如果输出的数字位数不足指定的宽度，将会在前面用<strong>数字 0 填充</strong>。</li>
+<li><strong><code>2</code></strong>: 是<strong>最小字段宽度</strong>，表示输出的数字至少会占据 2 个字符的位置。</li>
+</ul>
+<p><strong>总结来说，“%02d” 的意思是：</strong></p>
+<p>以十进制整数形式输出，<strong>最小宽度为 2 位</strong>，如果数字不足 2 位，则在前面<strong>用 0 补齐</strong>。</p>
+<p><strong>例子：</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>输入数字</strong></th>
+<th><strong>输出结果</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5</code></td>
+<td><code>&quot;05&quot;</code></td>
+<td>不足 2 位，前面补一个 0。</td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td><code>&quot;12&quot;</code></td>
+<td>刚好 2 位，按原样输出。</td>
+</tr>
+<tr>
+<td><code>123</code></td>
+<td><code>&quot;123&quot;</code></td>
+<td>超过 2 位，按实际位数输出。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2.</h3>
+<p>当你希望输出的字符（通常是字符串或数字）<strong>一定占据指定的宽度</strong>，并且要求内容在指定的宽度内<strong>左对齐</strong>时，你需要使用格式化字符串中的以下结构：</p>
+<h3 id="结构"><a class="markdownIt-Anchor" href="#结构"></a> 结构</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% - [宽度] [类型]</span><br></pre></td></tr></table></figure>
+<h3 id="组成部分详解"><a class="markdownIt-Anchor" href="#组成部分详解"></a> 组成部分详解</h3>
+<ol>
+<li><strong><code>%</code></strong>: 格式说明符的开始。</li>
+<li><strong><code>-</code> (负号/减号)</strong>:
+<ul>
+<li>这个是<strong>对齐标志</strong>。</li>
+<li>它的作用就是强制输出内容在指定的字段宽度内<strong>左对齐</strong>。如果没有它，默认是右对齐。</li>
+</ul>
+</li>
+<li><strong><code>[宽度]</code></strong>:
+<ul>
+<li>这是一个<strong>数字</strong>，表示输出字段的最小宽度。</li>
+<li>如果输出内容的实际长度小于这个宽度，则会在右侧填充空格。</li>
+</ul>
+</li>
+<li><strong><code>[类型]</code></strong>:
+<ul>
+<li>表示要输出的数据类型，例如：
+<ul>
+<li><code>s</code>：字符串 (String)</li>
+<li><code>d</code>：十进制整数 (Decimal integer)</li>
+<li><code>f</code>：浮点数 (Float)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>假设你希望输出一个字符串，它至少占据 <strong>10 个字符的宽度</strong>，并要求<strong>左对齐</strong>。</p>
+<h4 id="使用-10-s"><a class="markdownIt-Anchor" href="#使用-10-s"></a> 使用 <code>% - 10 s</code></h4>
+<table>
+<thead>
+<tr>
+<th><strong>代码</strong></th>
+<th><strong>结果</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`printf(&quot;</td>
+<td>%-10s</td>
+<td>&quot;, “Hello”);`</td>
+</tr>
+<tr>
+<td>`printf(&quot;</td>
+<td>%-10s</td>
+<td>&quot;, “WorldWide”);`</td>
+</tr>
+<tr>
+<td>`printf(&quot;</td>
+<td>%-10s</td>
+<td>&quot;, “SuperLongString”);`</td>
+</tr>
+</tbody>
+</table>
+<h4 id="数字的左对齐示例"><a class="markdownIt-Anchor" href="#数字的左对齐示例"></a> 数字的左对齐示例</h4>
+<p>对于数字，虽然不常用，但也可以左对齐。</p>
+<table>
+<thead>
+<tr>
+<th><strong>代码</strong></th>
+<th><strong>结果</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`printf(&quot;</td>
+<td>%-5d</td>
+<td>&quot;, 123);`</td>
+</tr>
+</tbody>
+</table>
+<p>请注意，这种格式化语法主要应用于 C/C++ 的 <code>printf</code> 函数以及许多受其影响的语言（如 Perl、PHP 等）。在 Python、Java 等现代语言中，也有类似的格式化方法，但具体语法可能会略有不同。</p>
+<h3 id="3"><a class="markdownIt-Anchor" href="#3"></a> 3.</h3>
+<p><code>%lf</code> 和 <code>%Lf</code> 是 C/C++ 语言中用于处理<strong>浮点数</strong>的格式化说明符，它们主要区别在于所针对的数据类型大小和使用场景。</p>
+<h3 id="总结区别"><a class="markdownIt-Anchor" href="#总结区别"></a> 总结区别</h3>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>%lf</strong></th>
+<th><strong>%Lf</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据类型</strong></td>
+<td><strong><code>double</code></strong> (双精度浮点数)</td>
+<td><strong><code>long double</code></strong> (长双精度浮点数)</td>
+</tr>
+<tr>
+<td><strong>含义</strong></td>
+<td><strong><code>long float</code></strong> 的缩写，表示 <code>double</code>。</td>
+<td><strong><code>Long float</code></strong> 的缩写，表示 <code>long double</code>。</td>
+</tr>
+<tr>
+<td><strong>占用内存</strong></td>
+<td>通常 8 字节</td>
+<td>通常 10 或 16 字节（取决于系统和编译器）</td>
+</tr>
+<tr>
+<td><strong>精度</strong></td>
+<td>较高（标准双精度）</td>
+<td>最高（比 <code>double</code> 更高）</td>
+</tr>
+<tr>
+<td><strong><code>printf</code></strong></td>
+<td>用于输出 <code>double</code> 类型的值。</td>
+<td>用于输出 <code>long double</code> 类型的值。</td>
+</tr>
+<tr>
+<td><strong><code>scanf</code></strong></td>
+<td><strong>必须</strong>用于读取 <code>double</code> 类型的值。</td>
+<td><strong>必须</strong>用于读取 <code>long double</code> 类型的值。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="详细解释"><a class="markdownIt-Anchor" href="#详细解释"></a> 详细解释</h3>
+<h4 id="1-lf-用于-double"><a class="markdownIt-Anchor" href="#1-lf-用于-double"></a> 1. <code>%lf</code> (用于 <code>double</code>)</h4>
+<ul>
+<li>
+<p><strong>数据类型：</strong> <code>double</code>（双精度浮点数）。</p>
+</li>
+<li>
+<p><strong>用途：</strong></p>
+<ul>
+<li>在 <strong><code>printf</code></strong> 中：用于输出 <code>double</code> 类型的值。</li>
+<li>在 <strong><code>scanf</code></strong> 中：用于读取输入并存储到 <code>double</code> 类型的变量中。这是与旧的 C 标准中 <code>float</code> 使用 <code>%f</code> 的一个重要区别。</li>
+</ul>
+</li>
+<li>
+<p><strong>示例 (C 语言)：</strong></p>
+<p>C</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">double num_d = 1.23456789;</span><br><span class="line">printf(&quot;Double (printf): %lf\n&quot;, num_d); // 输出 double</span><br><span class="line"></span><br><span class="line">// 读取 double 时必须使用 %lf</span><br><span class="line">// double input_d;</span><br><span class="line">// scanf(&quot;%lf&quot;, &amp;input_d); </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-lf-用于-long-double"><a class="markdownIt-Anchor" href="#2-lf-用于-long-double"></a> 2. <code>%Lf</code> (用于 <code>long double</code>)</h4>
+<ul>
+<li>
+<p><strong>数据类型：</strong> <code>long double</code>（长双精度浮点数）。</p>
+</li>
+<li>
+<p><strong>用途：</strong></p>
+<ul>
+<li>在 <strong><code>printf</code></strong> 中：用于输出 <code>long double</code> 类型的值。</li>
+<li>在 <strong><code>scanf</code></strong> 中：用于读取输入并存储到 <code>long double</code> 类型的变量中。</li>
+</ul>
+</li>
+<li>
+<p><strong>特点：</strong> <code>long double</code> 提供了比 <code>double</code> 更高的精度和更大的数值范围，但在不同平台和编译器上的实现可能不同（通常是 10 字节或 16 字节）。</p>
+</li>
+<li>
+<p><strong>示例 (C 语言)：</strong></p>
+<p>C</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">double</span> num_ld = <span class="number">9.876543210987654321L</span>; <span class="comment">// L 或 l 表示 long double</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Long Double (printf): %Lf\n&quot;</span>, num_ld); <span class="comment">// 输出 long double</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取 long double 时必须使用 %Lf</span></span><br><span class="line"><span class="comment">// long double input_ld;</span></span><br><span class="line"><span class="comment">// scanf(&quot;%Lf&quot;, &amp;input_ld); </span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="重点注意事项"><a class="markdownIt-Anchor" href="#重点注意事项"></a> ❗ 重点注意事项</h3>
+<p><strong>关于 <code>printf</code> 函数：</strong></p>
+<p>在 C 语言中，当向 <code>printf</code> 函数传递 <code>float</code> 或 <code>double</code> 类型的参数时，遵循<strong>默认参数升级 (Default Argument Promotions)</strong> 规则。</p>
+<ul>
+<li><code>float</code> 类型的值会自动提升为 <code>double</code> 类型。</li>
+</ul>
+<p>这意味着，对于<strong>输出</strong>：</p>
+<ul>
+<li>输出 <code>float</code> 或 <code>double</code> 类型的值，使用 <code>%f</code> 或 <code>%lf</code> <strong>都可以</strong>，它们通常被视为等效。</li>
+</ul>
+<p><strong>关于 <code>scanf</code> 函数：</strong></p>
+<p><code>scanf</code> 不涉及默认参数升级，它需要知道变量的确切大小和类型才能正确地将输入数据写入内存地址。</p>
+<ul>
+<li>读取 <strong><code>float</code></strong> 变量时，必须使用 <code>%f</code>。</li>
+<li>读取 <strong><code>double</code></strong> 变量时，<strong>必须</strong>使用 <code>%lf</code>。</li>
+<li>读取 <strong><code>long double</code></strong> 变量时，<strong>必须</strong>使用 <code>%Lf</code>。</li>
+</ul>
+<p>总结来说，在现代 C/C++ 编程中，<strong>当你处理 <code>long double</code> 时，你需要使用 <code>%Lf</code>；而处理 <code>double</code> 时，使用 <code>%lf</code> 是最标准和推荐的做法（尤其是在 <code>scanf</code> 中）</strong>。</p>
+<h2 id="8-sort"><a class="markdownIt-Anchor" href="#8-sort"></a> 8. sort()</h2>
+<p><code>std::sort()</code> 是 C++ 标准库 <code>&lt;algorithm&gt;</code> 中一个非常强大且常用的函数，用于对容器或 C 风格数组中的元素进行排序。它基于一种高效的混合排序算法（通常是<strong>内省排序</strong> Introsort，结合了快速排序、堆排序和插入排序的优点）。</p>
+<p>无论是对于 <code>std::vector</code> 还是 C 风格数组，<code>std::sort()</code> 的使用方式都是一致的，因为它操作的本质是<strong>迭代器（Iterator）</strong>。</p>
+<hr />
+<h3 id="一-stdsort-的基本用法"><a class="markdownIt-Anchor" href="#一-stdsort-的基本用法"></a> 一、 <code>std::sort()</code> 的基本用法</h3>
+<p><code>std::sort()</code> 函数的签名（简化版）如下：</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt; class RandomAccessIterator &gt;</span><br><span class="line">void sort( RandomAccessIterator first, RandomAccessIterator last );</span><br><span class="line"></span><br><span class="line">template&lt; class RandomAccessIterator, class Compare &gt;</span><br><span class="line">void sort( RandomAccessIterator first, RandomAccessIterator last, Compare comp );</span><br></pre></td></tr></table></figure>
+<p>它需要两个（或三个）参数：</p>
+<ol>
+<li><code>first</code>：指向要排序序列的<strong>起始元素</strong>的迭代器（或指针）。</li>
+<li><code>last</code>：指向要排序序列的<strong>结束元素的下一个位置</strong>的迭代器（或指针）。这是一个<strong>半开区间</strong> <code>[first, last)</code>。</li>
+<li><code>comp</code> (可选)：一个<strong>比较函数</strong>（或 Lambda 表达式），用于定义排序的顺序。</li>
+</ol>
+<hr />
+<h3 id="二-针对-c-风格数组的使用"><a class="markdownIt-Anchor" href="#二-针对-c-风格数组的使用"></a> 二、 针对 C 风格数组的使用</h3>
+<p>对于 C 风格数组，可以直接使用<strong>数组名作为指针</strong>，或者使用 <code>std::begin()</code> 和 <code>std::end()</code> 辅助函数来获取迭代器。</p>
+<h4 id="1-默认升序排序-从小到大"><a class="markdownIt-Anchor" href="#1-默认升序排序-从小到大"></a> 1. 默认升序排序 (从小到大)</h4>
+<p>默认情况下，<code>std::sort()</code> 使用元素的 <code>&lt;</code> 运算符进行比较，实现升序排列。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt; // 必须包含</span><br><span class="line">#include &lt;iterator&gt;  // 用于 std::begin / std::end (C++11+)</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int arr[] = &#123; 50, 20, 40, 10, 30 &#125;;</span><br><span class="line">    int n = sizeof(arr) / sizeof(arr[0]);</span><br><span class="line"></span><br><span class="line">    // 方法一：使用指针和数组长度（最传统 C++ 方式）</span><br><span class="line">    // std::sort(arr, arr + n); </span><br><span class="line"></span><br><span class="line">    // 方法二：使用 std::begin 和 std::end (C++11 推荐方式)</span><br><span class="line">    std::sort(std::begin(arr), std::end(arr));</span><br><span class="line"></span><br><span class="line">    // 输出结果: 10 20 30 40 50</span><br><span class="line">    for (int x : arr) &#123;</span><br><span class="line">        std::cout &lt;&lt; x &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-自定义降序排序-从大到小"><a class="markdownIt-Anchor" href="#2-自定义降序排序-从大到小"></a> 2. 自定义降序排序 (从大到小)</h4>
+<p>要实现降序，需要提供第三个参数——一个比较器。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int arr[] = &#123; 50, 20, 40, 10, 30 &#125;;</span><br><span class="line"></span><br><span class="line">    // 方法一：使用 std::greater&lt;T&gt;()</span><br><span class="line">    // std::greater&lt;int&gt;() 是一个函数对象，定义了降序比较</span><br><span class="line">    std::sort(std::begin(arr), std::end(arr), std::greater&lt;int&gt;());</span><br><span class="line"></span><br><span class="line">    // 方法二：使用 Lambda 表达式 (最灵活)</span><br><span class="line">    // auto descending_comp = [](int a, int b) &#123;</span><br><span class="line">    //     return a &gt; b; // 如果 a 应该排在 b 的前面，则返回 true</span><br><span class="line">    // &#125;;</span><br><span class="line">    // std::sort(std::begin(arr), std::end(arr), descending_comp);</span><br><span class="line"></span><br><span class="line">    // 输出结果: 50 40 30 20 10</span><br><span class="line">    // ...</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="三-针对-stdvector-的使用"><a class="markdownIt-Anchor" href="#三-针对-stdvector-的使用"></a> 三、 针对 <code>std::vector</code> 的使用</h3>
+<p><code>std::vector</code> 提供了自己的成员函数 <code>begin()</code> 和 <code>end()</code> 来获取迭代器，这是最常用的方式。</p>
+<h4 id="1-默认升序排序"><a class="markdownIt-Anchor" href="#1-默认升序排序"></a> 1. 默认升序排序</h4>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    std::vector&lt;int&gt; vec = &#123; 50, 20, 40, 10, 30 &#125;;</span><br><span class="line"></span><br><span class="line">    // 使用 vector 的成员函数 begin() 和 end()</span><br><span class="line">    std::sort(vec.begin(), vec.end());</span><br><span class="line"></span><br><span class="line">    // 输出结果: 10 20 30 40 50</span><br><span class="line">    for (int x : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; x &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-自定义降序排序"><a class="markdownIt-Anchor" href="#2-自定义降序排序"></a> 2. 自定义降序排序</h4>
+<p>同样，通过提供第三个比较器参数实现降序。</p>
+<p>C++</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    std::vector&lt;int&gt; vec = &#123; 50, 20, 40, 10, 30 &#125;;</span><br><span class="line"></span><br><span class="line">    // 使用 Lambda 表达式进行降序排序</span><br><span class="line">    std::sort(vec.begin(), vec.end(), [](int a, int b) &#123;</span><br><span class="line">        return a &gt; b; // 定义降序</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 输出结果: 50 40 30 20 10</span><br><span class="line">    // ...</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结-2"><a class="markdownIt-Anchor" href="#总结-2"></a> 总结</h3>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>C 风格数组</strong></th>
+<th><strong>std::vector</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>包含头文件</strong></td>
+<td><code>&lt;algorithm&gt;</code></td>
+<td><code>&lt;algorithm&gt;</code>, <code>&lt;vector&gt;</code></td>
+</tr>
+<tr>
+<td><strong>起始迭代器</strong></td>
+<td><code>arr</code> 或 <code>std::begin(arr)</code></td>
+<td><code>vec.begin()</code></td>
+</tr>
+<tr>
+<td><strong>结束迭代器</strong></td>
+<td><code>arr + n</code> 或 <code>std::end(arr)</code></td>
+<td><code>vec.end()</code></td>
+</tr>
+<tr>
+<td><strong>核心函数</strong></td>
+<td><strong><code>std::sort(first, last, comp)</code></strong></td>
+<td><strong><code>std::sort(first, last, comp)</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>std::sort()</code> 的强大之处在于它抽象了底层容器的差异，通过<strong>迭代器</strong>接口实现了统一的排序操作。只要容器提供了随机访问迭代器（Random Access Iterator），就可以使用 <code>std::sort</code>。</p>
+<h2 id="9时间复杂度"><a class="markdownIt-Anchor" href="#9时间复杂度"></a> 9.时间复杂度</h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_10_63a0cd5212019d108a20d78b6edb56de.webp" alt="" /></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/')">DUT开发区cpc组第一次例会笔记（2025秋）</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=DUT开发区cpc组第一次例会笔记（2025秋）&amp;url=http://tianxingleo.top/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=7a8810f0-8e4e-7358-78f1-8e07f64adf74" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.top" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/cpc/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>cpc<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/cpp/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>cpp<span class="tagsPageCount">14</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=81bc93ec-c2e0-2f96-6ce3-3add9e93ec05" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/30/%E7%BC%96%E7%A8%8B%E5%91%BD%E5%90%8D%E4%B9%A0%E6%83%AF%E4%BB%8B%E7%BB%8D/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=182d9fe9-dc2f-c185-7a72-7bc3cce8d421" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">编程命名习惯介绍</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=5c79e013-1fe5-61f7-8141-335917144ed6" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DUT开发区cpc组第二次例会笔记（2025秋）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/30/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第二次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=5c79e013-1fe5-61f7-8141-335917144ed6" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-30</div><div class="title">DUT开发区cpc组第二次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/11/07/DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="DUT开发区cpc组第三次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/ae2d1eca082f876be72a1278e9e959e9.webp?_r_=d01830c1-8b8d-ab11-8ad7-433ef058d91d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-07</div><div class="title">DUT开发区cpc组第三次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/11/24/%E3%80%90DP%E3%80%91DUT%E5%BC%80%E5%8F%91%E5%8C%BAcpc%E7%BB%84%E7%AC%AC%E4%BA%94%E6%AC%A1%E4%BE%8B%E4%BC%9A%E7%AC%94%E8%AE%B0%EF%BC%882025%E7%A7%8B%EF%BC%89/" title="【DP】DUT开发区cpc组第五次例会笔记（2025秋）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/7ae2047cde0451cf21fa7a8842565b58f0e9d1e1.webp?_r_=b7934d48-85da-ccef-5561-04b28c46e001" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-24</div><div class="title">【DP】DUT开发区cpc组第五次例会笔记（2025秋）</div></div></a></div><div><a href="/2025/11/09/c-cpp%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8C%87%E9%92%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="c&#x2F;cpp函数与指针学习笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=f9d71ebb-ca22-7f2a-3b04-2ec59e88f5b5" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-09</div><div class="title">c&#x2F;cpp函数与指针学习笔记</div></div></a></div><div><a href="/2025/11/19/c-cpp%E6%98%93%E9%94%99%E7%82%B9%EF%BC%9A-%E3%80%81-%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/" title="C&#x2F;C++ 易错点深度解析：指针、结构体与运算符优先级"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/ae2d1eca082f876be72a1278e9e959e9.webp?_r_=27100b69-4497-c6d2-75f8-2ca67f7fba9b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">C&#x2F;C++ 易错点深度解析：指针、结构体与运算符优先级</div></div></a></div><div><a href="/2025/10/31/cpp%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%882025-10-31%EF%BC%89/" title="cpp字符串操作中遇到的坑（2025.10.31）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=5dfb9cac-1b48-494c-cc87-ccd25c86ab4a" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-31</div><div class="title">cpp字符串操作中遇到的坑（2025.10.31）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%90%91%E4%B8%8A%E5%8F%96%E6%95%B4"><span class="toc-number">1.</span> <span class="toc-text"> 1.向上取整</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 通用公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text"> C++ 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F%E8%A7%A3%E9%87%8A"><span class="toc-number">1.3.</span> <span class="toc-text"> 公式解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BD%AC%E6%8D%A2-%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 另一种方法：浮点数转换 (不推荐)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1ll"><span class="toc-number">2.</span> <span class="toc-text"> 2. 1ll</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A1%AE%E4%BF%9D%E5%B8%B8%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%98%AF-long-long"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 确保常量的类型是 long long</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%81%BF%E5%85%8D%E6%BD%9C%E5%9C%A8%E7%9A%84%E6%BA%A2%E5%87%BAoverflow%E5%92%8C%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 避免潜在的溢出（Overflow）和类型转换问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF-a-%E8%B5%8B%E5%80%BC%E6%97%B6%E7%9A%84%E6%BA%A2%E5%87%BA%E6%9C%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 场景 A: 赋值时的溢出（最常见问题）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF-b-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%8F%90%E5%8D%87promotion"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 场景 B: 表达式中的类型提升（Promotion）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.3.</span> <span class="toc-text"> 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-memset"><span class="toc-number">3.</span> <span class="toc-text"> 3. memset()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-memset-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E9%99%90%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. memset() 的作用和限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95%E5%92%8C%E6%8E%A8%E8%8D%90"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 数组初始化的常见方法和推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-c-%E6%8E%A8%E8%8D%90%E6%96%B9%E6%B3%95-%E6%9B%B4%E5%AE%89%E5%85%A8-%E6%9B%B4%E7%8E%B0%E4%BB%A3"><span class="toc-number">3.2.1.</span> <span class="toc-text"> A. C++ 推荐方法 (更安全、更现代)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-cc-%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95-%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E5%80%BC"><span class="toc-number">3.2.2.</span> <span class="toc-text"> B. C&#x2F;C++ 通用方法 (针对特定值)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E5%92%8C%E5%BB%BA%E8%AE%AE"><span class="toc-number">3.3.</span> <span class="toc-text"> 结论和建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-strlen"><span class="toc-number">4.</span> <span class="toc-text"> 4. strlen()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5"><span class="toc-number">5.</span> <span class="toc-text"> 5. 四舍五入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-stdround-c11-%E5%8F%8A%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E6%8E%A8%E8%8D%90"><span class="toc-number">5.1.</span> <span class="toc-text"> 1. 使用 std::round() (C++11 及更高版本，推荐⭐)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-floorx-05-%E6%8A%80%E5%B7%A7-%E5%85%BC%E5%AE%B9-cc%E4%BD%86%E6%9C%89%E5%B1%80%E9%99%90"><span class="toc-number">5.2.</span> <span class="toc-text"> 2. 使用 floor(x + 0.5) 技巧 (兼容 C&#x2F;C++，但有局限)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%87%BD%E6%95%B0-%E6%89%8B%E5%8A%A8%E5%A4%84%E7%90%86%E6%AD%A3%E8%B4%9F%E6%95%B0"><span class="toc-number">5.3.</span> <span class="toc-text"> 3. 实现自定义四舍五入函数 (手动处理正负数)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E5%88%B0%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E-n-%E4%BD%8D"><span class="toc-number">5.4.</span> <span class="toc-text"> 4. 四舍五入到小数点后 N 位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text"> 6. 三目运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text"> 📚 基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%AF%94"><span class="toc-number">6.2.</span> <span class="toc-text"> 💡 示例对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-ifelse-%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.2.1.</span> <span class="toc-text"> 1. 使用 if...else 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">6.2.2.</span> <span class="toc-text"> 2. 使用三目运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E4%BE%8B"><span class="toc-number">6.3.</span> <span class="toc-text"> 🔧 常见用例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%E4%B8%8E-%E7%BC%BA%E7%82%B9"><span class="toc-number">6.4.</span> <span class="toc-text"> 👍 优点与 👎 缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">6.4.1.</span> <span class="toc-text"> 优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.4.2.</span> <span class="toc-text"> 缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">7.</span> <span class="toc-text"> 7. 格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">7.1.</span> <span class="toc-text"> 1.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">7.2.</span> <span class="toc-text"> 2.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">7.3.</span> <span class="toc-text"> 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E8%AF%A6%E8%A7%A3"><span class="toc-number">7.4.</span> <span class="toc-text"> 组成部分详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">7.5.</span> <span class="toc-text"> 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-10-s"><span class="toc-number">7.5.1.</span> <span class="toc-text"> 使用 % - 10 s</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%9A%84%E5%B7%A6%E5%AF%B9%E9%BD%90%E7%A4%BA%E4%BE%8B"><span class="toc-number">7.5.2.</span> <span class="toc-text"> 数字的左对齐示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-number">7.6.</span> <span class="toc-text"> 3.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%8C%BA%E5%88%AB"><span class="toc-number">7.7.</span> <span class="toc-text"> 总结区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A"><span class="toc-number">7.8.</span> <span class="toc-text"> 详细解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-lf-%E7%94%A8%E4%BA%8E-double"><span class="toc-number">7.8.1.</span> <span class="toc-text"> 1. %lf (用于 double)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-lf-%E7%94%A8%E4%BA%8E-long-double"><span class="toc-number">7.8.2.</span> <span class="toc-text"> 2. %Lf (用于 long double)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">7.9.</span> <span class="toc-text"> ❗ 重点注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-sort"><span class="toc-number">8.</span> <span class="toc-text"> 8. sort()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-stdsort-%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">8.1.</span> <span class="toc-text"> 一、 std::sort() 的基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E9%92%88%E5%AF%B9-c-%E9%A3%8E%E6%A0%BC%E6%95%B0%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.2.</span> <span class="toc-text"> 二、 针对 C 风格数组的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BB%98%E8%AE%A4%E5%8D%87%E5%BA%8F%E6%8E%92%E5%BA%8F-%E4%BB%8E%E5%B0%8F%E5%88%B0%E5%A4%A7"><span class="toc-number">8.2.1.</span> <span class="toc-text"> 1. 默认升序排序 (从小到大)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%99%8D%E5%BA%8F%E6%8E%92%E5%BA%8F-%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F"><span class="toc-number">8.2.2.</span> <span class="toc-text"> 2. 自定义降序排序 (从大到小)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E9%92%88%E5%AF%B9-stdvector-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.3.</span> <span class="toc-text"> 三、 针对 std::vector 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BB%98%E8%AE%A4%E5%8D%87%E5%BA%8F%E6%8E%92%E5%BA%8F"><span class="toc-number">8.3.1.</span> <span class="toc-text"> 1. 默认升序排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%99%8D%E5%BA%8F%E6%8E%92%E5%BA%8F"><span class="toc-number">8.3.2.</span> <span class="toc-text"> 2. 自定义降序排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">8.4.</span> <span class="toc-text"> 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">9.</span> <span class="toc-text"> 9.时间复杂度</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/3DGS-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%A6%82%E4%BD%95%E5%BD%BB%E5%BA%95%E6%B6%88%E9%99%A4%E4%BC%AA%E5%BD%B1%E4%B8%8E%E8%83%8C%E6%99%AF%E6%BC%82%E6%B5%AE%E7%89%A9%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E-Nerfstudio-%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%BA%A7%E9%87%8D%E5%BB%BA%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="3DGS：利用YOLO+SAM+Mask彻底消除伪影与背景漂浮物——基于 Nerfstudio 的对象级重建最佳实践"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=81bc93ec-c2e0-2f96-6ce3-3add9e93ec05" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3DGS：利用YOLO+SAM+Mask彻底消除伪影与背景漂浮物——基于 Nerfstudio 的对象级重建最佳实践"/></a><div class="content"><a class="title" href="/2025/12/10/3DGS-%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%A6%82%E4%BD%95%E5%BD%BB%E5%BA%95%E6%B6%88%E9%99%A4%E4%BC%AA%E5%BD%B1%E4%B8%8E%E8%83%8C%E6%99%AF%E6%BC%82%E6%B5%AE%E7%89%A9%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E-Nerfstudio-%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%BA%A7%E9%87%8D%E5%BB%BA%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="3DGS：利用YOLO+SAM+Mask彻底消除伪影与背景漂浮物——基于 Nerfstudio 的对象级重建最佳实践">3DGS：利用YOLO+SAM+Mask彻底消除伪影与背景漂浮物——基于 Nerfstudio 的对象级重建最佳实践</a><time datetime="2025-12-10T15:04:59.000Z" title="发表于 2025-12-10 23:04:59">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E7%94%A8-GLOMAP-%E6%9B%BF%E6%8D%A2-COLMAP-%E5%8A%A0%E9%80%9F-3DGS-%E9%87%8D%E5%BB%BA%E7%AE%A1%E7%BA%BF/" title="用 GLOMAP 替换 COLMAP 加速 3DGS 重建管线"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/ae2d1eca082f876be72a1278e9e959e9.webp?_r_=d7d33681-c7df-e57d-46f4-8af4c96b8785" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 GLOMAP 替换 COLMAP 加速 3DGS 重建管线"/></a><div class="content"><a class="title" href="/2025/12/10/%E7%94%A8-GLOMAP-%E6%9B%BF%E6%8D%A2-COLMAP-%E5%8A%A0%E9%80%9F-3DGS-%E9%87%8D%E5%BB%BA%E7%AE%A1%E7%BA%BF/" title="用 GLOMAP 替换 COLMAP 加速 3DGS 重建管线">用 GLOMAP 替换 COLMAP 加速 3DGS 重建管线</a><time datetime="2025-12-10T15:02:02.000Z" title="发表于 2025-12-10 23:02:02">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.webp?_r_=e6fbc91f-2a7a-3ef3-699f-31823a5d070b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练"/></a><div class="content"><a class="title" href="/2025/12/10/%E5%9C%A8%E6%9C%80%E6%96%B0Blackwell%E6%9E%B6%E6%9E%84%E4%BD%8E%E6%98%BE%E5%AD%98%E6%B6%88%E8%B4%B9%E7%BA%A7%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%80%9A%E8%BF%87%E5%A4%8D%E7%8E%B0%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E4%BD%BF%E7%94%A8VGGT%E6%9B%BF%E4%BB%A3COLMAP%E5%8A%A0%E9%80%9F3DGS%E8%AE%AD%E7%BB%83/" title="在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练">在最新Blackwell架构低显存消费级显卡上通过复现最新论文使用VGGT替代COLMAP加速3DGS训练</a><time datetime="2025-12-10T13:53:53.000Z" title="发表于 2025-12-10 21:53:53">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/9c7026124dcb360f454545904aac9838cb95adb8.webp?_r_=6d6c0872-914a-b8a4-3ddd-76ac4385633f" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案"/></a><div class="content"><a class="title" href="/2025/12/08/%E3%80%90%E9%A6%96%E5%8F%91%E3%80%91%E5%9C%A8-RTX-5070-Blackwell-WSL2-%E4%B8%8A%E8%B7%91%E9%80%9A%E6%9C%80%E6%96%B0%E6%A8%A1%E5%9E%8B-Meta-SAM-3D-%E7%9A%84%E7%BB%88%E6%9E%81%E6%96%B9%E6%A1%88/" title="【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案">【首发】在 RTX 5070 (Blackwell) + WSL2 上跑通最新模型 Meta SAM 3D 的终极方案</a><time datetime="2025-12-08T06:29:13.000Z" title="发表于 2025-12-08 14:29:13">2025-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=888139d3-77e2-0d67-011e-169396a46739" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南"/></a><div class="content"><a class="title" href="/2025/12/07/%E5%9C%A8-Linux-WSL-RTX-50-%E7%B3%BB%E5%88%97%E6%98%BE%E5%8D%A1%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%94%9F-GPU-%E5%8A%A0%E9%80%9F-COLMAP-%E7%9A%84%E6%8C%87%E5%8D%97/" title="在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南">在 Linux (WSL) + RTX 50 系列显卡上部署原生 GPU 加速 COLMAP 的指南</a><time datetime="2025-12-06T16:48:20.000Z" title="发表于 2025-12-07 00:48:20">2025-12-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 0.88rem;">3dgs<sup>7</sup></a><a href="/tags/5070/" style="font-size: 0.88rem;">5070<sup>1</sup></a><a href="/tags/Nerfstudio/" style="font-size: 0.88rem;">Nerfstudio<sup>1</sup></a><a href="/tags/SAM3D/" style="font-size: 0.88rem;">SAM3D<sup>1</sup></a><a href="/tags/blackwell/" style="font-size: 0.88rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>4</sup></a><a href="/tags/colmap/" style="font-size: 0.88rem;">colmap<sup>4</sup></a><a href="/tags/cpc/" style="font-size: 0.88rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 0.88rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 0.88rem;">dp<sup>1</sup></a><a href="/tags/google-colab/" style="font-size: 0.88rem;">google colab<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 0.88rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>5</sup></a><a href="/tags/mask/" style="font-size: 0.88rem;">mask<sup>1</sup></a><a href="/tags/nerfstudio/" style="font-size: 0.88rem;">nerfstudio<sup>1</sup></a><a href="/tags/pytorch/" style="font-size: 0.88rem;">pytorch<sup>3</sup></a><a href="/tags/sam/" style="font-size: 0.88rem;">sam<sup>1</sup></a><a href="/tags/sam3/" style="font-size: 0.88rem;">sam3<sup>1</sup></a><a href="/tags/tic/" style="font-size: 0.88rem;">tic<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 0.88rem;">wsl<sup>5</sup></a><a href="/tags/yolo/" style="font-size: 0.88rem;">yolo<sup>1</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 0.88rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 0.88rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 0.88rem;">大学<sup>7</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 0.88rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 0.88rem;">搜索<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.88rem;">数学<sup>2</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">积分<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 0.88rem;">结构体<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 0.88rem;">高数<sup>4</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
