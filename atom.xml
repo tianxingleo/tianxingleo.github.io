@@ -6,7 +6,7 @@
   <link href="http://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="http://tianxingleo.top/"/>
-  <updated>2025-12-17T15:13:39.000Z</updated>
+  <updated>2025-12-26T03:55:49.536Z</updated>
   <id>http://tianxingleo.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微分方程速成笔记</title>
+    <link href="http://tianxingleo.top/2025/12/26/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tianxingleo.top/2025/12/26/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</id>
+    <published>2025-12-26T03:53:29.000Z</published>
+    <updated>2025-12-26T03:55:49.536Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;微分方程速成笔记&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#微分方程速成笔记&quot;&gt;&lt;/a&gt; 微分方程速成笔记&lt;/h1&gt;
+&lt;h2 id=&quot;part-i-概念与基础&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
+    
+    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
+    
+    <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="微分方程" scheme="http://tianxingleo.top/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>高数上极限章节错题集</title>
@@ -90,11 +120,11 @@
     
     
     
+    <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
     <category term="笔记" scheme="http://tianxingleo.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="线性代数" scheme="http://tianxingleo.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    
-    <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
     
   </entry>
   
@@ -571,31 +601,6 @@
     <category term="链表" scheme="http://tianxingleo.top/tags/%E9%93%BE%E8%A1%A8/"/>
     
     <category term="结构体" scheme="http://tianxingleo.top/tags/%E7%BB%93%E6%9E%84%E4%BD%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>校园跑脚本开发日志</title>
-    <link href="http://tianxingleo.top/2025/11/16/%E6%A0%A1%E5%9B%AD%E8%B7%91%E8%84%9A%E6%9C%AC%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/"/>
-    <id>http://tianxingleo.top/2025/11/16/%E6%A0%A1%E5%9B%AD%E8%B7%91%E8%84%9A%E6%9C%AC%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</id>
-    <published>2025-11-16T07:28:54.000Z</published>
-    <updated>2025-12-17T15:13:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;校园跑模拟器-school-runing-dut-开发历程&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#校园跑模拟器-school-runing-dut-开发历程&quot;&gt;&lt;/a&gt; 校园跑模拟器 (school-runing-dut)</summary>
-        
-      
-    
-    
-    
-    
-    <category term="python" scheme="http://tianxingleo.top/tags/python/"/>
-    
-    <category term="gemini" scheme="http://tianxingleo.top/tags/gemini/"/>
     
   </entry>
   
