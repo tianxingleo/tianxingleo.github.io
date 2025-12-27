@@ -6,7 +6,7 @@
   <link href="http://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="http://tianxingleo.top/"/>
-  <updated>2025-12-27T12:03:41.098Z</updated>
+  <updated>2025-12-27T13:37:32.751Z</updated>
   <id>http://tianxingleo.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）</title>
+    <link href="http://tianxingleo.top/2025/12/27/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%88%9D%E8%AF%86%EF%BC%9A%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE%E4%B8%8E%E5%BE%B7%E5%8A%B3%E5%86%85%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%EF%BC%88Voronoi-Diagram-Delaunay-Triangulation%EF%BC%89/"/>
+    <id>http://tianxingleo.top/2025/12/27/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%88%9D%E8%AF%86%EF%BC%9A%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE%E4%B8%8E%E5%BE%B7%E5%8A%B3%E5%86%85%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%EF%BC%88Voronoi-Diagram-Delaunay-Triangulation%EF%BC%89/</id>
+    <published>2025-12-27T13:33:52.000Z</published>
+    <updated>2025-12-27T13:37:32.751Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在计算机视觉与图形学的最新研究（如 CVPR/SIGGRAPH）中，&lt;strong&gt;混合表征 (Hybrid Representation)&lt;/strong&gt; 正逐渐成为主流。SDFoam</summary>
+        
+      
+    
+    
+    
+    
+    <category term="SDFoam" scheme="http://tianxingleo.top/tags/SDFoam/"/>
+    
+    <category term="计算机图形学" scheme="http://tianxingleo.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    <category term="sdf" scheme="http://tianxingleo.top/tags/sdf/"/>
+    
+  </entry>
   
   <entry>
     <title>积分复习笔记</title>
@@ -35,15 +62,15 @@
     
     
     
-    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
     <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
     
-    <category term="积分" scheme="http://tianxingleo.top/tags/%E7%A7%AF%E5%88%86/"/>
+    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
     <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     
     <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="积分" scheme="http://tianxingleo.top/tags/%E7%A7%AF%E5%88%86/"/>
     
     <category term="微积分" scheme="http://tianxingleo.top/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/"/>
     
@@ -381,9 +408,9 @@
     
     
     
-    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
     <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
@@ -407,9 +434,9 @@
     
     
     
-    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
     <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
@@ -514,9 +541,9 @@
     
     
     
-    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
     <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
@@ -574,40 +601,6 @@
     <category term="天使的心跳" scheme="http://tianxingleo.top/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/"/>
     
     <category term="key社" scheme="http://tianxingleo.top/tags/key%E7%A4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C/C++ 易错点深度解析：指针、结构体与运算符优先级</title>
-    <link href="http://tianxingleo.top/2025/11/19/c-cpp%E6%98%93%E9%94%99%E7%82%B9%EF%BC%9A-%E3%80%81-%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    <id>http://tianxingleo.top/2025/11/19/c-cpp%E6%98%93%E9%94%99%E7%82%B9%EF%BC%9A-%E3%80%81-%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/</id>
-    <published>2025-11-19T02:28:47.000Z</published>
-    <updated>2025-12-17T15:13:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-运算顺序的三大基石&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-运算顺序的三大基石&quot;&gt;&lt;/a&gt; 1. 运算顺序的三大基石&lt;/h2&gt;
-&lt;p&gt;在 C/C++</summary>
-        
-      
-    
-    
-    
-    
-    <category term="c" scheme="http://tianxingleo.top/tags/c/"/>
-    
-    <category term="cpp" scheme="http://tianxingleo.top/tags/cpp/"/>
-    
-    <category term="学习" scheme="http://tianxingleo.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="指针" scheme="http://tianxingleo.top/tags/%E6%8C%87%E9%92%88/"/>
-    
-    <category term="链表" scheme="http://tianxingleo.top/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-    <category term="结构体" scheme="http://tianxingleo.top/tags/%E7%BB%93%E6%9E%84%E4%BD%93/"/>
     
   </entry>
   
