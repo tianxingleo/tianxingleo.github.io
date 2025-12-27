@@ -1,0 +1,1072 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025] | Tianxingleo的Blog</title><meta name="keywords" content="SDFoam,三维重建,CV,CG"><meta name="author" content="Tianxingleo"><meta name="copyright" content="Tianxingleo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"><meta name="application-name" content="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"><meta property="og:url" content="http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/index.html"><meta property="og:site_name" content="Tianxingleo的Blog"><meta property="og:description" content="摘要 SDFoam 是一种新型的 3D 重建与神经渲染框架，它创造性地将显式的 Voronoi（沃罗诺伊）几何结构与隐式的 SDF（符号距离场） 结合在一起，旨在同时实现高质量的几何重建和高效的视图合成。   论文标题：SDFoam: Signed-Distance Foam for explic"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=248f250d-5d7a-29db-4409-2976fbbed65c"><meta property="article:author" content="Tianxingleo"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=248f250d-5d7a-29db-4409-2976fbbed65c"><meta name="description" content="摘要 SDFoam 是一种新型的 3D 重建与神经渲染框架，它创造性地将显式的 Voronoi（沃罗诺伊）几何结构与隐式的 SDF（符号距离场） 结合在一起，旨在同时实现高质量的几何重建和高效的视图合成。   论文标题：SDFoam: Signed-Distance Foam for explic"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2abdc2befae45d70b9fd72c864f6fac0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-NVDE0BFR5M"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NVDE0BFR5M');
+</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"S-IQC7J39MX5C7PRZM","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: {"appId":"66YB7CN8AP","apiKey":"61956196bfa43507ef197aade2f06e78","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Tianxingleo","link":"链接: ","source":"来源: Tianxingleo的Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Tianxingleo的Blog',
+  title: 'CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]',
+  postAI: 'true',
+  pageFillDescription: ' 摘要,  第一部分：背景与痛点,  1. 光度保真度 (Photometric Fidelity),  2. 几何精确度 (Geometric Accuracy),  1. 辐射场方法的局限性：几何模糊性,  2. 神经隐式表面的瓶颈：效率与离散化误差,  3. 显式辐射场的缺陷：拓扑不连续,  SDFoam 的破局思路,  一言以蔽之： SDFoam 是把隐式的 SDF（数学公式）注入到显式的 Voronoi 气泡（几何骨架）里。,  第三部分：方法论,  一、 核心概念,  1. 主要组件,  2. 关键参数与符号 (θ\thetaθ),  3. 损失函数 (L\mathcal{L}L) - 训练的指挥棒,  二、 详细步骤,  阶段 1：前向传播 - 生成图像 (Forward Pass 实线箭头 →\rightarrow→),  阶段 2：反向传播 - 训练优化 (Backward Pass 虚线箭头 ⇢\dashrightarrow⇢),  1. 空间表示 (Representation)：显式骨架与隐式参数,  2. 桥梁：从 SDF 到密度 (The Bridge SDF-to-Density),  3. 几何提取 (Mesh Extraction)：速度与质量的降维打击,  3.3 极速网格提取 (Figure 4 ),  4. 物理约束 (Optimization)：Eikonal Loss 的紧箍咒,  第四部分：实验结果 —— 数据与视觉验证,  1. 定性对比 (Qualitative Results)：,  2. 定量分析 (Quantitative Analysis)：,  第五部分：局限与展望,  1. 水密性问题,  2. β\betaβ 参数敏感性,  3. 未来方向：动态与材质,  第六部分：启发与未来展望,  1. 方法论启发：告别黑盒拥抱灰盒 (The Grey Box Philosophy),  2. 未来科研方向：摘要是一种新型的重建与神经渲染框架它创造性地将显式的沃罗诺伊几何结构与隐式的符号距离场结合在一起旨在同时实现高质量的几何重建和高效的视图合成论文标题论文地址本文部分图片由生成右下角有表示第一部分背景与痛点在神经渲染与三维重建的交叉领域中长期存在一个核心的权衡问题光度保真度与几何精确度难以兼得同时还需要兼顾计算效率的提出正是为了解决现有三大主流技术路线在这一不可能三角中的结构性缺陷光度保真度通俗理解看着像不像针对图像定义衡量算法渲染出来的图片与真实相机拍到的照片有多接近关注点颜色光影反射如镜面高光透明度纹理细节评价指标峰值信噪比数值越高越好代表噪点少画面纯净结构相似性数值越接近越好代表图片结构和人眼观感一致几何精确度通俗理解形状准不准针对模型定义衡量算法重建出来的模型与物体真实的物理形状有多接近关注点表面是否平滑边缘是否锐利是否有破洞是否有漂浮的垃圾拓扑结构是否正确水密性评价指标倒角距离数值越低越好它计算你的模型表面上的点到真实模型表面上的点平均距离是多少辐射场方法的局限性几何模糊性代表技术技术特征这类方法通过优化体密度或不透明度来最小化光度损失其核心目标是新视图合成核心痛点几何不适定性云雾本质将场景建模为连续的密度场在数学上并没有一个明确的表面边界物体表面通常表现为密度值的逐渐衰减而非阶跃变化等值面提取困难尝试通过阈值化密度来提取网格是非常不稳定的选取的阈值稍有偏差提取出的几何体就会出现严重的噪声空洞或虚假的云雾状几何应用受限由此生成的几何体无法直接用于物理模拟游戏引擎碰撞检测或打印因为它们往往不是水密的且包含大量非物理的半透明区域左辐射场方法没有一个明确的表面边界提取网格是非常不稳定右图片由生成神经隐式表面的瓶颈效率与离散化误差代表技术技术特征这类方法引入了符号距离函数作为几何的底层表示通过将转换为密度例如使用分布的导数实现了表面约束核心痛点推理缓慢与后处理依赖计算昂贵隐式表示通常依赖于一个巨大的多层感知机来查询空间中任意点的值在渲染过程中每条光线需要采样数百个点意味着需要进行数百万次推理导致训练和渲染速度极慢的弊端尽管定义了完美的平滑表面但要将其转化为显式的网格必须使用行军立方体算法离散化误差需要在固定的体素网格上进行采样和线性插值这引入了不可避免的数值近似误差非端到端是一个独立于训练过程的后处理步骤无法在训练中直接优化网格拓扑左传统神经隐式表示依赖于一个巨大的训练和渲染速度极慢网格化时依赖行军立方体有不可避免的数值近似误差右速度快端到端图片由生成显式辐射场的缺陷拓扑不连续代表技术技术特征创新性地引入了图和三角剖分作为场景的显式支架每个单元存储独立的密度和颜色参数核心痛点几何相干性缺失零阶连续性将每个单元视为独立的优化单元在优化过程中相邻单元之间缺乏几何约束单元可能不仅在颜色上而且在密度上与单元完全断裂马赛克效应由于缺乏全局的表面约束重建出的几何体往往呈现出碎片化特征表面由离散的多边形面片拼凑而成且场景中充斥着因局部极小值导致的漂浮物非物理结构提取的模型通常是体积填充的而非原本的空心表面且包含大量拓扑伪影难以进行后续的几何处理左沃罗诺伊结构之间不连续场景中充斥着漂浮物提取的模型为非物理结构右程函方程约束图片由生成的破局思路针对上述困境提出了一种混合架构旨在融合显式结构的速度与隐式表示的质量核心野心的显式速度的隐式几何质量的显式速度的隐式几何质量的显式速度的隐式几何质量解决策略几何注入不再让单元存储随意的密度而是强制每个单元存储并维护一个局部的场全局约束通过程函方程正则化强迫所有离散的单元在空间上形成一个连续光滑且符合物理规律的整体距离场直接提取利用本身的拓扑特性通过直接筛选零水平集附近的面替代这不仅消除了插值误差更将网格提取速度提升了倍一言以蔽之是把隐式的数学公式注入到显式的气泡几何骨架里第三部分方法论图片摘自论文一核心概念主要组件点云初始化系统的起点通常是使用传统方法如从照片中计算出的稀疏点云这些点既是几何的参考也作为图的初始种子点多层感知机一个神经网络充当隐式几何的大脑它负责学习和记忆场景的形状给定一个空间坐标它能告诉你这个点离物体表面有多远密度转换模块连接数学距离和视觉渲染的桥梁它把输出的距离值转换成渲染器能理解的不透明度密度沃罗诺伊图泰森多边形场景的显式骨架空间被划分为许多个多面体气泡每个气泡由一个中心站点控制它是存储和组织数据位置颜色密度的基本容器渲染场景最终输出的图像通过光线追踪算法穿过气泡计算得到关键参数与符号位置参数图中每个气泡的种子点的三维坐标注意这些坐标是可学习的会在训练中移动值符号距离的输出它表示一个点距离物体表面的最近距离负值在物体内部正值在外部表示在表面方差锐度参数控制密度转换函数的胖瘦它决定了物体边界是模糊的雾状还是锐利的固体表面密度值通过转换得到的物理属性表示该区域阻挡光线的概率颜色参数每个气泡存储的颜色信息通常是球谐系数以支持视角依赖的反射效果损失函数训练的指挥棒光度颜色损失美术老师比较渲染出的图像和真实照片的差异差异越大惩罚越大迫使模型修改参数以生成更真实的照片程函损失物理几何老师一种数学约束强迫输出的符合真实的物理距离法则即梯度的模长接近这保证了重建的几何形状是平滑且真实的二详细步骤我们将流程分为两个阶段前向的渲染生成流程以及反向的训练优化流程阶段前向传播生成图像实线箭头这个过程描述了数据如何从输入的点变成最终的图像步骤初始化与空间划分输入的稀疏点云被用作图的初始种子点将空间划分为许多个多面体气泡步骤计算隐式几何对于空间中的任意点通常是气泡的中心或光线上的采样点将其坐标输入到神经网络中输出该点的符号距离值步骤密度转换渲染器无法直接使用值系统利用一个基于导数的钟形曲线函数见图中红绿曲线图表将值转换为密度值核心逻辑只有当接近在物体表面附近时密度才最高远离表面时密度趋近于空气这个转换曲线的宽度由锐度参数控制步骤组装单元每个气泡现在成为了一个信息载体汇聚了三个关键要素它的位置计算出的密度独立存储的颜色信息步骤体积渲染虚拟相机发出光线穿过这些组装好的气泡渲染算法沿着光线累加各个气泡的颜色和密度最终计算出屏幕上每个像素的颜色生成阶段反向传播训练优化虚线箭头这个过程描述了系统如何根据误差来自我修正变得越来越准确总目标通过不断微调所有可学习的参数使得总误差最小化路径基于视觉误差的更新驱动计算渲染图像与真实图像的差异得到颜色损失误差信号沿着虚线反向传播更新颜色修正让气泡颜色更准确更新位置关键修正这意味着气泡的中心点会移动自动贴合到物体的真实表面位置更新几何与锐度误差穿过密度转换模块修正锐度参数调节表面的虚实并进一步传播回更新神经网络的权重使其输出更准确的值路径基于几何约束的更新驱动在输出的同时计算程函损失这个信号直接作用于不依赖图像质量单纯从数学层面约束场的形状防止其产生不合理的物理结构并没有发明全新的数学而是巧妙地在显式几何与隐式场之间架起了一座桥梁我们将这一过程拆解为三个关键步骤空间表示密度转换网格提取以及贯穿始终的物理约束空间表示显式骨架与隐式参数首先解决的是如何在计算机中高效地存一个场景的问题图抛弃了中那种在真空中盲目采样的做法而是采用了一组可优化的种子点来划分空间划分逻辑空间中任何一个点离哪个种子点最近它就属于哪个单元显式优势这种划分是显式的光线在穿过空间时不再是一步步盲目试探而是可以在空旷的单元里大跨步前进甚至直接跳过无关区域这为光线追踪带来了巨大的速度提升气泡单元与不同的单元里存的不是简单的密度而是一个更加本质的几何属性符号距离每个单元关联一个从网络查询得到的值同时单元还存储了颜色参数和位置参数本质改变以前是这块区域有多浓现在变成了这块区域离表面有多远图片由生成桥梁从到密度这是最天才的一步它解决了数学公式与渲染引擎语言不通的问题痛点光线追踪器只看得懂物理上的不透明度密度或即光线被阻挡的概率提供的是几何上的距离即离墙还有几米渲染器不懂距离是什么意思它只知道密度挡住光了解法钟形曲线借用了的思路使用一个映射函数将转化为密度公式逻辑使用函数的导数直观形态这是一个以为中心的钟形曲线当在表面上时曲线达到峰值密度最大当很大远离表面时曲线迅速归零变成透明空气参数锐化的魔法这个钟形曲线的胖瘦由一个可学习的参数控制训练初期小曲线很宽像一团雾这让梯度能传得很远帮助快速定位物体的大致轮廓训练后期大曲线收紧成一根针这迫使物体表面从雾气凝结成石头实现高精度的锐利重建图片由生成几何提取速度与质量的降维打击这是相比于等隐式方法最大的工程亮点传统之痛传统的方法在提取网格时必须在一个高分辨率的网格上密集采样然后通过线性插值猜出三角形算法缺点极慢数秒到数分钟且由于是插值容易抹平锐利的棱角数值误差的做法挑选法利用了图天然存在的墙壁多边形面既然墙壁已经切好了我们只需要问一个问题这面墙是物体的皮吗判据检查墙壁两端的种子点符号如果一个是负内部一个是正外部或者墙壁顶点的值极接近动作直接保留这面墙优势无需计算面是现成的不需要重新算坐标极速提取速度比快倍保真提取出的就是训练时的几何边界原汁原味没有插值带来的平滑误差极速网格提取展示了如何在不使用慢速的情况下直接从结构中提取出完美的水密网格这是一个由粗到细的筛选过程第一步准备原材料左侧训练好的场景此时我们拥有两套数据隐式场知道空间中每个点离表面有多远蓝红球体示意图蓝色内部红色外部显式图知道空间被切分成了哪些气泡彩色多边形示意图第二步粗筛操作我们遍历所有的气泡判据检查每个气泡中心点的值蓝色区域代表在物体内部红色区域代表在物体外部结果这一步帮我们区分出了实心肉和空心气第三步锁定表面气泡操作我们只关注交界处逻辑就像站在岸边一样我们只关心那些一只脚在水里内部一只脚在岸上外部的区域图中间那条深蓝色的线就是隐含的零水平集也就是物体的真实表面结果筛选出一层包裹着物体的气泡壳第四步精细挑面操作这是最关键的一步我们不再看气泡而是看气泡的墙壁判据零交叉对于每一面墙检查它连接的两个气泡中心如果气泡是内部且气泡是外部那么这面墙一定就是物体的表面动作直接保留这面多边形墙壁第五步生成网格结果把所有保留下来的墙壁拼在一起就直接得到了最终的优势无需插值墙壁是现成的不用像那样去算三角形顶点的坐标插值无需重连图天生就是无缝连接的只要挑出来的面天然就是拼好的图片摘自论文物理约束的紧箍咒为了防止神经网络偷懒或作弊必须施加物理法则的约束程函损失公式核心直觉它强制要求场的坡度恒定为这意味着在空间中每走米的读数必须增加米作用防止平底锅如果没有它网络可能会把表面附近一大片区域的都设为梯度消失强迫场呈字形确保的位置是唯一锐利的保证距离真实让光线步进算法能安全地跳跃不会因为距离虚报而穿模或撞墙图片由生成第四部分实验结果数据与视觉验证定性对比反面教材破碎的马赛克现象对比图论文或中的模型描述发现表面布满了密密麻麻的小孔洞在物体周围漂浮着大量孤立的碎片原因这正是几何不相干性因为每个气泡只管自己显色不管邻居死活导致在光线追踪难以覆盖的死角或纹理复杂的区域几何结构直接崩塌断裂光滑的实体现象再看的模型描述那些小洞基本消失了表面变得连续且平滑漂浮物被清理得干净本质区别这种更干净更完整的网格证明了成功地将离散的气泡粘在了一起它提取出的是一层仅包含表面的空心网格而不是像那样内部填充了一堆废料的体积网格结论视觉上从一团雾进化成了一块砖图片摘自论文图片摘自论文图片摘自论文定量分析几何精确度倒角距离指标含义算出的表面和真实物体表面之间的平均误差距离数值越低越好数据根据论文表在数据集上的平均误差高达全是漂浮物惹的祸直接降到了误差减少了一半以上解读虽然比不上纯隐式方法那种极致的精度毕竟是拿速度换精度但在保持显式速度的同时几何质量已经足以吊打同类的显式方法光度保真度峰值信噪比指标含义渲染出来的图和照片像不像数值越高越好数据持平关键结论这其实是一个非常了不起的成就通常来说加上几何约束会让模型变得僵硬导致画质下降但证明了引入显式的并不会显著降低视觉保真度我们没有为了几何而牺牲画质还是和照片一样真速度网格提取时间痛点虽然渲染快但提取很痛苦要在体素网格里慢慢算等值面的绝杀利用我们提到的挑选法直接筛选墙壁网格重建速度提升了倍意义这意味着在实际应用中比如用户用手机扫描物体用户等待生成模型的时间从去喝杯咖啡变成了眨眼之间表格摘自论文第五部分局限与展望虽然在速度和质量上取得了惊人的平衡但在面对真实世界复杂的物理规律和严苛的工业标准时它依然暴露出了一些结构性的短板我们需要用批判性的眼光来审视这些问题并探讨它们在实际落地中的影响水密性问题最大的卖点之一是网格提取快倍这是因为它放弃了传统的采用了基于面片筛选的挑选法但这恰恰埋下了隐患学术痛点非流形结构原理回顾挑选法是离散的算法检查每一面墙合格的留下不合格的扔掉漏气现象由于计算误差或采样精度某些本该存在的面可能因为值稍微超出了阈值例如而被无情抛弃这会导致模型表面出现微小的裂缝或孔洞数学后果提取出的不再是严格封闭的在拓扑学上它可能是不连续的工业应用问题打印这是致命伤切片软件如在处理非水密模型时会报错因为它无法区分哪是内部哪是外部导致打印失败或产生乱码支撑物理模拟在游戏开发如中刚体碰撞检测通常需要封闭的凸包漏气的模型会导致物理计算穿透或错误的体积估算解决方案在工业流程中必须增加一道后处理工序如使用或的算法来修补这些洞这在一定程度上抵消了其提取速度快的优势参数敏感性引入了一个关键参数来控制物体边缘的锐利程度从雾化到实体化这种设计虽然巧妙但也让训练过程变得脆弱学术痛点梯度消失机制越大导数钟形曲线就越窄风险如果在训练初期升得太快钟形曲线瞬间变成了一根针此时除了恰好落在表面的那几个点外空间中的区域梯度都变成了后果神经网络收不到任何修改意见梯度训练直接停滞模型假死这迫使我们必须精心设计的热身策略不能太快也不能太慢工业应用问题自动化流水线在电商扫描或元宇宙建模中我们希望算法是鲁棒的扔进去一万张图能出来一万个模型调试成本的敏感性意味着面对不同大小不同光照的物体可能需要人工微调参数这种手动调参的需求是阻碍其大规模自动化落地的主要绊脚石未来方向动态与材质目前还是一个静态雕塑家要迈向更广阔的真实世界还有两座大山要翻越挑战非朗伯材质现状目前假设物体大部分是漫反射的像石膏遇到镜子光滑金属玻璃时它会困惑问题镜面反射的颜色随视角变化可能会为了迎合镜子里的虚像错误地把镜面表面挖下去导致几何凹陷展望需要引入更高级的光照模型如材质估算或反射场让理解这是反光不是凹陷挑战动态场景现状的骨架是固定的或者只能微调位置问题如果要重建一个跳舞的人不仅在变的拓扑结构谁和谁相连也需要剧烈变化让图在时间轴上连续变形是一个极其复杂的数学难题涉及到拓扑撕裂和重连展望这就是重建的领域未来的工作可能会探索动态或者将时间作为一个维度引入但这将带来计算量的指数级爆炸第六部分启发与未来展望不仅仅是一个具体的算法它代表了计算机图形学与计算机视觉融合的一个重要趋势读完这篇论文我们能得到哪些通用的科研启发未来的路又在何方方法论启发告别黑盒拥抱灰盒打破二元对立过去我们认为要么用显式表示方便物理计算但难以微分要么用隐式表示方便微分但难以编辑启发告诉我们混合架构才是王道不要在和之间做选择题而是把隐式装进显式里科研方向未来的模型设计应该更多地思考如何将传统的图形学数据结构如与神经网络进行可微的结合而不是盲目地把所有东西都塞进一个巨大的里结构化的归纳偏置纯像是在白纸上画画太自由了所以容易画乱几何不收敛像是戴着镣铐跳舞就是那个镣铐结构约束启发给神经网络引入强拓扑约束是解决几何伪影和数据效率低的关键让网络只学它该学的东西局部细节大框架交给数学算法来保证未来科研方向方向动态场景与重建现状现在是静态的脑洞的种子点本质上是粒子如果我们让这些粒子动起来引入时间轴是不是就能天然地模拟流体布料或者形变物体关键词拉格朗日动力学方向生成式的结合现状现在的生成模型如生成的几何通常比较糙脑洞能不能训练一个直接预测的种子点位置和内部参数因为天生就是离散的比直接生成连续的权重更容易控制关键词方向物理仿真一体化现状图形学里渲染和物理模拟通常是分开的脑洞结构在物理模拟如有限元分析里非常常用既然已经把几何建模成了那是不是可以直接在这个模型上跑破碎碰撞弹性形变的物理模拟而不需要重新网格化愿景实现真正的所见即所算方向反光材质与逆渲染现状处理不好镜面反射脑洞将与基于物理的渲染结合不仅学习颜色还学习每个单元的粗糙度金属度和法线利用的表面提取能力做高质量的重打光图片由生成',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-28 02:00:06',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="Tianxingleo的Blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://avatars.githubusercontent.com/u/237200863?v=4"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Tianxingleo的Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 1.05rem;">3dgs<sup>7</sup></a><a href="/tags/5070/" style="font-size: 1.05rem;">5070<sup>1</sup></a><a href="/tags/CG/" style="font-size: 1.05rem;">CG<sup>3</sup></a><a href="/tags/CV/" style="font-size: 1.05rem;">CV<sup>3</sup></a><a href="/tags/SAM3D/" style="font-size: 1.05rem;">SAM3D<sup>1</sup></a><a href="/tags/SDFoam/" style="font-size: 1.05rem;">SDFoam<sup>4</sup></a><a href="/tags/blackwell/" style="font-size: 1.05rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>4</sup></a><a href="/tags/cpc/" style="font-size: 1.05rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 1.05rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 1.05rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 1.05rem;">dp<sup>1</sup></a><a href="/tags/html/" style="font-size: 1.05rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 1.05rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>5</sup></a><a href="/tags/mask/" style="font-size: 1.05rem;">mask<sup>1</sup></a><a href="/tags/nerfstudio/" style="font-size: 1.05rem;">nerfstudio<sup>1</sup></a><a href="/tags/pytorch/" style="font-size: 1.05rem;">pytorch<sup>3</sup></a><a href="/tags/sam/" style="font-size: 1.05rem;">sam<sup>1</sup></a><a href="/tags/sam3/" style="font-size: 1.05rem;">sam3<sup>1</sup></a><a href="/tags/tic/" style="font-size: 1.05rem;">tic<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>5</sup></a><a href="/tags/yolo/" style="font-size: 1.05rem;">yolo<sup>1</sup></a><a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" style="font-size: 1.05rem;">三维重建<sup>3</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 1.05rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 1.05rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 1.05rem;">大学<sup>8</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 1.05rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 1.05rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 1.05rem;">搜索<sup>1</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 1.05rem;">积分<sup>2</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 1.05rem;">结构体<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 1.05rem;">高数<sup>7</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/SDFoam/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>SDFoam</span></a><a class="article-meta__tags" href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>三维重建</span></a><a class="article-meta__tags" href="/tags/CV/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>CV</span></a><a class="article-meta__tags" href="/tags/CG/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>CG</span></a></span></div></div><h1 class="post-title" itemprop="name headline">CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-27T16:09:14.000Z" title="发表于 2025-12-28 00:09:14">2025-12-28</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-27T18:00:06.435Z" title="更新于 2025-12-28 02:00:06">2025-12-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广州"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广州</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=248f250d-5d7a-29db-4409-2976fbbed65c"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><div class="post-ai-description"><div class="ai-title"><i class="anzhiyufont anzhiyu-icon-bilibili"></i><div class="ai-title-text">AI-摘要</div><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i><i class="anzhiyufont anzhiyu-icon-circle-dot" title="朗读摘要"></i><div id="ai-tag">Tianli GPT</div></div><div class="ai-explanation">AI初始化中...</div><div class="ai-btn-box"><div class="ai-btn-item">介绍自己 🙈</div><div class="ai-btn-item">生成本文简介 👋</div><div class="ai-btn-item">推荐相关文章 📖</div><div class="ai-btn-item">前往主页 🏠</div><div class="ai-btn-item" id="go-tianli-blog">前往爱发电购买</div></div><script data-pjax src="/js/anzhiyu/ai_abstract.js"></script></div><article class="post-content" id="article-container" itemscope itemtype="http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/"><header><a href="/tags/SDFoam/" tabindex="-1" itemprop="url">SDFoam</a><a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" tabindex="-1" itemprop="url">三维重建</a><a href="/tags/CV/" tabindex="-1" itemprop="url">CV</a><a href="/tags/CG/" tabindex="-1" itemprop="url">CG</a><h1 id="CrawlerTitle" itemprop="name headline">CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Tianxingleo</span><time itemprop="dateCreated datePublished" datetime="2025-12-27T16:09:14.000Z" title="发表于 2025-12-28 00:09:14">2025-12-28</time><time itemprop="dateCreated datePublished" datetime="2025-12-27T18:00:06.435Z" title="更新于 2025-12-28 02:00:06">2025-12-28</time></header><h1 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h1>
+<p>SDFoam 是一种新型的 3D 重建与神经渲染框架，它创造性地将<strong>显式的 Voronoi（沃罗诺伊）几何结构</strong>与<strong>隐式的 SDF（符号距离场）</strong> 结合在一起，旨在同时实现<strong>高质量的几何重建</strong>和<strong>高效的视图合成</strong>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_b24860bf17b1e18f1eac856c88518573.webp" alt="" /></p>
+<blockquote>
+<p>论文标题：SDFoam: Signed-Distance Foam for explicit surface reconstruction*[Submitted on 18 Dec 2025]*</p>
+<p>论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.16706">https://arxiv.org/abs/2512.16706</a></p>
+<p>本文部分图片由<em>Nano Banana Pro</em>生成（右下角有Gemini表示）</p>
+</blockquote>
+<h1 id="第一部分背景与痛点"><a class="markdownIt-Anchor" href="#第一部分背景与痛点"></a> 第一部分：背景与痛点</h1>
+<p>在神经渲染（Neural Rendering）与三维重建（3D Reconstruction）的交叉领域中，长期存在一个核心的权衡问题（Trade-off）：<strong>光度保真度（Photometric Fidelity）与几何精确度（Geometric Accuracy）难以兼得</strong>，同时还需要兼顾<strong>计算效率（Computational Efficiency）</strong>。</p>
+<p>SDFoam 的提出，正是为了解决现有三大主流技术路线在这一“不可能三角”中的结构性缺陷。</p>
+<blockquote>
+<h5 id="1-光度保真度-photometric-fidelity"><a class="markdownIt-Anchor" href="#1-光度保真度-photometric-fidelity"></a> 1. 光度保真度 (Photometric Fidelity)</h5>
+<p><strong>通俗理解：</strong> <strong>“看着像不像”</strong>（针对 <strong>2D 图像</strong>）。</p>
+<ul>
+<li><strong>定义：</strong> 衡量算法渲染出来的 <strong>2D 图片</strong>，与真实相机拍到的 <strong>照片</strong> 有多接近。</li>
+<li><strong>关注点：</strong> 颜色、光影、反射（如镜面高光）、透明度、纹理细节。</li>
+<li><strong>评价指标：</strong>
+<ul>
+<li><strong>PSNR (峰值信噪比)：</strong> 数值越高越好，代表噪点少，画面纯净。</li>
+<li><strong>SSIM (结构相似性)：</strong> 数值越接近 1 越好，代表图片结构和人眼观感一致。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-几何精确度-geometric-accuracy"><a class="markdownIt-Anchor" href="#2-几何精确度-geometric-accuracy"></a> 2. 几何精确度 (Geometric Accuracy)</h5>
+<p><strong>通俗理解：</strong> <strong>“形状准不准”</strong>（针对 <strong>3D 模型</strong>）。</p>
+<ul>
+<li><strong>定义：</strong> 衡量算法重建出来的 <strong>3D 模型（Mesh）</strong>，与物体真实的 <strong>物理形状</strong> 有多接近。</li>
+<li><strong>关注点：</strong> 表面是否平滑、边缘是否锐利、是否有破洞、是否有漂浮的垃圾、拓扑结构是否正确（水密性）。</li>
+<li><strong>评价指标：</strong>
+<ul>
+<li><strong>Chamfer Distance (倒角距离)：</strong> 数值越低越好。它计算你的模型表面上的点，到真实模型表面上的点，平均距离是多少。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="1-辐射场方法的局限性几何模糊性"><a class="markdownIt-Anchor" href="#1-辐射场方法的局限性几何模糊性"></a> 1. 辐射场方法的局限性：几何模糊性</h4>
+<p><strong>代表技术：</strong> NeRF (Neural Radiance Fields), 3DGS (3D Gaussian Splatting)</p>
+<ul>
+<li><strong>技术特征：</strong> 这类方法通过优化体密度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span> (Volume Density) 或不透明度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> (Opacity) 来最小化光度损失。其核心目标是“新视图合成”（Novel View Synthesis）。</li>
+<li><strong>核心痛点：几何不适定性 (Geometric Ill-posedness)</strong>
+<ul>
+<li><strong>“云雾”本质：</strong> NeRF 将场景建模为连续的密度场。在数学上，并没有一个明确的表面边界（Surface Boundary）。物体表面通常表现为密度值的逐渐衰减，而非阶跃变化。</li>
+<li><strong>等值面提取困难：</strong> 尝试通过阈值化密度（Thresholding density）来提取网格（Mesh）是非常不稳定的。选取的阈值稍有偏差，提取出的几何体就会出现严重的噪声、空洞或虚假的“云雾状”几何。</li>
+<li><strong>应用受限：</strong> 由此生成的几何体无法直接用于物理模拟、游戏引擎碰撞检测或 3D 打印，因为它们往往不是水密（Watertight）的，且包含大量非物理的半透明区域。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_6ca4dec7d7c2e744a8eb19cf25f3bd89.webp" alt="" /></p>
+<blockquote>
+<p>左：辐射场方法</p>
+<p>​	没有一个明确的表面边界，提取网格是非常不稳定</p>
+<p>右：SDFoam</p>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<h4 id="2-神经隐式表面的瓶颈效率与离散化误差"><a class="markdownIt-Anchor" href="#2-神经隐式表面的瓶颈效率与离散化误差"></a> 2. 神经隐式表面的瓶颈：效率与离散化误差</h4>
+<p><strong>代表技术：</strong> NeuS, VolSDF, IDR</p>
+<ul>
+<li><strong>技术特征：</strong> 这类方法引入了<strong>符号距离函数 (SDF, Signed Distance Function)</strong> 作为几何的底层表示。通过将 SDF 转换为密度（例如 NeuS 使用 Logistic 分布的导数），实现了表面约束。</li>
+<li><strong>核心痛点：推理缓慢与后处理依赖 (High Latency &amp; Post-processing Dependency)</strong>
+<ul>
+<li><strong>计算昂贵：</strong> 隐式表示通常依赖于一个巨大的 MLP（多层感知机）来查询空间中任意点的 SDF 值。在渲染过程中，每条光线需要采样数百个点，意味着需要进行数百万次 MLP 推理，导致训练和渲染速度极慢。</li>
+<li><strong>Marching Cubes 的弊端：</strong> 尽管 SDF 定义了完美的平滑表面，但要将其转化为显式的网格，必须使用 <strong>行军立方体 (Marching Cubes, MC)</strong> 算法。
+<ul>
+<li><strong>离散化误差：</strong> MC 需要在固定的体素网格上进行采样和线性插值，这引入了不可避免的数值近似误差（Numerical Approximations）。</li>
+<li><strong>非端到端：</strong> MC 是一个独立于训练过程的后处理步骤，无法在训练中直接优化网格拓扑。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_dd72745ca7717517ae31bcaf24fc6b18.webp" alt="" /></p>
+<blockquote>
+<p>左：传统神经隐式表示</p>
+<p>​	依赖于一个巨大的 MLP，训练和渲染速度极慢</p>
+<p>​	网格化时依赖行军立方体，有不可避免的数值近似误差</p>
+<p>右：SDFoam</p>
+<p>​	速度快、端到端</p>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<h4 id="3-显式辐射场的缺陷拓扑不连续"><a class="markdownIt-Anchor" href="#3-显式辐射场的缺陷拓扑不连续"></a> 3. 显式辐射场的缺陷：拓扑不连续</h4>
+<p><strong>代表技术：</strong> RadiantFoam (RF)</p>
+<ul>
+<li><strong>技术特征：</strong> RF 创新性地引入了 <strong>Voronoi 图 (Voronoi Diagram)</strong> 和 <strong>Delaunay 三角剖分</strong> 作为场景的显式支架。每个 Voronoi 单元（Cell）存储独立的密度和颜色参数。</li>
+<li><strong>核心痛点：几何相干性缺失 (Lack of Geometric Coherence)</strong>
+<ul>
+<li><strong>零阶连续性：</strong> RF 将每个 Voronoi 单元视为独立的优化单元。在优化过程中，相邻单元之间缺乏几何约束。单元 A 可能不仅在颜色上，而且在密度上与单元 B 完全断裂。</li>
+<li><strong>“马赛克”效应：</strong> 由于缺乏全局的表面约束（Global Surface Constraint），重建出的几何体往往呈现出碎片化特征。表面由离散的多边形面片拼凑而成，且场景中充斥着因局部极小值导致的<strong>漂浮物 (Floaters)</strong>。</li>
+<li><strong>非物理结构：</strong> 提取的模型通常是体积填充的（Volumetrically filled），而非原本的空心表面，且包含大量拓扑伪影（Topological Artifacts），难以进行后续的几何处理。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_cead196f3534292c8f7251049f36d6c1.webp" alt="" /></p>
+<blockquote>
+<p>左：RadiantFoam</p>
+<p>​	沃罗诺伊结构之间不连续，场景中充斥着漂浮物，提取的模型为非物理结构</p>
+<p>右：SDFoam</p>
+<p>​	程函方程约束</p>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<hr />
+<h3 id="sdfoam-的破局思路"><a class="markdownIt-Anchor" href="#sdfoam-的破局思路"></a> SDFoam 的破局思路</h3>
+<p>针对上述困境，SDFoam 提出了一种<strong>混合架构（Hybrid Architecture）</strong>，旨在融合显式结构的速度与隐式表示的质量。</p>
+<ul>
+<li>
+<p>核心野心：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>SDFoam</mtext><mo>=</mo><mtext>RadiantFoam 的显式速度</mtext><mo>+</mo><mtext>NeuS 的隐式几何质量</mtext></mrow><annotation encoding="application/x-tex">\text{SDFoam} = \text{RadiantFoam 的显式速度} + \text{NeuS 的隐式几何质量}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">SDFoam</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">RadiantFoam </span><span class="mord cjk_fallback">的显式速度</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">NeuS </span><span class="mord cjk_fallback">的隐式几何质量</span></span></span></span></span></span>
+</li>
+<li>
+<p><strong>解决策略：</strong></p>
+<ol>
+<li><strong>几何注入：</strong> 不再让 Voronoi 单元存储随意的“密度”，而是强制每个单元存储并维护一个局部的 <strong>SDF 场</strong>。</li>
+<li><strong>全局约束：</strong> 通过 <strong>程函方程 (Eikonal Equation, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∥</mi><mi mathvariant="normal">∇</mi><mi>f</mi><mi mathvariant="normal">∥</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|\nabla f\| = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥∇</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">∥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>)</strong> 正则化，强迫所有离散的 Voronoi 单元在空间上形成一个连续、光滑且符合物理规律的整体距离场。</li>
+<li><strong>直接提取：</strong> 利用 Voronoi 本身的拓扑特性，通过直接筛选 SDF 零水平集附近的“面”（Faces），替代 Marching Cubes。这不仅消除了插值误差，更将网格提取速度提升了 <strong>5 倍</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4 id="一言以蔽之-sdfoam-是把隐式的-sdf数学公式注入到显式的-voronoi-气泡几何骨架里"><a class="markdownIt-Anchor" href="#一言以蔽之-sdfoam-是把隐式的-sdf数学公式注入到显式的-voronoi-气泡几何骨架里"></a> <strong>一言以蔽之：</strong> SDFoam 是把隐式的 SDF（数学公式）注入到显式的 Voronoi 气泡（几何骨架）里。</h4>
+<h3 id="第三部分方法论"><a class="markdownIt-Anchor" href="#第三部分方法论"></a> 第三部分：方法论</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_862e53ec9db6fc4397dd425857e26468.webp" alt="" /></p>
+<blockquote>
+<p>（图片摘自论文）</p>
+</blockquote>
+<blockquote>
+<h3 id="一-核心概念"><a class="markdownIt-Anchor" href="#一-核心概念"></a> 一、 核心概念</h3>
+<h4 id="1-主要组件"><a class="markdownIt-Anchor" href="#1-主要组件"></a> 1. 主要组件</h4>
+<ul>
+<li><strong>Points initialization (点云初始化)</strong>: 系统的起点。通常是使用传统方法（如 Colmap）从照片中计算出的稀疏 3D 点云。这些点既是几何的参考，也作为 Voronoi 图的初始种子点。</li>
+<li><strong>MLP (Multi-Layer Perceptron, 多层感知机)</strong>: 一个神经网络，充当“隐式几何的大脑”。它负责学习和记忆场景的形状。给定一个空间坐标，它能告诉你这个点离物体表面有多远。</li>
+<li><strong>Density Conversion (密度转换模块)</strong>: 连接“数学距离”和“视觉渲染”的桥梁。它把 MLP 输出的距离值转换成渲染器能理解的不透明度（密度）。</li>
+<li><strong>Voronoi Diagram (沃罗诺伊图 / 泰森多边形)</strong>: 场景的“显式骨架”。空间被划分为许多个多面体气泡（Cell），每个气泡由一个中心站点（Site）控制。它是存储和组织数据（位置、颜色、密度）的基本容器。</li>
+<li><strong>Rendered Scene (渲染场景)</strong>: 最终输出的图像。通过光线追踪算法穿过 Voronoi 气泡计算得到。</li>
+</ul>
+<h4 id="2-关键参数与符号-swig4-"><a class="markdownIt-Anchor" href="#2-关键参数与符号-swig4-"></a> 2. 关键参数与符号 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>)</h4>
+<ul>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>x</mi><mi>y</mi><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{xyz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> (位置参数)</strong>: Voronoi 图中每个气泡的种子点的三维坐标。<strong>注意：这些坐标是可学习的，会在训练中移动。</strong></li>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>s</mi><mi>d</mi><mi>f</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{sdf}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">df</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> (SDF 值)</strong>: Signed Distance Function，符号距离。MLP 的输出。它表示一个点距离物体表面的最近距离。负值在物体内部，正值在外部，0 表示在表面。</li>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>v</mi><mi>a</mi><mi>r</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{var}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (方差/锐度参数)</strong>: 控制密度转换函数的“胖瘦”。它决定了物体边界是模糊的雾状，还是锐利的固体表面。</li>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>d</mi><mi>e</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{den}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (密度值)</strong>: 通过转换得到的物理属性，表示该区域阻挡光线的概率。</li>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> (颜色参数)</strong>: 每个 Voronoi 气泡存储的颜色信息（通常是球谐系数 SH，以支持视角依赖的反射效果）。</li>
+</ul>
+<h4 id="3-损失函数-swig10-训练的指挥棒"><a class="markdownIt-Anchor" href="#3-损失函数-swig10-训练的指挥棒"></a> 3. 损失函数 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">L</mi></mrow><annotation encoding="application/x-tex">\mathcal{L}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">L</span></span></span></span>) - 训练的指挥棒</h4>
+<ul>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> (光度/颜色损失)</strong>: “美术老师”。比较渲染出的图像和真实照片的差异。差异越大，惩罚越大，迫使模型修改参数以生成更真实的照片。</li>
+<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>e</mi><mi>i</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{eik}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">ik</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (程函损失 Eikonal Loss)</strong>: “物理/几何老师”。一种数学约束，强迫 MLP 输出的 SDF 符合真实的物理距离法则（即梯度的模长接近 1）。这保证了重建的几何形状是平滑且真实的。</li>
+</ul>
+<hr />
+<h3 id="二-详细步骤"><a class="markdownIt-Anchor" href="#二-详细步骤"></a> 二、 详细步骤</h3>
+<p>我们将流程分为两个阶段：前向的渲染生成流程，以及反向的训练优化流程。</p>
+<h4 id="阶段-1前向传播-生成图像-forward-pass-实线箭头-swig13-"><a class="markdownIt-Anchor" href="#阶段-1前向传播-生成图像-forward-pass-实线箭头-swig13-"></a> 阶段 1：前向传播 - 生成图像 (Forward Pass, 实线箭头 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>)</h4>
+<p>这个过程描述了数据如何从输入的点变成最终的图像。</p>
+<ul>
+<li><strong>步骤 1：初始化与空间划分</strong>
+<ul>
+<li>输入的稀疏点云被用作 Voronoi 图的初始种子点 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>x</mi><mi>y</mi><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{xyz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>)，将 3D 空间划分为许多个多面体气泡。</li>
+</ul>
+</li>
+<li><strong>步骤 2：计算隐式几何 (Querying SDF)</strong>
+<ul>
+<li>对于空间中的任意点（通常是 Voronoi 气泡的中心或光线上的采样点），将其坐标输入到 <strong>MLP</strong> 神经网络中。</li>
+<li>MLP 输出该点的符号距离值 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>s</mi><mi>d</mi><mi>f</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{sdf}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">df</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+</ul>
+</li>
+<li><strong>步骤 3：密度转换 (The Bridge)</strong>
+<ul>
+<li>渲染器无法直接使用 SDF 值。系统利用一个基于 Sigmoid 导数的钟形曲线函数（见图中红绿曲线图表），将 SDF 值 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>s</mi><mi>d</mi><mi>f</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{sdf}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">df</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong> 转换为密度值 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>d</mi><mi>e</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{den}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+<li><em>核心逻辑</em>：只有当 SDF 接近 0（在物体表面附近）时，密度才最高；远离表面时密度趋近于 0（空气）。</li>
+<li>这个转换曲线的宽度由锐度参数 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>v</mi><mi>a</mi><mi>r</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{var}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong> 控制。</li>
+</ul>
+</li>
+<li><strong>步骤 4：组装 Voronoi 单元</strong>
+<ul>
+<li>每个 Voronoi 气泡现在成为了一个信息载体，汇聚了三个关键要素：
+<ol>
+<li>它的位置 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>x</mi><mi>y</mi><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{xyz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+<li>计算出的密度 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>d</mi><mi>e</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{den}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+<li>独立存储的颜色信息 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>步骤 5：体积渲染 (Rendering)</strong>
+<ul>
+<li>虚拟相机发出光线，穿过这些组装好的 Voronoi 气泡。</li>
+<li>渲染算法沿着光线累加各个气泡的颜色和密度，最终计算出屏幕上每个像素的颜色，生成 <strong>Rendered Scene</strong>。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="阶段-2反向传播-训练优化-backward-pass-虚线箭头-swig22-"><a class="markdownIt-Anchor" href="#阶段-2反向传播-训练优化-backward-pass-虚线箭头-swig22-"></a> 阶段 2：反向传播 - 训练优化 (Backward Pass, 虚线箭头 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇢</mo></mrow><annotation encoding="application/x-tex">\dashrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.437em;"></span><span class="mrel amsrm">⇢</span></span></span></span>)</h4>
+<p>这个过程描述了系统如何根据误差来自我修正，变得越来越准确。</p>
+<ul>
+<li><strong>总目标</strong>：通过不断微调所有可学习的参数（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>），使得总误差（Loss）最小化。</li>
+<li><strong>路径 A：基于视觉误差的更新 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 驱动)</strong>
+<ol>
+<li>计算渲染图像与真实图像的差异，得到颜色损失 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+<li>误差信号沿着虚线反向传播：
+<ul>
+<li><strong>更新颜色</strong>: 修正 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>r</mi><mi>g</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{rgb}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>，让气泡颜色更准确。</li>
+<li><strong>更新位置</strong>: <strong>(关键)</strong> 修正 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>x</mi><mi>y</mi><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{xyz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></strong>。这意味着 Voronoi 气泡的中心点会移动，自动贴合到物体的真实表面位置。</li>
+<li><strong>更新几何与锐度</strong>: 误差穿过密度转换模块，修正锐度参数 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mrow><mi>v</mi><mi>a</mi><mi>r</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\theta_{var}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong>（调节表面的虚实），并进一步传播回 <strong>MLP</strong>，更新神经网络的权重，使其输出更准确的 SDF 值。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>路径 B：基于几何约束的更新 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>e</mi><mi>i</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{eik}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">ik</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 驱动)</strong>
+<ol>
+<li>在 MLP 输出 SDF 的同时，计算程函损失 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">L</mi><mrow><mi>e</mi><mi>i</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}_{eik}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">ik</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong>。</li>
+<li>这个信号直接作用于 <strong>MLP</strong>，不依赖图像质量，单纯从数学层面约束 SDF 场的形状，防止其产生不合理的物理结构。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>SDFoam 并没有发明全新的数学，而是巧妙地在<strong>显式几何</strong>与<strong>隐式场</strong>之间架起了一座桥梁。</p>
+<p>我们将这一过程拆解为三个关键步骤：<strong>空间表示</strong>、<strong>密度转换</strong>、<strong>网格提取</strong>，以及贯穿始终的<strong>物理约束</strong>。</p>
+<h4 id="1-空间表示-representation显式骨架与隐式参数"><a class="markdownIt-Anchor" href="#1-空间表示-representation显式骨架与隐式参数"></a> 1. 空间表示 (Representation)：显式骨架与隐式参数</h4>
+<p>SDFoam 首先解决的是“如何在计算机中高效地存一个 3D 场景”的问题。</p>
+<ul>
+<li><strong>Voronoi 图：</strong> SDFoam 抛弃了 NeRF 中那种“在真空中盲目采样”的做法，而是采用了一组可优化的<strong>种子点 (Seed Points)</strong> P={pi} 来划分空间。
+<ul>
+<li><strong>划分逻辑：</strong> 空间中任何一个点 x，离哪个种子点 pi 最近，它就属于哪个 <strong>Voronoi 单元 (Cell)</strong> Ci。</li>
+<li><strong>显式优势：</strong> 这种划分是<strong>显式 (Explicit)</strong> 的。光线在穿过空间时，不再是一步步盲目试探，而是可以在空旷的单元里“大跨步”前进，甚至直接跳过无关区域。这为光线追踪带来了巨大的速度提升。</li>
+</ul>
+</li>
+<li><strong>气泡单元：</strong> 与 RadiantFoam 不同，SDFoam 的单元里存的不是简单的“密度”，而是一个更加本质的几何属性——<strong>SDF (符号距离)</strong>。
+<ul>
+<li>每个单元 Ci 关联一个从 MLP 网络查询得到的 <strong>SDF 值 fθ(pi)</strong>。</li>
+<li>同时，单元还存储了 <strong>颜色参数 (RGB/SH)</strong> 和 <strong>位置参数 (x,y,z)</strong>。</li>
+<li><strong>本质改变：</strong> 以前是“这块区域有多浓”，现在变成了“这块区域离表面有多远”。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_59a02a5d60fe7643929ca93ff9b12f49.webp" alt="" /></p>
+<blockquote>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<h4 id="2-桥梁从-sdf-到密度-the-bridge-sdf-to-density"><a class="markdownIt-Anchor" href="#2-桥梁从-sdf-到密度-the-bridge-sdf-to-density"></a> 2. 桥梁：从 SDF 到密度 (The Bridge: SDF-to-Density)</h4>
+<p>这是 SDFoam 最天才的一步，它解决了**“数学公式”<strong>（SDF）与</strong>“渲染引擎”**（Volume Rendering）语言不通的问题。</p>
+<ul>
+<li><strong>痛点 (The Mismatch)：</strong>
+<ul>
+<li>光线追踪器（Renderer）只看得懂物理上的 <strong>“不透明度/密度” (σ 或 α)</strong>——即光线被阻挡的概率。</li>
+<li>SDF 提供的是几何上的 <strong>“距离”</strong>——即离墙还有几米。</li>
+<li>渲染器不懂“距离 0”是什么意思，它只知道“密度 100”挡住光了。</li>
+</ul>
+</li>
+<li><strong>解法：钟形曲线 (The Bell-shaped Curve)</strong> SDFoam 借用了 <strong>NeuS</strong> 的思路，使用一个映射函数 ϕs 将 SDF 转化为密度。
+<ul>
+<li><strong>公式逻辑：</strong> 使用 <strong>Sigmoid 函数的导数</strong>。</li>
+<li><strong>直观形态：</strong> 这是一个以 0 为中心的 <strong>“钟形曲线” (Bell Curve)</strong>。
+<ul>
+<li>当 SDF = 0（在表面上）时，曲线达到峰值 → <strong>密度最大</strong>。</li>
+<li>当 SDF 很大（远离表面）时，曲线迅速归零 → <strong>变成透明空气</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>β 参数：锐化的魔法</strong> 这个钟形曲线的“胖瘦”由一个可学习的参数 <strong>β (Sharpness)</strong> 控制。
+<ul>
+<li><strong>训练初期 (β 小)：</strong> 曲线很宽，像一团雾。这让梯度能传得很远，帮助 AI 快速定位物体的大致轮廓。</li>
+<li><strong>训练后期 (β 大)：</strong> 曲线收紧成一根针。这迫使物体表面从“雾气”凝结成“石头”，实现高精度的锐利重建。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_03678024ad02dc16bd8861174ea1967f.webp" alt="" /></p>
+<blockquote>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<h4 id="3-几何提取-mesh-extraction速度与质量的降维打击"><a class="markdownIt-Anchor" href="#3-几何提取-mesh-extraction速度与质量的降维打击"></a> 3. 几何提取 (Mesh Extraction)：速度与质量的降维打击</h4>
+<p>这是 SDFoam 相比于 NeuS 等隐式方法最大的工程亮点。</p>
+<ul>
+<li><strong>VS Marching Cubes (传统之痛)：</strong> 传统的 SDF 方法在提取网格时，必须在一个高分辨率的 3D 网格上密集采样，然后通过线性插值“猜”出三角形（Marching Cubes 算法）。
+<ul>
+<li><strong>缺点：</strong> 极慢（数秒到数分钟），且由于是插值，容易抹平锐利的棱角（数值误差）。</li>
+</ul>
+</li>
+<li><strong>SDFoam 的做法：“挑选法” (Direct Selection)</strong> SDFoam 利用了 Voronoi 图天然存在的“墙壁”（多边形面）。既然墙壁已经切好了，我们只需要问一个问题：<strong>“这面墙是物体的皮吗？”</strong>
+<ul>
+<li><strong>判据：</strong> 检查墙壁两端的种子点 SDF 符号。如果一个是负（内部），一个是正（外部），或者墙壁顶点的 SDF 值极接近 0。</li>
+<li><strong>动作：</strong> 直接保留这面墙。</li>
+</ul>
+</li>
+<li><strong>优势：</strong>
+<ul>
+<li><strong>无需计算：</strong> 面是现成的，不需要重新算坐标。</li>
+<li><strong>极速：</strong> 提取速度比 Marching Cubes 快 <strong>5 倍</strong>。</li>
+<li><strong>保真：</strong> 提取出的就是训练时的几何边界，原汁原味，没有插值带来的平滑误差。</li>
+</ul>
+</li>
+</ul>
+<h5 id="33-极速网格提取-figure-4"><a class="markdownIt-Anchor" href="#33-极速网格提取-figure-4"></a> 3.3 极速网格提取 (Figure 4 )</h5>
+<p>Figure 4 展示了 SDFoam 如何在不使用慢速 Marching Cubes 的情况下，直接从 Voronoi 结构中提取出完美的水密网格。</p>
+<p>这是一个**“由粗到细”**的筛选过程：</p>
+<p><strong>第一步：准备原材料 (Inputs)</strong></p>
+<ul>
+<li><strong>左侧 (Trained SDFoam):</strong> 训练好的场景。此时我们拥有两套数据：
+<ul>
+<li><strong>SDF (隐式场):</strong> 知道空间中每个点离表面有多远（蓝红球体示意图，蓝色=内部，红色=外部）。</li>
+<li><strong>VD (显式图):</strong> 知道空间被切分成了哪些 Voronoi 气泡（彩色多边形示意图）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>第二步：粗筛 (Thresholding)</strong></p>
+<ul>
+<li><strong>操作：</strong> 我们遍历所有的气泡。</li>
+<li><strong>判据：</strong> 检查每个气泡中心点的 SDF 值。
+<ul>
+<li><strong>蓝色区域 (Inside):</strong> SDF &lt; 0，代表在物体内部。</li>
+<li><strong>红色区域 (Outside):</strong> SDF &gt; 0，代表在物体外部。</li>
+</ul>
+</li>
+<li><strong>结果：</strong> 这一步帮我们区分出了“实心肉”和“空心气”。</li>
+</ul>
+<p><strong>第三步：锁定表面气泡 (Surface Voronois)</strong></p>
+<ul>
+<li><strong>操作：</strong> 我们只关注<strong>交界处</strong>。</li>
+<li><strong>逻辑：</strong> 就像站在岸边一样，我们只关心那些“一只脚在水里（内部），一只脚在岸上（外部）”的区域。图中间那条<strong>深蓝色的线</strong>就是隐含的零水平集（Zero Level Set），也就是物体的真实表面。</li>
+<li><strong>结果：</strong> 筛选出一层包裹着物体的“气泡壳”。</li>
+</ul>
+<p>**第四步：精细挑面 **</p>
+<ul>
+<li><strong>操作：</strong> 这是最关键的一步。我们不再看气泡，而是看气泡的**“墙壁”（Faces）**。</li>
+<li><strong>判据（零交叉 Zero-crossing）：</strong> 对于每一面墙，检查它连接的两个气泡中心。
+<ul>
+<li>如果 <strong>气泡 A 是内部 (SDF &lt; 0)</strong> 且 <strong>气泡 B 是外部 (SDF &gt; 0)</strong>。</li>
+<li>那么：<strong>这面墙一定就是物体的表面</strong></li>
+</ul>
+</li>
+<li><strong>动作：</strong> 直接保留这面多边形墙壁。</li>
+</ul>
+<p><strong>第五步：生成网格 (Surface Mesh)</strong></p>
+<ul>
+<li><strong>结果：</strong> 把所有保留下来的墙壁拼在一起，就直接得到了最终的 Mesh。</li>
+<li><strong>优势：</strong>
+<ul>
+<li><strong>无需插值：</strong> 墙壁是现成的，不用像 Marching Cubes 那样去算三角形顶点的坐标插值。</li>
+<li><strong>无需重连：</strong> Voronoi 图天生就是无缝连接的，只要挑出来的面，天然就是拼好的。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_ff116b2ade51e535039982fc25fc4e79.webp" alt="" /></p>
+<p>Figure 4. From a trained SDFoam scene, we have access to both the SDF and the Voronoi Diagram. We infer the SDF value for each cell site, extracting the surface voronois via a threshold. The relevant surface faces are selected by thresholding their vertices against a close to zero SDF value. Since the VD is non-overlapping by nature, we don’t need to build additional connectivity at this step.</p>
+<blockquote>
+<p>（图片摘自论文）</p>
+</blockquote>
+<h4 id="4-物理约束-optimizationeikonal-loss-的紧箍咒"><a class="markdownIt-Anchor" href="#4-物理约束-optimizationeikonal-loss-的紧箍咒"></a> 4. 物理约束 (Optimization)：Eikonal Loss 的紧箍咒</h4>
+<p>为了防止神经网络“偷懒”或“作弊”，SDFoam 必须施加物理法则的约束。</p>
+<ul>
+<li><strong>Eikonal Loss (程函损失)：</strong> 公式核心：∣∣∇f(x)∣∣=1。
+<ul>
+<li><strong>直觉：</strong> 它强制要求 SDF 场的<strong>坡度恒定为 1</strong>。这意味着在空间中每走 1 米，SDF 的读数必须增加 1 米。</li>
+</ul>
+</li>
+<li><strong>作用：</strong>
+<ul>
+<li><strong>防止“平底锅”：</strong> 如果没有它，网络可能会把表面附近一大片区域的 SDF 都设为 0（梯度消失）。Eikonal Loss 强迫 SDF 场呈 V 字形，确保 SDF=0 的位置是<strong>唯一、锐利</strong>的。</li>
+<li><strong>保证距离真实：</strong> 让光线步进算法（Ray Marching）能安全地跳跃，不会因为距离虚报而穿模或撞墙。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_dd72745ca7717517ae31bcaf24fc6b18.webp" alt="" /></p>
+<blockquote>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+<h3 id="第四部分实验结果-数据与视觉验证"><a class="markdownIt-Anchor" href="#第四部分实验结果-数据与视觉验证"></a> 第四部分：实验结果 —— 数据与视觉验证</h3>
+<h4 id="1-定性对比-qualitative-results"><a class="markdownIt-Anchor" href="#1-定性对比-qualitative-results"></a> 1. 定性对比 (Qualitative Results)：</h4>
+<ul>
+<li><strong>RadiantFoam (反面教材) —— “破碎的马赛克”</strong>
+<ul>
+<li><strong>现象：</strong> 对比图（论文 Figure 5 或 12）中的 RadiantFoam 模型。</li>
+<li><strong>描述：</strong>
+<ul>
+<li>发现表面布满了密密麻麻的<strong>小孔洞 (small holes)</strong>。</li>
+<li>在物体周围漂浮着大量<strong>孤立的碎片 (isolated floaters)</strong>。</li>
+</ul>
+</li>
+<li><strong>原因：</strong> 这正是“几何不相干性”。因为每个 Voronoi 气泡只管自己显色，不管邻居死活，导致在光线追踪难以覆盖的死角或纹理复杂的区域，几何结构直接崩塌断裂。</li>
+</ul>
+</li>
+<li><strong>SDFoam —— “光滑的实体”</strong>
+<ul>
+<li><strong>现象：</strong> 再看 SDFoam 的模型。</li>
+<li><strong>描述：</strong> 那些小洞基本消失了，表面变得连续且平滑。漂浮物（Floaters）被清理得干净。</li>
+<li><strong>本质区别：</strong> 这种<strong>更干净、更完整 (cleaner and more complete)</strong> 的网格，证明了 Eikonal Loss 成功地将离散的气泡“粘”在了一起。它提取出的是一层<strong>仅包含表面的空心网格 (surface-only mesh)</strong>，而不是像 RF 那样内部填充了一堆废料的体积网格。</li>
+</ul>
+</li>
+</ul>
+<p><strong>结论：</strong> 视觉上，SDFoam 从“一团雾”进化成了“一块砖”。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_5212aba51f79cd85bc6253d6564eed25.webp" alt="" /></p>
+<p>Figure 5. Mesh reconstruction qualitative results. Top to bottom: ground truth, RF, SDFoam. Modelling the voronoi cells as local SDFs improves the consistency of the extracted surface, thus filling the typical holes derived from the ray-tracing procedure in RF.</p>
+<blockquote>
+<p>（图片摘自论文）</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_1f61198ef660a2073ccc80aac9491ab6.webp" alt="" /></p>
+<p>Figure 6. Novel view synthesis qualitative results. Top to bottom: ground truth, Radiant Foam, SDFoam. Our method is able to better model reflections, as can be seen in the metallic examples, has less floaters, while retaining a very good visual fidelity in highly textured surfaces (fur, stone, scratches, etc.).</p>
+<blockquote>
+<p>（图片摘自论文）</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_efa5399f58634c515f5cb58aaf2e7283.webp" alt="" /></p>
+<p>Figure 12. Qualitative comparison of geometry and viewpoint rendering. From top to bottom: RadiantFoam RGB rendering, RadiantFoam depth, SDFoam RGB rendering, SDFoam depth, and (last row) SDFoam per-cell SDF.</p>
+<blockquote>
+<p>（图片摘自论文）</p>
+</blockquote>
+<h4 id="2-定量分析-quantitative-analysis"><a class="markdownIt-Anchor" href="#2-定量分析-quantitative-analysis"></a> 2. 定量分析 (Quantitative Analysis)：</h4>
+<ul>
+<li><strong>A. 几何精确度：倒角距离 (Chamfer Distance)</strong>
+<ul>
+<li><strong>指标含义：</strong> “SDFoam 算出的表面”和“真实物体表面”之间的平均误差距离。<strong>数值越低越好</strong>。</li>
+<li><strong>数据：</strong> 根据论文表 1 (Table 1)，在 DTU 数据集上：
+<ul>
+<li>RadiantFoam (RF*) 的平均误差高达 <strong>4.33</strong>（全是漂浮物惹的祸）。</li>
+<li>SDFoam 直接降到了 <strong>1.74</strong>，误差减少了一半以上。</li>
+</ul>
+</li>
+<li><strong>解读：</strong> 虽然比不上纯隐式方法 NeuS (0.77) 那种极致的精度（毕竟 NeuS 是拿速度换精度），但 SDFoam 在保持显式速度的同时，几何质量已经足以“吊打”同类的显式方法。</li>
+</ul>
+</li>
+<li><strong>B. 光度保真度：PSNR (峰值信噪比)</strong>
+<ul>
+<li><strong>指标含义：</strong> 渲染出来的图和照片像不像。<strong>数值越高越好</strong>。</li>
+<li><strong>数据持平：</strong>
+<ul>
+<li>RadiantFoam: <strong>32.04</strong> dB。</li>
+<li>SDFoam: <strong>31.18</strong> dB。</li>
+</ul>
+</li>
+<li><strong>关键结论：</strong> 这其实是一个非常了不起的成就。通常来说，加上几何约束（Eikonal Loss）会让模型变得“僵硬”，导致画质下降。但 SDFoam 证明了：<strong>引入显式的 SDF 并不会显著降低视觉保真度</strong>。我们没有为了几何而牺牲画质，还是和照片一样真。</li>
+</ul>
+</li>
+<li><strong>C. 速度：网格提取时间 (Mesh Extraction Time)</strong>
+<ul>
+<li><strong>痛点：</strong> RadiantFoam 虽然渲染快，但提取 Mesh 很痛苦，要在体素网格里慢慢算等值面。</li>
+<li><strong>SDFoam 的绝杀：</strong> 利用我们提到的“挑选法”（直接筛选 Voronoi 墙壁），网格重建速度提升了 <strong>5 倍 (5× speed-up)</strong>。</li>
+<li><strong>意义：</strong> 这意味着在实际应用中（比如用户用手机扫描物体），用户等待生成模型的时间从“去喝杯咖啡”变成了“眨眼之间”。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_8e4d2a3f988b113176ee857255ada4b6.webp" alt="" /></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_7853eae7bc2fcc96daaffd5c9dbbc14d.webp" alt="" /></p>
+<blockquote>
+<p>（表格摘自论文）</p>
+</blockquote>
+<h3 id="第五部分局限与展望"><a class="markdownIt-Anchor" href="#第五部分局限与展望"></a> 第五部分：局限与展望</h3>
+<p>SDFoam 虽然在速度和质量上取得了惊人的平衡，但在面对真实世界复杂的物理规律和严苛的工业标准时，它依然暴露出了一些<strong>结构性的短板</strong>。</p>
+<p>我们需要用批判性的眼光来审视这些问题，并探讨它们在实际落地中的影响。</p>
+<h4 id="1-水密性问题"><a class="markdownIt-Anchor" href="#1-水密性问题"></a> 1. 水密性问题</h4>
+<p>SDFoam 最大的卖点之一是“网格提取快 5 倍”，这是因为它放弃了传统的 Marching Cubes，采用了基于 Voronoi 面片筛选的**“挑选法”**。但这恰恰埋下了隐患。</p>
+<ul>
+<li><strong>学术痛点：非流形结构 (Non-manifold Geometry)</strong>
+<ul>
+<li><strong>原理回顾：</strong> 挑选法是离散的。算法检查每一面墙，合格的留下，不合格的扔掉。</li>
+<li><strong>漏气现象：</strong> 由于计算误差或采样精度，某些本该存在的面可能因为 SDF 值稍微超出了阈值（例如 0.0011 &gt; 0.001）而被无情抛弃。这会导致模型表面出现微小的裂缝或孔洞。</li>
+<li><strong>数学后果：</strong> 提取出的 Mesh 不再是严格封闭的（Watertight）。在拓扑学上，它可能是不连续的。</li>
+</ul>
+</li>
+<li><strong>工业应用问题：</strong>
+<ul>
+<li><strong>3D 打印 (Additive Manufacturing)：</strong> 这是致命伤。切片软件（如 Cura）在处理非水密模型时会报错，因为它无法区分哪是“内部”哪是“外部”，导致打印失败或产生乱码支撑。</li>
+<li><strong>物理模拟 (Physics Engine)：</strong> 在游戏开发（如 Unity/UE5）中，刚体碰撞检测通常需要封闭的凸包（Convex Hull）。漏气的模型会导致物理计算穿透或错误的体积估算。</li>
+<li><strong>解决方案：</strong> 在工业流程中，必须增加一道<strong>后处理工序</strong>（如使用 Poisson Reconstruction 或 MeshLab 的 Fill Holes 算法）来修补这些洞，这在一定程度上抵消了其“提取速度快”的优势。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-swig31-参数敏感性"><a class="markdownIt-Anchor" href="#2-swig31-参数敏感性"></a> 2. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 参数敏感性</h4>
+<p>SDFoam 引入了一个关键参数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 来控制物体边缘的锐利程度（从雾化到实体化）。这种设计虽然巧妙，但也让训练过程变得脆弱。</p>
+<ul>
+<li><strong>学术痛点：梯度消失 (Gradient Vanishing)</strong>
+<ul>
+<li><strong>机制：</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 越大，Sigmoid 导数（钟形曲线）就越窄。</li>
+<li><strong>风险：</strong> 如果在训练初期 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 升得太快，钟形曲线瞬间变成了一根针。此时，除了恰好落在表面的那几个点外，空间中 99% 的区域梯度都变成了 0。</li>
+<li><strong>后果：</strong> 神经网络收不到任何“修改意见”（梯度），训练直接停滞，模型“假死”。这迫使我们必须精心设计 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 的 <strong>Warm-up（热身）策略</strong>，不能太快也不能太慢。</li>
+</ul>
+</li>
+<li><strong>工业应用问题：</strong>
+<ul>
+<li><strong>自动化流水线 (Automated Pipeline)：</strong> 在电商 3D 扫描或元宇宙建模中，我们希望算法是鲁棒的（Robust），扔进去一万张图，能出来一万个模型。</li>
+<li><strong>调试成本：</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> 的敏感性意味着面对不同大小、不同光照的物体，可能需要人工微调参数。这种**“手动调参 (Hand-tuning)”**的需求是阻碍其大规模自动化落地的主要绊脚石。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-未来方向动态与材质"><a class="markdownIt-Anchor" href="#3-未来方向动态与材质"></a> 3. 未来方向：动态与材质</h4>
+<p>SDFoam 目前还是一个“静态雕塑家”，要迈向更广阔的真实世界，还有两座大山要翻越。</p>
+<ul>
+<li>
+<p><strong>挑战 A：非朗伯材质 (Non-Lambertian Materials)</strong></p>
+<ul>
+<li><strong>现状：</strong> 目前 SDFoam 假设物体大部分是漫反射的（像石膏）。遇到<strong>镜子、光滑金属、玻璃</strong>时，它会困惑。</li>
+<li><strong>问题：</strong> 镜面反射的颜色随视角变化。SDFoam 可能会为了迎合镜子里的虚像，错误地把镜面表面“挖”下去，导致几何凹陷。</li>
+<li><strong>展望：</strong> 需要引入更高级的光照模型（如 PBR 材质估算）或反射场（Reflection Fields），让 AI 理解“这是反光，不是凹陷”。</li>
+</ul>
+</li>
+<li>
+<p><strong>挑战 B：动态场景 (Dynamic Scenes)</strong></p>
+<ul>
+<li><strong>现状：</strong> SDFoam 的 Voronoi 骨架是固定的（或者只能微调位置）。</li>
+<li><strong>问题：</strong> 如果要重建一个<strong>跳舞的人</strong>，不仅 SDF 在变，Voronoi 的拓扑结构（谁和谁相连）也需要剧烈变化。让 Voronoi 图在时间轴上连续变形是一个极其复杂的数学难题（涉及到拓扑撕裂和重连）。</li>
+<li><strong>展望：</strong> 这就是 <strong>4D 重建</strong> 的领域。未来的工作可能会探索“动态 Voronoi”或者将时间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 作为一个维度引入 SDF (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo separator="true">,</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">x, y, z, t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span></span></span></span>)，但这将带来计算量的指数级爆炸。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第六部分启发与未来展望"><a class="markdownIt-Anchor" href="#第六部分启发与未来展望"></a> 第六部分：启发与未来展望</h3>
+<p>SDFoam 不仅仅是一个具体的算法，它代表了计算机图形学（CG）与计算机视觉（CV）融合的一个重要趋势。读完这篇论文，我们能得到哪些通用的科研启发？未来的路又在何方？</p>
+<h4 id="1-方法论启发告别黑盒拥抱灰盒-the-grey-box-philosophy"><a class="markdownIt-Anchor" href="#1-方法论启发告别黑盒拥抱灰盒-the-grey-box-philosophy"></a> 1. 方法论启发：告别“黑盒”，拥抱“灰盒” (The “Grey Box” Philosophy)</h4>
+<ul>
+<li><strong>打破二元对立：</strong>
+<ul>
+<li>过去我们认为：要么用 <strong>显式表示</strong>（Mesh/Voxel，方便物理计算但难以微分），要么用 <strong>隐式表示</strong>（NeRF/MLP，方便微分但难以编辑）。</li>
+<li><strong>启发：</strong> SDFoam 告诉我们，<strong>混合架构 (Hybrid Architecture)</strong> 才是王道。不要在 A 和 B 之间做选择题，而是把 B（隐式 SDF）装进 A（显式 Voronoi）里。</li>
+<li><strong>科研方向：</strong> 未来的模型设计，应该更多地思考如何将<strong>传统的图形学数据结构</strong>（如 Octree, KD-Tree, Voronoi）与 <strong>神经网络</strong> 进行可微的结合，而不是盲目地把所有东西都塞进一个巨大的 MLP 里。</li>
+</ul>
+</li>
+<li><strong>“结构化”的归纳偏置 (Structured Inductive Bias)：</strong>
+<ul>
+<li>纯 NeRF 像是在白纸上画画，太自由了所以容易画乱（几何不收敛）。</li>
+<li>SDFoam 像是**“戴着镣铐跳舞”**。Voronoi 就是那个“镣铐”（结构约束）。</li>
+<li><strong>启发：</strong> 给神经网络引入<strong>强拓扑约束</strong>（Topological Constraints），是解决“几何伪影”和“数据效率低”的关键。让网络只学它该学的东西（局部细节），大框架交给数学算法来保证。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-未来科研方向"><a class="markdownIt-Anchor" href="#2-未来科研方向"></a> 2. 未来科研方向：</h4>
+<ul>
+<li><strong>方向 A：动态场景与 4D 重建 (Dynamic Scenes / 4D Reconstruction)</strong>
+<ul>
+<li><strong>现状：</strong> SDFoam 现在是静态的。</li>
+<li><strong>脑洞：</strong> Voronoi 的种子点本质上是粒子。如果我们让这些粒子<strong>动起来</strong>（引入时间轴 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>），是不是就能天然地模拟流体、布料或者形变物体？</li>
+<li><strong>关键词：</strong> Lagrangian Dynamics (拉格朗日动力学), Particle-based Neural Rendering。</li>
+</ul>
+</li>
+<li><strong>方向 B：生成式 AI 的结合 (Generative AI + SDFoam)</strong>
+<ul>
+<li><strong>现状：</strong> 现在的 3D 生成模型（如 DreamFusion）生成的几何通常比较糙。</li>
+<li><strong>脑洞：</strong> 能不能训练一个 Diffusion Model，直接预测 Voronoi 的<strong>种子点位置</strong>和<strong>内部 SDF 参数</strong>？因为 Voronoi 天生就是离散的，比直接生成连续的 NeRF 权重更容易控制。</li>
+<li><strong>关键词：</strong> Text-to-3D, Structured 3D Generation。</li>
+</ul>
+</li>
+<li><strong>方向 C：物理仿真一体化 (Physics-Rendering Coupling)</strong>
+<ul>
+<li><strong>现状：</strong> 图形学里，渲染和物理模拟通常是分开的。</li>
+<li><strong>脑洞：</strong> Voronoi 结构在物理模拟（如 FEM 有限元分析）里非常常用。SDFoam 既然已经把几何建模成了 Voronoi，那是不是可以直接在这个模型上跑<strong>破碎、碰撞、弹性形变</strong>的物理模拟，而不需要重新网格化？</li>
+<li><strong>愿景：</strong> 实现真正的“所见即所算”（Simulation-ready Rendering）。</li>
+</ul>
+</li>
+<li><strong>方向 D：反光材质与逆渲染 (Inverse Rendering)</strong>
+<ul>
+<li><strong>现状：</strong> SDFoam 处理不好镜面反射。</li>
+<li><strong>脑洞：</strong> 将 SDFoam 与 PBR（基于物理的渲染）结合。不仅学习颜色，还学习每个 Voronoi 单元的<strong>粗糙度 (Roughness)、金属度 (Metallic) 和法线 (Normal)</strong>。利用 Voronoi 的表面提取能力，做高质量的重打光（Relighting）。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_12_bc29fb799f9fe9eff0975a3186f43c99.webp" alt="" /></p>
+<blockquote>
+<p>（图片由<em>Nano Banana Pro</em>生成）</p>
+</blockquote>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Tianxingleo</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/')">CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]&amp;url=http://tianxingleo.top/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/&amp;pic=https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=248f250d-5d7a-29db-4409-2976fbbed65c" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tianxingleo.top" target="_blank">Tianxingleo的Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/SDFoam/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>SDFoam<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>三维重建<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/CV/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>CV<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/CG/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>CG<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=58c27fdb-61cf-9c48-19ad-891a5bc04f4a" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/12/27/%E4%BB%8E%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%88%B0%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B8%AD%E7%AD%89%E5%80%BC%E9%9D%A2%E6%8F%90%E5%8F%96%E9%97%AE%E9%A2%98/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=58c27fdb-61cf-9c48-19ad-891a5bc04f4a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">从神经隐式表示到显式网格中等值面提取问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/27/%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E5%87%A0%E4%BD%95%E4%B8%8E%E5%8F%AF%E5%BE%AE%E6%B8%B2%E6%9F%93%E4%B8%AD%E7%9A%84%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%A1%E7%AE%97%E7%AE%A1%E7%BA%BF%EF%BC%9A%E4%BB%8E%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80%E5%88%B0%E7%89%A9%E7%90%86%E7%BA%A6%E6%9D%9F/" title="神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=b50c3bce-4c99-ae83-aa39-d2fe16445bd6" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-27</div><div class="title">神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束</div></div></a></div><div><a href="/2025/12/27/%E4%BB%8E%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%88%B0%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B8%AD%E7%AD%89%E5%80%BC%E9%9D%A2%E6%8F%90%E5%8F%96%E9%97%AE%E9%A2%98/" title="从神经隐式表示到显式网格中等值面提取问题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=58c27fdb-61cf-9c48-19ad-891a5bc04f4a" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-27</div><div class="title">从神经隐式表示到显式网格中等值面提取问题</div></div></a></div><div><a href="/2025/12/27/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%88%9D%E8%AF%86%EF%BC%9A%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE%E4%B8%8E%E5%BE%B7%E5%8A%B3%E5%86%85%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%EF%BC%88Voronoi-Diagram-Delaunay-Triangulation%EF%BC%89/" title="计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=28731475-17cc-5149-c660-49597a286bee" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-27</div><div class="title">计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/tianxingleo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);"><b style="color:#fff">这是天马行空（tianxingleo）</b>的blog，用于<b style="color:#fff">记录、分享、学习、交流</b></div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Tianxingleo</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text"> 摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E8%83%8C%E6%99%AF%E4%B8%8E%E7%97%9B%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text"> 第一部分：背景与痛点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%85%89%E5%BA%A6%E4%BF%9D%E7%9C%9F%E5%BA%A6-photometric-fidelity"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 光度保真度 (Photometric Fidelity)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%87%A0%E4%BD%95%E7%B2%BE%E7%A1%AE%E5%BA%A6-geometric-accuracy"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 几何精确度 (Geometric Accuracy)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BE%90%E5%B0%84%E5%9C%BA%E6%96%B9%E6%B3%95%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7%E5%87%A0%E4%BD%95%E6%A8%A1%E7%B3%8A%E6%80%A7"><span class="toc-number">2.3.</span> <span class="toc-text"> 1. 辐射场方法的局限性：几何模糊性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E8%A1%A8%E9%9D%A2%E7%9A%84%E7%93%B6%E9%A2%88%E6%95%88%E7%8E%87%E4%B8%8E%E7%A6%BB%E6%95%A3%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-number">2.4.</span> <span class="toc-text"> 2. 神经隐式表面的瓶颈：效率与离散化误差</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%98%BE%E5%BC%8F%E8%BE%90%E5%B0%84%E5%9C%BA%E7%9A%84%E7%BC%BA%E9%99%B7%E6%8B%93%E6%89%91%E4%B8%8D%E8%BF%9E%E7%BB%AD"><span class="toc-number">2.5.</span> <span class="toc-text"> 3. 显式辐射场的缺陷：拓扑不连续</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sdfoam-%E7%9A%84%E7%A0%B4%E5%B1%80%E6%80%9D%E8%B7%AF"><span class="toc-number">2.6.</span> <span class="toc-text"> SDFoam 的破局思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E8%A8%80%E4%BB%A5%E8%94%BD%E4%B9%8B-sdfoam-%E6%98%AF%E6%8A%8A%E9%9A%90%E5%BC%8F%E7%9A%84-sdf%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B3%A8%E5%85%A5%E5%88%B0%E6%98%BE%E5%BC%8F%E7%9A%84-voronoi-%E6%B0%94%E6%B3%A1%E5%87%A0%E4%BD%95%E9%AA%A8%E6%9E%B6%E9%87%8C"><span class="toc-number">2.6.1.</span> <span class="toc-text"> 一言以蔽之： SDFoam 是把隐式的 SDF（数学公式）注入到显式的 Voronoi 气泡（几何骨架）里。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.7.</span> <span class="toc-text"> 第三部分：方法论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">2.8.</span> <span class="toc-text"> 一、 核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6"><span class="toc-number">2.8.1.</span> <span class="toc-text"> 1. 主要组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E4%B8%8E%E7%AC%A6%E5%8F%B7-swig4-"><span class="toc-number">2.8.2.</span> <span class="toc-text"> 2. 关键参数与符号 (θ\thetaθ)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-swig10-%E8%AE%AD%E7%BB%83%E7%9A%84%E6%8C%87%E6%8C%A5%E6%A3%92"><span class="toc-number">2.8.3.</span> <span class="toc-text"> 3. 损失函数 (L\mathcal{L}L) - 训练的指挥棒</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.9.</span> <span class="toc-text"> 二、 详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-1%E5%89%8D%E5%90%91%E4%BC%A0%E6%92%AD-%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F-forward-pass-%E5%AE%9E%E7%BA%BF%E7%AE%AD%E5%A4%B4-swig13-"><span class="toc-number">2.9.1.</span> <span class="toc-text"> 阶段 1：前向传播 - 生成图像 (Forward Pass, 实线箭头 →\rightarrow→)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD-%E8%AE%AD%E7%BB%83%E4%BC%98%E5%8C%96-backward-pass-%E8%99%9A%E7%BA%BF%E7%AE%AD%E5%A4%B4-swig22-"><span class="toc-number">2.9.2.</span> <span class="toc-text"> 阶段 2：反向传播 - 训练优化 (Backward Pass, 虚线箭头 ⇢\dashrightarrow⇢)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A9%BA%E9%97%B4%E8%A1%A8%E7%A4%BA-representation%E6%98%BE%E5%BC%8F%E9%AA%A8%E6%9E%B6%E4%B8%8E%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0"><span class="toc-number">2.9.3.</span> <span class="toc-text"> 1. 空间表示 (Representation)：显式骨架与隐式参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A1%A5%E6%A2%81%E4%BB%8E-sdf-%E5%88%B0%E5%AF%86%E5%BA%A6-the-bridge-sdf-to-density"><span class="toc-number">2.9.4.</span> <span class="toc-text"> 2. 桥梁：从 SDF 到密度 (The Bridge: SDF-to-Density)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%87%A0%E4%BD%95%E6%8F%90%E5%8F%96-mesh-extraction%E9%80%9F%E5%BA%A6%E4%B8%8E%E8%B4%A8%E9%87%8F%E7%9A%84%E9%99%8D%E7%BB%B4%E6%89%93%E5%87%BB"><span class="toc-number">2.9.5.</span> <span class="toc-text"> 3. 几何提取 (Mesh Extraction)：速度与质量的降维打击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#33-%E6%9E%81%E9%80%9F%E7%BD%91%E6%A0%BC%E6%8F%90%E5%8F%96-figure-4"><span class="toc-number">2.9.5.1.</span> <span class="toc-text"> 3.3 极速网格提取 (Figure 4 )</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%89%A9%E7%90%86%E7%BA%A6%E6%9D%9F-optimizationeikonal-loss-%E7%9A%84%E7%B4%A7%E7%AE%8D%E5%92%92"><span class="toc-number">2.9.6.</span> <span class="toc-text"> 4. 物理约束 (Optimization)：Eikonal Loss 的紧箍咒</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C-%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%A7%86%E8%A7%89%E9%AA%8C%E8%AF%81"><span class="toc-number">2.10.</span> <span class="toc-text"> 第四部分：实验结果 —— 数据与视觉验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E6%80%A7%E5%AF%B9%E6%AF%94-qualitative-results"><span class="toc-number">2.10.1.</span> <span class="toc-text"> 1. 定性对比 (Qualitative Results)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E9%87%8F%E5%88%86%E6%9E%90-quantitative-analysis"><span class="toc-number">2.10.2.</span> <span class="toc-text"> 2. 定量分析 (Quantitative Analysis)：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%E5%B1%80%E9%99%90%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">2.11.</span> <span class="toc-text"> 第五部分：局限与展望</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%B0%B4%E5%AF%86%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">2.11.1.</span> <span class="toc-text"> 1. 水密性问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-swig31-%E5%8F%82%E6%95%B0%E6%95%8F%E6%84%9F%E6%80%A7"><span class="toc-number">2.11.2.</span> <span class="toc-text"> 2. β\betaβ 参数敏感性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%AA%E6%9D%A5%E6%96%B9%E5%90%91%E5%8A%A8%E6%80%81%E4%B8%8E%E6%9D%90%E8%B4%A8"><span class="toc-number">2.11.3.</span> <span class="toc-text"> 3. 未来方向：动态与材质</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%E5%90%AF%E5%8F%91%E4%B8%8E%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B"><span class="toc-number">2.12.</span> <span class="toc-text"> 第六部分：启发与未来展望</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%B9%E6%B3%95%E8%AE%BA%E5%90%AF%E5%8F%91%E5%91%8A%E5%88%AB%E9%BB%91%E7%9B%92%E6%8B%A5%E6%8A%B1%E7%81%B0%E7%9B%92-the-grey-box-philosophy"><span class="toc-number">2.12.1.</span> <span class="toc-text"> 1. 方法论启发：告别“黑盒”，拥抱“灰盒” (The “Grey Box” Philosophy)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%AA%E6%9D%A5%E7%A7%91%E7%A0%94%E6%96%B9%E5%90%91"><span class="toc-number">2.12.2.</span> <span class="toc-text"> 2. 未来科研方向：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/" title="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/91953835_p0.webp?_r_=248f250d-5d7a-29db-4409-2976fbbed65c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]"/></a><div class="content"><a class="title" href="/2025/12/28/CV%E6%9C%80%E6%96%B0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94SDFoam-Signed-Distance-Foam-for-explicit-surface-reconstruction-Submitted-on-18-Dec-2025/" title="CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]">CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</a><time datetime="2025-12-27T16:09:14.000Z" title="发表于 2025-12-28 00:09:14">2025-12-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/27/%E4%BB%8E%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%88%B0%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B8%AD%E7%AD%89%E5%80%BC%E9%9D%A2%E6%8F%90%E5%8F%96%E9%97%AE%E9%A2%98/" title="从神经隐式表示到显式网格中等值面提取问题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/94219701_p0.webp?_r_=58c27fdb-61cf-9c48-19ad-891a5bc04f4a" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从神经隐式表示到显式网格中等值面提取问题"/></a><div class="content"><a class="title" href="/2025/12/27/%E4%BB%8E%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%88%B0%E6%98%BE%E5%BC%8F%E7%BD%91%E6%A0%BC%E4%B8%AD%E7%AD%89%E5%80%BC%E9%9D%A2%E6%8F%90%E5%8F%96%E9%97%AE%E9%A2%98/" title="从神经隐式表示到显式网格中等值面提取问题">从神经隐式表示到显式网格中等值面提取问题</a><time datetime="2025-12-27T15:48:50.000Z" title="发表于 2025-12-27 23:48:50">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/27/%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E5%87%A0%E4%BD%95%E4%B8%8E%E5%8F%AF%E5%BE%AE%E6%B8%B2%E6%9F%93%E4%B8%AD%E7%9A%84%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%A1%E7%AE%97%E7%AE%A1%E7%BA%BF%EF%BC%9A%E4%BB%8E%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80%E5%88%B0%E7%89%A9%E7%90%86%E7%BA%A6%E6%9D%9F/" title="神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=b50c3bce-4c99-ae83-aa39-d2fe16445bd6" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束"/></a><div class="content"><a class="title" href="/2025/12/27/%E7%A5%9E%E7%BB%8F%E9%9A%90%E5%BC%8F%E5%87%A0%E4%BD%95%E4%B8%8E%E5%8F%AF%E5%BE%AE%E6%B8%B2%E6%9F%93%E4%B8%AD%E7%9A%84%E7%9A%84%E5%BA%95%E5%B1%82%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%A1%E7%AE%97%E7%AE%A1%E7%BA%BF%EF%BC%9A%E4%BB%8E%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80%E5%88%B0%E7%89%A9%E7%90%86%E7%BA%A6%E6%9D%9F/" title="神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束">神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束</a><time datetime="2025-12-27T14:15:16.000Z" title="发表于 2025-12-27 22:15:16">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/27/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%88%9D%E8%AF%86%EF%BC%9A%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE%E4%B8%8E%E5%BE%B7%E5%8A%B3%E5%86%85%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%EF%BC%88Voronoi-Diagram-Delaunay-Triangulation%EF%BC%89/" title="计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/114477837_p0_master1200.jpg?_r_=28731475-17cc-5149-c660-49597a286bee" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）"/></a><div class="content"><a class="title" href="/2025/12/27/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E5%88%9D%E8%AF%86%EF%BC%9A%E6%B2%83%E7%BD%97%E8%AF%BA%E4%BC%8A%E5%9B%BE%E4%B8%8E%E5%BE%B7%E5%8A%B3%E5%86%85%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%EF%BC%88Voronoi-Diagram-Delaunay-Triangulation%EF%BC%89/" title="计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）">计算几何初识：沃罗诺伊图与德劳内三角剖分（Voronoi Diagram &amp; Delaunay Triangulation）</a><time datetime="2025-12-27T13:33:52.000Z" title="发表于 2025-12-27 21:33:52">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/27/%E7%A7%AF%E5%88%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="积分复习笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/8eb85bb13982d5a8187fee8a42adf1bc1a95a704.webp?_r_=d60b2243-8ebb-6b5d-0b60-23a107e555ed" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="积分复习笔记"/></a><div class="content"><a class="title" href="/2025/12/27/%E7%A7%AF%E5%88%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="积分复习笔记">积分复习笔记</a><time datetime="2025-12-27T11:52:58.000Z" title="发表于 2025-12-27 19:52:58">2025-12-27</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2025 By <a class="footer-bar-link" href="/" title="Tianxingleo" target="_blank">Tianxingleo</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://tianxingleo.github.io" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://avatars.githubusercontent.com/u/237200863?v=4" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/tianxingleo" title="Github"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github"/><span class="back-menu-item-text">Github</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/3dgs/" style="font-size: 0.88rem;">3dgs<sup>7</sup></a><a href="/tags/5070/" style="font-size: 0.88rem;">5070<sup>1</sup></a><a href="/tags/CG/" style="font-size: 0.88rem;">CG<sup>3</sup></a><a href="/tags/CV/" style="font-size: 0.88rem;">CV<sup>3</sup></a><a href="/tags/SAM3D/" style="font-size: 0.88rem;">SAM3D<sup>1</sup></a><a href="/tags/SDFoam/" style="font-size: 0.88rem;">SDFoam<sup>4</sup></a><a href="/tags/blackwell/" style="font-size: 0.88rem;">blackwell<sup>2</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>4</sup></a><a href="/tags/cpc/" style="font-size: 0.88rem;">cpc<sup>4</sup></a><a href="/tags/cpp/" style="font-size: 0.88rem;">cpp<sup>14</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/cuda/" style="font-size: 0.88rem;">cuda<sup>1</sup></a><a href="/tags/dp/" style="font-size: 0.88rem;">dp<sup>1</sup></a><a href="/tags/html/" style="font-size: 0.88rem;">html<sup>1</sup></a><a href="/tags/key%E7%A4%BE/" style="font-size: 0.88rem;">key社<sup>1</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>5</sup></a><a href="/tags/mask/" style="font-size: 0.88rem;">mask<sup>1</sup></a><a href="/tags/nerfstudio/" style="font-size: 0.88rem;">nerfstudio<sup>1</sup></a><a href="/tags/pytorch/" style="font-size: 0.88rem;">pytorch<sup>3</sup></a><a href="/tags/sam/" style="font-size: 0.88rem;">sam<sup>1</sup></a><a href="/tags/sam3/" style="font-size: 0.88rem;">sam3<sup>1</sup></a><a href="/tags/tic/" style="font-size: 0.88rem;">tic<sup>1</sup></a><a href="/tags/wsl/" style="font-size: 0.88rem;">wsl<sup>5</sup></a><a href="/tags/yolo/" style="font-size: 0.88rem;">yolo<sup>1</sup></a><a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" style="font-size: 0.88rem;">三维重建<sup>3</sup></a><a href="/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">不定积分<sup>1</sup></a><a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 0.88rem;">函数<sup>1</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>1</sup></a><a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 0.88rem;">动漫<sup>1</sup></a><a href="/tags/%E5%A4%A7%E5%AD%A6/" style="font-size: 0.88rem;">大学<sup>8</sup></a><a href="/tags/%E5%A4%A9%E4%BD%BF%E7%9A%84%E5%BF%83%E8%B7%B3/" style="font-size: 0.88rem;">天使的心跳<sup>1</sup></a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 0.88rem;">字符串<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>6</sup></a><a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">指针<sup>2</sup></a><a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 0.88rem;">搜索<sup>1</sup></a><a href="/tags/%E7%A7%AF%E5%88%86/" style="font-size: 0.88rem;">积分<sup>2</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>6</sup></a><a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 0.88rem;">结构体<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>1</sup></a><a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 0.88rem;">高数<sup>7</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("14/10/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Tianxingleo 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: '',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: '',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: '',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-NVDE0BFR5M', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
