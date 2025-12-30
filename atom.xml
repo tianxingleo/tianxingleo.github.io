@@ -6,7 +6,7 @@
   <link href="http://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="http://tianxingleo.top/"/>
-  <updated>2025-12-28T08:51:30.136Z</updated>
+  <updated>2025-12-30T08:29:10.577Z</updated>
   <id>http://tianxingleo.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>思想道德与法治复习笔记</title>
+    <link href="http://tianxingleo.top/2025/12/30/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://tianxingleo.top/2025/12/30/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2025-12-30T08:18:20.000Z</published>
+    <updated>2025-12-30T08:29:10.577Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;绪论&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#绪论&quot;&gt;&lt;/a&gt; 绪论&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;担当民族复兴的时代新人：&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="思想道德与法治" scheme="http://tianxingleo.top/tags/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>线代与解几1~9章复习笔记</title>
@@ -592,30 +620,6 @@
     <category term="算法" scheme="http://tianxingleo.top/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="dp" scheme="http://tianxingleo.top/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言中常见的输入函数</title>
-    <link href="http://tianxingleo.top/2025/11/24/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0/"/>
-    <id>http://tianxingleo.top/2025/11/24/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0/</id>
-    <published>2025-11-24T12:56:49.000Z</published>
-    <updated>2025-12-17T15:13:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;c-语言中常见的输入函数&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#c-语言中常见的输入函数&quot;&gt;&lt;/a&gt; C 语言中常见的输入函数&lt;/h2&gt;
-&lt;h3 id=&quot;1-getchar&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="c" scheme="http://tianxingleo.top/tags/c/"/>
     
   </entry>
   
