@@ -422,13 +422,13 @@
     
     <category term="3dgs" scheme="http://tianxingleo.top/tags/3dgs/"/>
     
-    <category term="blackwell" scheme="http://tianxingleo.top/tags/blackwell/"/>
+    <category term="pytorch" scheme="http://tianxingleo.top/tags/pytorch/"/>
     
     <category term="wsl" scheme="http://tianxingleo.top/tags/wsl/"/>
     
-    <category term="pytorch" scheme="http://tianxingleo.top/tags/pytorch/"/>
-    
     <category term="linux" scheme="http://tianxingleo.top/tags/linux/"/>
+    
+    <category term="blackwell" scheme="http://tianxingleo.top/tags/blackwell/"/>
     
     <category term="colmap" scheme="http://tianxingleo.top/tags/colmap/"/>
     
@@ -460,19 +460,19 @@
     
     <category term="3dgs" scheme="http://tianxingleo.top/tags/3dgs/"/>
     
+    <category term="pytorch" scheme="http://tianxingleo.top/tags/pytorch/"/>
+    
+    <category term="wsl" scheme="http://tianxingleo.top/tags/wsl/"/>
+    
+    <category term="linux" scheme="http://tianxingleo.top/tags/linux/"/>
+    
     <category term="5070" scheme="http://tianxingleo.top/tags/5070/"/>
     
     <category term="blackwell" scheme="http://tianxingleo.top/tags/blackwell/"/>
     
-    <category term="wsl" scheme="http://tianxingleo.top/tags/wsl/"/>
-    
-    <category term="pytorch" scheme="http://tianxingleo.top/tags/pytorch/"/>
-    
     <category term="cuda" scheme="http://tianxingleo.top/tags/cuda/"/>
     
     <category term="SAM3D" scheme="http://tianxingleo.top/tags/SAM3D/"/>
-    
-    <category term="linux" scheme="http://tianxingleo.top/tags/linux/"/>
     
   </entry>
   
@@ -526,9 +526,9 @@
     
     <category term="3dgs" scheme="http://tianxingleo.top/tags/3dgs/"/>
     
-    <category term="wsl" scheme="http://tianxingleo.top/tags/wsl/"/>
-    
     <category term="pytorch" scheme="http://tianxingleo.top/tags/pytorch/"/>
+    
+    <category term="wsl" scheme="http://tianxingleo.top/tags/wsl/"/>
     
     <category term="linux" scheme="http://tianxingleo.top/tags/linux/"/>
     
