@@ -6,7 +6,7 @@
   <link href="http://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="http://tianxingleo.top/"/>
-  <updated>2026-02-12T14:26:46.618Z</updated>
+  <updated>2026-02-12T15:15:07.973Z</updated>
   <id>http://tianxingleo.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tianxingleo.top/2026/02/10/%E5%9F%8E%E5%B8%82%E7%BA%A7%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B7%E5%90%88%E7%A5%9E%E7%BB%8F%E9%87%8D%E5%BB%BA%EF%BC%9A%E5%9F%BA%E4%BA%8EGIS%E5%87%A0%E4%BD%95%E5%85%88%E9%AA%8C%E4%B8%8E%E8%AF%AD%E4%B9%89-%E5%87%A0%E4%BD%95%E5%9C%BA%E5%88%86%E8%A7%A3%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/"/>
     <id>http://tianxingleo.top/2026/02/10/%E5%9F%8E%E5%B8%82%E7%BA%A7%E5%A4%9A%E6%A8%A1%E6%80%81%E6%B7%B7%E5%90%88%E7%A5%9E%E7%BB%8F%E9%87%8D%E5%BB%BA%EF%BC%9A%E5%9F%BA%E4%BA%8EGIS%E5%87%A0%E4%BD%95%E5%85%88%E9%AA%8C%E4%B8%8E%E8%AF%AD%E4%B9%89-%E5%87%A0%E4%BD%95%E5%9C%BA%E5%88%86%E8%A7%A3%E7%9A%84%E7%9C%9F%E5%AE%9E%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/</id>
     <published>2026-02-10T09:32:07.000Z</published>
-    <updated>2026-02-12T14:26:46.618Z</updated>
+    <updated>2026-02-12T15:15:07.973Z</updated>
     
     
       
@@ -36,9 +36,9 @@
     
     
     
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
-    
     <category term="CV" scheme="http://tianxingleo.top/tags/CV/"/>
+    
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
     <category term="3DGS" scheme="http://tianxingleo.top/tags/3DGS/"/>
     
@@ -97,11 +97,11 @@
     
     
     
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
+    
     <category term="GAMES101" scheme="http://tianxingleo.top/tags/GAMES101/"/>
     
     <category term="GAMES" scheme="http://tianxingleo.top/tags/GAMES/"/>
-    
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
   </entry>
   
@@ -343,13 +343,13 @@
     
     
     
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
-    
     <category term="SDFoam" scheme="http://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="http://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="http://tianxingleo.top/tags/CV/"/>
+    
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
   </entry>
   
@@ -372,13 +372,13 @@
     
     
     
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
-    
     <category term="SDFoam" scheme="http://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="http://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="http://tianxingleo.top/tags/CV/"/>
+    
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
     <category term="mesh" scheme="http://tianxingleo.top/tags/mesh/"/>
     
@@ -403,13 +403,13 @@
     
     
     
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
-    
     <category term="SDFoam" scheme="http://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="http://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="http://tianxingleo.top/tags/CV/"/>
+    
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
     <category term="sdf" scheme="http://tianxingleo.top/tags/sdf/"/>
     
@@ -434,13 +434,13 @@
     
     
     
-    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
-    
     <category term="SDFoam" scheme="http://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="http://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="http://tianxingleo.top/tags/CV/"/>
+    
+    <category term="CG" scheme="http://tianxingleo.top/tags/CG/"/>
     
     <category term="sdf" scheme="http://tianxingleo.top/tags/sdf/"/>
     
