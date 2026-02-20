@@ -6,7 +6,7 @@
   <link href="http://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="http://tianxingleo.top/"/>
-  <updated>2026-02-20T08:31:47.320Z</updated>
+  <updated>2026-02-20T08:37:38.456Z</updated>
   <id>http://tianxingleo.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tianxingleo.top/2026/02/20/%E6%9E%81%E7%AE%80%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E6%88%BF%E9%97%B43D%E9%87%8D%E5%BB%BA%EF%BC%8CDA3%E4%B8%8E%E5%90%843DGS-Pipeline%E6%96%B9%E6%A1%88%E6%A8%AA%E8%AF%84/"/>
     <id>http://tianxingleo.top/2026/02/20/%E6%9E%81%E7%AE%80%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E6%88%BF%E9%97%B43D%E9%87%8D%E5%BB%BA%EF%BC%8CDA3%E4%B8%8E%E5%90%843DGS-Pipeline%E6%96%B9%E6%A1%88%E6%A8%AA%E8%AF%84/</id>
     <published>2026-02-20T08:21:03.000Z</published>
-    <updated>2026-02-20T08:31:47.320Z</updated>
+    <updated>2026-02-20T08:37:38.456Z</updated>
     
     
       
@@ -100,11 +100,11 @@
     
     
     
+    <category term="vps" scheme="http://tianxingleo.top/tags/vps/"/>
+    
     <category term="nuxt" scheme="http://tianxingleo.top/tags/nuxt/"/>
     
     <category term="supabase" scheme="http://tianxingleo.top/tags/supabase/"/>
-    
-    <category term="vps" scheme="http://tianxingleo.top/tags/vps/"/>
     
   </entry>
   
@@ -211,11 +211,11 @@
     
     
     
-    <category term="vps" scheme="http://tianxingleo.top/tags/vps/"/>
-    
     <category term="ssh" scheme="http://tianxingleo.top/tags/ssh/"/>
     
     <category term="vscode" scheme="http://tianxingleo.top/tags/vscode/"/>
+    
+    <category term="vps" scheme="http://tianxingleo.top/tags/vps/"/>
     
     <category term="frp" scheme="http://tianxingleo.top/tags/frp/"/>
     
@@ -346,9 +346,9 @@
     
     <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
     
-    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
-    
     <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     
     <category term="线性代数" scheme="http://tianxingleo.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     
@@ -496,15 +496,15 @@
     
     
     
-    <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
-    
     <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
+    
+    <category term="大学" scheme="http://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
     
     <category term="积分" scheme="http://tianxingleo.top/tags/%E7%A7%AF%E5%88%86/"/>
     
-    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
-    
     <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     
     <category term="微积分" scheme="http://tianxingleo.top/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/"/>
     
@@ -534,9 +534,9 @@
     
     <category term="高数" scheme="http://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
-    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
-    
     <category term="复习" scheme="http://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+    <category term="期末" scheme="http://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     
     <category term="微分方程" scheme="http://tianxingleo.top/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
