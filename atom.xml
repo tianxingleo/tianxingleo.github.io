@@ -6,7 +6,7 @@
   <link href="https://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="https://tianxingleo.top/"/>
-  <updated>2026-03-16T07:40:45.494Z</updated>
+  <updated>2026-04-06T16:59:26.890Z</updated>
   <id>https://tianxingleo.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2w+的3D打印机拓竹H2D上手体验</title>
+    <link href="https://tianxingleo.top/2026/04/07/2w-%E7%9A%843D%E6%89%93%E5%8D%B0%E6%9C%BA%E6%8B%93%E7%AB%B9H2D%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/"/>
+    <id>https://tianxingleo.top/2026/04/07/2w-%E7%9A%843D%E6%89%93%E5%8D%B0%E6%9C%BA%E6%8B%93%E7%AB%B9H2D%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</id>
+    <published>2026-04-06T16:16:55.000Z</published>
+    <updated>2026-04-06T16:59:26.890Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有幸使用了拓竹H2D顶配3D打印机器，以下是这几周的使用体验。&lt;/p&gt;
+&lt;p&gt;拿到的时候打印机已经基本安装好，但是存在刀切模组没有校准、TPU材料卡在AMS里面等问题。&lt;/p&gt;
+&lt;p&gt;经过一个上午拆开AMS，取出卡在里面的AMS</summary>
+        
+      
+    
+    
+    
+    
+    <category term="3D打印" scheme="https://tianxingleo.top/tags/3D%E6%89%93%E5%8D%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>对 UrbanScene3D 数据集的一次初步调研</title>
@@ -530,9 +555,9 @@
     
     
     
-    <category term="高数" scheme="https://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
     <category term="大学" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="高数" scheme="https://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
     
     <category term="积分" scheme="https://tianxingleo.top/tags/%E7%A7%AF%E5%88%86/"/>
     
@@ -573,32 +598,6 @@
     <category term="复习" scheme="https://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
     
     <category term="微分方程" scheme="https://tianxingleo.top/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高数上极限章节错题集</title>
-    <link href="https://tianxingleo.top/2025/12/17/%E9%AB%98%E6%95%B0%E4%B8%8A%E6%9E%81%E9%99%90%E7%AB%A0%E8%8A%82%E9%94%99%E9%A2%98%E9%9B%86/"/>
-    <id>https://tianxingleo.top/2025/12/17/%E9%AB%98%E6%95%B0%E4%B8%8A%E6%9E%81%E9%99%90%E7%AB%A0%E8%8A%82%E9%94%99%E9%A2%98%E9%9B%86/</id>
-    <published>2025-12-17T15:11:25.000Z</published>
-    <updated>2025-12-17T15:13:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;错题本高等数学-极限与变限积分求导&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#错题本高等数学-极限与变限积分求导&quot;&gt;&lt;/a&gt; &lt;strong&gt;错题本：高等数学 - 极限与变限积分求导&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4</summary>
-        
-      
-    
-    
-    
-    
-    <category term="高数" scheme="https://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
-    <category term="极限" scheme="https://tianxingleo.top/tags/%E6%9E%81%E9%99%90/"/>
     
   </entry>
   
