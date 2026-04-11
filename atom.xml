@@ -93,9 +93,9 @@
     
     
     
-    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
     <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
     
     <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
     
@@ -125,9 +125,9 @@
     
     
     
-    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
     <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
     
     <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
     
@@ -158,11 +158,11 @@
     
     
     
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
-    
     <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
     
     <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
+    
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     
   </entry>
   
@@ -186,11 +186,11 @@
     
     
     
-    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
-    
     <category term="GAMES101" scheme="https://tianxingleo.top/tags/GAMES101/"/>
     
     <category term="GAMES" scheme="https://tianxingleo.top/tags/GAMES/"/>
+    
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
     
   </entry>
   
@@ -270,11 +270,11 @@
     
     
     
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
+    
     <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
     
     <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
-    
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     
     <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
     
@@ -433,13 +433,13 @@
     
     
     
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
     <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
-    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
     
   </entry>
   
@@ -462,13 +462,13 @@
     
     
     
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
     <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
-    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
     
     <category term="mesh" scheme="https://tianxingleo.top/tags/mesh/"/>
     
@@ -493,13 +493,13 @@
     
     
     
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
     <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
-    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
     
     <category term="sdf" scheme="https://tianxingleo.top/tags/sdf/"/>
     
@@ -524,13 +524,13 @@
     
     
     
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    
     <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
     
     <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
-    
-    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
     
     <category term="sdf" scheme="https://tianxingleo.top/tags/sdf/"/>
     
