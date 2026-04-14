@@ -6,7 +6,7 @@
   <link href="https://tianxingleo.top/atom.xml" rel="self"/>
   
   <link href="https://tianxingleo.top/"/>
-  <updated>2026-04-06T16:59:26.890Z</updated>
+  <updated>2026-04-14T10:11:30.304Z</updated>
   <id>https://tianxingleo.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【复盘】从一晚上一米工位到3天400w+浏览量的网站，我做了什么</title>
+    <link href="https://tianxingleo.top/2026/04/12/%E4%BB%8E%E4%B8%80%E6%99%9A%E4%B8%8A%E4%B8%80%E7%B1%B3%E5%B7%A5%E4%BD%8D%E5%88%B02%E5%A4%A968w%E4%BA%BA%E8%AE%BF%E9%97%AE%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%8C%E6%88%91%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/"/>
+    <id>https://tianxingleo.top/2026/04/12/%E4%BB%8E%E4%B8%80%E6%99%9A%E4%B8%8A%E4%B8%80%E7%B1%B3%E5%B7%A5%E4%BD%8D%E5%88%B02%E5%A4%A968w%E4%BA%BA%E8%AE%BF%E9%97%AE%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%8C%E6%88%91%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/</id>
+    <published>2026-04-12T12:44:41.000Z</published>
+    <updated>2026-04-14T10:11:30.304Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;截止到 2026 年 4 月 14 日 16:00，ACGTI 的成果：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;站点累计浏览量超过 400w，访问人数超过 117w，GitHub 仓库收获 332 ⭐、22</summary>
+        
+      
+    
+    
+    
+    
+    <category term="前端" scheme="https://tianxingleo.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://tianxingleo.top/tags/Vue/"/>
+    
+    <category term="开源项目" scheme="https://tianxingleo.top/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="ACG" scheme="https://tianxingleo.top/tags/ACG/"/>
+    
+  </entry>
   
   <entry>
     <title>2w+的3D打印机拓竹H2D上手体验</title>
@@ -158,11 +188,11 @@
     
     
     
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
-    
     <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
     
     <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
+    
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     
   </entry>
   
@@ -270,11 +300,11 @@
     
     
     
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
+    
     <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
     
     <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
-    
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     
     <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
     
@@ -568,36 +598,6 @@
     <category term="微积分" scheme="https://tianxingleo.top/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/"/>
     
     <category term="大一" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E4%B8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微分方程速成笔记</title>
-    <link href="https://tianxingleo.top/2025/12/26/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/"/>
-    <id>https://tianxingleo.top/2025/12/26/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E9%80%9F%E6%88%90%E7%AC%94%E8%AE%B0/</id>
-    <published>2025-12-26T03:53:29.000Z</published>
-    <updated>2025-12-26T03:55:49.536Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;微分方程速成笔记&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#微分方程速成笔记&quot;&gt;&lt;/a&gt; 微分方程速成笔记&lt;/h1&gt;
-&lt;h2 id=&quot;part-i-概念与基础&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="高数" scheme="https://tianxingleo.top/tags/%E9%AB%98%E6%95%B0/"/>
-    
-    <category term="期末" scheme="https://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
-    
-    <category term="复习" scheme="https://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
-    
-    <category term="微分方程" scheme="https://tianxingleo.top/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
   </entry>
   
