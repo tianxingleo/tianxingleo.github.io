@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>Tianxingleo</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <icon>https://tianxingleo.top/icon.png</icon>
+  <id>https://tianxingleo.top/</id>
+  <link href="https://tianxingleo.top/" rel="alternate"/>
+  <link href="https://tianxingleo.top/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, Tianxingleo</rights>
+  <title>Tianxingleo的Blog</title>
+  <updated>2026-10-16T16:21:05.609Z</updated>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="tic" scheme="https://tianxingleo.top/tags/tic/"/>
+    <category term="hexo" scheme="https://tianxingleo.top/tags/hexo/"/>
+    <category term="github" scheme="https://tianxingleo.top/tags/github/"/>
+    <category term="blog" scheme="https://tianxingleo.top/tags/blog/"/>
+    <id>https://tianxingleo.top/posts/tic-meeting-2-hexo-blog-guide/</id>
+    <link href="https://tianxingleo.top/posts/tic-meeting-2-hexo-blog-guide/"/>
+    <published>2026-10-16T12:30:00.000Z</published>
+    <summary>在写第一行命令之前，先带大家看看我们 TIC 的学长学姐们自己搭建的个人博客是什么样子的！</summary>
+    <title>TIC第二节例会：1小时，0代码，做出你的个人博客静态网站</title>
+    <updated>2026-10-16T16:21:05.609Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="折腾记录" scheme="https://tianxingleo.top/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/"/>
+    <category term="metapi" scheme="https://tianxingleo.top/tags/metapi/"/>
+    <category term="docker" scheme="https://tianxingleo.top/tags/docker/"/>
+    <category term="wsl2" scheme="https://tianxingleo.top/tags/wsl2/"/>
+    <category term="cloudflare" scheme="https://tianxingleo.top/tags/cloudflare/"/>
+    <category term="ai" scheme="https://tianxingleo.top/tags/ai/"/>
+    <id>https://tianxingleo.top/posts/047ec04c09e7/</id>
+    <link href="https://tianxingleo.top/posts/047ec04c09e7/"/>
+    <published>2026-05-02T07:00:00.000Z</published>
+    <summary>在 WSL2 上部署 Metapi 统一 AI 网关，经 Cloudflare Tunnel 发布，附 DeepSeek 兼容踩坑实录。</summary>
+    <title>Metapi统一AI网关部署全记录：从WSL2到Cloudflare Tunnel的完整配置与踩坑</title>
+    <updated>2026-10-16T16:22:38.402Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="前端" scheme="https://tianxingleo.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="Vue" scheme="https://tianxingleo.top/tags/Vue/"/>
+    <category term="开源项目" scheme="https://tianxingleo.top/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    <category term="ACG" scheme="https://tianxingleo.top/tags/ACG/"/>
+    <id>https://tianxingleo.top/posts/9bcf27f17565/</id>
+    <link href="https://tianxingleo.top/posts/9bcf27f17565/"/>
+    <published>2026-04-12T12:44:41.000Z</published>
+    <summary>从一晚上一米工位到两天 68 万人访问：ACGTI 的爆火复盘与工程化重构。</summary>
+    <title>【复盘】从一晚上一米工位到3天400w+浏览量的网站，我做了什么</title>
+    <updated>2026-10-16T16:22:38.416Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="生活" scheme="https://tianxingleo.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="3D打印" scheme="https://tianxingleo.top/tags/3D%E6%89%93%E5%8D%B0/"/>
+    <id>https://tianxingleo.top/posts/cb56b2867ae4/</id>
+    <link href="https://tianxingleo.top/posts/cb56b2867ae4/"/>
+    <published>2026-04-06T16:16:55.000Z</published>
+    <summary>有幸使用了拓竹H2D顶配3D打印机器，以下是这几周的使用体验。</summary>
+    <title>2w+的3D打印机拓竹H2D上手体验</title>
+    <updated>2026-10-16T16:21:05.536Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
+    <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
+    <category term="GIS" scheme="https://tianxingleo.top/tags/GIS/"/>
+    <category term="数据集" scheme="https://tianxingleo.top/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/"/>
+    <category term="科研" scheme="https://tianxingleo.top/tags/%E7%A7%91%E7%A0%94/"/>
+    <category term="UrbanScene3D" scheme="https://tianxingleo.top/tags/UrbanScene3D/"/>
+    <id>https://tianxingleo.top/posts/daebf52d5077/</id>
+    <link href="https://tianxingleo.top/posts/daebf52d5077/"/>
+    <published>2026-03-16T07:29:23.000Z</published>
+    <summary>最近在为“基于 GIS 先验的 SDF 城市级三维重建”找合适的数据集，我顺手把 UrbanScene3D 过了一遍。这里先记一份初步调研，重点不是做完整综述，而是回答一个更实际的问题：它能不能拿来把这条路线先跑通。</summary>
+    <title>对 UrbanScene3D 数据集的一次初步调研</title>
+    <updated>2026-10-16T16:21:05.690Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
+    <category term="3DGS" scheme="https://tianxingleo.top/tags/3DGS/"/>
+    <category term="Depth Anything 3" scheme="https://tianxingleo.top/tags/Depth-Anything-3/"/>
+    <id>https://tianxingleo.top/posts/85effadda5b8/</id>
+    <link href="https://tianxingleo.top/posts/85effadda5b8/"/>
+    <published>2026-02-20T08:21:03.000Z</published>
+    <summary>在推进个人 3D 记忆库构建的过程中，我们经常会遇到一个棘手的问题：日常随手记录的视频往往是不完美的。我们无法像实验室里那样，架设专业设备去获取无死角、高分辨率的素材。 如果只有一段极少视角的手机视频、极低画质、再加上满屋子的白墙和反光地板，三维重建还能做吗？ 传统的 SfM（如 COLMAP）在这…</summary>
+    <title>极简条件下的房间3D重建，DA3与各3DGS Pipeline方案横评</title>
+    <updated>2026-10-16T16:21:05.714Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
+    <category term="GIS" scheme="https://tianxingleo.top/tags/GIS/"/>
+    <category term="3DGS" scheme="https://tianxingleo.top/tags/3DGS/"/>
+    <category term="LiDAR" scheme="https://tianxingleo.top/tags/LiDAR/"/>
+    <id>https://tianxingleo.top/posts/c34dbd100644/</id>
+    <link href="https://tianxingleo.top/posts/c34dbd100644/"/>
+    <published>2026-02-10T09:32:07.000Z</published>
+    <summary>利用GIS提供的粗糙几何作为先验约束，利用图像提供的语义信息将场景分解，针对不同属性的物体采用不同的数学表示（SDF+3DGS双重表征用于刚体，Gaussian用于非刚体），并利用LiDAR增强几何约束。</summary>
+    <title>基于GIS几何先验与语义-几何场分解的真实三维重建调研报告</title>
+    <updated>2026-10-16T16:21:05.687Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
+    <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
+    <id>https://tianxingleo.top/posts/88143c5a2f82/</id>
+    <link href="https://tianxingleo.top/posts/88143c5a2f82/"/>
+    <published>2026-02-10T08:01:34.000Z</published>
+    <summary>第一部分：理想之路 —— 标准化部署 SOP</summary>
+    <title>Nuxt3+Supabase全栈应用私有化部署全记录</title>
+    <updated>2026-10-16T16:21:05.606Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="GAMES101" scheme="https://tianxingleo.top/tags/GAMES101/"/>
+    <category term="GAMES" scheme="https://tianxingleo.top/tags/GAMES/"/>
+    <id>https://tianxingleo.top/posts/c66e8d2525fe/</id>
+    <link href="https://tianxingleo.top/posts/c66e8d2525fe/"/>
+    <published>2026-02-02T11:11:55.000Z</published>
+    <summary>为了能够用矩阵乘法统一表示平移（Translation），引入了第三个坐标分量：$w$ 坐标。</summary>
+    <title>
+      <![CDATA[GAMES101笔记： Lecture 01 Overview of Computer Graphics & Lecture 02 Review of Linear Algebra & Lecture 03 Transformation & Lecture 04 Transformation Cont.]]>
+    </title>
+    <updated>2026-10-16T16:21:05.590Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="生活" scheme="https://tianxingleo.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="大学" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    <category term="NAOSI" scheme="https://tianxingleo.top/tags/NAOSI/"/>
+    <category term="留学" scheme="https://tianxingleo.top/tags/%E7%95%99%E5%AD%A6/"/>
+    <id>https://tianxingleo.top/posts/7a002479430c/</id>
+    <link href="https://tianxingleo.top/posts/7a002479430c/"/>
+    <published>2026-02-01T11:59:49.000Z</published>
+    <summary>
+      <![CDATA[A((为什么留学?留 or 学)) --> B(留 学)]]>
+    </summary>
+    <title>NAOSI留学讲座笔记</title>
+    <updated>2026-10-16T16:21:05.602Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="AI" scheme="https://tianxingleo.top/tags/AI/"/>
+    <category term="LLM" scheme="https://tianxingleo.top/tags/LLM/"/>
+    <category term="服务器" scheme="https://tianxingleo.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>https://tianxingleo.top/posts/f31cef78598b/</id>
+    <link href="https://tianxingleo.top/posts/f31cef78598b/"/>
+    <published>2026-01-30T14:35:08.000Z</published>
+    <summary>无显卡、384GB 内存的企业级服务器，如何跑起大参数量化模型。</summary>
+    <title>CPU服务器跑LLM实录</title>
+    <updated>2026-10-16T16:22:38.393Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
+    <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
+    <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
+    <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
+    <id>https://tianxingleo.top/posts/87c4bf718838/</id>
+    <link href="https://tianxingleo.top/posts/87c4bf718838/"/>
+    <published>2026-01-15T15:31:46.000Z</published>
+    <summary>VS Code 自带的 Tunnel 功能基于 Azure 中继服务器，在跨国或网络环境复杂的情况下（如国内连接海外），存在高延迟、连接不稳定及保存卡顿的问题。</summary>
+    <title>VSCode远程开发指南：使用FRP自建公网穿透与内网直连方案</title>
+    <updated>2026-10-16T16:21:05.613Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
+    <category term="RackNerd" scheme="https://tianxingleo.top/tags/RackNerd/"/>
+    <category term="Hysteria 2" scheme="https://tianxingleo.top/tags/Hysteria-2/"/>
+    <id>https://tianxingleo.top/posts/0763f8f44d63/</id>
+    <link href="https://tianxingleo.top/posts/0763f8f44d63/"/>
+    <published>2026-01-15T15:06:03.000Z</published>
+    <summary>美西廉价 VPS 遇上移动宽带：出口带宽限制排查与 Hysteria 2 优化实录。</summary>
+    <title>针对 RackNerd VPS 与中国移动出口带宽限制的排查与优化指南</title>
+    <updated>2026-10-16T16:22:38.432Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="VPS" scheme="https://tianxingleo.top/tags/VPS/"/>
+    <category term="Vultr" scheme="https://tianxingleo.top/tags/Vultr/"/>
+    <category term="RackNerd" scheme="https://tianxingleo.top/tags/RackNerd/"/>
+    <id>https://tianxingleo.top/posts/c9c79cd93acf/</id>
+    <link href="https://tianxingleo.top/posts/c9c79cd93acf/"/>
+    <published>2026-01-11T15:50:59.000Z</published>
+    <summary>对于许多开发者而言，Vultr 曾是 VPS 的首选，其按小时计费的灵活性和优秀的网络质量令人称道。然而，每月最低 5美元（年费约 70 美元）的成本，对于仅用于特定网络需求的用户来说，性价比逐渐降低。</summary>
+    <title>从Vultr到RackNerd：低成本VPS的调优与IP净化指南</title>
+    <updated>2026-10-16T16:21:05.658Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="生活" scheme="https://tianxingleo.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <id>https://tianxingleo.top/posts/ad6732188258/</id>
+    <link href="https://tianxingleo.top/posts/ad6732188258/"/>
+    <published>2025-12-31T13:11:31.000Z</published>
+    <summary>在对数尺度下，18岁或许已是生命的中点。</summary>
+    <title>2025年度总结</title>
+    <updated>2026-10-16T16:21:05.533Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="大学" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    <category term="复习" scheme="https://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    <category term="思想道德与法治" scheme="https://tianxingleo.top/tags/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB/"/>
+    <id>https://tianxingleo.top/posts/da06dbd20a0a/</id>
+    <link href="https://tianxingleo.top/posts/da06dbd20a0a/"/>
+    <published>2025-12-30T08:18:20.000Z</published>
+    <summary>担当民族复兴的时代新人： 立大志、明大德、成大才、担大任</summary>
+    <title>思想道德与法治复习笔记</title>
+    <updated>2026-10-16T16:21:05.698Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="大学" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
+    <category term="期末" scheme="https://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
+    <category term="复习" scheme="https://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    <category term="线性代数" scheme="https://tianxingleo.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    <id>https://tianxingleo.top/posts/e8d353249210/</id>
+    <link href="https://tianxingleo.top/posts/e8d353249210/"/>
+    <published>2025-12-28T08:41:31.000Z</published>
+    <summary>矩阵行列式性质、特殊分块公式与计算技巧，考前复习笔记。</summary>
+    <title>线代与解几1~9章复习笔记</title>
+    <updated>2026-10-16T16:22:38.428Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
+    <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <id>https://tianxingleo.top/posts/9349a1cc3ded/</id>
+    <link href="https://tianxingleo.top/posts/9349a1cc3ded/"/>
+    <published>2025-12-27T16:09:14.000Z</published>
+    <summary>SDFoam 是一种新型的 3D 重建与神经渲染框架，它创造性地将显式的 Voronoi（沃罗诺伊）几何结构与隐式的 SDF（符号距离场） 结合在一起，旨在同时实现高质量的几何重建和高效的视图合成。</summary>
+    <title>CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</title>
+    <updated>2026-10-16T16:21:05.563Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
+    <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="mesh" scheme="https://tianxingleo.top/tags/mesh/"/>
+    <id>https://tianxingleo.top/posts/81bb78a3aa3e/</id>
+    <link href="https://tianxingleo.top/posts/81bb78a3aa3e/"/>
+    <published>2025-12-27T15:48:50.000Z</published>
+    <summary>在神经隐式表示（Neural Implicit Representation）的管线中，网络训练完成仅仅是完成了“几何定义”。为了将数学上的 $f(x)=0$ 转化为工业界通用的 OBJ 或 STL 格式，我们需要解决 等值面提取 (Isosurface Extraction) 问题。这一过程连接了…</summary>
+    <title>从神经隐式表示到显式网格中等值面提取问题</title>
+    <updated>2026-10-16T16:21:05.666Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Tianxingleo</name>
+    </author>
+    <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    <category term="SDFoam" scheme="https://tianxingleo.top/tags/SDFoam/"/>
+    <category term="三维重建" scheme="https://tianxingleo.top/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
+    <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
+    <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="sdf" scheme="https://tianxingleo.top/tags/sdf/"/>
+    <id>https://tianxingleo.top/posts/3ec4015190a2/</id>
+    <link href="https://tianxingleo.top/posts/3ec4015190a2/"/>
+    <published>2025-12-27T14:15:16.000Z</published>
+    <summary>在计算机视觉与图形学的交叉领域，三维重建（3D Reconstruction） 已从离散的显式表达（Explicit Representation，如点云、网格）向连续的神经隐式表达（Neural Implicit Representation） 演进。这一范式转移的核心在于利用神经网络作为连续函数…</summary>
+    <title>神经隐式几何与可微渲染中的的底层数学原理与计算管线：从场论基础到物理约束</title>
+    <updated>2026-10-16T16:21:05.724Z</updated>
+  </entry>
+</feed>
