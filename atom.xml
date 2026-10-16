@@ -10,7 +10,7 @@
   <link href="https://tianxingleo.top/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Tianxingleo</rights>
   <title>Tianxingleo的Blog</title>
-  <updated>2026-10-16T12:23:41.810Z</updated>
+  <updated>2026-10-16T12:25:42.036Z</updated>
   <entry>
     <author>
       <name>Tianxingleo</name>
@@ -29,7 +29,7 @@
 <p>👋欢迎来到 TIC]]>
     </summary>
     <title>TIC第二节例会：1小时，0代码，做出你的个人博客静态网站</title>
-    <updated>2026-10-16T12:23:41.810Z</updated>
+    <updated>2026-10-16T12:25:42.036Z</updated>
   </entry>
   <entry>
     <author>
@@ -153,9 +153,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
     <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <id>https://tianxingleo.top/posts/88143c5a2f82/</id>
     <link href="https://tianxingleo.top/posts/88143c5a2f82/"/>
     <published>2026-02-10T08:01:34.000Z</published>
@@ -235,9 +235,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
     <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
     <id>https://tianxingleo.top/posts/87c4bf718838/</id>
     <link href="https://tianxingleo.top/posts/87c4bf718838/"/>
