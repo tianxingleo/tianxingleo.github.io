@@ -99,8 +99,8 @@
     <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
     <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
-    <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
     <category term="3DGS" scheme="https://tianxingleo.top/tags/3DGS/"/>
+    <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
     <category term="Depth Anything 3" scheme="https://tianxingleo.top/tags/Depth-Anything-3/"/>
     <id>https://tianxingleo.top/posts/85effadda5b8/</id>
     <link href="https://tianxingleo.top/posts/85effadda5b8/"/>
@@ -116,9 +116,9 @@
     <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
     <category term="CV" scheme="https://tianxingleo.top/tags/CV/"/>
     <category term="CG" scheme="https://tianxingleo.top/tags/CG/"/>
+    <category term="3DGS" scheme="https://tianxingleo.top/tags/3DGS/"/>
     <category term="SDF" scheme="https://tianxingleo.top/tags/SDF/"/>
     <category term="GIS" scheme="https://tianxingleo.top/tags/GIS/"/>
-    <category term="3DGS" scheme="https://tianxingleo.top/tags/3DGS/"/>
     <category term="LiDAR" scheme="https://tianxingleo.top/tags/LiDAR/"/>
     <id>https://tianxingleo.top/posts/c34dbd100644/</id>
     <link href="https://tianxingleo.top/posts/c34dbd100644/"/>
@@ -132,9 +132,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
     <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <id>https://tianxingleo.top/posts/88143c5a2f82/</id>
     <link href="https://tianxingleo.top/posts/88143c5a2f82/"/>
     <published>2026-02-10T08:01:34.000Z</published>
@@ -196,9 +196,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
     <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
     <id>https://tianxingleo.top/posts/87c4bf718838/</id>
     <link href="https://tianxingleo.top/posts/87c4bf718838/"/>
