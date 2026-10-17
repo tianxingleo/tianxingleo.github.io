@@ -11,7 +11,7 @@
   <rights>All rights reserved 2026, Tianxingleo</rights>
   <subtitle>天马行空（tianxingleo）的个人博客，记录学习笔记、项目实践与生活随笔，涵盖 3D 重建、计算机视觉、编程算法与日常折腾。</subtitle>
   <title>Tianxingleo的Blog</title>
-  <updated>2026-10-17T06:01:22.077Z</updated>
+  <updated>2026-10-17T06:25:38.737Z</updated>
   <entry>
     <author>
       <name>Tianxingleo</name>
@@ -26,7 +26,7 @@
     <published>2026-10-16T12:30:00.000Z</published>
     <summary>在写第一行命令之前，先带大家看看我们 TIC 的学长学姐们自己搭建的个人博客是什么样子的！</summary>
     <title>TIC第二节例会：1小时，0代码，做出你的个人博客静态网站</title>
-    <updated>2026-10-17T06:01:22.077Z</updated>
+    <updated>2026-10-17T06:25:38.737Z</updated>
   </entry>
   <entry>
     <author>
@@ -132,9 +132,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="nuxt" scheme="https://tianxingleo.top/tags/nuxt/"/>
     <category term="supabase" scheme="https://tianxingleo.top/tags/supabase/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <id>https://tianxingleo.top/posts/88143c5a2f82/</id>
     <link href="https://tianxingleo.top/posts/88143c5a2f82/"/>
     <published>2026-02-10T08:01:34.000Z</published>
@@ -196,9 +196,9 @@
       <name>Tianxingleo</name>
     </author>
     <category term="项目" scheme="https://tianxingleo.top/categories/%E9%A1%B9%E7%9B%AE/"/>
-    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="ssh" scheme="https://tianxingleo.top/tags/ssh/"/>
     <category term="vscode" scheme="https://tianxingleo.top/tags/vscode/"/>
+    <category term="vps" scheme="https://tianxingleo.top/tags/vps/"/>
     <category term="frp" scheme="https://tianxingleo.top/tags/frp/"/>
     <id>https://tianxingleo.top/posts/87c4bf718838/</id>
     <link href="https://tianxingleo.top/posts/87c4bf718838/"/>
