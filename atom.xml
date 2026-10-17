@@ -11,7 +11,7 @@
   <rights>All rights reserved 2026, Tianxingleo</rights>
   <subtitle>天马行空（tianxingleo）的个人博客，记录学习笔记、项目实践与生活随笔，涵盖 3D 重建、计算机视觉、编程算法与日常折腾。</subtitle>
   <title>Tianxingleo的Blog</title>
-  <updated>2026-10-17T03:34:00.698Z</updated>
+  <updated>2026-10-17T05:31:01.364Z</updated>
   <entry>
     <author>
       <name>Tianxingleo</name>
@@ -26,7 +26,7 @@
     <published>2026-10-16T12:30:00.000Z</published>
     <summary>在写第一行命令之前，先带大家看看我们 TIC 的学长学姐们自己搭建的个人博客是什么样子的！</summary>
     <title>TIC第二节例会：1小时，0代码，做出你的个人博客静态网站</title>
-    <updated>2026-10-17T03:34:00.698Z</updated>
+    <updated>2026-10-17T05:31:01.364Z</updated>
   </entry>
   <entry>
     <author>
@@ -59,7 +59,7 @@
     <published>2026-04-12T12:44:41.000Z</published>
     <summary>从一晚上一米工位到两天 68 万人访问：ACGTI 的爆火复盘与工程化重构。</summary>
     <title>【复盘】从一晚上一米工位到3天400w+浏览量的网站，我做了什么</title>
-    <updated>2026-10-17T03:34:00.706Z</updated>
+    <updated>2026-10-17T05:31:01.370Z</updated>
   </entry>
   <entry>
     <author>
@@ -72,7 +72,7 @@
     <published>2026-04-06T16:16:55.000Z</published>
     <summary>有幸使用了拓竹H2D顶配3D打印机器，以下是这几周的使用体验。</summary>
     <title>2w+的3D打印机拓竹H2D上手体验</title>
-    <updated>2026-10-17T03:34:00.670Z</updated>
+    <updated>2026-10-17T05:31:01.334Z</updated>
   </entry>
   <entry>
     <author>
@@ -90,7 +90,7 @@
     <published>2026-03-16T07:29:23.000Z</published>
     <summary>最近在为“基于 GIS 先验的 SDF 城市级三维重建”找合适的数据集，我顺手把 UrbanScene3D 过了一遍。这里先记一份初步调研，重点不是做完整综述，而是回答一个更实际的问题：它能不能拿来把这条路线先跑通。</summary>
     <title>对 UrbanScene3D 数据集的一次初步调研</title>
-    <updated>2026-10-17T03:34:00.716Z</updated>
+    <updated>2026-10-17T05:31:01.379Z</updated>
   </entry>
   <entry>
     <author>
@@ -107,7 +107,7 @@
     <published>2026-02-20T08:21:03.000Z</published>
     <summary>在推进个人 3D 记忆库构建的过程中，我们经常会遇到一个棘手的问题：日常随手记录的视频往往是不完美的。我们无法像实验室里那样，架设专业设备去获取无死角、高分辨率的素材。 如果只有一段极少视角的手机视频、极低画质、再加上满屋子的白墙和反光地板，三维重建还能做吗？ 传统的 SfM（如 COLMAP）在这…</summary>
     <title>极简条件下的房间3D重建，DA3与各3DGS Pipeline方案横评</title>
-    <updated>2026-10-17T03:34:00.725Z</updated>
+    <updated>2026-10-17T05:31:01.385Z</updated>
   </entry>
   <entry>
     <author>
@@ -157,7 +157,7 @@
     <title>
       <![CDATA[GAMES101笔记： Lecture 01 Overview of Computer Graphics & Lecture 02 Review of Linear Algebra & Lecture 03 Transformation & Lecture 04 Transformation Cont.]]>
     </title>
-    <updated>2026-10-17T03:34:00.690Z</updated>
+    <updated>2026-10-17T05:31:01.356Z</updated>
   </entry>
   <entry>
     <author>
@@ -270,8 +270,8 @@
     </author>
     <category term="学习" scheme="https://tianxingleo.top/categories/%E5%AD%A6%E4%B9%A0/"/>
     <category term="大学" scheme="https://tianxingleo.top/tags/%E5%A4%A7%E5%AD%A6/"/>
-    <category term="期末" scheme="https://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     <category term="复习" scheme="https://tianxingleo.top/tags/%E5%A4%8D%E4%B9%A0/"/>
+    <category term="期末" scheme="https://tianxingleo.top/tags/%E6%9C%9F%E6%9C%AB/"/>
     <category term="线性代数" scheme="https://tianxingleo.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     <id>https://tianxingleo.top/posts/e8d353249210/</id>
     <link href="https://tianxingleo.top/posts/e8d353249210/"/>
@@ -294,7 +294,7 @@
     <published>2025-12-27T16:09:14.000Z</published>
     <summary>SDFoam 是一种新型的 3D 重建与神经渲染框架，它创造性地将显式的 Voronoi（沃罗诺伊）几何结构与隐式的 SDF（符号距离场） 结合在一起，旨在同时实现高质量的几何重建和高效的视图合成。</summary>
     <title>CV最新论文精读笔记——SDFoam: Signed-Distance Foam for explicit surface reconstruction[Submitted on 18 Dec 2025]</title>
-    <updated>2026-10-17T03:34:00.678Z</updated>
+    <updated>2026-10-17T05:31:01.344Z</updated>
   </entry>
   <entry>
     <author>
